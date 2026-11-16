@@ -1,0 +1,18 @@
+---
+title: "Acerca del libro"
+---
+
+Este proyecto editorial surge del trabajo académico en el curso **EM-4010 Programación Lineal** del Instituto Tecnológico de Costa Rica.
+
+Su propósito es articular teoría matemática rigurosa, interpretación geométrica, procedimientos de resolución, modelos aplicados e interactividad orientada al aprendizaje.
+
+## Criterios de elaboración
+
+- Exposición y redacción originales.
+- Confrontación de las adaptaciones con las fuentes efectivamente consultadas.
+- Demostraciones verificadas y ejemplos resueltos de manera independiente.
+- Figuras y exploraciones propias, con validación matemática.
+- Referencias bibliográficas completas, reales y trazables.
+- Respeto a derechos de autor y permisos de publicación.
+
+**Créditos y datos editoriales:** se completarán antes de una publicación formal.
