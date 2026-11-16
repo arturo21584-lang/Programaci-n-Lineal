@@ -1,0 +1,288 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Programación Lineal",
+    "section": "",
+    "text": "LIBRO UNIVERSITARIO INTERACTIVO\n\n\nProgramación Lineal\n\n\nGeometría, algoritmos y decisiones\n\n\nUna propuesta editorial para aprender la teoría matemática, explorar la geometría y comprender el significado de las soluciones.\n\n\nComenzar la lectura Exploraciones Recursos académicos\n\n\n\n     \n\n\n\n\n\nTeoría rigurosa\nDefiniciones, resultados y demostraciones con fuentes verificadas.\n\n\nExploración interactiva\nVisualizaciones geométricas diseñadas para investigar, no solamente observar.\n\n\nRecursos académicos\nPrácticas, presentaciones y evaluaciones organizadas por tema.\n\n\n\nEstado editorial: estructura inicial del libro. Los contenidos de los capítulos y las referencias se incorporarán únicamente después de su revisión académica y bibliográfica.",
+    "crumbs": [
+      "Libro",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Bienvenida</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/01-introduccion.html",
+    "href": "capitulos/01-introduccion.html",
+    "title": "Introducción y formulación",
+    "section": "",
+    "text": "Organización del capítulo\nLa estructura académica, las demostraciones, los ejemplos y las exploraciones se establecerán durante la revisión editorial de este capítulo.",
+    "crumbs": [
+      "Libro",
+      "I. Modelar y visualizar",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introducción y formulación</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/01-introduccion.html#organización-del-capítulo",
+    "href": "capitulos/01-introduccion.html#organización-del-capítulo",
+    "title": "Introducción y formulación",
+    "section": "",
+    "text": "Exploración interactiva\nEspacio reservado para una construcción GeoGebra validada matemáticamente y acompañada de una pregunta guía.",
+    "crumbs": [
+      "Libro",
+      "I. Modelar y visualizar",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introducción y formulación</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/02-geometria.html",
+    "href": "capitulos/02-geometria.html",
+    "title": "Interpretación geométrica de la programación lineal",
+    "section": "",
+    "text": "Organización del capítulo\nLa estructura académica, las demostraciones, los ejemplos y las exploraciones se establecerán durante la revisión editorial de este capítulo.",
+    "crumbs": [
+      "Libro",
+      "I. Modelar y visualizar",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Interpretación geométrica de la programación lineal</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/02-geometria.html#organización-del-capítulo",
+    "href": "capitulos/02-geometria.html#organización-del-capítulo",
+    "title": "Interpretación geométrica de la programación lineal",
+    "section": "",
+    "text": "Exploración interactiva\nEspacio reservado para una construcción GeoGebra validada matemáticamente y acompañada de una pregunta guía.",
+    "crumbs": [
+      "Libro",
+      "I. Modelar y visualizar",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Interpretación geométrica de la programación lineal</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/03-bases.html",
+    "href": "capitulos/03-bases.html",
+    "title": "Bases y soluciones básicas factibles",
+    "section": "",
+    "text": "Organización del capítulo\nLa estructura académica, las demostraciones, los ejemplos y las exploraciones se establecerán durante la revisión editorial de este capítulo.",
+    "crumbs": [
+      "Libro",
+      "II. De la geometría al algoritmo",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Bases y soluciones básicas factibles</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/03-bases.html#organización-del-capítulo",
+    "href": "capitulos/03-bases.html#organización-del-capítulo",
+    "title": "Bases y soluciones básicas factibles",
+    "section": "",
+    "text": "Exploración interactiva\nEspacio reservado para una construcción GeoGebra validada matemáticamente y acompañada de una pregunta guía.",
+    "crumbs": [
+      "Libro",
+      "II. De la geometría al algoritmo",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Bases y soluciones básicas factibles</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/04-simplex.html",
+    "href": "capitulos/04-simplex.html",
+    "title": "Método Simplex",
+    "section": "",
+    "text": "Organización del capítulo\nLa estructura académica, las demostraciones, los ejemplos y las exploraciones se establecerán durante la revisión editorial de este capítulo.",
+    "crumbs": [
+      "Libro",
+      "III. Algoritmos de resolución",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Método Simplex</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/04-simplex.html#organización-del-capítulo",
+    "href": "capitulos/04-simplex.html#organización-del-capítulo",
+    "title": "Método Simplex",
+    "section": "",
+    "text": "Exploración interactiva\nEspacio reservado para una construcción GeoGebra validada matemáticamente y acompañada de una pregunta guía.",
+    "crumbs": [
+      "Libro",
+      "III. Algoritmos de resolución",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Método Simplex</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/05-dualidad.html",
+    "href": "capitulos/05-dualidad.html",
+    "title": "Dualidad e interpretación económica",
+    "section": "",
+    "text": "Organización del capítulo\nLa estructura académica, las demostraciones, los ejemplos y las exploraciones se establecerán durante la revisión editorial de este capítulo.",
+    "crumbs": [
+      "Libro",
+      "IV. Dualidad y análisis postóptimo",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Dualidad e interpretación económica</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/05-dualidad.html#organización-del-capítulo",
+    "href": "capitulos/05-dualidad.html#organización-del-capítulo",
+    "title": "Dualidad e interpretación económica",
+    "section": "",
+    "text": "Exploración interactiva\nEspacio reservado para una construcción GeoGebra validada matemáticamente y acompañada de una pregunta guía.",
+    "crumbs": [
+      "Libro",
+      "IV. Dualidad y análisis postóptimo",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Dualidad e interpretación económica</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/06-sensibilidad.html",
+    "href": "capitulos/06-sensibilidad.html",
+    "title": "Análisis de sensibilidad",
+    "section": "",
+    "text": "Organización del capítulo\nLa estructura académica, las demostraciones, los ejemplos y las exploraciones se establecerán durante la revisión editorial de este capítulo.",
+    "crumbs": [
+      "Libro",
+      "IV. Dualidad y análisis postóptimo",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Análisis de sensibilidad</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/06-sensibilidad.html#organización-del-capítulo",
+    "href": "capitulos/06-sensibilidad.html#organización-del-capítulo",
+    "title": "Análisis de sensibilidad",
+    "section": "",
+    "text": "Exploración interactiva\nEspacio reservado para una construcción GeoGebra validada matemáticamente y acompañada de una pregunta guía.",
+    "crumbs": [
+      "Libro",
+      "IV. Dualidad y análisis postóptimo",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Análisis de sensibilidad</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/07-modelos.html",
+    "href": "capitulos/07-modelos.html",
+    "title": "Modelos especiales",
+    "section": "",
+    "text": "Organización del capítulo\nLa estructura académica, las demostraciones, los ejemplos y las exploraciones se establecerán durante la revisión editorial de este capítulo.",
+    "crumbs": [
+      "Libro",
+      "V. Modelos y aplicaciones",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Modelos especiales</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/07-modelos.html#organización-del-capítulo",
+    "href": "capitulos/07-modelos.html#organización-del-capítulo",
+    "title": "Modelos especiales",
+    "section": "",
+    "text": "Exploración interactiva\nEspacio reservado para una construcción GeoGebra validada matemáticamente y acompañada de una pregunta guía.",
+    "crumbs": [
+      "Libro",
+      "V. Modelos y aplicaciones",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Modelos especiales</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/08-entera.html",
+    "href": "capitulos/08-entera.html",
+    "title": "Programación lineal entera",
+    "section": "",
+    "text": "Organización del capítulo\nLa estructura académica, las demostraciones, los ejemplos y las exploraciones se establecerán durante la revisión editorial de este capítulo.",
+    "crumbs": [
+      "Libro",
+      "V. Modelos y aplicaciones",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Programación lineal entera</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/08-entera.html#organización-del-capítulo",
+    "href": "capitulos/08-entera.html#organización-del-capítulo",
+    "title": "Programación lineal entera",
+    "section": "",
+    "text": "Exploración interactiva\nEspacio reservado para una construcción GeoGebra validada matemáticamente y acompañada de una pregunta guía.",
+    "crumbs": [
+      "Libro",
+      "V. Modelos y aplicaciones",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Programación lineal entera</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/09-aplicaciones.html",
+    "href": "capitulos/09-aplicaciones.html",
+    "title": "Aplicaciones de la programación lineal",
+    "section": "",
+    "text": "Organización del capítulo\nLa estructura académica, las demostraciones, los ejemplos y las exploraciones se establecerán durante la revisión editorial de este capítulo.",
+    "crumbs": [
+      "Libro",
+      "V. Modelos y aplicaciones",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Aplicaciones de la programación lineal</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/09-aplicaciones.html#organización-del-capítulo",
+    "href": "capitulos/09-aplicaciones.html#organización-del-capítulo",
+    "title": "Aplicaciones de la programación lineal",
+    "section": "",
+    "text": "Exploración interactiva\nEspacio reservado para una construcción GeoGebra validada matemáticamente y acompañada de una pregunta guía.",
+    "crumbs": [
+      "Libro",
+      "V. Modelos y aplicaciones",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Aplicaciones de la programación lineal</span>"
+    ]
+  },
+  {
+    "objectID": "exploraciones.html",
+    "href": "exploraciones.html",
+    "title": "Exploraciones interactivas",
+    "section": "",
+    "text": "Las visualizaciones de este apartado estarán ligadas directamente a los capítulos. Cada una incluirá objetivos, controles descritos con claridad, preguntas guiadas y una comprobación matemática del comportamiento representado.\n\nPróxima exploración: región factible y función objetivo\nLa construcción GeoGebra se incorporará después de comprobar su modelo, restricciones, intervalos de parámetros y resultados.",
+    "crumbs": [
+      "Libro",
+      "Material complementario",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Exploraciones interactivas</span>"
+    ]
+  },
+  {
+    "objectID": "recursos/index.html",
+    "href": "recursos/index.html",
+    "title": "Recursos académicos",
+    "section": "",
+    "text": "Criterio para la biblioteca\nEsta biblioteca reunirá materiales propios o autorizados del curso EM-4010. Los enlaces se publicarán únicamente cuando se haya revisado cada archivo.\nCada documento tendrá título, tema, semestre, tipo de archivo, procedencia, derechos de uso y, cuando corresponda, solución separada.",
+    "crumbs": [
+      "Libro",
+      "Material complementario",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Recursos académicos</span>"
+    ]
+  },
+  {
+    "objectID": "acerca.html",
+    "href": "acerca.html",
+    "title": "Acerca del libro",
+    "section": "",
+    "text": "Criterios de elaboración\nEste proyecto editorial surge del trabajo académico en el curso EM-4010 Programación Lineal del Instituto Tecnológico de Costa Rica.\nSu propósito es articular teoría matemática rigurosa, interpretación geométrica, procedimientos de resolución, modelos aplicados e interactividad orientada al aprendizaje.\nCréditos y datos editoriales: se completarán antes de una publicación formal.",
+    "crumbs": [
+      "Libro",
+      "Material complementario",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Acerca del libro</span>"
+    ]
+  },
+  {
+    "objectID": "acerca.html#criterios-de-elaboración",
+    "href": "acerca.html#criterios-de-elaboración",
+    "title": "Acerca del libro",
+    "section": "",
+    "text": "Exposición y redacción originales.\nConfrontación de las adaptaciones con las fuentes efectivamente consultadas.\nDemostraciones verificadas y ejemplos resueltos de manera independiente.\nFiguras y exploraciones propias, con validación matemática.\nReferencias bibliográficas completas, reales y trazables.\nRespeto a derechos de autor y permisos de publicación.",
+    "crumbs": [
+      "Libro",
+      "Material complementario",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Acerca del libro</span>"
+    ]
+  },
+  {
+    "objectID": "referencias.html",
+    "href": "referencias.html",
+    "title": "Referencias bibliográficas",
+    "section": "",
+    "text": "Esta sección se generará a partir de las fuentes efectivamente consultadas y verificadas. Por ahora no se han incluido fichas bibliográficas, para evitar registrar datos no comprobados.",
+    "crumbs": [
+      "Libro",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Referencias bibliográficas</span>"
+    ]
+  }
+]

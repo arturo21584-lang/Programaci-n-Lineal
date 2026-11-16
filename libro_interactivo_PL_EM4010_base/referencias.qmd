@@ -1,8 +1,0 @@
----
-title: "Referencias bibliográficas"
----
-
-Esta sección se generará a partir de las fuentes **efectivamente consultadas y verificadas**. Por ahora no se han incluido fichas bibliográficas, para evitar registrar datos no comprobados.
-
-::: {#refs}
-:::
