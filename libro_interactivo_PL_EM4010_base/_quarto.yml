@@ -57,8 +57,6 @@ book:
     - referencias.qmd
 
 bibliography: bibliografia/referencias.bib
-csl: null
-
 format:
   html:
     theme:
