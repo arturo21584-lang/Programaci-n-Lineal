@@ -14,6 +14,7 @@ $$
 
 La **región factible** es la intersección de los semiplanos correspondientes a las restricciones. Cada valor de $k$ determina una **recta de nivel** $3x_1+2x_2=k$. En un problema de maximización, aumentamos $k$ hasta localizar el último contacto con la región factible.
 
+```{=html}
 <div id="pl-118" class="pl118" aria-label="Exploración del método gráfico">
   <div class="pl118-header">
     <strong>Exploración del método gráfico</strong>
@@ -72,7 +73,7 @@ La **región factible** es la intersección de los semiplanos correspondientes a
   </div>
 </div>
 
-**Para reflexionar.** ¿Por qué la última recta de nivel toca la región factible en el vértice $C$? ¿Qué sucede cuando $k>40/3$? Justificá las respuestas a partir de las restricciones y de la función objetivo, no solamente de la gráfica.
+
 
 <style>
 .pl118{--ink:#143b47;--accent:#087d80;--gold:#bb7c10;border:1px solid #cbd5dc;border-radius:14px;padding:clamp(14px,3vw,24px);max-width:800px;margin:1.5rem auto;font-family:inherit;color:inherit}
@@ -133,3 +134,6 @@ La **región factible** es la intersección de los semiplanos correspondientes a
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setup);else setup();
 })();
 </script>
+```
+
+**Para reflexionar.** ¿Por qué la última recta de nivel toca la región factible en el vértice $C$? ¿Qué sucede cuando $k>40/3$? Justificá las respuestas a partir de las restricciones y de la función objetivo, no solamente de la gráfica.
