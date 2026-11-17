@@ -119,6 +119,78 @@
     ]
   },
   {
+    "objectID": "capitulos/combinaciones_convexas_y_convexidad.html",
+    "href": "capitulos/combinaciones_convexas_y_convexidad.html",
+    "title": "Combinaciones convexas y convexidad",
+    "section": "",
+    "text": "Combinaciones convexas de dos vectores\nLa geometría de la Programación Lineal se apoya en una propiedad fundamental: si dos decisiones son factibles, todo el segmento que las une también es factible. Para comprender y demostrar esta afirmación, comenzaremos por estudiar las combinaciones convexas.\nSean \\(u,v\\in\\mathbb R^n\\). Se llama combinación convexa de \\(u\\) y \\(v\\) a cualquier vector de la forma\n\\[\nx(\\lambda)=\\lambda u+(1-\\lambda)v,\\qquad 0\\leq\\lambda\\leq1.\n\\]\nLos coeficientes son no negativos y suman uno. Si \\(\\lambda=0\\), obtenemos \\(v\\); si \\(\\lambda=1\\), obtenemos \\(u\\); y, para \\(0&lt;\\lambda&lt;1\\), obtenemos un punto del segmento que une ambos vectores (si son distintos).",
+    "crumbs": [
+      "Libro",
+      "I. Modelar y visualizar",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Combinaciones convexas y convexidad</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/combinaciones_convexas_y_convexidad.html#combinaciones-convexas-de-dos-vectores",
+    "href": "capitulos/combinaciones_convexas_y_convexidad.html#combinaciones-convexas-de-dos-vectores",
+    "title": "Combinaciones convexas y convexidad",
+    "section": "",
+    "text": "Exploración geométrica\nConsideremos \\(u=(1,2)\\) y \\(v=(5,4)\\). Mové el control para observar el punto \\(P=x(\\lambda)\\).\n\n  \n    \n    \n    \n    x₁\n    x₂\n    \n    \n    \n    u\n    v\n    \n    P\n  \n  Parámetro λ = 0,50\n  \n  λ = 0λ = 0,5λ = 1\n  \n\nEn este caso,\n\\[\n\\lambda(1,2)+(1-\\lambda)(5,4)=(5-4\\lambda,\\,4-2\\lambda).\n\\]\nLa fórmula algebraica y el movimiento geométrico describen exactamente el mismo conjunto: el segmento cerrado de extremos \\(u\\) y \\(v\\).",
+    "crumbs": [
+      "Libro",
+      "I. Modelar y visualizar",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Combinaciones convexas y convexidad</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/combinaciones_convexas_y_convexidad.html#combinaciones-convexas-de-varios-vectores",
+    "href": "capitulos/combinaciones_convexas_y_convexidad.html#combinaciones-convexas-de-varios-vectores",
+    "title": "Combinaciones convexas y convexidad",
+    "section": "Combinaciones convexas de varios vectores",
+    "text": "Combinaciones convexas de varios vectores\nDados \\(u^{(1)},\\ldots,u^{(k)}\\in\\mathbb R^n\\), un vector \\(x\\) es una combinación convexa de estos vectores si existen números \\(\\lambda_1,\\ldots,\\lambda_k\\) tales que\n\\[\nx=\\sum_{i=1}^{k}\\lambda_i u^{(i)},\\qquad\n\\lambda_i\\geq0,\\qquad \\sum_{i=1}^{k}\\lambda_i=1.\n\\]\nCon tres puntos no alineados del plano, las combinaciones convexas llenan el triángulo que determinan, incluyendo su frontera.\n\nExploración de tres vectores\nTomemos \\(u=(0,0)\\), \\(v=(4,0)\\) y \\(w=(2,3)\\). Utilizaremos dos deslizadores \\(\\alpha,\\beta\\in[0,1]\\) para construir automáticamente tres coeficientes convexos:\n\\[\n\\lambda_1=\\alpha,\\quad\n\\lambda_2=(1-\\alpha)\\beta,\\quad\n\\lambda_3=(1-\\alpha)(1-\\beta).\n\\]\nAsí siempre se cumple \\(\\lambda_i\\geq0\\) y \\(\\lambda_1+\\lambda_2+\\lambda_3=1\\).\n\n  \n    \n    \n    \n    x₁\n    x₂\n    \n    \n    \n    \n    u\n    v\n    w\n    \n    P\n  \n  \n   α = 0,00\n   β = 0,50\n  \n  \n  \n  Aproximar el centroide (pesos casi iguales)\n\nLa imagen ilustra que una combinación convexa de tres vértices puede estar en el interior del triángulo, en uno de sus lados o en un vértice. El ejercicio de práctica permitirá calcular los pesos algebraicamente.",
+    "crumbs": [
+      "Libro",
+      "I. Modelar y visualizar",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Combinaciones convexas y convexidad</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/combinaciones_convexas_y_convexidad.html#convexidad-de-un-conjunto",
+    "href": "capitulos/combinaciones_convexas_y_convexidad.html#convexidad-de-un-conjunto",
+    "title": "Combinaciones convexas y convexidad",
+    "section": "Convexidad de un conjunto",
+    "text": "Convexidad de un conjunto\nUn conjunto \\(C\\subseteq\\mathbb R^n\\) se dice convexo si, para cualesquiera \\(u,v\\in C\\) y cualquier \\(\\lambda\\in[0,1]\\), se cumple\n\\[\n\\lambda u+(1-\\lambda)v\\in C.\n\\]\nGeométricamente, esto significa que el segmento que une dos puntos cualesquiera de \\(C\\) está contenido completamente en \\(C\\). Por convención matemática, el conjunto vacío también es convexo.\n\n\n\n\n\n\nTipPara pensar\n\n\n\nUn conjunto puede ser convexo sin estar acotado. Por ejemplo, todo semiplano es convexo y no acotado. La convexidad y la acotación son propiedades distintas.",
+    "crumbs": [
+      "Libro",
+      "I. Modelar y visualizar",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Combinaciones convexas y convexidad</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/combinaciones_convexas_y_convexidad.html#convexidad-de-las-regiones-factibles",
+    "href": "capitulos/combinaciones_convexas_y_convexidad.html#convexidad-de-las-regiones-factibles",
+    "title": "Combinaciones convexas y convexidad",
+    "section": "Convexidad de las regiones factibles",
+    "text": "Convexidad de las regiones factibles\nTeorema. Sea\n\\[\nR=\\{x\\in\\mathbb R^n:Ax^T\\leq b^T,\\ x\\geq0\\}.\n\\]\nEntonces \\(R\\) es convexo.\nIdea de la demostración. Si \\(u,v\\) satisfacen las restricciones, cualquier promedio ponderado de ellos, con pesos no negativos que sumen uno, también las satisface. Esto ocurre porque multiplicar una desigualdad por un número no negativo conserva su sentido.\n\n\n\n\n\n\nNotaDemostración completa\n\n\n\n\n\nSi \\(R=\\varnothing\\), es convexo por definición. Supongamos \\(R\\neq\\varnothing\\) y sean \\(u,v\\in R\\), \\(\\lambda\\in[0,1]\\). Definimos \\(x=\\lambda u+(1-\\lambda)v\\).\nComo \\(u\\geq0\\), \\(v\\geq0\\), \\(\\lambda\\geq0\\) y \\(1-\\lambda\\geq0\\), tenemos \\(x\\geq0\\). Además, por factibilidad de \\(u\\) y \\(v\\),\n\\[\n\\begin{aligned}\nAx^T\n&=A\\bigl(\\lambda u^T+(1-\\lambda)v^T\\bigr)\\\\\n&=\\lambda Au^T+(1-\\lambda)Av^T\\\\\n&\\leq\\lambda b^T+(1-\\lambda)b^T=b^T.\n\\end{aligned}\n\\]\nPor tanto, \\(x\\in R\\), y \\(R\\) es convexo. \\(\\square\\)\n\n\n\nLa misma conclusión vale para sistemas de restricciones lineales con igualdades y desigualdades de ambos sentidos, así como para variables libres: las igualdades y los semiespacios definidos por restricciones afines son conjuntos convexos, y las intersecciones de conjuntos convexos son convexas.\n\n\n\n\n\n\nNotaCorolario y justificación\n\n\n\n\n\nCorolario. Toda combinación convexa de un número finito de soluciones factibles es factible.\nDemostración. Sean \\(u^{(1)},\\ldots,u^{(k)}\\in R\\) y \\(\\lambda_i\\geq0\\) con \\(\\sum_i\\lambda_i=1\\). Entonces\n\\[\nA\\left(\\sum_{i=1}^{k}\\lambda_i u^{(i)}\\right)^T\n=\\sum_{i=1}^{k}\\lambda_i Au^{(i)T}\n\\leq\\sum_{i=1}^{k}\\lambda_i b^T=b^T.\n\\]\nAdemás, \\(\\sum_i\\lambda_i u^{(i)}\\geq0\\), componente a componente. En consecuencia, la combinación es factible. \\(\\square\\)",
+    "crumbs": [
+      "Libro",
+      "I. Modelar y visualizar",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Combinaciones convexas y convexidad</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/combinaciones_convexas_y_convexidad.html#ejercicios-de-comprensión",
+    "href": "capitulos/combinaciones_convexas_y_convexidad.html#ejercicios-de-comprensión",
+    "title": "Combinaciones convexas y convexidad",
+    "section": "Ejercicios de comprensión",
+    "text": "Ejercicios de comprensión\n\nEjercicio A. Encontrar los coeficientes\nExpresá \\(P=(2,1)\\) como combinación convexa de los vectores \\(u=(0,0)\\), \\(v=(4,0)\\) y \\(w=(2,3)\\). Determiná los tres coeficientes y justificá que cumplen las condiciones de convexidad.\n\n\n\n\n\n\nTipPista\n\n\n\n\n\nCompará coordenadas en \\(P=\\lambda_1u+\\lambda_2v+\\lambda_3w\\). La segunda coordenada permite encontrar directamente \\(\\lambda_3\\).\n\n\n\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nDe la segunda coordenada, \\(3\\lambda_3=1\\), por lo que \\(\\lambda_3=1/3\\). De la primera, \\(4\\lambda_2+2\\lambda_3=2\\), así que \\(\\lambda_2=1/3\\). Por último, \\(\\lambda_1=1-\\lambda_2-\\lambda_3=1/3\\). Los tres coeficientes son no negativos y suman uno. Por tanto,\n\\[\n(2,1)=\\frac13(0,0)+\\frac13(4,0)+\\frac13(2,3).\n\\]\n\n\n\n\n\nEjercicio B. Argumentar, no solamente observar\n¿Puede el punto \\(Q=(5,1)\\) expresarse como combinación convexa de \\(u\\), \\(v\\) y \\(w\\)? Justificá la respuesta sin utilizar solamente la figura.\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nNo. Toda combinación convexa de los tres puntos tiene primera coordenada\n\\[\nx_1=0\\lambda_1+4\\lambda_2+2\\lambda_3\\leq4(\\lambda_1+\\lambda_2+\\lambda_3)=4.\n\\]\nComo \\(Q_1=5&gt;4\\), el punto \\(Q\\) no puede ser una combinación convexa de \\(u\\), \\(v\\) y \\(w\\).\n\n\n\n\n\nEjercicio C. Demostración\nDemostrá que la intersección de dos conjuntos convexos es convexa. Luego explicá cómo este resultado ayuda a comprender la geometría de una región factible definida mediante varias restricciones lineales.\n\n\n\n\n\n\nTipPista\n\n\n\n\n\nElegí dos puntos cualesquiera de \\(C_1\\cap C_2\\). La convexidad de cada conjunto garantiza que su combinación convexa pertenece tanto a \\(C_1\\) como a \\(C_2\\).\n\n\n\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nSean \\(C_1,C_2\\subseteq\\mathbb R^n\\) convexos. Si su intersección es vacía, es convexa. En caso contrario, tomemos \\(u,v\\in C_1\\cap C_2\\) y \\(\\lambda\\in[0,1]\\). Como \\(u,v\\in C_1\\) y \\(C_1\\) es convexo, \\(\\lambda u+(1-\\lambda)v\\in C_1\\). De manera idéntica, \\(\\lambda u+(1-\\lambda)v\\in C_2\\). Por tanto, la combinación pertenece a \\(C_1\\cap C_2\\), que es convexo.\nCada restricción lineal determina un semiespacio o un hiperplano convexo. Su intersección, que constituye la región factible, conserva la convexidad. \\(\\square\\)",
+    "crumbs": [
+      "Libro",
+      "I. Modelar y visualizar",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Combinaciones convexas y convexidad</span>"
+    ]
+  },
+  {
     "objectID": "capitulos/01-introduccion.html",
     "href": "capitulos/01-introduccion.html",
     "title": "Introducción y formulación",
@@ -127,7 +199,7 @@
     "crumbs": [
       "Libro",
       "I. Modelar y visualizar",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Introducción y formulación</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Introducción y formulación</span>"
     ]
   },
   {
@@ -139,7 +211,7 @@
     "crumbs": [
       "Libro",
       "I. Modelar y visualizar",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Introducción y formulación</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Introducción y formulación</span>"
     ]
   },
   {
@@ -151,7 +223,7 @@
     "crumbs": [
       "Libro",
       "I. Modelar y visualizar",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Interpretación geométrica de la programación lineal</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Interpretación geométrica de la programación lineal</span>"
     ]
   },
   {
@@ -163,7 +235,7 @@
     "crumbs": [
       "Libro",
       "I. Modelar y visualizar",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Interpretación geométrica de la programación lineal</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Interpretación geométrica de la programación lineal</span>"
     ]
   },
   {
@@ -175,7 +247,7 @@
     "crumbs": [
       "Libro",
       "I. Modelar y visualizar",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Ejemplo interactivo: resolución mediante el método gráfico</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Ejemplo interactivo: resolución mediante el método gráfico</span>"
     ]
   },
   {
@@ -187,7 +259,7 @@
     "crumbs": [
       "Libro",
       "II. De la geometría al algoritmo",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Bases y soluciones básicas factibles</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Bases y soluciones básicas factibles</span>"
     ]
   },
   {
@@ -199,7 +271,7 @@
     "crumbs": [
       "Libro",
       "II. De la geometría al algoritmo",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Bases y soluciones básicas factibles</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Bases y soluciones básicas factibles</span>"
     ]
   },
   {
@@ -211,7 +283,7 @@
     "crumbs": [
       "Libro",
       "III. Algoritmos de resolución",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Método Simplex</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Método Simplex</span>"
     ]
   },
   {
@@ -223,7 +295,7 @@
     "crumbs": [
       "Libro",
       "III. Algoritmos de resolución",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Método Simplex</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Método Simplex</span>"
     ]
   },
   {
@@ -235,7 +307,7 @@
     "crumbs": [
       "Libro",
       "IV. Dualidad y análisis postóptimo",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Dualidad e interpretación económica</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Dualidad e interpretación económica</span>"
     ]
   },
   {
@@ -247,7 +319,7 @@
     "crumbs": [
       "Libro",
       "IV. Dualidad y análisis postóptimo",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Dualidad e interpretación económica</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Dualidad e interpretación económica</span>"
     ]
   },
   {
@@ -259,7 +331,7 @@
     "crumbs": [
       "Libro",
       "IV. Dualidad y análisis postóptimo",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Análisis de sensibilidad</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Análisis de sensibilidad</span>"
     ]
   },
   {
@@ -271,7 +343,7 @@
     "crumbs": [
       "Libro",
       "IV. Dualidad y análisis postóptimo",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Análisis de sensibilidad</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Análisis de sensibilidad</span>"
     ]
   },
   {
@@ -283,7 +355,7 @@
     "crumbs": [
       "Libro",
       "V. Modelos y aplicaciones",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Modelos especiales</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Modelos especiales</span>"
     ]
   },
   {
@@ -295,7 +367,7 @@
     "crumbs": [
       "Libro",
       "V. Modelos y aplicaciones",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Modelos especiales</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Modelos especiales</span>"
     ]
   },
   {
@@ -307,7 +379,7 @@
     "crumbs": [
       "Libro",
       "V. Modelos y aplicaciones",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Programación lineal entera</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Programación lineal entera</span>"
     ]
   },
   {
@@ -319,7 +391,7 @@
     "crumbs": [
       "Libro",
       "V. Modelos y aplicaciones",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Programación lineal entera</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Programación lineal entera</span>"
     ]
   },
   {
@@ -331,7 +403,7 @@
     "crumbs": [
       "Libro",
       "V. Modelos y aplicaciones",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Aplicaciones de la programación lineal</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Aplicaciones de la programación lineal</span>"
     ]
   },
   {
@@ -343,7 +415,7 @@
     "crumbs": [
       "Libro",
       "V. Modelos y aplicaciones",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Aplicaciones de la programación lineal</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Aplicaciones de la programación lineal</span>"
     ]
   },
   {
@@ -355,7 +427,7 @@
     "crumbs": [
       "Libro",
       "Material complementario",
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Exploraciones interactivas</span>"
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Exploraciones interactivas</span>"
     ]
   },
   {
@@ -367,7 +439,7 @@
     "crumbs": [
       "Libro",
       "Material complementario",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Recursos académicos</span>"
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Recursos académicos</span>"
     ]
   },
   {
@@ -379,7 +451,7 @@
     "crumbs": [
       "Libro",
       "Material complementario",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Acerca del libro</span>"
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Acerca del libro</span>"
     ]
   },
   {
@@ -391,7 +463,7 @@
     "crumbs": [
       "Libro",
       "Material complementario",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Acerca del libro</span>"
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Acerca del libro</span>"
     ]
   },
   {
@@ -402,7 +474,7 @@
     "text": "Esta sección se generará a partir de las fuentes efectivamente consultadas y verificadas. Por ahora no se han incluido fichas bibliográficas, para evitar registrar datos no comprobados.",
     "crumbs": [
       "Libro",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Referencias bibliográficas</span>"
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Referencias bibliográficas</span>"
     ]
   }
 ]
