@@ -263,6 +263,78 @@
     ]
   },
   {
+    "objectID": "capitulos/vertices_y_soluciones_optimas.html",
+    "href": "capitulos/vertices_y_soluciones_optimas.html",
+    "title": "Vértices y soluciones óptimas",
+    "section": "",
+    "text": "Del conjunto factible a la solución óptima\nEn los apartados anteriores estudiamos las regiones factibles convexas y los puntos extremos de un conjunto. Ahora abordaremos la relación entre estos conceptos y la optimización de una función afín.\nDado un programa lineal con región factible \\(R\\) y función objetivo \\(z(x)=cx^T+z_0\\), distinguimos:\nEn particular, un vértice es una propiedad geométrica de la región factible, mientras que la optimalidad depende también de la función objetivo. No todos los vértices son óptimos, ni toda solución óptima tiene que ser un vértice.",
+    "crumbs": [
+      "Libro",
+      "I. Modelar y visualizar",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Vértices y soluciones óptimas</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/vertices_y_soluciones_optimas.html#del-conjunto-factible-a-la-solución-óptima",
+    "href": "capitulos/vertices_y_soluciones_optimas.html#del-conjunto-factible-a-la-solución-óptima",
+    "title": "Vértices y soluciones óptimas",
+    "section": "",
+    "text": "Solución factible: un vector \\(x\\in R\\).\nSolución óptima: una solución factible \\(x^*\\) tal que, en maximización, \\(z(x)\\leq z(x^*)\\) para todo \\(x\\in R\\) (se invierte la desigualdad en minimización).\nValor óptimo: el número \\(z^*=z(x^*)\\), cuando existe una solución óptima.",
+    "crumbs": [
+      "Libro",
+      "I. Modelar y visualizar",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Vértices y soluciones óptimas</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/vertices_y_soluciones_optimas.html#existencia-de-un-vértice-óptimo",
+    "href": "capitulos/vertices_y_soluciones_optimas.html#existencia-de-un-vértice-óptimo",
+    "title": "Vértices y soluciones óptimas",
+    "section": "Existencia de un vértice óptimo",
+    "text": "Existencia de un vértice óptimo\n\n\n\n\n\n\nImportanteTeorema\n\n\n\nSea \\(R\\subseteq\\mathbb R^n\\) la región factible no vacía y acotada de un programa lineal definido mediante un número finito de restricciones lineales no estrictas. Entonces, toda función objetivo afín alcanza un valor máximo y un valor mínimo en \\(R\\); además, existe al menos un vértice de \\(R\\) donde se alcanza cada uno de esos valores.\n\n\nLa acotación, junto con las desigualdades no estrictas, garantiza que \\(R\\) sea compacto. El teorema no afirma que todos los puntos óptimos sean vértices; afirma que al menos uno lo es.\n\n¿Por qué es razonable geométricamente?\nEn el plano, una recta de nivel de la función objetivo se desplaza paralelamente hasta su último contacto con una región poligonal acotada. Ese contacto puede ser un solo vértice o un segmento de una arista. En ambos casos, al menos un vértice es óptimo.\nEsta intuición también es válida en dimensiones superiores, donde las rectas de nivel son reemplazadas por hiperplanos de nivel.\n\n\n\n\n\n\nNotaDemostración\n\n\n\n\n\nEscribamos las restricciones en la forma \\(R=\\{x\\in\\mathbb R^n: Mx^T\\leq d^T\\}\\), incorporando en \\(M\\) las condiciones de signo cuando corresponda. Como \\(R\\) es no vacío, cerrado y acotado, es compacto; por el teorema de Weierstrass, la función continua \\(z\\) alcanza su máximo en algún punto \\(\\widehat x\\in R\\).\nDenotemos por \\(I(x)\\) los índices de las restricciones activas en un punto factible \\(x\\), es decir, las filas \\(m_i\\) de \\(M\\) para las que \\(m_ix^T=d_i\\). Entre todos los maximizadores, seleccionemos \\(x^*\\) tal que el rango del conjunto de sus filas activas sea lo mayor posible. Es posible hacerlo, pues ese rango es un entero comprendido entre \\(0\\) y \\(n\\).\nSupongamos que el rango de las filas activas en \\(x^*\\) es menor que \\(n\\). Entonces existe un vector fila no nulo \\(h\\in\\mathbb R^n\\) que satisface \\(m_ih^T=0\\) para toda restricción activa \\(i\\in I(x^*)\\). Las restricciones no activas tienen holgura estrictamente positiva y son finitas; en consecuencia, para algún \\(\\varepsilon&gt;0\\), ambos puntos \\(x^*+\\varepsilon h\\) y \\(x^*-\\varepsilon h\\) pertenecen a \\(R\\).\nComo \\(x^*\\) maximiza la función afín, debemos tener \\(ch^T=0\\): si fuese positivo, aumentaría el valor al movernos en la dirección \\(h\\); si fuese negativo, aumentaría al movernos en la dirección \\(-h\\).\nConsideremos los puntos \\(x^*+th\\) con \\(t\\geq0\\). Como \\(R\\) es acotado, existe un mayor valor \\(t_+&gt;0\\) para el cual \\(x^*+t_+h\\in R\\). Sea \\(y=x^*+t_+h\\). Entonces \\(z(y)=z(x^*)\\), por lo que \\(y\\) también es óptimo.\nEn \\(y\\) se conserva la igualdad de todas las restricciones activas en \\(x^*\\). Además, debe activarse al menos una restricción que no estaba activa: de otro modo podríamos continuar desplazándonos un poco en la misma dirección, contradiciendo la definición de \\(t_+\\). La fila correspondiente a esa nueva restricción no puede pertenecer al espacio generado por las filas activas de \\(x^*\\), porque todas esas filas satisfacen \\(m_ih^T=0\\), mientras que la nueva fila debe satisfacer \\(m_jh^T&gt;0\\) para detener el avance. Por tanto, el rango de las filas activas en \\(y\\) es mayor que en \\(x^*\\), contradicción.\nConcluimos que las filas activas en \\(x^*\\) tienen rango \\(n\\).\nFinalmente, comprobemos que \\(x^*\\) es extremo. Si \\(x^*=\\lambda u+(1-\\lambda)v\\), con \\(u,v\\in R\\) y \\(0&lt;\\lambda&lt;1\\), la igualdad de cada restricción activa en \\(x^*\\) obliga a que esa misma restricción sea igualdad tanto en \\(u\\) como en \\(v\\). Como sus filas tienen rango \\(n\\), el sistema de igualdades tiene solución única; por tanto, \\(u=v=x^*\\). Así, \\(x^*\\) es un vértice óptimo.\nEl argumento para la minimización se obtiene aplicando lo anterior a la función \\(-z\\). \\(\\square\\)\n\n\n\n\n\n\n\n\n\nTip¿Y si la región es no acotada?\n\n\n\nLa acotación es una condición suficiente, no necesaria, para que un programa lineal tenga un óptimo finito. Una región factible no acotada puede admitir un óptimo, como veremos en el método gráfico. Tampoco basta con que una función objetivo esté acotada: es preciso analizar si se alcanza su extremo y qué geometría tiene la región.",
+    "crumbs": [
+      "Libro",
+      "I. Modelar y visualizar",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Vértices y soluciones óptimas</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/vertices_y_soluciones_optimas.html#combinaciones-convexas-de-soluciones-óptimas",
+    "href": "capitulos/vertices_y_soluciones_optimas.html#combinaciones-convexas-de-soluciones-óptimas",
+    "title": "Vértices y soluciones óptimas",
+    "section": "Combinaciones convexas de soluciones óptimas",
+    "text": "Combinaciones convexas de soluciones óptimas\n\n\n\n\n\n\nImportanteTeorema\n\n\n\nSean \\(u,v\\in R\\) dos soluciones óptimas del mismo programa lineal, con función objetivo afín \\(z(x)=cx^T+z_0\\). Entonces, para todo \\(\\lambda\\in[0,1]\\), el punto\n\\[\nx(\\lambda)=\\lambda u+(1-\\lambda)v\n\\]\nes también una solución óptima.\n\n\n\n\n\n\n\n\nNotaDemostración\n\n\n\n\n\nComo la región factible de un programa lineal es convexa, \\(x(\\lambda)\\in R\\). Si \\(z^*\\) es el valor óptimo, entonces \\(z(u)=z(v)=z^*\\). Por la afinidad de \\(z\\),\n\\[\n\\begin{aligned}\nz(x(\\lambda))&=c\\bigl(\\lambda u+(1-\\lambda)v\\bigr)^T+z_0\\\\\n&=\\lambda z(u)+(1-\\lambda)z(v)\\\\\n&=\\lambda z^*+(1-\\lambda)z^*=z^*.\n\\end{aligned}\n\\]\nPor tanto, \\(x(\\lambda)\\) es factible y óptimo. \\(\\square\\)\n\n\n\nEn consecuencia, el conjunto de soluciones óptimas es convexo (cuando no es vacío). Si dos vértices son óptimos, todo el segmento entre ellos también lo es.",
+    "crumbs": [
+      "Libro",
+      "I. Modelar y visualizar",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Vértices y soluciones óptimas</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/vertices_y_soluciones_optimas.html#exploración-geométrica-cambiar-la-función-objetivo",
+    "href": "capitulos/vertices_y_soluciones_optimas.html#exploración-geométrica-cambiar-la-función-objetivo",
+    "title": "Vértices y soluciones óptimas",
+    "section": "Exploración geométrica: cambiar la función objetivo",
+    "text": "Exploración geométrica: cambiar la función objetivo\nConsideremos la región factible\n\\[\nR=\\left\\{(x_1,x_2):\\begin{array}{rcl}\nx_1+x_2&\\leq&6,\\\\\n2x_1+x_2&\\leq&8,\\\\\nx_1+2x_2&\\leq&8,\\\\\nx_1,x_2&\\geq&0\n\\end{array}\\right\\}\n\\]\ny la familia de problemas \\(\\max z=ax_1+2x_2\\), con \\(0\\leq a\\leq5\\). Modificá \\(a\\) y observá cómo cambia el conjunto de soluciones óptimas, sin alterar la región factible.\n\n  \n    \n      \n        \n        \n        \n        \n        \n        \n        \n        \n        x₁\n        x₂\n        R\n      \n    \n    \n      Coeficiente a: 3\n      \n      \n        a = 0,5\n        a = 1\n        a = 3\n        a = 4\n        a = 5\n      \n      Función objetivo: \n      \n      Valor óptimo: \n      \n        Ver valores en los cuatro vértices\n        \n\n\n\nVértice\nz\n\n\n\n\n\n\n      \n    \n  \n\n\n\n\nAnálisis matemático de la exploración\nLos cuatro vértices de \\(R\\) son \\(A=(0,0)\\), \\(B=(4,0)\\), \\(C=(8/3,8/3)\\) y \\(D=(0,4)\\). Sus valores objetivo son \\(0\\), \\(4a\\), \\((8a+16)/3\\) y \\(8\\), respectivamente. En consecuencia,\n\\[\nz^*(a)=\\begin{cases}\n8,&0\\leq a\\leq1,\\\\[2pt]\n\\dfrac{8a+16}{3},&1\\leq a\\leq4,\\\\[2pt]\n4a,&4\\leq a\\leq5.\n\\end{cases}\n\\]\nPara \\(a=1\\) son óptimos todos los puntos del segmento \\(\\overline{DC}\\); para \\(a=4\\), todos los puntos del segmento \\(\\overline{CB}\\). Para los demás valores del intervalo estudiado, la solución óptima es única. La coincidencia de los valores objetivo en dos vértices adyacentes no es accidental: la recta de nivel óptima tiene la misma dirección que la arista que los une.",
+    "crumbs": [
+      "Libro",
+      "I. Modelar y visualizar",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Vértices y soluciones óptimas</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/vertices_y_soluciones_optimas.html#ejercicios-de-comprensión",
+    "href": "capitulos/vertices_y_soluciones_optimas.html#ejercicios-de-comprensión",
+    "title": "Vértices y soluciones óptimas",
+    "section": "Ejercicios de comprensión",
+    "text": "Ejercicios de comprensión\nEjercicio 1. Demuestre que el conjunto de soluciones óptimas de un programa lineal es convexo cuando es no vacío.\n\n\n\n\n\n\nNotaOrientación y solución\n\n\n\n\n\nSea \\(u,v\\) cualquier pareja de soluciones óptimas. La región factible es convexa, de modo que \\(\\lambda u+(1-\\lambda)v\\) es factible para \\(0\\leq\\lambda\\leq1\\). Como \\(z\\) es afín, \\(z(\\lambda u+(1-\\lambda)v)=\\lambda z^*+(1-\\lambda)z^*=z^*\\). Por consiguiente, la combinación también es óptima.\n\n\n\nEjercicio 2. En la exploración anterior, determine algebraicamente los valores de \\(a\\) para los cuales aparecen múltiples soluciones óptimas. Justifique mediante la evaluación de vértices.\n\n\n\n\n\n\nTipPista\n\n\n\n\n\nBusque valores de \\(a\\) para los que dos vértices adyacentes tengan el mismo valor objetivo y ese valor sea máximo.\n\n\n\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nEn los vértices \\(D\\) y \\(C\\), la igualdad \\(8=(8a+16)/3\\) da \\(a=1\\); en los vértices \\(C\\) y \\(B\\), la igualdad \\((8a+16)/3=4a\\) da \\(a=4\\). Al comparar con los demás vértices, se confirma que en ambos casos se trata del valor máximo.\n\n\n\nEjercicio 3. Explique por qué el teorema de existencia de un vértice óptimo no garantiza que la solución óptima sea única.\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nEl teorema solamente asegura la existencia de al menos un vértice que alcanza el óptimo. Si dos vértices distintos son óptimos, toda combinación convexa de ellos también lo es, por lo que existen infinitas soluciones óptimas.",
+    "crumbs": [
+      "Libro",
+      "I. Modelar y visualizar",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Vértices y soluciones óptimas</span>"
+    ]
+  },
+  {
     "objectID": "capitulos/01-introduccion.html",
     "href": "capitulos/01-introduccion.html",
     "title": "Introducción y formulación",
@@ -271,7 +343,7 @@
     "crumbs": [
       "Libro",
       "I. Modelar y visualizar",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Introducción y formulación</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Introducción y formulación</span>"
     ]
   },
   {
@@ -283,7 +355,7 @@
     "crumbs": [
       "Libro",
       "I. Modelar y visualizar",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Introducción y formulación</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Introducción y formulación</span>"
     ]
   },
   {
@@ -295,7 +367,7 @@
     "crumbs": [
       "Libro",
       "I. Modelar y visualizar",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Interpretación geométrica de la programación lineal</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Interpretación geométrica de la programación lineal</span>"
     ]
   },
   {
@@ -307,7 +379,7 @@
     "crumbs": [
       "Libro",
       "I. Modelar y visualizar",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Interpretación geométrica de la programación lineal</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Interpretación geométrica de la programación lineal</span>"
     ]
   },
   {
@@ -319,7 +391,7 @@
     "crumbs": [
       "Libro",
       "I. Modelar y visualizar",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Ejemplo interactivo: resolución mediante el método gráfico</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Ejemplo interactivo: resolución mediante el método gráfico</span>"
     ]
   },
   {
@@ -331,7 +403,7 @@
     "crumbs": [
       "Libro",
       "II. De la geometría al algoritmo",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Bases y soluciones básicas factibles</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Bases y soluciones básicas factibles</span>"
     ]
   },
   {
@@ -343,7 +415,7 @@
     "crumbs": [
       "Libro",
       "II. De la geometría al algoritmo",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Bases y soluciones básicas factibles</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Bases y soluciones básicas factibles</span>"
     ]
   },
   {
@@ -355,7 +427,7 @@
     "crumbs": [
       "Libro",
       "III. Algoritmos de resolución",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Método Simplex</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Método Simplex</span>"
     ]
   },
   {
@@ -367,7 +439,7 @@
     "crumbs": [
       "Libro",
       "III. Algoritmos de resolución",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Método Simplex</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Método Simplex</span>"
     ]
   },
   {
@@ -379,7 +451,7 @@
     "crumbs": [
       "Libro",
       "IV. Dualidad y análisis postóptimo",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Dualidad e interpretación económica</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Dualidad e interpretación económica</span>"
     ]
   },
   {
@@ -391,7 +463,7 @@
     "crumbs": [
       "Libro",
       "IV. Dualidad y análisis postóptimo",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Dualidad e interpretación económica</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Dualidad e interpretación económica</span>"
     ]
   },
   {
@@ -403,7 +475,7 @@
     "crumbs": [
       "Libro",
       "IV. Dualidad y análisis postóptimo",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Análisis de sensibilidad</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Análisis de sensibilidad</span>"
     ]
   },
   {
@@ -415,7 +487,7 @@
     "crumbs": [
       "Libro",
       "IV. Dualidad y análisis postóptimo",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Análisis de sensibilidad</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Análisis de sensibilidad</span>"
     ]
   },
   {
@@ -427,7 +499,7 @@
     "crumbs": [
       "Libro",
       "V. Modelos y aplicaciones",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Modelos especiales</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Modelos especiales</span>"
     ]
   },
   {
@@ -439,7 +511,7 @@
     "crumbs": [
       "Libro",
       "V. Modelos y aplicaciones",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Modelos especiales</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Modelos especiales</span>"
     ]
   },
   {
@@ -451,7 +523,7 @@
     "crumbs": [
       "Libro",
       "V. Modelos y aplicaciones",
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Programación lineal entera</span>"
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Programación lineal entera</span>"
     ]
   },
   {
@@ -463,7 +535,7 @@
     "crumbs": [
       "Libro",
       "V. Modelos y aplicaciones",
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Programación lineal entera</span>"
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Programación lineal entera</span>"
     ]
   },
   {
@@ -475,7 +547,7 @@
     "crumbs": [
       "Libro",
       "V. Modelos y aplicaciones",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Aplicaciones de la programación lineal</span>"
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Aplicaciones de la programación lineal</span>"
     ]
   },
   {
@@ -487,7 +559,7 @@
     "crumbs": [
       "Libro",
       "V. Modelos y aplicaciones",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Aplicaciones de la programación lineal</span>"
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Aplicaciones de la programación lineal</span>"
     ]
   },
   {
@@ -499,7 +571,7 @@
     "crumbs": [
       "Libro",
       "Material complementario",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Exploraciones interactivas</span>"
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Exploraciones interactivas</span>"
     ]
   },
   {
@@ -511,7 +583,7 @@
     "crumbs": [
       "Libro",
       "Material complementario",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Recursos académicos</span>"
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Recursos académicos</span>"
     ]
   },
   {
@@ -523,7 +595,7 @@
     "crumbs": [
       "Libro",
       "Material complementario",
-      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Acerca del libro</span>"
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Acerca del libro</span>"
     ]
   },
   {
@@ -535,7 +607,7 @@
     "crumbs": [
       "Libro",
       "Material complementario",
-      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Acerca del libro</span>"
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Acerca del libro</span>"
     ]
   },
   {
@@ -546,7 +618,7 @@
     "text": "Esta sección se generará a partir de las fuentes efectivamente consultadas y verificadas. Por ahora no se han incluido fichas bibliográficas, para evitar registrar datos no comprobados.",
     "crumbs": [
       "Libro",
-      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Referencias bibliográficas</span>"
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Referencias bibliográficas</span>"
     ]
   }
 ]

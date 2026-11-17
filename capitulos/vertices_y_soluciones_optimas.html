@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Vértices y soluciones óptimas – Programación Lineal</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../capitulos/01-introduccion.html" rel="next">
+<link href="../capitulos/vertices_y_puntos_extremos.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-d89f20c9143eddbd44082a3369d7d3bd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../estilos/editorial.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Saltar al contenido principal</a>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Sitio web">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Programación Lineal</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="../index.html" aria-current="page"> 
+<span class="menu-text">Libro</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../exploraciones.html"> 
+<span class="menu-text">Exploraciones</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../recursos/index.html"> 
+<span class="menu-text">Recursos académicos</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../acerca.html"> 
+<span class="menu-text">Acerca del libro</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Alternar modo lector">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" aria-label="Barra de herramientas">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="Hilo de Ariadna"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/fundamentos_iniciales_capitulo1.html">I. Modelar y visualizar</a></li><li class="breadcrumb-item"><a href="../capitulos/vertices_y_soluciones_optimas.html"><span class="chapter-title">Vértices y soluciones óptimas</span></a></li></ol></nav>
+        <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto" aria-label="Sección">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Bienvenida</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-controls="quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-1-label">I. Modelar y visualizar</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-1" aria-labelledby="quarto-sidebar-section-1-label" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/fundamentos_iniciales_capitulo1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Fundamentos de la Programación Lineal</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/soluciones_y_region_factible.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Soluciones y región de factibilidad</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/combinaciones_convexas_y_convexidad.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Combinaciones convexas y convexidad</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/vertices_y_puntos_extremos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Vértices y puntos extremos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/vertices_y_soluciones_optimas.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Vértices y soluciones óptimas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/01-introduccion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introducción y formulación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/02-geometria.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Interpretación geométrica de la programación lineal</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/ejemplo_metodo_grafico.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Ejemplo interactivo: resolución mediante el método gráfico</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-controls="quarto-sidebar-section-2" aria-expanded="false">
+ <span class="menu-text" id="quarto-sidebar-section-2-label">II. De la geometría al algoritmo</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-2" aria-labelledby="quarto-sidebar-section-2-label" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/03-bases.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Bases y soluciones básicas factibles</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-controls="quarto-sidebar-section-3" aria-expanded="false">
+ <span class="menu-text" id="quarto-sidebar-section-3-label">III. Algoritmos de resolución</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-3" aria-labelledby="quarto-sidebar-section-3-label" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/04-simplex.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Método Simplex</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-controls="quarto-sidebar-section-4" aria-expanded="false">
+ <span class="menu-text" id="quarto-sidebar-section-4-label">IV. Dualidad y análisis postóptimo</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-4" aria-labelledby="quarto-sidebar-section-4-label" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/05-dualidad.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Dualidad e interpretación económica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/06-sensibilidad.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Análisis de sensibilidad</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-controls="quarto-sidebar-section-5" aria-expanded="false">
+ <span class="menu-text" id="quarto-sidebar-section-5-label">V. Modelos y aplicaciones</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-5" aria-labelledby="quarto-sidebar-section-5-label" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/07-modelos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Modelos especiales</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/08-entera.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Programación lineal entera</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/09-aplicaciones.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Aplicaciones de la programación lineal</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-controls="quarto-sidebar-section-6" aria-expanded="false">
+ <span class="menu-text" id="quarto-sidebar-section-6-label">Material complementario</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-6" aria-labelledby="quarto-sidebar-section-6-label" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exploraciones.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Exploraciones interactivas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../recursos/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Recursos académicos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../acerca.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Acerca del libro</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../referencias.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Referencias bibliográficas</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#del-conjunto-factible-a-la-solución-óptima" id="toc-del-conjunto-factible-a-la-solución-óptima" class="nav-link active" data-scroll-target="#del-conjunto-factible-a-la-solución-óptima">Del conjunto factible a la solución óptima</a></li>
+  <li><a href="#existencia-de-un-vértice-óptimo" id="toc-existencia-de-un-vértice-óptimo" class="nav-link" data-scroll-target="#existencia-de-un-vértice-óptimo">Existencia de un vértice óptimo</a>
+  <ul class="collapse">
+  <li><a href="#por-qué-es-razonable-geométricamente" id="toc-por-qué-es-razonable-geométricamente" class="nav-link" data-scroll-target="#por-qué-es-razonable-geométricamente">¿Por qué es razonable geométricamente?</a></li>
+  </ul></li>
+  <li><a href="#combinaciones-convexas-de-soluciones-óptimas" id="toc-combinaciones-convexas-de-soluciones-óptimas" class="nav-link" data-scroll-target="#combinaciones-convexas-de-soluciones-óptimas">Combinaciones convexas de soluciones óptimas</a></li>
+  <li><a href="#exploración-geométrica-cambiar-la-función-objetivo" id="toc-exploración-geométrica-cambiar-la-función-objetivo" class="nav-link" data-scroll-target="#exploración-geométrica-cambiar-la-función-objetivo">Exploración geométrica: cambiar la función objetivo</a>
+  <ul class="collapse">
+  <li><a href="#análisis-matemático-de-la-exploración" id="toc-análisis-matemático-de-la-exploración" class="nav-link" data-scroll-target="#análisis-matemático-de-la-exploración">Análisis matemático de la exploración</a></li>
+  </ul></li>
+  <li><a href="#ejercicios-de-comprensión" id="toc-ejercicios-de-comprensión" class="nav-link" data-scroll-target="#ejercicios-de-comprensión">Ejercicios de comprensión</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content" tabindex="-1">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Hilo de Ariadna"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/fundamentos_iniciales_capitulo1.html">I. Modelar y visualizar</a></li><li class="breadcrumb-item"><a href="../capitulos/vertices_y_soluciones_optimas.html"><span class="chapter-title">Vértices y soluciones óptimas</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">Vértices y soluciones óptimas</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="del-conjunto-factible-a-la-solución-óptima" class="level2">
+<h2 class="anchored" data-anchor-id="del-conjunto-factible-a-la-solución-óptima">Del conjunto factible a la solución óptima</h2>
+<p>En los apartados anteriores estudiamos las regiones factibles convexas y los puntos extremos de un conjunto. Ahora abordaremos la relación entre estos conceptos y la optimización de una función afín.</p>
+<p>Dado un programa lineal con región factible <span class="math inline">\(R\)</span> y función objetivo <span class="math inline">\(z(x)=cx^T+z_0\)</span>, distinguimos:</p>
+<ul>
+<li><strong>Solución factible:</strong> un vector <span class="math inline">\(x\in R\)</span>.</li>
+<li><strong>Solución óptima:</strong> una solución factible <span class="math inline">\(x^*\)</span> tal que, en maximización, <span class="math inline">\(z(x)\leq z(x^*)\)</span> para todo <span class="math inline">\(x\in R\)</span> (se invierte la desigualdad en minimización).</li>
+<li><strong>Valor óptimo:</strong> el número <span class="math inline">\(z^*=z(x^*)\)</span>, cuando existe una solución óptima.</li>
+</ul>
+<p>En particular, un vértice es una propiedad <strong>geométrica de la región factible</strong>, mientras que la optimalidad depende también de la <strong>función objetivo</strong>. No todos los vértices son óptimos, ni toda solución óptima tiene que ser un vértice.</p>
+</section>
+<section id="existencia-de-un-vértice-óptimo" class="level2">
+<h2 class="anchored" data-anchor-id="existencia-de-un-vértice-óptimo">Existencia de un vértice óptimo</h2>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Teorema
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Sea <span class="math inline">\(R\subseteq\mathbb R^n\)</span> la región factible <strong>no vacía y acotada</strong> de un programa lineal definido mediante un número finito de restricciones lineales no estrictas. Entonces, toda función objetivo afín alcanza un valor máximo y un valor mínimo en <span class="math inline">\(R\)</span>; además, <strong>existe al menos un vértice de <span class="math inline">\(R\)</span></strong> donde se alcanza cada uno de esos valores.</p>
+</div>
+</div>
+<p>La acotación, junto con las desigualdades no estrictas, garantiza que <span class="math inline">\(R\)</span> sea compacto. El teorema no afirma que todos los puntos óptimos sean vértices; afirma que <strong>al menos uno</strong> lo es.</p>
+<section id="por-qué-es-razonable-geométricamente" class="level3">
+<h3 class="anchored" data-anchor-id="por-qué-es-razonable-geométricamente">¿Por qué es razonable geométricamente?</h3>
+<p>En el plano, una recta de nivel de la función objetivo se desplaza paralelamente hasta su último contacto con una región poligonal acotada. Ese contacto puede ser un solo vértice o un segmento de una arista. En ambos casos, al menos un vértice es óptimo.</p>
+<p>Esta intuición también es válida en dimensiones superiores, donde las rectas de nivel son reemplazadas por hiperplanos de nivel.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Demostración
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Escribamos las restricciones en la forma <span class="math inline">\(R=\{x\in\mathbb R^n: Mx^T\leq d^T\}\)</span>, incorporando en <span class="math inline">\(M\)</span> las condiciones de signo cuando corresponda. Como <span class="math inline">\(R\)</span> es no vacío, cerrado y acotado, es compacto; por el teorema de Weierstrass, la función continua <span class="math inline">\(z\)</span> alcanza su máximo en algún punto <span class="math inline">\(\widehat x\in R\)</span>.</p>
+<p>Denotemos por <span class="math inline">\(I(x)\)</span> los índices de las restricciones activas en un punto factible <span class="math inline">\(x\)</span>, es decir, las filas <span class="math inline">\(m_i\)</span> de <span class="math inline">\(M\)</span> para las que <span class="math inline">\(m_ix^T=d_i\)</span>. Entre todos los maximizadores, seleccionemos <span class="math inline">\(x^*\)</span> tal que el <strong>rango</strong> del conjunto de sus filas activas sea lo mayor posible. Es posible hacerlo, pues ese rango es un entero comprendido entre <span class="math inline">\(0\)</span> y <span class="math inline">\(n\)</span>.</p>
+<p>Supongamos que el rango de las filas activas en <span class="math inline">\(x^*\)</span> es menor que <span class="math inline">\(n\)</span>. Entonces existe un vector fila no nulo <span class="math inline">\(h\in\mathbb R^n\)</span> que satisface <span class="math inline">\(m_ih^T=0\)</span> para toda restricción activa <span class="math inline">\(i\in I(x^*)\)</span>. Las restricciones no activas tienen holgura estrictamente positiva y son finitas; en consecuencia, para algún <span class="math inline">\(\varepsilon&gt;0\)</span>, ambos puntos <span class="math inline">\(x^*+\varepsilon h\)</span> y <span class="math inline">\(x^*-\varepsilon h\)</span> pertenecen a <span class="math inline">\(R\)</span>.</p>
+<p>Como <span class="math inline">\(x^*\)</span> maximiza la función afín, debemos tener <span class="math inline">\(ch^T=0\)</span>: si fuese positivo, aumentaría el valor al movernos en la dirección <span class="math inline">\(h\)</span>; si fuese negativo, aumentaría al movernos en la dirección <span class="math inline">\(-h\)</span>.</p>
+<p>Consideremos los puntos <span class="math inline">\(x^*+th\)</span> con <span class="math inline">\(t\geq0\)</span>. Como <span class="math inline">\(R\)</span> es acotado, existe un mayor valor <span class="math inline">\(t_+&gt;0\)</span> para el cual <span class="math inline">\(x^*+t_+h\in R\)</span>. Sea <span class="math inline">\(y=x^*+t_+h\)</span>. Entonces <span class="math inline">\(z(y)=z(x^*)\)</span>, por lo que <span class="math inline">\(y\)</span> también es óptimo.</p>
+<p>En <span class="math inline">\(y\)</span> se conserva la igualdad de todas las restricciones activas en <span class="math inline">\(x^*\)</span>. Además, debe activarse al menos una restricción que no estaba activa: de otro modo podríamos continuar desplazándonos un poco en la misma dirección, contradiciendo la definición de <span class="math inline">\(t_+\)</span>. La fila correspondiente a esa nueva restricción no puede pertenecer al espacio generado por las filas activas de <span class="math inline">\(x^*\)</span>, porque todas esas filas satisfacen <span class="math inline">\(m_ih^T=0\)</span>, mientras que la nueva fila debe satisfacer <span class="math inline">\(m_jh^T&gt;0\)</span> para detener el avance. Por tanto, el rango de las filas activas en <span class="math inline">\(y\)</span> es mayor que en <span class="math inline">\(x^*\)</span>, contradicción.</p>
+<p>Concluimos que las filas activas en <span class="math inline">\(x^*\)</span> tienen rango <span class="math inline">\(n\)</span>.</p>
+<p>Finalmente, comprobemos que <span class="math inline">\(x^*\)</span> es extremo. Si <span class="math inline">\(x^*=\lambda u+(1-\lambda)v\)</span>, con <span class="math inline">\(u,v\in R\)</span> y <span class="math inline">\(0&lt;\lambda&lt;1\)</span>, la igualdad de cada restricción activa en <span class="math inline">\(x^*\)</span> obliga a que esa misma restricción sea igualdad tanto en <span class="math inline">\(u\)</span> como en <span class="math inline">\(v\)</span>. Como sus filas tienen rango <span class="math inline">\(n\)</span>, el sistema de igualdades tiene solución única; por tanto, <span class="math inline">\(u=v=x^*\)</span>. Así, <span class="math inline">\(x^*\)</span> es un vértice óptimo.</p>
+<p>El argumento para la minimización se obtiene aplicando lo anterior a la función <span class="math inline">\(-z\)</span>. <span class="math inline">\(\square\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>¿Y si la región es no acotada?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La acotación es una <strong>condición suficiente</strong>, no necesaria, para que un programa lineal tenga un óptimo finito. Una región factible no acotada puede admitir un óptimo, como veremos en el método gráfico. Tampoco basta con que una función objetivo esté acotada: es preciso analizar si se alcanza su extremo y qué geometría tiene la región.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="combinaciones-convexas-de-soluciones-óptimas" class="level2">
+<h2 class="anchored" data-anchor-id="combinaciones-convexas-de-soluciones-óptimas">Combinaciones convexas de soluciones óptimas</h2>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Teorema
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Sean <span class="math inline">\(u,v\in R\)</span> dos soluciones óptimas del mismo programa lineal, con función objetivo afín <span class="math inline">\(z(x)=cx^T+z_0\)</span>. Entonces, para todo <span class="math inline">\(\lambda\in[0,1]\)</span>, el punto</p>
+<p><span class="math display">\[
+x(\lambda)=\lambda u+(1-\lambda)v
+\]</span></p>
+<p>es también una solución óptima.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Demostración
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Como la región factible de un programa lineal es convexa, <span class="math inline">\(x(\lambda)\in R\)</span>. Si <span class="math inline">\(z^*\)</span> es el valor óptimo, entonces <span class="math inline">\(z(u)=z(v)=z^*\)</span>. Por la afinidad de <span class="math inline">\(z\)</span>,</p>
+<p><span class="math display">\[
+\begin{aligned}
+z(x(\lambda))&amp;=c\bigl(\lambda u+(1-\lambda)v\bigr)^T+z_0\\
+&amp;=\lambda z(u)+(1-\lambda)z(v)\\
+&amp;=\lambda z^*+(1-\lambda)z^*=z^*.
+\end{aligned}
+\]</span></p>
+<p>Por tanto, <span class="math inline">\(x(\lambda)\)</span> es factible y óptimo. <span class="math inline">\(\square\)</span></p>
+</div>
+</div>
+</div>
+<p>En consecuencia, <strong>el conjunto de soluciones óptimas es convexo</strong> (cuando no es vacío). Si dos vértices son óptimos, todo el segmento entre ellos también lo es.</p>
+</section>
+<section id="exploración-geométrica-cambiar-la-función-objetivo" class="level2">
+<h2 class="anchored" data-anchor-id="exploración-geométrica-cambiar-la-función-objetivo">Exploración geométrica: cambiar la función objetivo</h2>
+<p>Consideremos la región factible</p>
+<p><span class="math display">\[
+R=\left\{(x_1,x_2):\begin{array}{rcl}
+x_1+x_2&amp;\leq&amp;6,\\
+2x_1+x_2&amp;\leq&amp;8,\\
+x_1+2x_2&amp;\leq&amp;8,\\
+x_1,x_2&amp;\geq&amp;0
+\end{array}\right\}
+\]</span></p>
+<p>y la familia de problemas <span class="math inline">\(\max z=ax_1+2x_2\)</span>, con <span class="math inline">\(0\leq a\leq5\)</span>. Modificá <span class="math inline">\(a\)</span> y observá <strong>cómo cambia el conjunto de soluciones óptimas</strong>, sin alterar la región factible.</p>
+<div id="pl-vertex-opt-widget" class="pl-opt-widget">
+  <div class="pl-opt-layout">
+    <div>
+      <svg id="pl-opt-svg" viewbox="0 0 400 370" role="img" aria-label="Polígono factible y recta de nivel óptima" style="width:100%;height:auto;max-width:490px;display:block;margin:auto">
+        <defs><clippath id="pl-opt-clip"><rect x="49" y="24" width="305" height="305"></rect></clippath></defs>
+        <g id="pl-opt-grid"></g>
+        <line x1="49" y1="329" x2="367" y2="329" stroke="currentColor" stroke-width="1.5"></line>
+        <line x1="49" y1="329" x2="49" y2="13" stroke="currentColor" stroke-width="1.5"></line>
+        <polygon id="pl-opt-region" fill="#238785" fill-opacity=".20" stroke="#238785" stroke-width="2.6" stroke-linejoin="round"></polygon>
+        <g clip-path="url(#pl-opt-clip)"><line id="pl-opt-level" stroke="#D18E2B" stroke-width="3" stroke-dasharray="7 5"></line></g>
+        <line id="pl-opt-edge" stroke="#D18E2B" stroke-width="7" stroke-linecap="round" style="display:none"></line>
+        <g id="pl-opt-vertices"></g>
+        <text x="366" y="350" fill="currentColor" font-size="14">x₁</text>
+        <text x="19" y="18" fill="currentColor" font-size="14">x₂</text>
+        <text x="114" y="241" fill="#238785" font-size="18" font-style="italic">R</text>
+      </svg>
+    </div>
+    <div class="pl-opt-panel">
+      <label for="pl-opt-a"><strong>Coeficiente a: <output id="pl-opt-a-val">3</output></strong></label>
+      <input type="range" id="pl-opt-a" min="0" max="5" step="0.1" value="3" style="width:100%;accent-color:#238785">
+      <div class="pl-opt-quick">
+        <button type="button" data-a="0.5">a = 0,5</button>
+        <button type="button" data-a="1">a = 1</button>
+        <button type="button" data-a="3">a = 3</button>
+        <button type="button" data-a="4">a = 4</button>
+        <button type="button" data-a="5">a = 5</button>
+      </div>
+      <p><strong>Función objetivo:</strong> <span id="pl-opt-objective"></span></p>
+      <p id="pl-opt-status" role="status" aria-live="polite"></p>
+      <p><strong>Valor óptimo:</strong> <span id="pl-opt-value"></span></p>
+      <details>
+        <summary>Ver valores en los cuatro vértices</summary>
+        
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Vértice</th>
+<th data-quarto-table-cell-role="th">z</th>
+</tr>
+</thead>
+<tbody id="pl-opt-table">
+</tbody>
+</table>
+
+      </details>
+    </div>
+  </div>
+</div>
+<style>
+.pl-opt-widget{border:1px solid #cbd5df;border-radius:13px;padding:1rem;margin:1rem 0;background:color-mix(in srgb,Canvas 96%,#238785 4%)}
+.pl-opt-layout{display:grid;grid-template-columns:minmax(230px,1.15fr) minmax(220px,1fr);gap:1rem;align-items:start}
+@media(max-width:740px){.pl-opt-layout{grid-template-columns:1fr}}
+.pl-opt-panel{padding:.25rem}.pl-opt-panel p{margin:.7rem 0}.pl-opt-panel [role=status]{font-weight:650}
+.pl-opt-quick{display:flex;flex-wrap:wrap;gap:.35rem;margin:.8rem 0}
+.pl-opt-quick button{border:1px solid #81949f;background:transparent;color:inherit;border-radius:7px;padding:.3rem .55rem;cursor:pointer}
+.pl-opt-quick button:hover{background:color-mix(in srgb,Canvas 85%,#238785 15%)}
+.pl-opt-panel table{font-size:.9em;width:100%}
+</style>
+<script>
+(function () {
+  'use strict';
+  const root=document.getElementById('pl-vertex-opt-widget');
+  if(!root || root.dataset.initialized==='1') return;
+  root.dataset.initialized='1';
+  const svg=root.querySelector('#pl-opt-svg');
+  const ns='http://www.w3.org/2000/svg';
+  const points=[{name:'A',x:0,y:0},{name:'B',x:4,y:0},{name:'C',x:8/3,y:8/3},{name:'D',x:0,y:4}];
+  const sx=x=>49+55*x, sy=y=>329-55*y;
+  const make=(tag,attrs,parent)=>{const el=document.createElementNS(ns,tag);Object.entries(attrs).forEach(([k,v])=>el.setAttribute(k,String(v)));parent.appendChild(el);return el;};
+  const fmt=x=>Math.abs(x-Math.round(x))<1e-8?String(Math.round(x)):x.toLocaleString('es-CR',{maximumFractionDigits:2});
+  svg.querySelector('#pl-opt-region').setAttribute('points',points.map(p=>sx(p.x)+','+sy(p.y)).join(' '));
+  const grid=svg.querySelector('#pl-opt-grid');
+  for(let i=0;i<=5;i++){
+    make('line',{x1:sx(i),x2:sx(i),y1:24,y2:329,stroke:'currentColor',opacity:'.09'},grid);
+    make('line',{x1:49,x2:354,y1:sy(i),y2:sy(i),stroke:'currentColor',opacity:'.09'},grid);
+    let tx=make('text',{x:sx(i),y:348,'text-anchor':'middle','font-size':11,fill:'currentColor'},grid);tx.textContent=i;
+    if(i>0){let ty=make('text',{x:39,y:sy(i)+4,'text-anchor':'end','font-size':11,fill:'currentColor'},grid);ty.textContent=i;}
+  }
+  const markers=svg.querySelector('#pl-opt-vertices');
+  const dots=[];
+  points.forEach((p,i)=>{
+    let circle=make('circle',{cx:sx(p.x),cy:sy(p.y),r:5.5,fill:'#183B45',stroke:'white','stroke-width':1.3},markers);
+    let label=make('text',{x:sx(p.x)+(i===3?-18:10),y:sy(p.y)-10,fill:'currentColor','font-size':13,'font-weight':600},markers);
+    label.textContent=p.name;dots.push(circle);
+  });
+  // Intersections of a*x+2*y=z with the viewbox; draws the entire level line,
+  // even when the intersection with the feasible region consists of one point.
+  function clipping(a,z){
+    const walls=[[[0,0],[5.5,0]],[[5.5,0],[5.5,5.5]],[[5.5,5.5],[0,5.5]],[[0,5.5],[0,0]]];
+    const found=[];
+    for(const [p,q] of walls){const d=a*(q[0]-p[0])+2*(q[1]-p[1]);if(Math.abs(d)<1e-10)continue;
+      const t=(z-a*p[0]-2*p[1])/d;
+      if(t>=-1e-9&&t<=1+1e-9)found.push([p[0]+t*(q[0]-p[0]),p[1]+t*(q[1]-p[1])]);
+    }
+    return found.filter((p,i)=>found.findIndex(q=>Math.hypot(p[0]-q[0],p[1]-q[1])<1e-7)===i);
+  }
+  const slider=root.querySelector('#pl-opt-a');
+  function update(){
+    const a=Number(slider.value);
+    const values=points.map(p=>a*p.x+2*p.y);
+    const best=Math.max(...values);
+    const opt=points.filter((p,i)=>Math.abs(values[i]-best)<1e-7);
+    root.querySelector('#pl-opt-a-val').textContent=fmt(a);
+    root.querySelector('#pl-opt-objective').textContent='max z = '+fmt(a)+'x₁ + 2x₂';
+    root.querySelector('#pl-opt-value').textContent=fmt(best);
+    const status=root.querySelector('#pl-opt-status');
+    status.textContent=opt.length===1?'Óptimo único en '+opt[0].name+'.':'Infinitas soluciones óptimas sobre la arista '+opt.map(p=>p.name).join('–')+'.';
+    const xy=clipping(a,best),line=svg.querySelector('#pl-opt-level');
+    if(xy.length>=2){line.setAttribute('x1',sx(xy[0][0]));line.setAttribute('y1',sy(xy[0][1]));line.setAttribute('x2',sx(xy[1][0]));line.setAttribute('y2',sy(xy[1][1]));line.style.display='';}
+    else line.style.display='none';
+    const edge=svg.querySelector('#pl-opt-edge');
+    if(opt.length===2){edge.setAttribute('x1',sx(opt[0].x));edge.setAttribute('y1',sy(opt[0].y));edge.setAttribute('x2',sx(opt[1].x));edge.setAttribute('y2',sy(opt[1].y));edge.style.display='';}
+    else edge.style.display='none';
+    dots.forEach((dot,i)=>{const isBest=Math.abs(values[i]-best)<1e-7;dot.setAttribute('r',isBest?'7':'5.5');dot.setAttribute('fill',isBest?'#D18E2B':'#183B45');});
+    root.querySelector('#pl-opt-table').innerHTML=points.map((p,i)=>'<tr><td>'+p.name+'</td><td>'+fmt(values[i])+'</td></tr>').join('');
+  }
+  slider.addEventListener('input',update);
+  root.querySelectorAll('button[data-a]').forEach(b=>b.addEventListener('click',()=>{slider.value=b.dataset.a;update();}));
+  update();
+})();
+</script>
+<section id="análisis-matemático-de-la-exploración" class="level3">
+<h3 class="anchored" data-anchor-id="análisis-matemático-de-la-exploración">Análisis matemático de la exploración</h3>
+<p>Los cuatro vértices de <span class="math inline">\(R\)</span> son <span class="math inline">\(A=(0,0)\)</span>, <span class="math inline">\(B=(4,0)\)</span>, <span class="math inline">\(C=(8/3,8/3)\)</span> y <span class="math inline">\(D=(0,4)\)</span>. Sus valores objetivo son <span class="math inline">\(0\)</span>, <span class="math inline">\(4a\)</span>, <span class="math inline">\((8a+16)/3\)</span> y <span class="math inline">\(8\)</span>, respectivamente. En consecuencia,</p>
+<p><span class="math display">\[
+z^*(a)=\begin{cases}
+8,&amp;0\leq a\leq1,\\[2pt]
+\dfrac{8a+16}{3},&amp;1\leq a\leq4,\\[2pt]
+4a,&amp;4\leq a\leq5.
+\end{cases}
+\]</span></p>
+<p>Para <span class="math inline">\(a=1\)</span> son óptimos todos los puntos del segmento <span class="math inline">\(\overline{DC}\)</span>; para <span class="math inline">\(a=4\)</span>, todos los puntos del segmento <span class="math inline">\(\overline{CB}\)</span>. Para los demás valores del intervalo estudiado, la solución óptima es única. La coincidencia de los valores objetivo en dos vértices adyacentes no es accidental: la recta de nivel óptima tiene la misma dirección que la arista que los une.</p>
+</section>
+</section>
+<section id="ejercicios-de-comprensión" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios-de-comprensión">Ejercicios de comprensión</h2>
+<p><strong>Ejercicio 1.</strong> Demuestre que el conjunto de soluciones óptimas de un programa lineal es convexo cuando es no vacío.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Orientación y solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Sea <span class="math inline">\(u,v\)</span> cualquier pareja de soluciones óptimas. La región factible es convexa, de modo que <span class="math inline">\(\lambda u+(1-\lambda)v\)</span> es factible para <span class="math inline">\(0\leq\lambda\leq1\)</span>. Como <span class="math inline">\(z\)</span> es afín, <span class="math inline">\(z(\lambda u+(1-\lambda)v)=\lambda z^*+(1-\lambda)z^*=z^*\)</span>. Por consiguiente, la combinación también es óptima.</p>
+</div>
+</div>
+</div>
+<p><strong>Ejercicio 2.</strong> En la exploración anterior, determine algebraicamente los valores de <span class="math inline">\(a\)</span> para los cuales aparecen múltiples soluciones óptimas. Justifique mediante la evaluación de vértices.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Pista
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Busque valores de <span class="math inline">\(a\)</span> para los que dos vértices adyacentes tengan el mismo valor objetivo y ese valor sea máximo.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>En los vértices <span class="math inline">\(D\)</span> y <span class="math inline">\(C\)</span>, la igualdad <span class="math inline">\(8=(8a+16)/3\)</span> da <span class="math inline">\(a=1\)</span>; en los vértices <span class="math inline">\(C\)</span> y <span class="math inline">\(B\)</span>, la igualdad <span class="math inline">\((8a+16)/3=4a\)</span> da <span class="math inline">\(a=4\)</span>. Al comparar con los demás vértices, se confirma que en ambos casos se trata del valor máximo.</p>
+</div>
+</div>
+</div>
+<p><strong>Ejercicio 3.</strong> Explique por qué el teorema de existencia de un vértice óptimo no garantiza que la solución óptima sea única.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>El teorema solamente asegura la existencia de al menos un vértice que alcanza el óptimo. Si dos vértices distintos son óptimos, toda combinación convexa de ellos también lo es, por lo que existen infinitas soluciones óptimas.</p>
+</div>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<div class="pl-footer-note" style="text-align:center;font-size:.82rem;color:#64748b;padding:1rem 0">Libro en desarrollo · Versión editorial preliminar</div>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      const newWindowLabel = "(opens in a new tab)";
+      const newWindowNoteId = "quarto-ext-newwindow-label";
+      // Links reference one hidden label through aria-describedby, so the
+      // announcement never changes their accessible name.
+      var describeNewWindow = (link) => {
+        if (!window.document.getElementById(newWindowNoteId)) {
+          var newWindowNote = window.document.createElement("span");
+          newWindowNote.id = newWindowNoteId;
+          newWindowNote.hidden = true;
+          newWindowNote.textContent = newWindowLabel;
+          window.document.body.appendChild(newWindowNote);
+        }
+        var describedBy = (link.getAttribute("aria-describedby") || "").split(/\s+/).filter(Boolean);
+        if (!describedBy.includes(newWindowNoteId)) {
+          describedBy.push(newWindowNoteId);
+          link.setAttribute("aria-describedby", describedBy.join(" "));
+        }
+      }
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            describeNewWindow(link);
+          if (!link.classList.contains('no-external-icon')) {
+          }
+        }
+      }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
+          if (lineIds.length > 0) {
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            placeBand(gutterDiv, el, lastEl);
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Código desplazable","output":"Salida desplazable"};
+  </script>
+<nav class="page-navigation" aria-label="Página">
+  <div class="nav-page nav-page-previous">
+      <a href="../capitulos/vertices_y_puntos_extremos.html" class="pagination-link" aria-label="Vértices y puntos extremos">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Vértices y puntos extremos</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../capitulos/01-introduccion.html" class="pagination-link" aria-label="Introducción y formulación">
+        <span class="nav-page-text"><span class="chapter-title">Introducción y formulación</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
