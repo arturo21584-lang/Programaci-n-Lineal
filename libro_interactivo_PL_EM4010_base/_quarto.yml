@@ -33,6 +33,7 @@ book:
     - part: "I. Modelar y visualizar"
       chapters:
         - capitulos/fundamentos_iniciales_capitulo1.qmd
+        - capitulos/soluciones_y_region_factible.qmd
         - capitulos/01-introduccion.qmd
         - capitulos/02-geometria.qmd
         - capitulos/ejemplo_metodo_grafico.qmd
