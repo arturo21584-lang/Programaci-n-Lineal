@@ -13,61 +13,61 @@
   {
     "objectID": "capitulos/fundamentos_iniciales_capitulo1.html",
     "href": "capitulos/fundamentos_iniciales_capitulo1.html",
-    "title": "Fundamentos iniciales: formulación de un programa lineal",
+    "title": "Fundamentos de la Programación Lineal",
     "section": "",
-    "text": "1.1. ¿Qué caracteriza a un programa lineal?\nImaginemos que debemos distribuir recursos limitados entre distintas actividades. Antes de buscar una solución, necesitamos identificar las decisiones posibles, cuantificar lo que deseamos optimizar y representar las limitaciones.\nUn programa lineal es un problema de optimización cuya función objetivo es afín en las variables de decisión y cuyas restricciones son ecuaciones o desigualdades lineales. En la terminología habitual de Programación Lineal, las funciones afines también se admiten bajo la denominación de funciones objetivo lineales.\nEn particular, las variables aparecen en primer grado y multiplicadas por coeficientes constantes. Un término independiente como \\(+7\\) está permitido.\nPor ejemplo, \\(3x_1+5x_2\\), \\(2x_1-4x_2+7\\) y \\(x_1+3x_2-2x_3\\) son expresiones admisibles. En cambio, \\(x_1^2\\), \\(x_1x_2\\), \\(\\sqrt{x_1}\\) y \\(x_1/x_2\\) no son afines.",
+    "text": "¿Qué caracteriza a un programa lineal?\nImaginemos que debemos distribuir recursos limitados entre distintas actividades. Antes de buscar una solución, necesitamos identificar las decisiones posibles, cuantificar lo que deseamos optimizar y representar las limitaciones.\nUn programa lineal es un problema de optimización cuya función objetivo es afín en las variables de decisión y cuyas restricciones son ecuaciones o desigualdades lineales. En la terminología habitual de Programación Lineal, las funciones afines también se admiten bajo la denominación de funciones objetivo lineales.\nEn particular, las variables aparecen en primer grado y multiplicadas por coeficientes constantes. Un término independiente como \\(+7\\) está permitido.\nPor ejemplo, \\(3x_1+5x_2\\), \\(2x_1-4x_2+7\\) y \\(x_1+3x_2-2x_3\\) son expresiones admisibles. En cambio, \\(x_1^2\\), \\(x_1x_2\\), \\(\\sqrt{x_1}\\) y \\(x_1/x_2\\) no son afines.",
     "crumbs": [
       "Libro",
       "I. Modelar y visualizar",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fundamentos iniciales: formulación de un programa lineal</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fundamentos de la Programación Lineal</span>"
     ]
   },
   {
     "objectID": "capitulos/fundamentos_iniciales_capitulo1.html#qué-caracteriza-a-un-programa-lineal",
     "href": "capitulos/fundamentos_iniciales_capitulo1.html#qué-caracteriza-a-un-programa-lineal",
-    "title": "Fundamentos iniciales: formulación de un programa lineal",
+    "title": "Fundamentos de la Programación Lineal",
     "section": "",
     "text": "Nota\n\n\n\nUna función objetivo afín puede escribirse como \\(z(x)=cx^T+z_0\\). La presencia de una constante \\(z_0\\) no modifica cuáles son las soluciones óptimas: solamente desplaza el valor objetivo.\n\n\n\nExploración: reconocer expresiones admisibles\nSeleccioná todas las expresiones que podrían representar una función objetivo de un programa lineal.\n\n \n  ¿Cuáles expresiones son afines?\n   \\(3x_1-2x_2+7\\)\n   \\(x_1x_2+4\\)\n   \\(\\sqrt{x_1}+x_2\\)\n   \\(5x_1-3x_2\\)\n \n Comprobar",
     "crumbs": [
       "Libro",
       "I. Modelar y visualizar",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fundamentos iniciales: formulación de un programa lineal</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fundamentos de la Programación Lineal</span>"
     ]
   },
   {
     "objectID": "capitulos/fundamentos_iniciales_capitulo1.html#elementos-de-un-programa-lineal",
     "href": "capitulos/fundamentos_iniciales_capitulo1.html#elementos-de-un-programa-lineal",
-    "title": "Fundamentos iniciales: formulación de un programa lineal",
-    "section": "1.2. Elementos de un programa lineal",
-    "text": "1.2. Elementos de un programa lineal\nUn modelo de Programación Lineal reúne tres elementos.\nVariables de decisión. Representan las cantidades que podemos elegir. Por ejemplo, \\(x_1\\) y \\(x_2\\) pueden indicar unidades de dos productos.\nFunción objetivo. Mide la cantidad que queremos maximizar o minimizar: utilidad, producción, costo, tiempo u otra magnitud pertinente.\nRestricciones. Describen los límites impuestos a las decisiones: recursos, demandas, capacidades, condiciones técnicas o no negatividad.\nEn la expresión \\(2x_1+x_2\\leq8\\), los números \\(2\\) y \\(1\\) son coeficientes de consumo y el número \\(8\\) es el término independiente que representa la disponibilidad.\n\nExploración: cambiar coeficientes y disponibilidades\nConsiderá el modelo ilustrativo\n\\[\n\\begin{aligned}\n\\max\\quad z&=c_1x_1+3x_2,\\\\\n2x_1+x_2&\\leq b_1,\\\\\nx_1,x_2&\\geq0.\n\\end{aligned}\n\\]\nModificá \\(c_1\\) y \\(b_1\\). Observá que cambiar un coeficiente objetivo modifica la valoración de las decisiones, mientras que cambiar una disponibilidad modifica el conjunto de decisiones permitidas.\n\n \n  Coeficiente objetivo \\(c_1\\): 4\n   \n  \n  Disponibilidad \\(b_1\\): 8\n   \n  \n \n Para el punto de prueba \\(P=(2,2)\\):",
+    "title": "Fundamentos de la Programación Lineal",
+    "section": "Elementos de un programa lineal",
+    "text": "Elementos de un programa lineal\nUn modelo de Programación Lineal reúne tres elementos.\nVariables de decisión. Representan las cantidades que podemos elegir. Por ejemplo, \\(x_1\\) y \\(x_2\\) pueden indicar unidades de dos productos.\nFunción objetivo. Mide la cantidad que queremos maximizar o minimizar: utilidad, producción, costo, tiempo u otra magnitud pertinente.\nRestricciones. Describen los límites impuestos a las decisiones: recursos, demandas, capacidades, condiciones técnicas o no negatividad.\nEn la expresión \\(2x_1+x_2\\leq8\\), los números \\(2\\) y \\(1\\) son coeficientes de consumo y el número \\(8\\) es el término independiente que representa la disponibilidad.\n\nExploración: cambiar coeficientes y disponibilidades\nConsiderá el modelo ilustrativo\n\\[\n\\begin{aligned}\n\\max\\quad z&=c_1x_1+3x_2,\\\\\n2x_1+x_2&\\leq b_1,\\\\\nx_1,x_2&\\geq0.\n\\end{aligned}\n\\]\nModificá \\(c_1\\) y \\(b_1\\). Observá que cambiar un coeficiente objetivo modifica la valoración de las decisiones, mientras que cambiar una disponibilidad modifica el conjunto de decisiones permitidas.\n\n \n  Coeficiente objetivo \\(c_1\\): 4\n   \n  \n  Disponibilidad \\(b_1\\): 8\n   \n  \n \n Para el punto de prueba \\(P=(2,2)\\):",
     "crumbs": [
       "Libro",
       "I. Modelar y visualizar",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fundamentos iniciales: formulación de un programa lineal</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fundamentos de la Programación Lineal</span>"
     ]
   },
   {
     "objectID": "capitulos/fundamentos_iniciales_capitulo1.html#formulación-matemática-y-matricial",
     "href": "capitulos/fundamentos_iniciales_capitulo1.html#formulación-matemática-y-matricial",
-    "title": "Fundamentos iniciales: formulación de un programa lineal",
-    "section": "1.3. Formulación matemática y matricial",
-    "text": "1.3. Formulación matemática y matricial\nUna representación general de un programa lineal con restricciones del tipo \\(\\leq\\) es\n\\[\n\\begin{aligned}\n\\text{Optimizar}\\quad z(x)&=cx^T+z_0,\\\\\n\\text{sujeto a}\\quad Ax^T&\\leq b^T,\\\\\nx&\\geq0.\n\\end{aligned}\n\\]\nAquí \\(x=(x_1,\\ldots,x_n)\\) es el vector fila de variables de decisión, \\(c=(c_1,\\ldots,c_n)\\) es el vector fila de coeficientes objetivo, \\(A=(a_{ij})\\in\\mathbb R^{m\\times n}\\) y \\(b=(b_1,\\ldots,b_m)\\) es el vector fila de términos independientes.\nLa desigualdad \\(Ax^T\\leq b^T\\) se entiende componente a componente. En esta presentación se utiliza la convención de vectores fila del curso EM-4010.\nLas restricciones de igualdad o de tipo \\(\\geq\\) también son admisibles. Una desigualdad puede invertirse al multiplicar ambos miembros por \\(-1\\); una igualdad puede expresarse como dos desigualdades opuestas.\n\n\n\n\n\n\nTip\n\n\n\nVerificá las dimensiones: \\(A\\) tiene \\(m\\) filas y \\(n\\) columnas, mientras que \\(x^T\\) tiene \\(n\\) filas. Así, \\(Ax^T\\) es un vector columna de \\(m\\) componentes, igual que \\(b^T\\).",
+    "title": "Fundamentos de la Programación Lineal",
+    "section": "Formulación matemática y matricial",
+    "text": "Formulación matemática y matricial\nUna representación general de un programa lineal con restricciones del tipo \\(\\leq\\) es\n\\[\n\\begin{aligned}\n\\text{Optimizar}\\quad z(x)&=cx^T+z_0,\\\\\n\\text{sujeto a}\\quad Ax^T&\\leq b^T,\\\\\nx&\\geq0.\n\\end{aligned}\n\\]\nAquí \\(x=(x_1,\\ldots,x_n)\\) es el vector fila de variables de decisión, \\(c=(c_1,\\ldots,c_n)\\) es el vector fila de coeficientes objetivo, \\(A=(a_{ij})\\in\\mathbb R^{m\\times n}\\) y \\(b=(b_1,\\ldots,b_m)\\) es el vector fila de términos independientes.\nLa desigualdad \\(Ax^T\\leq b^T\\) se entiende componente a componente. En este libro se utiliza la convención de vectores fila: \\(x\\), \\(b\\) y \\(c\\) se escriben como filas, y sus transpuestas permiten expresar las relaciones matriciales de forma consistente.\nLas restricciones de igualdad o de tipo \\(\\geq\\) también son admisibles. Una desigualdad puede invertirse al multiplicar ambos miembros por \\(-1\\); una igualdad puede expresarse como dos desigualdades opuestas.\n\n\n\n\n\n\nTip\n\n\n\nVerificá las dimensiones: \\(A\\) tiene \\(m\\) filas y \\(n\\) columnas, mientras que \\(x^T\\) tiene \\(n\\) filas. Así, \\(Ax^T\\) es un vector columna de \\(m\\) componentes, igual que \\(b^T\\).",
     "crumbs": [
       "Libro",
       "I. Modelar y visualizar",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fundamentos iniciales: formulación de un programa lineal</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fundamentos de la Programación Lineal</span>"
     ]
   },
   {
     "objectID": "capitulos/fundamentos_iniciales_capitulo1.html#un-modelo-completo",
     "href": "capitulos/fundamentos_iniciales_capitulo1.html#un-modelo-completo",
-    "title": "Fundamentos iniciales: formulación de un programa lineal",
-    "section": "1.4. Un modelo completo",
-    "text": "1.4. Un modelo completo\nConsideremos el programa lineal\n\\[\n\\begin{aligned}\n\\max\\quad z&=4x_1+3x_2+5,\\\\\n2x_1+x_2&\\leq8,\\\\\nx_1+2x_2&\\leq10,\\\\\n3x_1+x_2&\\leq12,\\\\\nx_1,x_2&\\geq0.\n\\end{aligned}\n\\]\nSu representación matricial es\n\\[\nA=\\begin{pmatrix}2&1\\\\1&2\\\\3&1\\end{pmatrix},\\qquad\nb=(8,10,12),\\qquad c=(4,3),\\qquad z_0=5.\n\\]\nAsí,\n\\[\n\\max\\quad z=cx^T+z_0,\\qquad Ax^T\\leq b^T,\\qquad x\\geq0.\n\\]\nPor ejemplo, \\(P=(2,3)\\) es factible: \\(2(2)+3=7\\leq8\\), \\(2+2(3)=8\\leq10\\) y \\(3(2)+3=9\\leq12\\). Su valor objetivo es \\(z(P)=4(2)+3(3)+5=22\\).\nEste punto es factible, pero todavía no hemos demostrado que sea óptimo. La diferencia entre factibilidad y optimalidad será el tema de los siguientes apartados.\n\nComprobación breve\n\n\n\n\n\n\nNotaSolución de comprobación\n\n\n\n\n\nLa matriz de restricciones tiene dimensión \\(3\\times2\\), el vector de variables es \\(x=(x_1,x_2)\\) y la constante objetivo es \\(z_0=5\\). Para \\(P=(2,3)\\) se satisfacen todas las restricciones y \\(z(P)=22\\).",
+    "title": "Fundamentos de la Programación Lineal",
+    "section": "Un modelo completo",
+    "text": "Un modelo completo\nConsideremos el programa lineal\n\\[\n\\begin{aligned}\n\\max\\quad z&=4x_1+3x_2+5,\\\\\n2x_1+x_2&\\leq8,\\\\\nx_1+2x_2&\\leq10,\\\\\n3x_1+x_2&\\leq12,\\\\\nx_1,x_2&\\geq0.\n\\end{aligned}\n\\]\nSu representación matricial es\n\\[\nA=\\begin{pmatrix}2&1\\\\1&2\\\\3&1\\end{pmatrix},\\qquad\nb=(8,10,12),\\qquad c=(4,3),\\qquad z_0=5.\n\\]\nAsí,\n\\[\n\\max\\quad z=cx^T+z_0,\\qquad Ax^T\\leq b^T,\\qquad x\\geq0.\n\\]\nPor ejemplo, \\(P=(2,3)\\) es factible: \\(2(2)+3=7\\leq8\\), \\(2+2(3)=8\\leq10\\) y \\(3(2)+3=9\\leq12\\). Su valor objetivo es \\(z(P)=4(2)+3(3)+5=22\\).\nEste punto es factible, pero todavía no hemos demostrado que sea óptimo. La diferencia entre factibilidad y optimalidad será el tema de los siguientes apartados.\n\nComprobación breve\n\n\n\n\n\n\nNotaSolución de comprobación\n\n\n\n\n\nLa matriz de restricciones tiene dimensión \\(3\\times2\\), el vector de variables es \\(x=(x_1,x_2)\\) y la constante objetivo es \\(z_0=5\\). Para \\(P=(2,3)\\) se satisfacen todas las restricciones y \\(z(P)=22\\).",
     "crumbs": [
       "Libro",
       "I. Modelar y visualizar",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fundamentos iniciales: formulación de un programa lineal</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fundamentos de la Programación Lineal</span>"
     ]
   },
   {
