@@ -71,6 +71,54 @@
     ]
   },
   {
+    "objectID": "capitulos/soluciones_y_region_factible.html",
+    "href": "capitulos/soluciones_y_region_factible.html",
+    "title": "Soluciones y región de factibilidad",
+    "section": "",
+    "text": "Soluciones factibles\nUna solución factible de un programa lineal es un vector de decisión que satisface simultáneamente todas las restricciones, incluidas las condiciones de signo. La factibilidad no depende de la función objetivo.\nRetomemos el modelo\n\\[\n\\begin{aligned}\n\\max\\quad z&=4x_1+3x_2+5,\\\\\n2x_1+x_2&\\leq8,\\\\\nx_1+2x_2&\\leq10,\\\\\n3x_1+x_2&\\leq12,\\\\\nx_1,x_2&\\geq0.\n\\end{aligned}\n\\]\nEl punto \\(P=(2,3)\\) es factible porque las tres expresiones de los lados izquierdos valen, respectivamente, \\(7\\), \\(8\\) y \\(9\\), todas menores que sus disponibilidades. En cambio, el punto \\((3,3)\\) no es factible: incumple, entre otras, la primera restricción, pues \\(2(3)+3=9&gt;8\\).",
+    "crumbs": [
+      "Libro",
+      "I. Modelar y visualizar",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Soluciones y región de factibilidad</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/soluciones_y_region_factible.html#soluciones-factibles",
+    "href": "capitulos/soluciones_y_region_factible.html#soluciones-factibles",
+    "title": "Soluciones y región de factibilidad",
+    "section": "",
+    "text": "Exploración: comprobar puntos\nSeleccioná un punto del plano o introducí sus coordenadas. La actividad comprueba todas las condiciones, no solamente una.\n\n \n  \n   \n    \n    \n    \n    \n    \n    P\n    x₁x₂\n   \n   Hacé clic sobre la gráfica para seleccionar un punto. Las coordenadas se redondean al múltiplo de 0,5 más cercano.\n  \n  \n   Coordenada x₁ Coordenada x₂ \n   (0, 0)(2, 3)(3, 3)(−1, 2)",
+    "crumbs": [
+      "Libro",
+      "I. Modelar y visualizar",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Soluciones y región de factibilidad</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/soluciones_y_region_factible.html#conjunto-y-región-de-factibilidad",
+    "href": "capitulos/soluciones_y_region_factible.html#conjunto-y-región-de-factibilidad",
+    "title": "Soluciones y región de factibilidad",
+    "section": "Conjunto y región de factibilidad",
+    "text": "Conjunto y región de factibilidad\nEl conjunto factible \\(R\\) reúne todos los vectores que satisfacen las restricciones. En dos variables puede representarse geométricamente como la intersección de semiplanos; llamaremos también región factible a su representación en el plano.\nPara el modelo anterior,\n\\[\nR=\\left\\{(x_1,x_2)\\in\\mathbb R^2:\\ 2x_1+x_2\\leq8,\\ x_1+2x_2\\leq10,\\ 3x_1+x_2\\leq12,\\ x_1,x_2\\geq0\\right\\}.\n\\]\nLa región es un polígono cerrado y acotado, cuyos vértices son\n\\[\n(0,0),\\qquad (4,0),\\qquad (2,4),\\qquad (0,5).\n\\]\nLa restricción \\(3x_1+x_2\\leq12\\) es redundante en este modelo: no modifica la región obtenida a partir de las otras dos desigualdades y la no negatividad. En efecto, de \\(2x_1+x_2\\leq8\\) y \\(x_1\\geq0\\) se deduce \\(3x_1+x_2=(2x_1+x_2)+x_1\\leq8+x_1\\leq12\\), ya que \\(x_1\\leq4\\).\n\nExploración: construir la región\nActivá las fronteras, examiná los vértices y observá que una desigualdad puede ser válida sin determinar un lado nuevo del polígono.\n\n \n   2x₁ + x₂ = 8\n   x₁ + 2x₂ = 10\n   3x₁ + x₂ = 12\n   Mostrar vértices\n \n \n  \n  \n  \n  x₁x₂\n \n El sombreado siempre representa la región de todas las restricciones. Las casillas permiten mostrar u ocultar sus rectas frontera, no eliminar restricciones del modelo.\n\n\n\n\n\n\n\nNota\n\n\n\nLa geometría de una región factible en tres variables puede estudiarse mediante un poliedro. Más adelante, una exploración tridimensional permitirá examinar sus caras, aristas, vértices y planos de nivel.",
+    "crumbs": [
+      "Libro",
+      "I. Modelar y visualizar",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Soluciones y región de factibilidad</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/soluciones_y_region_factible.html#soluciones-óptimas",
+    "href": "capitulos/soluciones_y_region_factible.html#soluciones-óptimas",
+    "title": "Soluciones y región de factibilidad",
+    "section": "Soluciones óptimas",
+    "text": "Soluciones óptimas\nUna solución óptima es una solución factible que alcanza el mejor valor de la función objetivo entre todas las soluciones factibles. Para maximizar \\(z\\), un punto \\(x^*\\in R\\) es óptimo cuando \\(z(x)\\leq z(x^*)\\) para todo \\(x\\in R\\).\nConviene distinguir entre la decisión óptima \\(x^*\\) y el valor óptimo \\(z^*=z(x^*)\\).\nEn nuestro modelo, los valores de \\(z=4x_1+3x_2+5\\) en los vértices son:\n\n\n\nVértice\nValor objetivo\n\n\n\n\n\\((0,0)\\)\n\\(5\\)\n\n\n\\((4,0)\\)\n\\(21\\)\n\n\n\\((2,4)\\)\n\\(25\\)\n\n\n\\((0,5)\\)\n\\(20\\)\n\n\n\nEl mayor valor es \\(25\\) y se obtiene en \\((2,4)\\). Como la región es un polígono no vacío y acotado, y la función objetivo es afín, su máximo se alcanza en algún vértice; el fundamento de este resultado se desarrollará más adelante.\nPor tanto,\n\\[\n\\boxed{x^*=(2,4),\\qquad z^*=25.}\n\\]\nNo todas las soluciones factibles son óptimas. Por ejemplo, \\((2,3)\\) pertenece a \\(R\\), pero produce \\(z(2,3)=22&lt;25\\).\n\nComprobación de comprensión\n\n ¿Qué afirmación es correcta?\n  Todo punto factible es óptimo.\n  La solución óptima debe ser factible y alcanzar el mejor valor objetivo.\n  El valor óptimo es el vector de variables.\n Comprobar",
+    "crumbs": [
+      "Libro",
+      "I. Modelar y visualizar",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Soluciones y región de factibilidad</span>"
+    ]
+  },
+  {
     "objectID": "capitulos/01-introduccion.html",
     "href": "capitulos/01-introduccion.html",
     "title": "Introducción y formulación",
@@ -79,7 +127,7 @@
     "crumbs": [
       "Libro",
       "I. Modelar y visualizar",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introducción y formulación</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Introducción y formulación</span>"
     ]
   },
   {
@@ -91,7 +139,7 @@
     "crumbs": [
       "Libro",
       "I. Modelar y visualizar",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introducción y formulación</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Introducción y formulación</span>"
     ]
   },
   {
@@ -103,7 +151,7 @@
     "crumbs": [
       "Libro",
       "I. Modelar y visualizar",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Interpretación geométrica de la programación lineal</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Interpretación geométrica de la programación lineal</span>"
     ]
   },
   {
@@ -115,7 +163,7 @@
     "crumbs": [
       "Libro",
       "I. Modelar y visualizar",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Interpretación geométrica de la programación lineal</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Interpretación geométrica de la programación lineal</span>"
     ]
   },
   {
@@ -127,7 +175,7 @@
     "crumbs": [
       "Libro",
       "I. Modelar y visualizar",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Ejemplo interactivo: resolución mediante el método gráfico</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Ejemplo interactivo: resolución mediante el método gráfico</span>"
     ]
   },
   {
@@ -139,7 +187,7 @@
     "crumbs": [
       "Libro",
       "II. De la geometría al algoritmo",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Bases y soluciones básicas factibles</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Bases y soluciones básicas factibles</span>"
     ]
   },
   {
@@ -151,7 +199,7 @@
     "crumbs": [
       "Libro",
       "II. De la geometría al algoritmo",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Bases y soluciones básicas factibles</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Bases y soluciones básicas factibles</span>"
     ]
   },
   {
@@ -163,7 +211,7 @@
     "crumbs": [
       "Libro",
       "III. Algoritmos de resolución",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Método Simplex</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Método Simplex</span>"
     ]
   },
   {
@@ -175,7 +223,7 @@
     "crumbs": [
       "Libro",
       "III. Algoritmos de resolución",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Método Simplex</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Método Simplex</span>"
     ]
   },
   {
@@ -187,7 +235,7 @@
     "crumbs": [
       "Libro",
       "IV. Dualidad y análisis postóptimo",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Dualidad e interpretación económica</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Dualidad e interpretación económica</span>"
     ]
   },
   {
@@ -199,7 +247,7 @@
     "crumbs": [
       "Libro",
       "IV. Dualidad y análisis postóptimo",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Dualidad e interpretación económica</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Dualidad e interpretación económica</span>"
     ]
   },
   {
@@ -211,7 +259,7 @@
     "crumbs": [
       "Libro",
       "IV. Dualidad y análisis postóptimo",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Análisis de sensibilidad</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Análisis de sensibilidad</span>"
     ]
   },
   {
@@ -223,7 +271,7 @@
     "crumbs": [
       "Libro",
       "IV. Dualidad y análisis postóptimo",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Análisis de sensibilidad</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Análisis de sensibilidad</span>"
     ]
   },
   {
@@ -235,7 +283,7 @@
     "crumbs": [
       "Libro",
       "V. Modelos y aplicaciones",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Modelos especiales</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Modelos especiales</span>"
     ]
   },
   {
@@ -247,7 +295,7 @@
     "crumbs": [
       "Libro",
       "V. Modelos y aplicaciones",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Modelos especiales</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Modelos especiales</span>"
     ]
   },
   {
@@ -259,7 +307,7 @@
     "crumbs": [
       "Libro",
       "V. Modelos y aplicaciones",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Programación lineal entera</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Programación lineal entera</span>"
     ]
   },
   {
@@ -271,7 +319,7 @@
     "crumbs": [
       "Libro",
       "V. Modelos y aplicaciones",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Programación lineal entera</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Programación lineal entera</span>"
     ]
   },
   {
@@ -283,7 +331,7 @@
     "crumbs": [
       "Libro",
       "V. Modelos y aplicaciones",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Aplicaciones de la programación lineal</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Aplicaciones de la programación lineal</span>"
     ]
   },
   {
@@ -295,7 +343,7 @@
     "crumbs": [
       "Libro",
       "V. Modelos y aplicaciones",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Aplicaciones de la programación lineal</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Aplicaciones de la programación lineal</span>"
     ]
   },
   {
@@ -307,7 +355,7 @@
     "crumbs": [
       "Libro",
       "Material complementario",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Exploraciones interactivas</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Exploraciones interactivas</span>"
     ]
   },
   {
@@ -319,7 +367,7 @@
     "crumbs": [
       "Libro",
       "Material complementario",
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Recursos académicos</span>"
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Recursos académicos</span>"
     ]
   },
   {
@@ -331,7 +379,7 @@
     "crumbs": [
       "Libro",
       "Material complementario",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Acerca del libro</span>"
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Acerca del libro</span>"
     ]
   },
   {
@@ -343,7 +391,7 @@
     "crumbs": [
       "Libro",
       "Material complementario",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Acerca del libro</span>"
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Acerca del libro</span>"
     ]
   },
   {
@@ -354,7 +402,7 @@
     "text": "Esta sección se generará a partir de las fuentes efectivamente consultadas y verificadas. Por ahora no se han incluido fichas bibliográficas, para evitar registrar datos no comprobados.",
     "crumbs": [
       "Libro",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Referencias bibliográficas</span>"
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Referencias bibliográficas</span>"
     ]
   }
 ]
