@@ -1,0 +1,265 @@
+---
+title: "Vértices y soluciones óptimas"
+---
+
+## Del conjunto factible a la solución óptima
+
+En los apartados anteriores estudiamos las regiones factibles convexas y los puntos extremos de un conjunto. Ahora abordaremos la relación entre estos conceptos y la optimización de una función afín.
+
+Dado un programa lineal con región factible $R$ y función objetivo $z(x)=cx^T+z_0$, distinguimos:
+
+- **Solución factible:** un vector $x\in R$.
+- **Solución óptima:** una solución factible $x^*$ tal que, en maximización, $z(x)\leq z(x^*)$ para todo $x\in R$ (se invierte la desigualdad en minimización).
+- **Valor óptimo:** el número $z^*=z(x^*)$, cuando existe una solución óptima.
+
+En particular, un vértice es una propiedad **geométrica de la región factible**, mientras que la optimalidad depende también de la **función objetivo**. No todos los vértices son óptimos, ni toda solución óptima tiene que ser un vértice.
+
+## Existencia de un vértice óptimo
+
+::: {.callout-important}
+## Teorema
+
+Sea $R\subseteq\mathbb R^n$ la región factible **no vacía y acotada** de un programa lineal definido mediante un número finito de restricciones lineales no estrictas. Entonces, toda función objetivo afín alcanza un valor máximo y un valor mínimo en $R$; además, **existe al menos un vértice de $R$** donde se alcanza cada uno de esos valores.
+:::
+
+La acotación, junto con las desigualdades no estrictas, garantiza que $R$ sea compacto. El teorema no afirma que todos los puntos óptimos sean vértices; afirma que **al menos uno** lo es.
+
+### ¿Por qué es razonable geométricamente?
+
+En el plano, una recta de nivel de la función objetivo se desplaza paralelamente hasta su último contacto con una región poligonal acotada. Ese contacto puede ser un solo vértice o un segmento de una arista. En ambos casos, al menos un vértice es óptimo.
+
+Esta intuición también es válida en dimensiones superiores, donde las rectas de nivel son reemplazadas por hiperplanos de nivel.
+
+::: {.callout-note collapse="true"}
+## Demostración
+
+Escribamos las restricciones en la forma $R=\{x\in\mathbb R^n: Mx^T\leq d^T\}$, incorporando en $M$ las condiciones de signo cuando corresponda. Como $R$ es no vacío, cerrado y acotado, es compacto; por el teorema de Weierstrass, la función continua $z$ alcanza su máximo en algún punto $\widehat x\in R$.
+
+Denotemos por $I(x)$ los índices de las restricciones activas en un punto factible $x$, es decir, las filas $m_i$ de $M$ para las que $m_ix^T=d_i$. Entre todos los maximizadores, seleccionemos $x^*$ tal que el **rango** del conjunto de sus filas activas sea lo mayor posible. Es posible hacerlo, pues ese rango es un entero comprendido entre $0$ y $n$.
+
+Supongamos que el rango de las filas activas en $x^*$ es menor que $n$. Entonces existe un vector fila no nulo $h\in\mathbb R^n$ que satisface $m_ih^T=0$ para toda restricción activa $i\in I(x^*)$. Las restricciones no activas tienen holgura estrictamente positiva y son finitas; en consecuencia, para algún $\varepsilon>0$, ambos puntos $x^*+\varepsilon h$ y $x^*-\varepsilon h$ pertenecen a $R$.
+
+Como $x^*$ maximiza la función afín, debemos tener $ch^T=0$: si fuese positivo, aumentaría el valor al movernos en la dirección $h$; si fuese negativo, aumentaría al movernos en la dirección $-h$.
+
+Consideremos los puntos $x^*+th$ con $t\geq0$. Como $R$ es acotado, existe un mayor valor $t_+>0$ para el cual $x^*+t_+h\in R$. Sea $y=x^*+t_+h$. Entonces $z(y)=z(x^*)$, por lo que $y$ también es óptimo.
+
+En $y$ se conserva la igualdad de todas las restricciones activas en $x^*$. Además, debe activarse al menos una restricción que no estaba activa: de otro modo podríamos continuar desplazándonos un poco en la misma dirección, contradiciendo la definición de $t_+$. La fila correspondiente a esa nueva restricción no puede pertenecer al espacio generado por las filas activas de $x^*$, porque todas esas filas satisfacen $m_ih^T=0$, mientras que la nueva fila debe satisfacer $m_jh^T>0$ para detener el avance. Por tanto, el rango de las filas activas en $y$ es mayor que en $x^*$, contradicción.
+
+Concluimos que las filas activas en $x^*$ tienen rango $n$.
+
+Finalmente, comprobemos que $x^*$ es extremo. Si $x^*=\lambda u+(1-\lambda)v$, con $u,v\in R$ y $0<\lambda<1$, la igualdad de cada restricción activa en $x^*$ obliga a que esa misma restricción sea igualdad tanto en $u$ como en $v$. Como sus filas tienen rango $n$, el sistema de igualdades tiene solución única; por tanto, $u=v=x^*$. Así, $x^*$ es un vértice óptimo.
+
+El argumento para la minimización se obtiene aplicando lo anterior a la función $-z$. $\square$
+:::
+
+::: {.callout-tip}
+## ¿Y si la región es no acotada?
+
+La acotación es una **condición suficiente**, no necesaria, para que un programa lineal tenga un óptimo finito. Una región factible no acotada puede admitir un óptimo, como veremos en el método gráfico. Tampoco basta con que una función objetivo esté acotada: es preciso analizar si se alcanza su extremo y qué geometría tiene la región.
+:::
+
+## Combinaciones convexas de soluciones óptimas
+
+::: {.callout-important}
+## Teorema
+
+Sean $u,v\in R$ dos soluciones óptimas del mismo programa lineal, con función objetivo afín $z(x)=cx^T+z_0$. Entonces, para todo $\lambda\in[0,1]$, el punto
+
+$$
+x(\lambda)=\lambda u+(1-\lambda)v
+$$
+
+es también una solución óptima.
+:::
+
+::: {.callout-note collapse="true"}
+## Demostración
+
+Como la región factible de un programa lineal es convexa, $x(\lambda)\in R$. Si $z^*$ es el valor óptimo, entonces $z(u)=z(v)=z^*$. Por la afinidad de $z$,
+
+$$
+\begin{aligned}
+z(x(\lambda))&=c\bigl(\lambda u+(1-\lambda)v\bigr)^T+z_0\\
+&=\lambda z(u)+(1-\lambda)z(v)\\
+&=\lambda z^*+(1-\lambda)z^*=z^*.
+\end{aligned}
+$$
+
+Por tanto, $x(\lambda)$ es factible y óptimo. $\square$
+:::
+
+En consecuencia, **el conjunto de soluciones óptimas es convexo** (cuando no es vacío). Si dos vértices son óptimos, todo el segmento entre ellos también lo es.
+
+## Exploración geométrica: cambiar la función objetivo
+
+Consideremos la región factible
+
+$$
+R=\left\{(x_1,x_2):\begin{array}{rcl}
+x_1+x_2&\leq&6,\\
+2x_1+x_2&\leq&8,\\
+x_1+2x_2&\leq&8,\\
+x_1,x_2&\geq&0
+\end{array}\right\}
+$$
+
+y la familia de problemas $\max z=ax_1+2x_2$, con $0\leq a\leq5$. Modificá $a$ y observá **cómo cambia el conjunto de soluciones óptimas**, sin alterar la región factible.
+
+```{=html}
+<div id="pl-vertex-opt-widget" class="pl-opt-widget">
+  <div class="pl-opt-layout">
+    <div>
+      <svg id="pl-opt-svg" viewBox="0 0 400 370" role="img" aria-label="Polígono factible y recta de nivel óptima" style="width:100%;height:auto;max-width:490px;display:block;margin:auto">
+        <defs><clipPath id="pl-opt-clip"><rect x="49" y="24" width="305" height="305"/></clipPath></defs>
+        <g id="pl-opt-grid"></g>
+        <line x1="49" y1="329" x2="367" y2="329" stroke="currentColor" stroke-width="1.5"/>
+        <line x1="49" y1="329" x2="49" y2="13" stroke="currentColor" stroke-width="1.5"/>
+        <polygon id="pl-opt-region" fill="#238785" fill-opacity=".20" stroke="#238785" stroke-width="2.6" stroke-linejoin="round"/>
+        <g clip-path="url(#pl-opt-clip)"><line id="pl-opt-level" stroke="#D18E2B" stroke-width="3" stroke-dasharray="7 5"/></g>
+        <line id="pl-opt-edge" stroke="#D18E2B" stroke-width="7" stroke-linecap="round" style="display:none"/>
+        <g id="pl-opt-vertices"></g>
+        <text x="366" y="350" fill="currentColor" font-size="14">x₁</text>
+        <text x="19" y="18" fill="currentColor" font-size="14">x₂</text>
+        <text x="114" y="241" fill="#238785" font-size="18" font-style="italic">R</text>
+      </svg>
+    </div>
+    <div class="pl-opt-panel">
+      <label for="pl-opt-a"><strong>Coeficiente a: <output id="pl-opt-a-val">3</output></strong></label>
+      <input type="range" id="pl-opt-a" min="0" max="5" step="0.1" value="3" style="width:100%;accent-color:#238785"/>
+      <div class="pl-opt-quick">
+        <button type="button" data-a="0.5">a = 0,5</button>
+        <button type="button" data-a="1">a = 1</button>
+        <button type="button" data-a="3">a = 3</button>
+        <button type="button" data-a="4">a = 4</button>
+        <button type="button" data-a="5">a = 5</button>
+      </div>
+      <p><strong>Función objetivo:</strong> <span id="pl-opt-objective"></span></p>
+      <p id="pl-opt-status" role="status" aria-live="polite"></p>
+      <p><strong>Valor óptimo:</strong> <span id="pl-opt-value"></span></p>
+      <details>
+        <summary>Ver valores en los cuatro vértices</summary>
+        <table><thead><tr><th>Vértice</th><th>z</th></tr></thead><tbody id="pl-opt-table"></tbody></table>
+      </details>
+    </div>
+  </div>
+</div>
+<style>
+.pl-opt-widget{border:1px solid #cbd5df;border-radius:13px;padding:1rem;margin:1rem 0;background:color-mix(in srgb,Canvas 96%,#238785 4%)}
+.pl-opt-layout{display:grid;grid-template-columns:minmax(230px,1.15fr) minmax(220px,1fr);gap:1rem;align-items:start}
+@media(max-width:740px){.pl-opt-layout{grid-template-columns:1fr}}
+.pl-opt-panel{padding:.25rem}.pl-opt-panel p{margin:.7rem 0}.pl-opt-panel [role=status]{font-weight:650}
+.pl-opt-quick{display:flex;flex-wrap:wrap;gap:.35rem;margin:.8rem 0}
+.pl-opt-quick button{border:1px solid #81949f;background:transparent;color:inherit;border-radius:7px;padding:.3rem .55rem;cursor:pointer}
+.pl-opt-quick button:hover{background:color-mix(in srgb,Canvas 85%,#238785 15%)}
+.pl-opt-panel table{font-size:.9em;width:100%}
+</style>
+<script>
+(function () {
+  'use strict';
+  const root=document.getElementById('pl-vertex-opt-widget');
+  if(!root || root.dataset.initialized==='1') return;
+  root.dataset.initialized='1';
+  const svg=root.querySelector('#pl-opt-svg');
+  const ns='http://www.w3.org/2000/svg';
+  const points=[{name:'A',x:0,y:0},{name:'B',x:4,y:0},{name:'C',x:8/3,y:8/3},{name:'D',x:0,y:4}];
+  const sx=x=>49+55*x, sy=y=>329-55*y;
+  const make=(tag,attrs,parent)=>{const el=document.createElementNS(ns,tag);Object.entries(attrs).forEach(([k,v])=>el.setAttribute(k,String(v)));parent.appendChild(el);return el;};
+  const fmt=x=>Math.abs(x-Math.round(x))<1e-8?String(Math.round(x)):x.toLocaleString('es-CR',{maximumFractionDigits:2});
+  svg.querySelector('#pl-opt-region').setAttribute('points',points.map(p=>sx(p.x)+','+sy(p.y)).join(' '));
+  const grid=svg.querySelector('#pl-opt-grid');
+  for(let i=0;i<=5;i++){
+    make('line',{x1:sx(i),x2:sx(i),y1:24,y2:329,stroke:'currentColor',opacity:'.09'},grid);
+    make('line',{x1:49,x2:354,y1:sy(i),y2:sy(i),stroke:'currentColor',opacity:'.09'},grid);
+    let tx=make('text',{x:sx(i),y:348,'text-anchor':'middle','font-size':11,fill:'currentColor'},grid);tx.textContent=i;
+    if(i>0){let ty=make('text',{x:39,y:sy(i)+4,'text-anchor':'end','font-size':11,fill:'currentColor'},grid);ty.textContent=i;}
+  }
+  const markers=svg.querySelector('#pl-opt-vertices');
+  const dots=[];
+  points.forEach((p,i)=>{
+    let circle=make('circle',{cx:sx(p.x),cy:sy(p.y),r:5.5,fill:'#183B45',stroke:'white','stroke-width':1.3},markers);
+    let label=make('text',{x:sx(p.x)+(i===3?-18:10),y:sy(p.y)-10,fill:'currentColor','font-size':13,'font-weight':600},markers);
+    label.textContent=p.name;dots.push(circle);
+  });
+  // Intersections of a*x+2*y=z with the viewbox; draws the entire level line,
+  // even when the intersection with the feasible region consists of one point.
+  function clipping(a,z){
+    const walls=[[[0,0],[5.5,0]],[[5.5,0],[5.5,5.5]],[[5.5,5.5],[0,5.5]],[[0,5.5],[0,0]]];
+    const found=[];
+    for(const [p,q] of walls){const d=a*(q[0]-p[0])+2*(q[1]-p[1]);if(Math.abs(d)<1e-10)continue;
+      const t=(z-a*p[0]-2*p[1])/d;
+      if(t>=-1e-9&&t<=1+1e-9)found.push([p[0]+t*(q[0]-p[0]),p[1]+t*(q[1]-p[1])]);
+    }
+    return found.filter((p,i)=>found.findIndex(q=>Math.hypot(p[0]-q[0],p[1]-q[1])<1e-7)===i);
+  }
+  const slider=root.querySelector('#pl-opt-a');
+  function update(){
+    const a=Number(slider.value);
+    const values=points.map(p=>a*p.x+2*p.y);
+    const best=Math.max(...values);
+    const opt=points.filter((p,i)=>Math.abs(values[i]-best)<1e-7);
+    root.querySelector('#pl-opt-a-val').textContent=fmt(a);
+    root.querySelector('#pl-opt-objective').textContent='max z = '+fmt(a)+'x₁ + 2x₂';
+    root.querySelector('#pl-opt-value').textContent=fmt(best);
+    const status=root.querySelector('#pl-opt-status');
+    status.textContent=opt.length===1?'Óptimo único en '+opt[0].name+'.':'Infinitas soluciones óptimas sobre la arista '+opt.map(p=>p.name).join('–')+'.';
+    const xy=clipping(a,best),line=svg.querySelector('#pl-opt-level');
+    if(xy.length>=2){line.setAttribute('x1',sx(xy[0][0]));line.setAttribute('y1',sy(xy[0][1]));line.setAttribute('x2',sx(xy[1][0]));line.setAttribute('y2',sy(xy[1][1]));line.style.display='';}
+    else line.style.display='none';
+    const edge=svg.querySelector('#pl-opt-edge');
+    if(opt.length===2){edge.setAttribute('x1',sx(opt[0].x));edge.setAttribute('y1',sy(opt[0].y));edge.setAttribute('x2',sx(opt[1].x));edge.setAttribute('y2',sy(opt[1].y));edge.style.display='';}
+    else edge.style.display='none';
+    dots.forEach((dot,i)=>{const isBest=Math.abs(values[i]-best)<1e-7;dot.setAttribute('r',isBest?'7':'5.5');dot.setAttribute('fill',isBest?'#D18E2B':'#183B45');});
+    root.querySelector('#pl-opt-table').innerHTML=points.map((p,i)=>'<tr><td>'+p.name+'</td><td>'+fmt(values[i])+'</td></tr>').join('');
+  }
+  slider.addEventListener('input',update);
+  root.querySelectorAll('button[data-a]').forEach(b=>b.addEventListener('click',()=>{slider.value=b.dataset.a;update();}));
+  update();
+})();
+</script>
+```
+
+### Análisis matemático de la exploración
+
+Los cuatro vértices de $R$ son $A=(0,0)$, $B=(4,0)$, $C=(8/3,8/3)$ y $D=(0,4)$. Sus valores objetivo son $0$, $4a$, $(8a+16)/3$ y $8$, respectivamente. En consecuencia,
+
+$$
+z^*(a)=\begin{cases}
+8,&0\leq a\leq1,\\[2pt]
+\dfrac{8a+16}{3},&1\leq a\leq4,\\[2pt]
+4a,&4\leq a\leq5.
+\end{cases}
+$$
+
+Para $a=1$ son óptimos todos los puntos del segmento $\overline{DC}$; para $a=4$, todos los puntos del segmento $\overline{CB}$. Para los demás valores del intervalo estudiado, la solución óptima es única. La coincidencia de los valores objetivo en dos vértices adyacentes no es accidental: la recta de nivel óptima tiene la misma dirección que la arista que los une.
+
+## Ejercicios de comprensión
+
+**Ejercicio 1.** Demuestre que el conjunto de soluciones óptimas de un programa lineal es convexo cuando es no vacío.
+
+::: {.callout-note collapse="true"}
+## Orientación y solución
+
+Sea $u,v$ cualquier pareja de soluciones óptimas. La región factible es convexa, de modo que $\lambda u+(1-\lambda)v$ es factible para $0\leq\lambda\leq1$. Como $z$ es afín, $z(\lambda u+(1-\lambda)v)=\lambda z^*+(1-\lambda)z^*=z^*$. Por consiguiente, la combinación también es óptima.
+:::
+
+**Ejercicio 2.** En la exploración anterior, determine algebraicamente los valores de $a$ para los cuales aparecen múltiples soluciones óptimas. Justifique mediante la evaluación de vértices.
+
+::: {.callout-tip collapse="true"}
+## Pista
+
+Busque valores de $a$ para los que dos vértices adyacentes tengan el mismo valor objetivo y ese valor sea máximo.
+:::
+
+::: {.callout-note collapse="true"}
+## Solución
+
+En los vértices $D$ y $C$, la igualdad $8=(8a+16)/3$ da $a=1$; en los vértices $C$ y $B$, la igualdad $(8a+16)/3=4a$ da $a=4$. Al comparar con los demás vértices, se confirma que en ambos casos se trata del valor máximo.
+:::
+
+**Ejercicio 3.** Explique por qué el teorema de existencia de un vértice óptimo no garantiza que la solución óptima sea única.
+
+::: {.callout-note collapse="true"}
+## Solución
+
+El teorema solamente asegura la existencia de al menos un vértice que alcanza el óptimo. Si dos vértices distintos son óptimos, toda combinación convexa de ellos también lo es, por lo que existen infinitas soluciones óptimas.
+:::
