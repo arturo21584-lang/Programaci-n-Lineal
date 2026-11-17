@@ -1,0 +1,169 @@
+---
+title: "Soluciones y región de factibilidad"
+---
+
+## Soluciones factibles
+
+Una **solución factible** de un programa lineal es un vector de decisión que satisface simultáneamente todas las restricciones, incluidas las condiciones de signo. La factibilidad no depende de la función objetivo.
+
+Retomemos el modelo
+
+$$
+\begin{aligned}
+\max\quad z&=4x_1+3x_2+5,\\
+2x_1+x_2&\leq8,\\
+x_1+2x_2&\leq10,\\
+3x_1+x_2&\leq12,\\
+x_1,x_2&\geq0.
+\end{aligned}
+$$
+
+El punto $P=(2,3)$ es factible porque las tres expresiones de los lados izquierdos valen, respectivamente, $7$, $8$ y $9$, todas menores que sus disponibilidades. En cambio, el punto $(3,3)$ no es factible: incumple, entre otras, la primera restricción, pues $2(3)+3=9>8$.
+
+### Exploración: comprobar puntos
+
+Seleccioná un punto del plano o introducí sus coordenadas. La actividad comprueba **todas** las condiciones, no solamente una.
+
+```{=html}
+<div class="pl-feas-widget" id="pl-feas-check">
+ <div class="pl-feas-two">
+  <div>
+   <svg id="pl-feas-svg" viewBox="0 0 425 335" role="img" aria-label="Región factible en el plano con punto seleccionable" style="width:100%;height:auto;touch-action:manipulation">
+    <defs><clipPath id="pl-feas-clip"><rect x="53" y="19" width="328" height="275"/></clipPath></defs>
+    <g id="pl-feas-grid"></g>
+    <path id="pl-feas-poly" d="" fill="#178b87" fill-opacity=".16" stroke="#087d80" stroke-width="2.6"/>
+    <g id="pl-feas-frontiers" clip-path="url(#pl-feas-clip)"></g>
+    <circle id="pl-feas-marker" r="7" fill="#d29d35" stroke="#78551e" stroke-width="1.7"/>
+    <text id="pl-feas-marker-label" font-size="13" fill="currentColor">P</text>
+    <text x="390" y="319" font-size="14" fill="currentColor">x₁</text><text x="14" y="18" font-size="14" fill="currentColor">x₂</text>
+   </svg>
+   <p class="pl-feas-caption">Hacé clic sobre la gráfica para seleccionar un punto. Las coordenadas se redondean al múltiplo de 0,5 más cercano.</p>
+  </div>
+  <div>
+   <div class="pl-feas-fields"><label>Coordenada x₁ <input id="pl-feas-x" type="number" min="-1" max="6" step="0.5" value="2"></label><label>Coordenada x₂ <input id="pl-feas-y" type="number" min="-1" max="6" step="0.5" value="3"></label></div>
+   <div class="pl-feas-preset"><button type="button" data-pt="0,0">(0, 0)</button><button type="button" data-pt="2,3">(2, 3)</button><button type="button" data-pt="3,3">(3, 3)</button><button type="button" data-pt="-1,2">(−1, 2)</button></div>
+   <p id="pl-feas-status" aria-live="polite"></p>
+   <div id="pl-feas-checks" class="pl-feas-checks"></div>
+  </div>
+ </div>
+</div>
+```
+
+## Conjunto y región de factibilidad
+
+El **conjunto factible** $R$ reúne todos los vectores que satisfacen las restricciones. En dos variables puede representarse geométricamente como la intersección de semiplanos; llamaremos también **región factible** a su representación en el plano.
+
+Para el modelo anterior,
+
+$$
+R=\left\{(x_1,x_2)\in\mathbb R^2:\ 2x_1+x_2\leq8,\ x_1+2x_2\leq10,\ 3x_1+x_2\leq12,\ x_1,x_2\geq0\right\}.
+$$
+
+La región es un polígono cerrado y acotado, cuyos vértices son
+
+$$
+(0,0),\qquad (4,0),\qquad (2,4),\qquad (0,5).
+$$
+
+La restricción $3x_1+x_2\leq12$ es **redundante** en este modelo: no modifica la región obtenida a partir de las otras dos desigualdades y la no negatividad. En efecto, de $2x_1+x_2\leq8$ y $x_1\geq0$ se deduce $3x_1+x_2=(2x_1+x_2)+x_1\leq8+x_1\leq12$, ya que $x_1\leq4$.
+
+### Exploración: construir la región
+
+Activá las fronteras, examiná los vértices y observá que una desigualdad puede ser válida sin determinar un lado nuevo del polígono.
+
+```{=html}
+<div class="pl-feas-widget" id="pl-feas-region">
+ <div class="pl-feas-controls">
+  <label><input id="pl-feas-show1" type="checkbox" checked> 2x₁ + x₂ = 8</label>
+  <label><input id="pl-feas-show2" type="checkbox" checked> x₁ + 2x₂ = 10</label>
+  <label><input id="pl-feas-show3" type="checkbox" checked> 3x₁ + x₂ = 12</label>
+  <label><input id="pl-feas-show-verts" type="checkbox"> Mostrar vértices</label>
+ </div>
+ <svg viewBox="0 0 425 335" role="img" aria-label="Región factible con fronteras seleccionables" style="width:100%;max-width:640px;height:auto">
+  <g id="pl-feas-region-grid"></g>
+  <path id="pl-feas-region-poly" fill="#178b87" fill-opacity=".18" stroke="#087d80" stroke-width="2.5"/>
+  <g id="pl-feas-region-lines"></g><g id="pl-feas-region-vertices"></g>
+  <text x="390" y="319" font-size="14" fill="currentColor">x₁</text><text x="14" y="18" font-size="14" fill="currentColor">x₂</text>
+ </svg>
+ <p class="pl-feas-caption">El sombreado siempre representa la región de <em>todas</em> las restricciones. Las casillas permiten mostrar u ocultar sus rectas frontera, no eliminar restricciones del modelo.</p>
+</div>
+```
+
+::: {.callout-note}
+La geometría de una región factible en tres variables puede estudiarse mediante un **poliedro**. Más adelante, una exploración tridimensional permitirá examinar sus caras, aristas, vértices y planos de nivel.
+:::
+
+## Soluciones óptimas
+
+Una **solución óptima** es una solución factible que alcanza el mejor valor de la función objetivo entre todas las soluciones factibles. Para maximizar $z$, un punto $x^*\in R$ es óptimo cuando $z(x)\leq z(x^*)$ para todo $x\in R$.
+
+Conviene distinguir entre la **decisión óptima** $x^*$ y el **valor óptimo** $z^*=z(x^*)$.
+
+En nuestro modelo, los valores de $z=4x_1+3x_2+5$ en los vértices son:
+
+| Vértice | Valor objetivo |
+|---|---:|
+| $(0,0)$ | $5$ |
+| $(4,0)$ | $21$ |
+| $(2,4)$ | $25$ |
+| $(0,5)$ | $20$ |
+
+El mayor valor es $25$ y se obtiene en $(2,4)$. Como la región es un polígono no vacío y acotado, y la función objetivo es afín, su máximo se alcanza en algún vértice; el fundamento de este resultado se desarrollará más adelante.
+
+Por tanto,
+
+$$
+\boxed{x^*=(2,4),\qquad z^*=25.}
+$$
+
+No todas las soluciones factibles son óptimas. Por ejemplo, $(2,3)$ pertenece a $R$, pero produce $z(2,3)=22<25$.
+
+### Comprobación de comprensión
+
+```{=html}
+<div class="pl-feas-widget" id="pl-feas-quiz">
+ <p><strong>¿Qué afirmación es correcta?</strong></p>
+ <label><input type="radio" name="pl-feas-q" value="a"> Todo punto factible es óptimo.</label>
+ <label><input type="radio" name="pl-feas-q" value="b"> La solución óptima debe ser factible y alcanzar el mejor valor objetivo.</label>
+ <label><input type="radio" name="pl-feas-q" value="c"> El valor óptimo es el vector de variables.</label>
+ <button type="button" id="pl-feas-quiz-check">Comprobar</button>
+ <p id="pl-feas-quiz-result" role="status" aria-live="polite"></p>
+</div>
+```
+
+```{=html}
+<style>
+.pl-feas-widget{border:1px solid #c9d6df;border-radius:12px;padding:1rem 1.15rem;margin:1rem 0;background:color-mix(in srgb,Canvas 95%,#168b8a 5%)}
+.pl-feas-widget label{display:block;margin:.45rem 0}.pl-feas-widget input[type=checkbox],.pl-feas-widget input[type=radio]{accent-color:#087d80}
+.pl-feas-widget button{border:1px solid #087d80;border-radius:7px;background:transparent;color:inherit;padding:.38rem .65rem;cursor:pointer;margin:.3rem .3rem .3rem 0}
+.pl-feas-widget button:hover{background:color-mix(in srgb,Canvas 75%,#168b8a 25%)}
+.pl-feas-two{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(225px,1fr);gap:1.2rem;align-items:start}
+.pl-feas-fields{display:flex;gap:.8rem;flex-wrap:wrap}.pl-feas-fields label{flex:1;min-width:100px}.pl-feas-fields input{display:block;width:100%;padding:.35rem;border:1px solid #abbccc;border-radius:5px;color:inherit;background:Canvas}
+.pl-feas-caption{font-size:.85rem;color:inherit;opacity:.76}.pl-feas-checks{font-size:.91rem}.pl-feas-checks p{margin:.35rem 0}
+.pl-feas-controls{display:flex;flex-wrap:wrap;column-gap:1.2rem;row-gap:.25rem}
+#pl-feas-quiz>label{margin:.6rem 0}
+@media(max-width:700px){.pl-feas-two{grid-template-columns:1fr}}
+</style>
+<script>
+(function(){
+ "use strict";
+ const NS="http://www.w3.org/2000/svg";
+ const X=x=>53+50*x,Y=y=>294-44*y;
+ const verts=[[0,0],[4,0],[2,4],[0,5]];
+ function el(tag,attributes,text){const q=document.createElementNS(NS,tag);for(const [k,v] of Object.entries(attributes||{}))q.setAttribute(k,String(v));if(text!==undefined)q.textContent=text;return q;}
+ function grid(g){for(let i=0;i<=6;i++){g.appendChild(el("line",{x1:X(i),y1:Y(6),x2:X(i),y2:Y(0),stroke:"currentColor",opacity:.09}));g.appendChild(el("line",{x1:X(0),y1:Y(i),x2:X(6.3),y2:Y(i),stroke:"currentColor",opacity:.09}));g.appendChild(el("text",{x:X(i),y:314,"text-anchor":"middle","font-size":11,fill:"currentColor"},i));if(i>0)g.appendChild(el("text",{x:39,y:Y(i)+4,"text-anchor":"end","font-size":11,fill:"currentColor"},i));}g.appendChild(el("line",{x1:X(0),y1:Y(0),x2:X(6.5),y2:Y(0),stroke:"currentColor","stroke-width":1.4}));g.appendChild(el("line",{x1:X(0),y1:Y(0),x2:X(0),y2:Y(6.4),stroke:"currentColor","stroke-width":1.4}));}
+ const path=verts.map((p,i)=>(i===0?"M":"L")+X(p[0])+","+Y(p[1])).join(" ")+" Z";
+ const checks=[{a:2,b:1,c:8,color:"#477ba8"},{a:1,b:2,c:10,color:"#b3852b"},{a:3,b:1,c:12,color:"#9a62a3"}];
+ function lineFromConstraint(a,b,c){const candidates=[];if(b!==0){candidates.push([0,c/b],[6.3,(c-6.3*a)/b]);}else{candidates.push([c/a,0],[c/a,6.3]);}const p=candidates[0],q=candidates[1];return el("line",{x1:X(p[0]),y1:Y(p[1]),x2:X(q[0]),y2:Y(q[1]),stroke:"#477ba8","stroke-width":2,"stroke-dasharray":"6 4"});}
+ const root=document.getElementById("pl-feas-check");
+ if(root){const gridTarget=root.querySelector("#pl-feas-grid");grid(gridTarget);root.querySelector("#pl-feas-poly").setAttribute("d",path);
+ const boundary=root.querySelector("#pl-feas-frontiers");checks.forEach(k=>{const l=lineFromConstraint(k.a,k.b,k.c);l.setAttribute("stroke",k.color);boundary.appendChild(l)});
+ const marker=root.querySelector("#pl-feas-marker"),label=root.querySelector("#pl-feas-marker-label");const xi=root.querySelector("#pl-feas-x"),yi=root.querySelector("#pl-feas-y");
+ function update(){const x=Number(xi.value),y=Number(yi.value);if(!Number.isFinite(x)||!Number.isFinite(y))return;marker.setAttribute("cx",X(x));marker.setAttribute("cy",Y(y));label.setAttribute("x",X(x)+9);label.setAttribute("y",Y(y)-9);const results=checks.map(k=>({lhs:k.a*x+k.b*y,c:k.c,ok:k.a*x+k.b*y<=k.c+1e-8}));const positive=x>=0&&y>=0;const ok=positive&&results.every(r=>r.ok);root.querySelector("#pl-feas-status").textContent="P=("+x+", "+y+") es "+(ok?"factible.":"infactible.");root.querySelector("#pl-feas-checks").innerHTML=results.map((r,i)=>"<p>"+(r.ok?"✓":"✗")+" Restricción "+(i+1)+": "+r.lhs+" ≤ "+r.c+"</p>").join("")+"<p>"+(positive?"✓":"✗")+" No negatividad: x₁≥0, x₂≥0</p>";}
+ xi.addEventListener("input",update);yi.addEventListener("input",update);root.querySelectorAll("[data-pt]").forEach(b=>b.addEventListener("click",()=>{const p=b.dataset.pt.split(",");xi.value=p[0];yi.value=p[1];update()}));
+ const svg=root.querySelector("#pl-feas-svg");svg.addEventListener("click",evt=>{const loc=svg.createSVGPoint();loc.x=evt.clientX;loc.y=evt.clientY;const m=svg.getScreenCTM();if(!m)return;const pt=loc.matrixTransform(m.inverse());xi.value=Math.max(-1,Math.min(6,Math.round(((pt.x-53)/50)*2)/2));yi.value=Math.max(-1,Math.min(6,Math.round(((294-pt.y)/44)*2)/2));update()});update();}
+ const region=document.getElementById("pl-feas-region");if(region){grid(region.querySelector("#pl-feas-region-grid"));region.querySelector("#pl-feas-region-poly").setAttribute("d",path);const lines=region.querySelector("#pl-feas-region-lines");const vg=region.querySelector("#pl-feas-region-vertices");checks.forEach((k,i)=>{const l=lineFromConstraint(k.a,k.b,k.c);l.setAttribute("stroke",k.color);l.setAttribute("opacity",.9);lines.appendChild(l);const box=region.querySelector("#pl-feas-show"+(i+1));box.addEventListener("change",()=>{l.style.display=box.checked?"":"none"});});verts.forEach((p,i)=>{const circle=el("circle",{cx:X(p[0]),cy:Y(p[1]),r:5,fill:"#184753",stroke:"white","stroke-width":1.5}),lab=el("text",{x:X(p[0])+9,y:Y(p[1])-10,"font-size":12,fill:"currentColor"},String.fromCharCode(65+i)+" ("+p.join(", ")+")");vg.appendChild(circle);vg.appendChild(lab)});vg.style.display="none";region.querySelector("#pl-feas-show-verts").addEventListener("change",e=>vg.style.display=e.target.checked?"":"none");}
+ const quiz=document.getElementById("pl-feas-quiz");if(quiz)quiz.querySelector("#pl-feas-quiz-check").addEventListener("click",()=>{const q=quiz.querySelector("input[name=pl-feas-q]:checked");quiz.querySelector("#pl-feas-quiz-result").textContent=!q?"Seleccioná una respuesta.":q.value==="b"?"Correcto. La optimalidad exige factibilidad y el mejor valor objetivo.":"Revisá la diferencia entre una decisión factible y el valor de la función objetivo.";});
+})();
+</script>
+```
