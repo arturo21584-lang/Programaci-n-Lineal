@@ -344,65 +344,89 @@ x_1,x_2&amp;\geq0.
 \]</span></p>
 <p>La <strong>región factible</strong> es la intersección de los semiplanos correspondientes a las restricciones. Cada valor de <span class="math inline">\(k\)</span> determina una <strong>recta de nivel</strong> <span class="math inline">\(3x_1+2x_2=k\)</span>. En un problema de maximización, aumentamos <span class="math inline">\(k\)</span> hasta localizar el último contacto con la región factible.</p>
 <div id="pl-118" class="pl118" aria-label="Exploración del método gráfico">
-<div class="pl118-header">
-<pre><code>&lt;strong&gt;Exploración del método gráfico&lt;/strong&gt;
-&lt;label&gt;Modo:
-  &lt;select id="pl118-mode"&gt;&lt;option value="libre"&gt;Exploración libre&lt;/option&gt;&lt;option value="guiado"&gt;Resolución guiada&lt;/option&gt;&lt;/select&gt;
-&lt;/label&gt;</code></pre>
+  <div class="pl118-header">
+    <strong>Exploración del método gráfico</strong>
+    <label>Modo:
+      <select id="pl118-mode"><option value="libre">Exploración libre</option><option value="guiado">Resolución guiada</option></select>
+    </label>
+  </div>
+  <p id="pl118-guide" class="pl118-guide" aria-live="polite">Desplazá la recta de nivel y compará los valores de la función objetivo en los vértices.</p>
+  <div class="pl118-chart">
+    <svg id="pl118-svg" viewbox="0 0 530 430" role="img" aria-label="Región factible del programa lineal y recta de nivel ajustable">
+      <defs><clippath id="pl118-clip"><rect x="68" y="28" width="378" height="350"></rect></clippath></defs>
+      <g id="pl118-grid"></g>
+      <path id="pl118-poly" fill="#198d91" fill-opacity="0.15" stroke="#087d80" stroke-width="3" stroke-linejoin="round"></path>
+      <g id="pl118-levels" clip-path="url(#pl118-clip)"></g>
+      <g id="pl118-vertices"></g>
+      <text x="449" y="403" fill="currentColor" font-size="18">x₁</text>
+      <text x="30" y="23" fill="currentColor" font-size="18">x₂</text>
+      <text x="135" y="290" fill="#087d80" font-size="22" font-style="italic">R</text>
+    </svg>
+  </div>
+  <div class="pl118-controls">
+    <label for="pl118-k">Recta de nivel: <span id="pl118-ktext">k = 8</span></label>
+    <input id="pl118-k" type="range" min="0" max="16" step="0.0333333333" value="8">
+    <div class="pl118-actions">
+      <button type="button" data-pl118-k="4">k = 4</button>
+      <button type="button" data-pl118-k="10">k = 10</button>
+      <button type="button" data-pl118-k="13.333333333333334">k = 40/3</button>
+      <button type="button" data-pl118-k="15">k = 15</button>
+    </div>
+    <p id="pl118-status" class="pl118-status" aria-live="polite"></p>
+    <div class="pl118-vertex-group">
+      <span>Evaluar un vértice:</span>
+      <div class="pl118-actions" id="pl118-buttons">
+        <button type="button" data-pl118-v="0">A</button>
+        <button type="button" data-pl118-v="1">B</button>
+        <button type="button" data-pl118-v="2">C</button>
+        <button type="button" data-pl118-v="3">D</button>
+      </div>
+      <p id="pl118-eval" aria-live="polite"></p>
+    </div>
+    <button id="pl118-reveal" type="button" aria-expanded="false">Mostrar solución razonada</button>
+    <div id="pl118-solution" hidden="">
+      <p>Los vértices de la región factible son
+        <span class="math inline">\(A=(0,0)\)</span>,
+        <span class="math inline">\(B=(4,0)\)</span>,
+        <span class="math inline">\(C=(8/3,8/3)\)</span> y
+        <span class="math inline">\(D=(0,4)\)</span>.
+      </p>
+      
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Vértice</th>
+<th data-quarto-table-cell-role="th">Valor de z</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td>12</td>
+</tr>
+<tr class="odd">
+<td>C</td>
+<td>40/3</td>
+</tr>
+<tr class="even">
+<td>D</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+
+      <p>La región es no vacía, cerrada y acotada. Por el teorema de optimalidad en vértices, basta comparar los valores de la función objetivo en sus vértices. El máximo es <strong>z* = 40/3</strong> y se alcanza en <strong>(8/3, 8/3)</strong>.</p>
+      <p>En el óptimo son activas las restricciones <span class="math inline">\(2x_1+x_2=8\)</span> y <span class="math inline">\(x_1+2x_2=8\)</span>. La restricción <span class="math inline">\(x_1+x_2\leq6\)</span> es redundante, pues las dos anteriores implican <span class="math inline">\(x_1+x_2\leq16/3&lt;6\)</span>.</p>
+    </div>
+  </div>
 </div>
-<p id="pl118-guide" class="pl118-guide" aria-live="polite">
-Desplazá la recta de nivel y compará los valores de la función objetivo en los vértices.
-</p>
-<div class="pl118-chart">
-<pre><code>&lt;svg id="pl118-svg" viewBox="0 0 530 430" role="img" aria-label="Región factible del programa lineal y recta de nivel ajustable"&gt;
-  &lt;defs&gt;&lt;clipPath id="pl118-clip"&gt;&lt;rect x="68" y="28" width="378" height="350"/&gt;&lt;/clipPath&gt;&lt;/defs&gt;
-  &lt;g id="pl118-grid"&gt;&lt;/g&gt;
-  &lt;path id="pl118-poly" fill="#198d91" fill-opacity="0.15" stroke="#087d80" stroke-width="3" stroke-linejoin="round"&gt;&lt;/path&gt;
-  &lt;g id="pl118-levels" clip-path="url(#pl118-clip)"&gt;&lt;/g&gt;
-  &lt;g id="pl118-vertices"&gt;&lt;/g&gt;
-  &lt;text x="449" y="403" fill="currentColor" font-size="18"&gt;x₁&lt;/text&gt;
-  &lt;text x="30" y="23" fill="currentColor" font-size="18"&gt;x₂&lt;/text&gt;
-  &lt;text x="135" y="290" fill="#087d80" font-size="22" font-style="italic"&gt;R&lt;/text&gt;
-&lt;/svg&gt;</code></pre>
-</div>
-<div class="pl118-controls">
-<pre><code>&lt;label for="pl118-k"&gt;Recta de nivel: &lt;span id="pl118-ktext"&gt;k = 8&lt;/span&gt;&lt;/label&gt;
-&lt;input id="pl118-k" type="range" min="0" max="16" step="0.0333333333" value="8" /&gt;
-&lt;div class="pl118-actions"&gt;
-  &lt;button type="button" data-pl118-k="4"&gt;k = 4&lt;/button&gt;
-  &lt;button type="button" data-pl118-k="10"&gt;k = 10&lt;/button&gt;
-  &lt;button type="button" data-pl118-k="13.333333333333334"&gt;k = 40/3&lt;/button&gt;
-  &lt;button type="button" data-pl118-k="15"&gt;k = 15&lt;/button&gt;
-&lt;/div&gt;
-&lt;p id="pl118-status" class="pl118-status" aria-live="polite"&gt;&lt;/p&gt;
-&lt;div class="pl118-vertex-group"&gt;
-  &lt;span&gt;Evaluar un vértice:&lt;/span&gt;
-  &lt;div class="pl118-actions" id="pl118-buttons"&gt;
-    &lt;button type="button" data-pl118-v="0"&gt;A&lt;/button&gt;
-    &lt;button type="button" data-pl118-v="1"&gt;B&lt;/button&gt;
-    &lt;button type="button" data-pl118-v="2"&gt;C&lt;/button&gt;
-    &lt;button type="button" data-pl118-v="3"&gt;D&lt;/button&gt;
-  &lt;/div&gt;
-  &lt;p id="pl118-eval" aria-live="polite"&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;button id="pl118-reveal" type="button" aria-expanded="false"&gt;Mostrar solución razonada&lt;/button&gt;
-&lt;div id="pl118-solution" hidden&gt;
-  &lt;p&gt;Los vértices de la región factible son
-    &lt;span class="math inline"&gt;\(A=(0,0)\)&lt;/span&gt;,
-    &lt;span class="math inline"&gt;\(B=(4,0)\)&lt;/span&gt;,
-    &lt;span class="math inline"&gt;\(C=(8/3,8/3)\)&lt;/span&gt; y
-    &lt;span class="math inline"&gt;\(D=(0,4)\)&lt;/span&gt;.
-  &lt;/p&gt;
-  &lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Vértice&lt;/th&gt;&lt;th&gt;Valor de z&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
-    &lt;tbody&gt;&lt;tr&gt;&lt;td&gt;A&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;B&lt;/td&gt;&lt;td&gt;12&lt;/td&gt;&lt;/tr&gt;
-    &lt;tr&gt;&lt;td&gt;C&lt;/td&gt;&lt;td&gt;40/3&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;D&lt;/td&gt;&lt;td&gt;8&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;
-  &lt;/table&gt;
-  &lt;p&gt;La región es no vacía, cerrada y acotada. Por el teorema de optimalidad en vértices, basta comparar los valores de la función objetivo en sus vértices. El máximo es &lt;strong&gt;z* = 40/3&lt;/strong&gt; y se alcanza en &lt;strong&gt;(8/3, 8/3)&lt;/strong&gt;.&lt;/p&gt;
-  &lt;p&gt;En el óptimo son activas las restricciones &lt;span class="math inline"&gt;\(2x_1+x_2=8\)&lt;/span&gt; y &lt;span class="math inline"&gt;\(x_1+2x_2=8\)&lt;/span&gt;. La restricción &lt;span class="math inline"&gt;\(x_1+x_2\leq6\)&lt;/span&gt; es redundante, pues las dos anteriores implican &lt;span class="math inline"&gt;\(x_1+x_2\leq16/3&lt;6\)&lt;/span&gt;.&lt;/p&gt;
-&lt;/div&gt;</code></pre>
-</div>
-</div>
-<p><strong>Para reflexionar.</strong> ¿Por qué la última recta de nivel toca la región factible en el vértice <span class="math inline">\(C\)</span>? ¿Qué sucede cuando <span class="math inline">\(k&gt;40/3\)</span>? Justificá las respuestas a partir de las restricciones y de la función objetivo, no solamente de la gráfica.</p>
+
+
+
 <style>
 .pl118{--ink:#143b47;--accent:#087d80;--gold:#bb7c10;border:1px solid #cbd5dc;border-radius:14px;padding:clamp(14px,3vw,24px);max-width:800px;margin:1.5rem auto;font-family:inherit;color:inherit}
 .pl118 *{box-sizing:border-box}.pl118-header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.pl118-header select{border:1px solid #a7b5bf;border-radius:7px;padding:7px;background:transparent;color:inherit}
@@ -462,6 +486,7 @@ Desplazá la recta de nivel y compará los valores de la función objetivo en lo
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setup);else setup();
 })();
 </script>
+<p><strong>Para reflexionar.</strong> ¿Por qué la última recta de nivel toca la región factible en el vértice <span class="math inline">\(C\)</span>? ¿Qué sucede cuando <span class="math inline">\(k&gt;40/3\)</span>? Justificá las respuestas a partir de las restricciones y de la función objetivo, no solamente de la gráfica.</p>
 
 
 
