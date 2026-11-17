@@ -35,6 +35,7 @@ book:
         - capitulos/01-introduccion.qmd
         - capitulos/02-geometria.qmd
         - capitulos/ejemplo_metodo_grafico.qmd
+        - capitulos/fundamentos_iniciales_capitulo1.qmd
     - part: "II. De la geometría al algoritmo"
       chapters:
         - capitulos/03-bases.qmd
