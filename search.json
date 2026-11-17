@@ -335,6 +335,30 @@
     ]
   },
   {
+    "objectID": "capitulos/planos_y_rectas_de_nivel.html",
+    "href": "capitulos/planos_y_rectas_de_nivel.html",
+    "title": "Planos y rectas de nivel: dos perspectivas del barrido",
+    "section": "",
+    "text": "De una función objetivo a una recta de nivel\nEn un programa lineal con dos variables, una función objetivo afín puede escribirse como \\(z=c_1x_1+c_2x_2+z_0\\). Su gráfica en el espacio es un plano. Para un valor fijo \\(k\\), el plano horizontal \\(z=k\\) corta la gráfica de la función objetivo en una recta, cuya proyección vertical sobre el plano \\(x_1x_2\\) se describe mediante\n\\[\nc_1x_1+c_2x_2+z_0=k.\n\\]\nEsta es la recta de nivel correspondiente a \\(k\\). Al aumentar \\(k\\), los planos horizontales se desplazan hacia arriba y sus rectas de nivel se desplazan paralelamente sobre el plano de las variables. En un problema de maximización, buscamos el mayor valor de \\(k\\) para el cual la recta de nivel todavía encuentra puntos factibles.",
+    "crumbs": [
+      "Libro",
+      "I. Modelar y visualizar",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Planos y rectas de nivel: dos perspectivas del barrido</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/planos_y_rectas_de_nivel.html#de-una-función-objetivo-a-una-recta-de-nivel",
+    "href": "capitulos/planos_y_rectas_de_nivel.html#de-una-función-objetivo-a-una-recta-de-nivel",
+    "title": "Planos y rectas de nivel: dos perspectivas del barrido",
+    "section": "",
+    "text": "Exploración simultánea en dos y tres dimensiones\nConsideremos el problema\n\\[\n\\begin{aligned}\n\\max\\quad z&=3x_1+2x_2,\\\\\nx_1+x_2&\\leq6,\\\\\n2x_1+x_2&\\leq8,\\\\\nx_1+2x_2&\\leq8,\\\\\nx_1,x_2&\\geq0.\n\\end{aligned}\n\\]\nDesplazá el control \\(k\\). En la vista 3D, el segmento dorado representa la intersección de los dos planos; la línea discontinua proyectada en el plano de las variables es su sombra geométrica. En la vista 2D, esa proyección es la recta \\(3x_1+2x_2=k\\). El segmento verde oscuro, cuando existe, indica la parte de la recta que atraviesa la región factible.\n\n  \n    \n      Vista tridimensional\n      \n      Plano objetivoPlano z = kRegión factible\n    \n    \n      Vista bidimensional\n      \n      Región factibleRecta de nivel\n    \n  \n  \n    Altura del plano horizontal k: 6\n    \n    \n      Reiniciar\n      Ir al óptimo\n       Mostrar proyección\n       Mostrar región factible\n    \n    \n    La vista 3D utiliza una proyección axonométrica esquemática; todos los objetos se calculan a partir de las mismas ecuaciones y del mismo parámetro k. La gráfica muestra una ventana finita del plano objetivo.\n  \n  \n    Mostrar justificación matemática del óptimo\n    Los vértices de la región factible son (0,0), (4,0), (8/3,8/3) y (0,4). Sus valores objetivo son 0, 12, 40/3 y 8, respectivamente. Por tanto, el valor máximo es z* = 40/3 y se alcanza en el vértice (8/3,8/3). En dicho punto son activas las restricciones 2x₁+x₂=8 y x₁+2x₂=8.\n  \n\n\n\n\n\nPara pensar\n\n¿Qué ocurre en la vista tridimensional cuando el plano horizontal supera la altura óptima?\n¿Por qué la recta de nivel sigue existiendo aunque ya no intersecte la región factible?\n¿Qué restricciones son activas en el vértice óptimo?\n\nLa visualización tridimensional aporta intuición sobre el barrido, pero no sustituye la justificación de optimalidad. En las siguientes páginas utilizaremos el método gráfico para calcular exactamente los vértices y comparar sus valores objetivo.",
+    "crumbs": [
+      "Libro",
+      "I. Modelar y visualizar",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Planos y rectas de nivel: dos perspectivas del barrido</span>"
+    ]
+  },
+  {
     "objectID": "capitulos/01-introduccion.html",
     "href": "capitulos/01-introduccion.html",
     "title": "Introducción y formulación",
@@ -343,7 +367,7 @@
     "crumbs": [
       "Libro",
       "I. Modelar y visualizar",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Introducción y formulación</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Introducción y formulación</span>"
     ]
   },
   {
@@ -355,7 +379,7 @@
     "crumbs": [
       "Libro",
       "I. Modelar y visualizar",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Introducción y formulación</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Introducción y formulación</span>"
     ]
   },
   {
@@ -367,7 +391,7 @@
     "crumbs": [
       "Libro",
       "I. Modelar y visualizar",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Interpretación geométrica de la programación lineal</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Interpretación geométrica de la programación lineal</span>"
     ]
   },
   {
@@ -379,7 +403,7 @@
     "crumbs": [
       "Libro",
       "I. Modelar y visualizar",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Interpretación geométrica de la programación lineal</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Interpretación geométrica de la programación lineal</span>"
     ]
   },
   {
@@ -391,7 +415,7 @@
     "crumbs": [
       "Libro",
       "I. Modelar y visualizar",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Ejemplo interactivo: resolución mediante el método gráfico</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Ejemplo interactivo: resolución mediante el método gráfico</span>"
     ]
   },
   {
@@ -403,7 +427,7 @@
     "crumbs": [
       "Libro",
       "II. De la geometría al algoritmo",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Bases y soluciones básicas factibles</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Bases y soluciones básicas factibles</span>"
     ]
   },
   {
@@ -415,7 +439,7 @@
     "crumbs": [
       "Libro",
       "II. De la geometría al algoritmo",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Bases y soluciones básicas factibles</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Bases y soluciones básicas factibles</span>"
     ]
   },
   {
@@ -427,7 +451,7 @@
     "crumbs": [
       "Libro",
       "III. Algoritmos de resolución",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Método Simplex</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Método Simplex</span>"
     ]
   },
   {
@@ -439,7 +463,7 @@
     "crumbs": [
       "Libro",
       "III. Algoritmos de resolución",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Método Simplex</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Método Simplex</span>"
     ]
   },
   {
@@ -451,7 +475,7 @@
     "crumbs": [
       "Libro",
       "IV. Dualidad y análisis postóptimo",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Dualidad e interpretación económica</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Dualidad e interpretación económica</span>"
     ]
   },
   {
@@ -463,7 +487,7 @@
     "crumbs": [
       "Libro",
       "IV. Dualidad y análisis postóptimo",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Dualidad e interpretación económica</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Dualidad e interpretación económica</span>"
     ]
   },
   {
@@ -475,7 +499,7 @@
     "crumbs": [
       "Libro",
       "IV. Dualidad y análisis postóptimo",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Análisis de sensibilidad</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Análisis de sensibilidad</span>"
     ]
   },
   {
@@ -487,7 +511,7 @@
     "crumbs": [
       "Libro",
       "IV. Dualidad y análisis postóptimo",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Análisis de sensibilidad</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Análisis de sensibilidad</span>"
     ]
   },
   {
@@ -499,7 +523,7 @@
     "crumbs": [
       "Libro",
       "V. Modelos y aplicaciones",
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Modelos especiales</span>"
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Modelos especiales</span>"
     ]
   },
   {
@@ -511,7 +535,7 @@
     "crumbs": [
       "Libro",
       "V. Modelos y aplicaciones",
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Modelos especiales</span>"
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Modelos especiales</span>"
     ]
   },
   {
@@ -523,7 +547,7 @@
     "crumbs": [
       "Libro",
       "V. Modelos y aplicaciones",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Programación lineal entera</span>"
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Programación lineal entera</span>"
     ]
   },
   {
@@ -535,7 +559,7 @@
     "crumbs": [
       "Libro",
       "V. Modelos y aplicaciones",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Programación lineal entera</span>"
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Programación lineal entera</span>"
     ]
   },
   {
@@ -547,7 +571,7 @@
     "crumbs": [
       "Libro",
       "V. Modelos y aplicaciones",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Aplicaciones de la programación lineal</span>"
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Aplicaciones de la programación lineal</span>"
     ]
   },
   {
@@ -559,7 +583,7 @@
     "crumbs": [
       "Libro",
       "V. Modelos y aplicaciones",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Aplicaciones de la programación lineal</span>"
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Aplicaciones de la programación lineal</span>"
     ]
   },
   {
@@ -571,7 +595,7 @@
     "crumbs": [
       "Libro",
       "Material complementario",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Exploraciones interactivas</span>"
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Exploraciones interactivas</span>"
     ]
   },
   {
@@ -583,7 +607,7 @@
     "crumbs": [
       "Libro",
       "Material complementario",
-      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Recursos académicos</span>"
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Recursos académicos</span>"
     ]
   },
   {
@@ -595,7 +619,7 @@
     "crumbs": [
       "Libro",
       "Material complementario",
-      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Acerca del libro</span>"
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Acerca del libro</span>"
     ]
   },
   {
@@ -607,7 +631,7 @@
     "crumbs": [
       "Libro",
       "Material complementario",
-      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Acerca del libro</span>"
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Acerca del libro</span>"
     ]
   },
   {
@@ -618,7 +642,7 @@
     "text": "Esta sección se generará a partir de las fuentes efectivamente consultadas y verificadas. Por ahora no se han incluido fichas bibliográficas, para evitar registrar datos no comprobados.",
     "crumbs": [
       "Libro",
-      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Referencias bibliográficas</span>"
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Referencias bibliográficas</span>"
     ]
   }
 ]
