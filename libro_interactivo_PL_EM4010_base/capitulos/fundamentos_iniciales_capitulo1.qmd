@@ -1,0 +1,179 @@
+---
+title: "Fundamentos iniciales: formulación de un programa lineal"
+subtitle: "Capítulo 1 · Apartados 1.1–1.4"
+---
+
+## 1.1. ¿Qué caracteriza a un programa lineal?
+
+Imaginemos que debemos distribuir recursos limitados entre distintas actividades. Antes de buscar una solución, necesitamos **identificar las decisiones posibles**, **cuantificar lo que deseamos optimizar** y **representar las limitaciones**.
+
+Un **programa lineal** es un problema de optimización cuya función objetivo es **afín** en las variables de decisión y cuyas restricciones son ecuaciones o desigualdades lineales. En la terminología habitual de Programación Lineal, las funciones afines también se admiten bajo la denominación de funciones objetivo lineales.
+
+En particular, las variables aparecen en primer grado y multiplicadas por coeficientes constantes. Un término independiente como $+7$ está permitido.
+
+Por ejemplo, $3x_1+5x_2$, $2x_1-4x_2+7$ y $x_1+3x_2-2x_3$ son expresiones admisibles. En cambio, $x_1^2$, $x_1x_2$, $\sqrt{x_1}$ y $x_1/x_2$ no son afines.
+
+::: {.callout-note}
+Una **función objetivo afín** puede escribirse como $z(x)=cx^T+z_0$. La presencia de una constante $z_0$ no modifica cuáles son las soluciones óptimas: solamente desplaza el valor objetivo.
+:::
+
+### Exploración: reconocer expresiones admisibles
+
+Seleccioná todas las expresiones que podrían representar una función objetivo de un programa lineal.
+
+```{=html}
+<div class="pl-intro-widget" id="pl-intro-identificar">
+ <fieldset>
+  <legend>¿Cuáles expresiones son afines?</legend>
+  <label><input type="checkbox" data-correct="true"> \(3x_1-2x_2+7\)</label>
+  <label><input type="checkbox" data-correct="false"> \(x_1x_2+4\)</label>
+  <label><input type="checkbox" data-correct="false"> \(\sqrt{x_1}+x_2\)</label>
+  <label><input type="checkbox" data-correct="true"> \(5x_1-3x_2\)</label>
+ </fieldset>
+ <button type="button" class="pl-intro-btn" id="pl-intro-check">Comprobar</button>
+ <p id="pl-intro-result" role="status" aria-live="polite"></p>
+</div>
+```
+
+## 1.2. Elementos de un programa lineal
+
+Un modelo de Programación Lineal reúne tres elementos.
+
+**Variables de decisión.** Representan las cantidades que podemos elegir. Por ejemplo, $x_1$ y $x_2$ pueden indicar unidades de dos productos.
+
+**Función objetivo.** Mide la cantidad que queremos maximizar o minimizar: utilidad, producción, costo, tiempo u otra magnitud pertinente.
+
+**Restricciones.** Describen los límites impuestos a las decisiones: recursos, demandas, capacidades, condiciones técnicas o no negatividad.
+
+En la expresión $2x_1+x_2\leq8$, los números $2$ y $1$ son coeficientes de consumo y el número $8$ es el término independiente que representa la disponibilidad.
+
+### Exploración: cambiar coeficientes y disponibilidades
+
+Considerá el modelo ilustrativo
+
+$$
+\begin{aligned}
+\max\quad z&=c_1x_1+3x_2,\\
+2x_1+x_2&\leq b_1,\\
+x_1,x_2&\geq0.
+\end{aligned}
+$$
+
+Modificá $c_1$ y $b_1$. Observá que cambiar un coeficiente objetivo modifica la valoración de las decisiones, mientras que cambiar una disponibilidad modifica el conjunto de decisiones permitidas.
+
+```{=html}
+<div class="pl-intro-widget" id="pl-intro-parametros">
+ <div class="pl-intro-controls">
+  <label for="pl-intro-c">Coeficiente objetivo \(c_1\): <output id="pl-intro-c-out">4</output>
+   <input id="pl-intro-c" type="range" min="1" max="8" step="1" value="4">
+  </label>
+  <label for="pl-intro-b">Disponibilidad \(b_1\): <output id="pl-intro-b-out">8</output>
+   <input id="pl-intro-b" type="range" min="3" max="15" step="1" value="8">
+  </label>
+ </div>
+ <p>Para el punto de prueba \(P=(2,2)\):</p>
+ <p id="pl-intro-model-result" role="status" aria-live="polite"></p>
+</div>
+```
+
+## 1.3. Formulación matemática y matricial
+
+Una representación general de un programa lineal con restricciones del tipo $\leq$ es
+
+$$
+\begin{aligned}
+\text{Optimizar}\quad z(x)&=cx^T+z_0,\\
+\text{sujeto a}\quad Ax^T&\leq b^T,\\
+x&\geq0.
+\end{aligned}
+$$
+
+Aquí $x=(x_1,\ldots,x_n)$ es el vector fila de variables de decisión, $c=(c_1,\ldots,c_n)$ es el vector fila de coeficientes objetivo, $A=(a_{ij})\in\mathbb R^{m\times n}$ y $b=(b_1,\ldots,b_m)$ es el vector fila de términos independientes.
+
+La desigualdad $Ax^T\leq b^T$ se entiende **componente a componente**. En esta presentación se utiliza la convención de vectores fila del curso EM-4010.
+
+Las restricciones de igualdad o de tipo $\geq$ también son admisibles. Una desigualdad puede invertirse al multiplicar ambos miembros por $-1$; una igualdad puede expresarse como dos desigualdades opuestas.
+
+::: {.callout-tip}
+Verificá las dimensiones: $A$ tiene $m$ filas y $n$ columnas, mientras que $x^T$ tiene $n$ filas. Así, $Ax^T$ es un vector columna de $m$ componentes, igual que $b^T$.
+:::
+
+## 1.4. Un modelo completo
+
+Consideremos el programa lineal
+
+$$
+\begin{aligned}
+\max\quad z&=4x_1+3x_2+5,\\
+2x_1+x_2&\leq8,\\
+x_1+2x_2&\leq10,\\
+3x_1+x_2&\leq12,\\
+x_1,x_2&\geq0.
+\end{aligned}
+$$
+
+Su representación matricial es
+
+$$
+A=\begin{pmatrix}2&1\\1&2\\3&1\end{pmatrix},\qquad
+b=(8,10,12),\qquad c=(4,3),\qquad z_0=5.
+$$
+
+Así,
+
+$$
+\max\quad z=cx^T+z_0,\qquad Ax^T\leq b^T,\qquad x\geq0.
+$$
+
+Por ejemplo, $P=(2,3)$ es factible: $2(2)+3=7\leq8$, $2+2(3)=8\leq10$ y $3(2)+3=9\leq12$. Su valor objetivo es $z(P)=4(2)+3(3)+5=22$.
+
+Este punto **es factible**, pero todavía no hemos demostrado que sea óptimo. La diferencia entre factibilidad y optimalidad será el tema de los siguientes apartados.
+
+### Comprobación breve
+
+::: {.callout-note collapse="true"}
+## Solución de comprobación
+
+La matriz de restricciones tiene dimensión $3\times2$, el vector de variables es $x=(x_1,x_2)$ y la constante objetivo es $z_0=5$. Para $P=(2,3)$ se satisfacen todas las restricciones y $z(P)=22$.
+:::
+
+```{=html}
+<style>
+.pl-intro-widget{border:1px solid #cbd5df;border-radius:12px;padding:1rem 1.2rem;margin:1rem 0;background:color-mix(in srgb,Canvas 94%,#148b8a 6%)}
+.pl-intro-widget fieldset{border:0;padding:0;margin:0}
+.pl-intro-widget legend{font-weight:650;margin-bottom:.6rem}
+.pl-intro-widget fieldset label{display:block;margin:.55rem 0;cursor:pointer}
+.pl-intro-widget input[type=checkbox]{margin-right:.55rem;accent-color:#087d80}
+.pl-intro-widget input[type=range]{display:block;width:100%;accent-color:#087d80;margin-top:.35rem}
+.pl-intro-widget .pl-intro-btn{border:0;border-radius:7px;background:#087d80;color:white;padding:.55rem 1rem;cursor:pointer;margin-top:.5rem}
+.pl-intro-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1rem}
+.pl-intro-widget [role=status]{font-weight:600;margin:.8rem 0 0}
+</style>
+<script>
+(function(){
+ const root=document.getElementById("pl-intro-identificar");
+ const btn=document.getElementById("pl-intro-check");
+ if(root&&btn){
+   btn.addEventListener("click",function(){
+     const inputs=[...root.querySelectorAll('input[type="checkbox"]')];
+     const correct=inputs.filter(x=>x.checked===(x.dataset.correct==="true")).length;
+     root.querySelector("#pl-intro-result").textContent=correct===inputs.length?
+        "¡Correcto! Las expresiones primera y cuarta son afines.":
+        correct+" de "+inputs.length+" clasificaciones correctas. Revisá productos de variables, raíces y términos constantes.";
+   });
+ }
+ const c=document.getElementById("pl-intro-c"), b=document.getElementById("pl-intro-b");
+ const target=document.getElementById("pl-intro-model-result");
+ function update(){
+   if(!c||!b||!target)return;
+   const cv=Number(c.value),bv=Number(b.value);
+   document.getElementById("pl-intro-c-out").textContent=cv;
+   document.getElementById("pl-intro-b-out").textContent=bv;
+   target.textContent="Valor objetivo: z(P)="+(cv*2+6)+
+      ". Recurso consumido: 2(2)+2=6, disponibilidad="+bv+
+      ". P es "+(6<=bv?"factible.":"infactible.");
+ }
+ if(c&&b){c.addEventListener("input",update);b.addEventListener("input",update);update();}
+})();
+</script>
+```
