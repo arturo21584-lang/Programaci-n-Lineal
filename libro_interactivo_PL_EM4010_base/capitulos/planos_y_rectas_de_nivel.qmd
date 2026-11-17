@@ -1,0 +1,184 @@
+---
+title: "Planos y rectas de nivel: dos perspectivas del barrido"
+---
+
+## De una función objetivo a una recta de nivel
+
+En un programa lineal con dos variables, una función objetivo afín puede escribirse como $z=c_1x_1+c_2x_2+z_0$. Su gráfica en el espacio es un plano. Para un valor fijo $k$, el plano horizontal $z=k$ corta la gráfica de la función objetivo en una recta, cuya **proyección vertical sobre el plano $x_1x_2$** se describe mediante
+
+$$
+c_1x_1+c_2x_2+z_0=k.
+$$
+
+Esta es la **recta de nivel** correspondiente a $k$. Al aumentar $k$, los planos horizontales se desplazan hacia arriba y sus rectas de nivel se desplazan paralelamente sobre el plano de las variables. En un problema de maximización, buscamos el mayor valor de $k$ para el cual la recta de nivel todavía encuentra puntos factibles.
+
+### Exploración simultánea en dos y tres dimensiones
+
+Consideremos el problema
+
+$$
+\begin{aligned}
+\max\quad z&=3x_1+2x_2,\\
+x_1+x_2&\leq6,\\
+2x_1+x_2&\leq8,\\
+x_1+2x_2&\leq8,\\
+x_1,x_2&\geq0.
+\end{aligned}
+$$
+
+Desplazá el control $k$. En la **vista 3D**, el segmento dorado representa la intersección de los dos planos; la línea discontinua proyectada en el plano de las variables es su sombra geométrica. En la **vista 2D**, esa proyección es la recta $3x_1+2x_2=k$. El segmento verde oscuro, cuando existe, indica la parte de la recta que atraviesa la región factible.
+
+```{=html}
+<div class="nivel-app" id="nivel-app-3d2d">
+  <div class="nivel-views">
+    <section class="nivel-view" aria-label="Vista espacial de los planos y su intersección">
+      <h3>Vista tridimensional</h3>
+      <svg id="nivel-3d" viewBox="0 0 490 400" role="img" aria-label="Plano de la función objetivo, plano horizontal móvil, recta de intersección y su proyección"></svg>
+      <div class="nivel-legend"><span><i style="background:#3682a9"></i>Plano objetivo</span><span><i style="background:#daa544"></i>Plano z = k</span><span><i style="background:#167c79"></i>Región factible</span></div>
+    </section>
+    <section class="nivel-view" aria-label="Vista plana de la región factible y la recta de nivel">
+      <h3>Vista bidimensional</h3>
+      <svg id="nivel-2d" viewBox="0 0 420 400" role="img" aria-label="Región factible, vértices, recta de nivel y porción factible de la recta"></svg>
+      <div class="nivel-legend"><span><i style="background:#167c79"></i>Región factible</span><span><i style="background:#daa544"></i>Recta de nivel</span></div>
+    </section>
+  </div>
+  <div class="nivel-controls">
+    <label for="nivel-slider">Altura del plano horizontal <span class="nivel-math">k</span>: <output id="nivel-k-display">6</output></label>
+    <input id="nivel-slider" type="range" min="0" max="17" step="0.1" value="6" />
+    <div class="nivel-actions">
+      <button type="button" id="nivel-reset">Reiniciar</button>
+      <button type="button" id="nivel-optimo">Ir al óptimo</button>
+      <label><input type="checkbox" id="nivel-show-shadow" checked /> Mostrar proyección</label>
+      <label><input type="checkbox" id="nivel-show-region" checked /> Mostrar región factible</label>
+    </div>
+    <p id="nivel-status" role="status" aria-live="polite"></p>
+    <p class="nivel-note">La vista 3D utiliza una proyección axonométrica esquemática; todos los objetos se calculan a partir de las mismas ecuaciones y del mismo parámetro <span class="nivel-math">k</span>. La gráfica muestra una ventana finita del plano objetivo.</p>
+  </div>
+  <details>
+    <summary>Mostrar justificación matemática del óptimo</summary>
+    <p>Los vértices de la región factible son (0,0), (4,0), (8/3,8/3) y (0,4). Sus valores objetivo son 0, 12, 40/3 y 8, respectivamente. Por tanto, el valor máximo es <strong>z* = 40/3</strong> y se alcanza en el vértice <strong>(8/3,8/3)</strong>. En dicho punto son activas las restricciones 2x₁+x₂=8 y x₁+2x₂=8.</p>
+  </details>
+</div>
+<style>
+.nivel-app{border:1px solid #cbd5dc;border-radius:14px;padding:1rem;margin:1rem 0;color:var(--bs-body-color,inherit)}
+.nivel-views{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.nivel-view{min-width:0;border:1px solid #d3dce3;border-radius:10px;padding:.6rem;background:var(--bs-body-bg,#fff)}
+.nivel-view h3{font-size:1.05rem;margin:.15rem 0 .4rem;text-align:center}
+.nivel-view svg{display:block;width:100%;height:auto}
+.nivel-legend{display:flex;justify-content:center;flex-wrap:wrap;gap:.4rem .8rem;font-size:.77rem}
+.nivel-legend span{display:inline-flex;align-items:center;gap:.25rem}
+.nivel-legend i{display:inline-block;width:.65rem;height:.65rem;border-radius:2px}
+.nivel-controls{margin-top:1rem;padding:.8rem;border-radius:9px;background:color-mix(in srgb,Canvas 95%,#0b8380 5%)}
+.nivel-controls>label{display:block;font-weight:650}
+.nivel-controls input[type=range]{width:100%;margin:.5rem 0;accent-color:#0e7d80}
+.nivel-actions{display:flex;align-items:center;flex-wrap:wrap;gap:.65rem 1rem}
+.nivel-actions button{background:#086c71;border:0;border-radius:7px;color:#fff;padding:.5rem .8rem;cursor:pointer}
+.nivel-actions button:focus-visible,.nivel-actions input:focus-visible{outline:3px solid #e8b047;outline-offset:3px}
+.nivel-actions label{font-size:.9rem;cursor:pointer}
+.nivel-actions input{accent-color:#0e7d80}
+#nivel-status{font-weight:650;margin:.75rem 0 .15rem}
+.nivel-note{font-size:.82rem;opacity:.78;line-height:1.45;margin:.5rem 0 0}
+.nivel-app details{margin-top:.85rem}
+.nivel-app summary{cursor:pointer;font-weight:600}
+@media(max-width:780px){.nivel-views{grid-template-columns:1fr}}
+</style>
+<script>
+(function(){
+  "use strict";
+  const root=document.getElementById("nivel-app-3d2d");
+  if(!root || root.dataset.initialized)return;
+  root.dataset.initialized="1";
+  const svg3=root.querySelector("#nivel-3d"), svg2=root.querySelector("#nivel-2d");
+  const slider=root.querySelector("#nivel-slider"), output=root.querySelector("#nivel-k-display"), status=root.querySelector("#nivel-status");
+  const showShadow=root.querySelector("#nivel-show-shadow"), showRegion=root.querySelector("#nivel-show-region");
+  const V=[[0,0],[4,0],[8/3,8/3],[0,4]];
+  const domain=[[0,0],[5,0],[5,5],[0,5]], opt=40/3;
+  const tol=1e-7;
+  const f=p=>3*p[0]+2*p[1];
+  const S=(p,z=0)=>[222+43*p[0]-33*p[1],337+12*p[0]+13*p[1]-12*z];
+  const T=p=>[48+58*p[0],346-58*p[1]];
+  const fmt=x=>Math.abs(x-opt)<tol?"40/3 ≈ 13,33":x.toLocaleString("es-CR",{maximumFractionDigits:2});
+  const pt=p=>p.map(x=>x.toFixed(2)).join(",");
+  const polygon=(p,fill,stroke,opacity=1,width=1.5,extra="")=>`<polygon points="${p.map(pt).join(" ")}" fill="${fill}" stroke="${stroke}" stroke-width="${width}" opacity="${opacity}" ${extra}/>`;
+  const line=(a,b,color,width=2,dash="")=>`<line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" stroke="${color}" stroke-width="${width}" ${dash?`stroke-dasharray="${dash}"`:""} stroke-linecap="round"/>`;
+  const circle=(p,color,r=5)=>`<circle cx="${p[0]}" cy="${p[1]}" r="${r}" fill="${color}" stroke="white" stroke-width="1.2"/>`;
+  const txt=(p,s,size=13,color="currentColor",extra="")=>`<text x="${p[0]}" y="${p[1]}" font-size="${size}" fill="${color}" ${extra}>${s}</text>`;
+  function slice(poly,k){
+    // Exact contour intersection with the polygon edges; includes tangent vertices.
+    const hits=[];
+    for(let i=0;i<poly.length;i++){
+      const a=poly[i],b=poly[(i+1)%poly.length],da=f(a)-k,db=f(b)-k;
+      if(Math.abs(da)<tol)hits.push(a);
+      if(da*db<0){const t=(k-f(a))/(f(b)-f(a));hits.push([a[0]+t*(b[0]-a[0]),a[1]+t*(b[1]-a[1])]);}
+      if(Math.abs(da)<tol&&Math.abs(db)<tol)hits.push(b);
+    }
+    const unique=hits.filter((p,i)=>hits.findIndex(q=>Math.hypot(p[0]-q[0],p[1]-q[1])<tol)===i);
+    if(unique.length<=2)return unique;
+    // When an entire edge lies on the contour, use extreme endpoints.
+    unique.sort((a,b)=>a[0]-b[0]||a[1]-b[1]);
+    return [unique[0],unique[unique.length-1]];
+  }
+  function render(){
+    const k=Number(slider.value),inter=slice(domain,k),inside=slice(V,k);
+    output.textContent=fmt(k);
+    const gold="#d8a33b",deep="#0a7775",blue="#3682a9";
+    let a3="",a2="";
+    // Axonometric coordinates, common data domain and objective function.
+    const base=domain.map(p=>S(p));
+    a3+=polygon(base,"#b8c8cf","#7c909b",.12,1.4);
+    if(showRegion.checked)a3+=polygon(V.map(p=>S(p)),deep,deep,.25,2);
+    for(let n=0;n<=5;n++){
+      a3+=line(S([n,0]),S([n,5]),"#94a3b8",.5);
+      a3+=line(S([0,n]),S([5,n]),"#94a3b8",.5);
+    }
+    const horizontal=domain.map(p=>S(p,k));
+    a3+=polygon(horizontal,gold,"#b28c40",.16,1.5);
+    const objective=domain.map(p=>S(p,f(p)));
+    a3+=polygon(objective,blue,"#26739b",.25,1.9);
+    if(showShadow.checked && inter.length===2){
+      a3+=line(S(inter[0]),S(inter[1]),gold,2.5,"6 5");
+      for(const p of inter)a3+=line(S(p,k),S(p),gold,1.6,"4 5");
+    }
+    if(inter.length===2)a3+=line(S(inter[0],k),S(inter[1],k),gold,4);
+    else if(inter.length===1)a3+=circle(S(inter[0],k),gold,5);
+    if(inside.length===2)a3+=line(S(inside[0],k),S(inside[1],k),deep,6);
+    else if(inside.length===1)a3+=circle(S(inside[0],k),deep,7);
+    a3+=line(S([0,0]),S([5.35,0]),"currentColor",1.6)+line(S([0,0]),S([0,5.45]),"currentColor",1.6)+line(S([0,0]),S([0,0],28),"currentColor",1.6);
+    a3+=txt(S([5.6,0]),"x₁")+txt(S([0,5.7]),"x₂")+txt([206,9],"z")+txt([21,23],"z = 3x₁ + 2x₂",15,blue)+txt([310,64],"z = k",15,"#b17c1c");
+    svg3.innerHTML=a3;
+    for(let i=0;i<=5;i++){
+      a2+=line(T([i,0]),T([i,5]),"#a7b7c3",.6)+line(T([0,i]),T([5,i]),"#a7b7c3",.6);
+      a2+=txt([T([i,0])[0]-3,366],String(i),11)+txt([30,T([0,i])[1]+4],String(i),11);
+    }
+    a2+=line(T([0,0]),T([5.25,0]),"currentColor",1.6)+line(T([0,0]),T([0,5.25]),"currentColor",1.6);
+    if(showRegion.checked)a2+=polygon(V.map(T),deep,deep,.18,2);
+    if(inter.length===2)a2+=line(T(inter[0]),T(inter[1]),gold,3.6,"9 5");
+    else if(inter.length===1)a2+=circle(T(inter[0]),gold,5);
+    if(showRegion.checked){
+      if(inside.length===2)a2+=line(T(inside[0]),T(inside[1]),deep,6);
+      else if(inside.length===1)a2+=circle(T(inside[0]),deep,7);
+      V.forEach((p,i)=>{a2+=circle(T(p),i===2?"#d8a33b":"#124a56",i===2?6:4.5);});
+    }
+    a2+=txt([355,365],"x₁")+txt([14,19],"x₂")+txt([192,28],"3x₁ + 2x₂ = k",14,"#b17c1c");
+    svg2.innerHTML=a2;
+    if(Math.abs(k-opt)<tol)status.textContent="Último contacto: (8/3, 8/3). Valor óptimo z* = 40/3.";
+    else if(k>opt)status.textContent="La recta sigue existiendo, pero no intersecta la región factible: k es mayor que el máximo.";
+    else status.textContent="El valor k todavía es inferior al máximo. Aumentá la altura para continuar el barrido.";
+  }
+  slider.addEventListener("input",render);
+  showShadow.addEventListener("change",render);
+  showRegion.addEventListener("change",render);
+  root.querySelector("#nivel-reset").addEventListener("click",()=>{slider.value="6";render();});
+  root.querySelector("#nivel-optimo").addEventListener("click",()=>{slider.value=String(opt);render();});
+  render();
+})();
+</script>
+```
+
+### Para pensar
+
+1. ¿Qué ocurre en la vista tridimensional cuando el plano horizontal supera la altura óptima?
+2. ¿Por qué la recta de nivel sigue existiendo aunque ya no intersecte la región factible?
+3. ¿Qué restricciones son activas en el vértice óptimo?
+
+La visualización tridimensional aporta intuición sobre el barrido, pero no sustituye la justificación de optimalidad. En las siguientes páginas utilizaremos el método gráfico para calcular exactamente los vértices y comparar sus valores objetivo.
