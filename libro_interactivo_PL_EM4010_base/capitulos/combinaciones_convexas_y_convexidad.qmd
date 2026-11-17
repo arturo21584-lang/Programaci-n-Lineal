@@ -1,0 +1,284 @@
+---
+title: "Combinaciones convexas y convexidad"
+---
+
+La geometría de la Programación Lineal se apoya en una propiedad fundamental: **si dos decisiones son factibles, todo el segmento que las une también es factible**. Para comprender y demostrar esta afirmación, comenzaremos por estudiar las combinaciones convexas.
+
+## Combinaciones convexas de dos vectores
+
+Sean $u,v\in\mathbb R^n$. Se llama **combinación convexa** de $u$ y $v$ a cualquier vector de la forma
+
+$$
+x(\lambda)=\lambda u+(1-\lambda)v,\qquad 0\leq\lambda\leq1.
+$$
+
+Los coeficientes son no negativos y suman uno. Si $\lambda=0$, obtenemos $v$; si $\lambda=1$, obtenemos $u$; y, para $0<\lambda<1$, obtenemos un punto del segmento que une ambos vectores (si son distintos).
+
+### Exploración geométrica
+
+Consideremos $u=(1,2)$ y $v=(5,4)$. Mové el control para observar el punto $P=x(\lambda)$.
+
+```{=html}
+<div class="plcv-widget" id="plcv-segmento">
+  <svg class="plcv-graph" viewBox="0 0 380 340" role="img" aria-label="Plano cartesiano con el segmento entre u igual a uno dos y v igual a cinco cuatro, y un punto móvil según lambda">
+    <g class="plcv-grid" aria-hidden="true"></g>
+    <line x1="48" y1="302" x2="351" y2="302" class="plcv-axis" />
+    <line x1="48" y1="302" x2="48" y2="13" class="plcv-axis" />
+    <text x="352" y="325" class="plcv-axis-label">x₁</text>
+    <text x="14" y="16" class="plcv-axis-label">x₂</text>
+    <line x1="95" y1="208" x2="283" y2="114" class="plcv-boundary" stroke-width="4"/>
+    <circle cx="95" cy="208" r="6" class="plcv-fixed"/>
+    <circle cx="283" cy="114" r="6" class="plcv-fixed"/>
+    <text x="76" y="228" class="plcv-label">u</text>
+    <text x="294" y="105" class="plcv-label">v</text>
+    <circle id="plcv-p" cx="189" cy="161" r="8" class="plcv-moving" />
+    <text id="plcv-p-label" x="200" y="147" class="plcv-label">P</text>
+  </svg>
+  <label class="plcv-control" for="plcv-lambda">Parámetro λ = <output id="plcv-lambda-out">0,50</output></label>
+  <input type="range" id="plcv-lambda" min="0" max="1" step="0.01" value="0.5" />
+  <div class="plcv-row"><button type="button" data-lambda="0">λ = 0</button><button type="button" data-lambda="0.5">λ = 0,5</button><button type="button" data-lambda="1">λ = 1</button></div>
+  <p id="plcv-segmento-result" class="plcv-output" role="status" aria-live="polite"></p>
+</div>
+```
+
+En este caso,
+
+$$
+\lambda(1,2)+(1-\lambda)(5,4)=(5-4\lambda,\,4-2\lambda).
+$$
+
+La fórmula algebraica y el movimiento geométrico describen exactamente el mismo conjunto: el segmento cerrado de extremos $u$ y $v$.
+
+## Combinaciones convexas de varios vectores
+
+Dados $u^{(1)},\ldots,u^{(k)}\in\mathbb R^n$, un vector $x$ es una **combinación convexa** de estos vectores si existen números $\lambda_1,\ldots,\lambda_k$ tales que
+
+$$
+x=\sum_{i=1}^{k}\lambda_i u^{(i)},\qquad
+\lambda_i\geq0,\qquad \sum_{i=1}^{k}\lambda_i=1.
+$$
+
+Con tres puntos no alineados del plano, las combinaciones convexas llenan el triángulo que determinan, incluyendo su frontera.
+
+### Exploración de tres vectores
+
+Tomemos $u=(0,0)$, $v=(4,0)$ y $w=(2,3)$. Utilizaremos dos deslizadores $\alpha,\beta\in[0,1]$ para construir automáticamente tres coeficientes convexos:
+
+$$
+\lambda_1=\alpha,\quad
+\lambda_2=(1-\alpha)\beta,\quad
+\lambda_3=(1-\alpha)(1-\beta).
+$$
+
+Así siempre se cumple $\lambda_i\geq0$ y $\lambda_1+\lambda_2+\lambda_3=1$.
+
+```{=html}
+<div class="plcv-widget" id="plcv-triangulo">
+  <svg class="plcv-graph" viewBox="0 0 380 320" role="img" aria-label="Triángulo con vértices u cero cero, v cuatro cero y w dos tres, y punto móvil que depende de tres pesos convexos">
+    <g class="plcv-grid" aria-hidden="true"></g>
+    <line x1="48" y1="285" x2="346" y2="285" class="plcv-axis" />
+    <line x1="48" y1="285" x2="48" y2="11" class="plcv-axis" />
+    <text x="346" y="307" class="plcv-axis-label">x₁</text>
+    <text x="14" y="16" class="plcv-axis-label">x₂</text>
+    <polygon points="48,285 264,285 156,123" class="plcv-region" />
+    <circle cx="48" cy="285" r="5.5" class="plcv-fixed" />
+    <circle cx="264" cy="285" r="5.5" class="plcv-fixed" />
+    <circle cx="156" cy="123" r="5.5" class="plcv-fixed" />
+    <text x="55" y="274" class="plcv-label">u</text>
+    <text x="273" y="280" class="plcv-label">v</text>
+    <text x="166" y="113" class="plcv-label">w</text>
+    <circle id="plcv-q" cx="156" cy="204" r="8" class="plcv-moving" />
+    <text id="plcv-q-label" x="166" y="194" class="plcv-label">P</text>
+  </svg>
+  <div class="plcv-control-grid">
+   <div><label class="plcv-control" for="plcv-alpha">α = <output id="plcv-alpha-out">0,00</output></label><input id="plcv-alpha" type="range" min="0" max="1" step="0.01" value="0" /></div>
+   <div><label class="plcv-control" for="plcv-beta">β = <output id="plcv-beta-out">0,50</output></label><input id="plcv-beta" type="range" min="0" max="1" step="0.01" value="0.5" /></div>
+  </div>
+  <p id="plcv-triangulo-coef" class="plcv-output" role="status" aria-live="polite"></p>
+  <p id="plcv-triangulo-result"></p>
+  <button type="button" id="plcv-centro">Aproximar el centroide (pesos casi iguales)</button>
+</div>
+```
+
+La imagen ilustra que una combinación convexa de tres vértices puede estar en el interior del triángulo, en uno de sus lados o en un vértice. El ejercicio de práctica permitirá calcular los pesos algebraicamente.
+
+## Convexidad de un conjunto
+
+Un conjunto $C\subseteq\mathbb R^n$ se dice **convexo** si, para cualesquiera $u,v\in C$ y cualquier $\lambda\in[0,1]$, se cumple
+
+$$
+\lambda u+(1-\lambda)v\in C.
+$$
+
+Geométricamente, esto significa que el segmento que une dos puntos cualesquiera de $C$ está contenido completamente en $C$. Por convención matemática, el conjunto vacío también es convexo.
+
+::: {.callout-tip}
+## Para pensar
+
+Un conjunto puede ser convexo sin estar acotado. Por ejemplo, todo semiplano es convexo y no acotado. La convexidad y la acotación son propiedades distintas.
+:::
+
+## Convexidad de las regiones factibles
+
+**Teorema.** Sea
+
+$$
+R=\{x\in\mathbb R^n:Ax^T\leq b^T,\ x\geq0\}.
+$$
+
+Entonces $R$ es convexo.
+
+**Idea de la demostración.** Si $u,v$ satisfacen las restricciones, cualquier promedio ponderado de ellos, con pesos no negativos que sumen uno, también las satisface. Esto ocurre porque multiplicar una desigualdad por un número no negativo conserva su sentido.
+
+::: {.callout-note collapse="true"}
+## Demostración completa
+
+Si $R=\varnothing$, es convexo por definición. Supongamos $R\neq\varnothing$ y sean $u,v\in R$, $\lambda\in[0,1]$. Definimos $x=\lambda u+(1-\lambda)v$.
+
+Como $u\geq0$, $v\geq0$, $\lambda\geq0$ y $1-\lambda\geq0$, tenemos $x\geq0$. Además, por factibilidad de $u$ y $v$,
+
+$$
+\begin{aligned}
+Ax^T
+&=A\bigl(\lambda u^T+(1-\lambda)v^T\bigr)\\
+&=\lambda Au^T+(1-\lambda)Av^T\\
+&\leq\lambda b^T+(1-\lambda)b^T=b^T.
+\end{aligned}
+$$
+
+Por tanto, $x\in R$, y $R$ es convexo. $\square$
+:::
+
+La misma conclusión vale para sistemas de restricciones lineales con igualdades y desigualdades de ambos sentidos, así como para variables libres: las igualdades y los semiespacios definidos por restricciones afines son conjuntos convexos, y las intersecciones de conjuntos convexos son convexas.
+
+::: {.callout-note collapse="true"}
+## Corolario y justificación
+
+**Corolario.** Toda combinación convexa de un número finito de soluciones factibles es factible.
+
+**Demostración.** Sean $u^{(1)},\ldots,u^{(k)}\in R$ y $\lambda_i\geq0$ con $\sum_i\lambda_i=1$. Entonces
+
+$$
+A\left(\sum_{i=1}^{k}\lambda_i u^{(i)}\right)^T
+=\sum_{i=1}^{k}\lambda_i Au^{(i)T}
+\leq\sum_{i=1}^{k}\lambda_i b^T=b^T.
+$$
+
+Además, $\sum_i\lambda_i u^{(i)}\geq0$, componente a componente. En consecuencia, la combinación es factible. $\square$
+:::
+
+## Ejercicios de comprensión
+
+### Ejercicio A. Encontrar los coeficientes
+
+Expresá $P=(2,1)$ como combinación convexa de los vectores $u=(0,0)$, $v=(4,0)$ y $w=(2,3)$. Determiná los tres coeficientes y justificá que cumplen las condiciones de convexidad.
+
+::: {.callout-tip collapse="true"}
+## Pista
+
+Compará coordenadas en $P=\lambda_1u+\lambda_2v+\lambda_3w$. La segunda coordenada permite encontrar directamente $\lambda_3$.
+:::
+
+::: {.callout-note collapse="true"}
+## Solución
+
+De la segunda coordenada, $3\lambda_3=1$, por lo que $\lambda_3=1/3$. De la primera, $4\lambda_2+2\lambda_3=2$, así que $\lambda_2=1/3$. Por último, $\lambda_1=1-\lambda_2-\lambda_3=1/3$. Los tres coeficientes son no negativos y suman uno. Por tanto,
+
+$$
+(2,1)=\frac13(0,0)+\frac13(4,0)+\frac13(2,3).
+$$
+:::
+
+### Ejercicio B. Argumentar, no solamente observar
+
+¿Puede el punto $Q=(5,1)$ expresarse como combinación convexa de $u$, $v$ y $w$? Justificá la respuesta sin utilizar solamente la figura.
+
+::: {.callout-note collapse="true"}
+## Solución
+
+No. Toda combinación convexa de los tres puntos tiene primera coordenada
+
+$$
+x_1=0\lambda_1+4\lambda_2+2\lambda_3\leq4(\lambda_1+\lambda_2+\lambda_3)=4.
+$$
+
+Como $Q_1=5>4$, el punto $Q$ no puede ser una combinación convexa de $u$, $v$ y $w$.
+:::
+
+### Ejercicio C. Demostración
+
+Demostrá que la intersección de dos conjuntos convexos es convexa. Luego explicá cómo este resultado ayuda a comprender la geometría de una región factible definida mediante varias restricciones lineales.
+
+::: {.callout-tip collapse="true"}
+## Pista
+
+Elegí dos puntos cualesquiera de $C_1\cap C_2$. La convexidad de cada conjunto garantiza que su combinación convexa pertenece tanto a $C_1$ como a $C_2$.
+:::
+
+::: {.callout-note collapse="true"}
+## Solución
+
+Sean $C_1,C_2\subseteq\mathbb R^n$ convexos. Si su intersección es vacía, es convexa. En caso contrario, tomemos $u,v\in C_1\cap C_2$ y $\lambda\in[0,1]$. Como $u,v\in C_1$ y $C_1$ es convexo, $\lambda u+(1-\lambda)v\in C_1$. De manera idéntica, $\lambda u+(1-\lambda)v\in C_2$. Por tanto, la combinación pertenece a $C_1\cap C_2$, que es convexo.
+
+Cada restricción lineal determina un semiespacio o un hiperplano convexo. Su intersección, que constituye la región factible, conserva la convexidad. $\square$
+:::
+
+```{=html}
+<style>
+.plcv-widget{border:1px solid #cbd5df;border-radius:12px;padding:1rem 1.15rem;margin:1rem 0;background:color-mix(in srgb,Canvas 95%,#168888 5%);max-width:760px}
+.plcv-graph{display:block;width:100%;height:auto;max-height:360px}
+.plcv-grid line{stroke:currentColor;stroke-opacity:.10;stroke-width:1}
+.plcv-grid text{fill:currentColor;font-size:11px;opacity:.85;text-anchor:middle}
+.plcv-axis{stroke:currentColor;stroke-width:1.4}
+.plcv-axis-label,.plcv-label{fill:currentColor;font-size:14px}
+.plcv-boundary{stroke:#168888}
+.plcv-region{fill:#168888;fill-opacity:.22;stroke:#168888;stroke-width:3;stroke-linejoin:round}
+.plcv-fixed{fill:#183b45;stroke:white;stroke-width:1.3}
+.plcv-moving{fill:#d8a447;stroke:#795918;stroke-width:1.8}
+.plcv-control{font-weight:650;display:block}
+.plcv-widget input[type=range]{width:100%;accent-color:#168888;margin:.65rem 0}
+.plcv-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:.5rem}
+.plcv-widget button{border:1px solid #8da7ac;border-radius:7px;padding:.4rem .7rem;background:transparent;color:inherit;cursor:pointer}
+.plcv-widget button:hover,.plcv-widget button:focus-visible{background:color-mix(in srgb,Canvas 83%,#168888 17%)}
+.plcv-control-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.8rem}
+.plcv-output{padding:.65rem .85rem;background:color-mix(in srgb,Canvas 90%,#168888 10%);border-radius:7px;font-weight:600}
+@media (prefers-reduced-motion:reduce){.plcv-widget *{transition:none!important}}
+</style>
+<script>
+(function () {
+ "use strict";
+ const fmt=x=>Number(x).toLocaleString('es-CR',{minimumFractionDigits:2,maximumFractionDigits:2});
+ const NS='http://www.w3.org/2000/svg';
+ function grid(svg,fx,fy,top=6){
+   const g=svg&&svg.querySelector('.plcv-grid'); if(!g)return;
+   for(let i=0;i<=top;i++){
+     const h=document.createElementNS(NS,'line');h.setAttribute('x1',fx(i));h.setAttribute('x2',fx(i));h.setAttribute('y1',fy(top));h.setAttribute('y2',fy(0));g.appendChild(h);
+     const v=document.createElementNS(NS,'line');v.setAttribute('x1',fx(0));v.setAttribute('x2',fx(top));v.setAttribute('y1',fy(i));v.setAttribute('y2',fy(i));g.appendChild(v);
+     const tx=document.createElementNS(NS,'text');tx.setAttribute('x',fx(i));tx.setAttribute('y',Number(fy(0))+19);tx.textContent=i;g.appendChild(tx);
+     if(i>0){const ty=document.createElementNS(NS,'text');ty.setAttribute('x',Number(fx(0))-15);ty.setAttribute('y',Number(fy(i))+4);ty.textContent=i;g.appendChild(ty)}
+   }
+ }
+ const s=document.getElementById('plcv-segmento');
+ if(s){
+   const fx=x=>48+47*x,fy=y=>302-47*y;
+   grid(s.querySelector('svg'),fx,fy,6);
+   const range=s.querySelector('#plcv-lambda'),point=s.querySelector('#plcv-p'),label=s.querySelector('#plcv-p-label');
+   function update(){const l=Number(range.value),x=5-4*l,y=4-2*l;point.setAttribute('cx',fx(x));point.setAttribute('cy',fy(y));label.setAttribute('x',fx(x)+11);label.setAttribute('y',fy(y)-12);s.querySelector('#plcv-lambda-out').textContent=fmt(l);s.querySelector('#plcv-segmento-result').textContent='P = ('+fmt(x)+'; '+fmt(y)+'). '+(l===0?'Coincide con v.':l===1?'Coincide con u.':'Está sobre el segmento entre u y v.')}
+   range.addEventListener('input',update);
+   s.querySelectorAll('[data-lambda]').forEach(b=>b.addEventListener('click',()=>{range.value=b.dataset.lambda;update()}));update();
+ }
+ const tr=document.getElementById('plcv-triangulo');
+ if(tr){
+   const fx=x=>48+54*x,fy=y=>285-54*y;
+   grid(tr.querySelector('svg'),fx,fy,5);
+   const ar=tr.querySelector('#plcv-alpha'),br=tr.querySelector('#plcv-beta'),point=tr.querySelector('#plcv-q'),label=tr.querySelector('#plcv-q-label');
+   function update(){const a=Number(ar.value),b=Number(br.value),l1=a,l2=(1-a)*b,l3=(1-a)*(1-b),x=4*l2+2*l3,y=3*l3;
+     tr.querySelector('#plcv-alpha-out').textContent=fmt(a);tr.querySelector('#plcv-beta-out').textContent=fmt(b);
+     tr.querySelector('#plcv-triangulo-coef').textContent='Pesos convexos: λ₁ = '+fmt(l1)+'; λ₂ = '+fmt(l2)+'; λ₃ = '+fmt(l3)+' (suman 1).';
+     tr.querySelector('#plcv-triangulo-result').textContent='P = ('+fmt(x)+'; '+fmt(y)+').';point.setAttribute('cx',fx(x));point.setAttribute('cy',fy(y));label.setAttribute('x',fx(x)+11);label.setAttribute('y',fy(y)-12)}
+   ar.addEventListener('input',update);br.addEventListener('input',update);
+   tr.querySelector('#plcv-centro').addEventListener('click',()=>{ar.value=(1/3).toFixed(2);br.value='0.5';update()});update();
+ }
+})();
+</script>
+```
