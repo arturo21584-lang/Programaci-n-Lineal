@@ -59,6 +59,18 @@
     ]
   },
   {
+    "objectID": "capitulos/ejemplo_metodo_grafico.html",
+    "href": "capitulos/ejemplo_metodo_grafico.html",
+    "title": "Ejemplo interactivo: resolución mediante el método gráfico",
+    "section": "",
+    "text": "Consideremos el programa lineal\n\\[\n\\begin{aligned}\n\\text{Maximizar}\\quad z&=3x_1+2x_2,\\\\\n\\text{sujeto a}\\quad x_1+x_2&\\leq6,\\\\\n2x_1+x_2&\\leq8,\\\\\nx_1+2x_2&\\leq8,\\\\\nx_1,x_2&\\geq0.\n\\end{aligned}\n\\]\nLa región factible es la intersección de los semiplanos correspondientes a las restricciones. Cada valor de \\(k\\) determina una recta de nivel \\(3x_1+2x_2=k\\). En un problema de maximización, aumentamos \\(k\\) hasta localizar el último contacto con la región factible.\n\n\n&lt;strong&gt;Exploración del método gráfico&lt;/strong&gt;\n&lt;label&gt;Modo:\n  &lt;select id=\"pl118-mode\"&gt;&lt;option value=\"libre\"&gt;Exploración libre&lt;/option&gt;&lt;option value=\"guiado\"&gt;Resolución guiada&lt;/option&gt;&lt;/select&gt;\n&lt;/label&gt;\n\n\nDesplazá la recta de nivel y compará los valores de la función objetivo en los vértices.\n\n\n&lt;svg id=\"pl118-svg\" viewBox=\"0 0 530 430\" role=\"img\" aria-label=\"Región factible del programa lineal y recta de nivel ajustable\"&gt;\n  &lt;defs&gt;&lt;clipPath id=\"pl118-clip\"&gt;&lt;rect x=\"68\" y=\"28\" width=\"378\" height=\"350\"/&gt;&lt;/clipPath&gt;&lt;/defs&gt;\n  &lt;g id=\"pl118-grid\"&gt;&lt;/g&gt;\n  &lt;path id=\"pl118-poly\" fill=\"#198d91\" fill-opacity=\"0.15\" stroke=\"#087d80\" stroke-width=\"3\" stroke-linejoin=\"round\"&gt;&lt;/path&gt;\n  &lt;g id=\"pl118-levels\" clip-path=\"url(#pl118-clip)\"&gt;&lt;/g&gt;\n  &lt;g id=\"pl118-vertices\"&gt;&lt;/g&gt;\n  &lt;text x=\"449\" y=\"403\" fill=\"currentColor\" font-size=\"18\"&gt;x₁&lt;/text&gt;\n  &lt;text x=\"30\" y=\"23\" fill=\"currentColor\" font-size=\"18\"&gt;x₂&lt;/text&gt;\n  &lt;text x=\"135\" y=\"290\" fill=\"#087d80\" font-size=\"22\" font-style=\"italic\"&gt;R&lt;/text&gt;\n&lt;/svg&gt;\n\n\n&lt;label for=\"pl118-k\"&gt;Recta de nivel: &lt;span id=\"pl118-ktext\"&gt;k = 8&lt;/span&gt;&lt;/label&gt;\n&lt;input id=\"pl118-k\" type=\"range\" min=\"0\" max=\"16\" step=\"0.0333333333\" value=\"8\" /&gt;\n&lt;div class=\"pl118-actions\"&gt;\n  &lt;button type=\"button\" data-pl118-k=\"4\"&gt;k = 4&lt;/button&gt;\n  &lt;button type=\"button\" data-pl118-k=\"10\"&gt;k = 10&lt;/button&gt;\n  &lt;button type=\"button\" data-pl118-k=\"13.333333333333334\"&gt;k = 40/3&lt;/button&gt;\n  &lt;button type=\"button\" data-pl118-k=\"15\"&gt;k = 15&lt;/button&gt;\n&lt;/div&gt;\n&lt;p id=\"pl118-status\" class=\"pl118-status\" aria-live=\"polite\"&gt;&lt;/p&gt;\n&lt;div class=\"pl118-vertex-group\"&gt;\n  &lt;span&gt;Evaluar un vértice:&lt;/span&gt;\n  &lt;div class=\"pl118-actions\" id=\"pl118-buttons\"&gt;\n    &lt;button type=\"button\" data-pl118-v=\"0\"&gt;A&lt;/button&gt;\n    &lt;button type=\"button\" data-pl118-v=\"1\"&gt;B&lt;/button&gt;\n    &lt;button type=\"button\" data-pl118-v=\"2\"&gt;C&lt;/button&gt;\n    &lt;button type=\"button\" data-pl118-v=\"3\"&gt;D&lt;/button&gt;\n  &lt;/div&gt;\n  &lt;p id=\"pl118-eval\" aria-live=\"polite\"&gt;&lt;/p&gt;\n&lt;/div&gt;\n&lt;button id=\"pl118-reveal\" type=\"button\" aria-expanded=\"false\"&gt;Mostrar solución razonada&lt;/button&gt;\n&lt;div id=\"pl118-solution\" hidden&gt;\n  &lt;p&gt;Los vértices de la región factible son\n    &lt;span class=\"math inline\"&gt;\\(A=(0,0)\\)&lt;/span&gt;,\n    &lt;span class=\"math inline\"&gt;\\(B=(4,0)\\)&lt;/span&gt;,\n    &lt;span class=\"math inline\"&gt;\\(C=(8/3,8/3)\\)&lt;/span&gt; y\n    &lt;span class=\"math inline\"&gt;\\(D=(0,4)\\)&lt;/span&gt;.\n  &lt;/p&gt;\n  &lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Vértice&lt;/th&gt;&lt;th&gt;Valor de z&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;\n    &lt;tbody&gt;&lt;tr&gt;&lt;td&gt;A&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;B&lt;/td&gt;&lt;td&gt;12&lt;/td&gt;&lt;/tr&gt;\n    &lt;tr&gt;&lt;td&gt;C&lt;/td&gt;&lt;td&gt;40/3&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;D&lt;/td&gt;&lt;td&gt;8&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;\n  &lt;/table&gt;\n  &lt;p&gt;La región es no vacía, cerrada y acotada. Por el teorema de optimalidad en vértices, basta comparar los valores de la función objetivo en sus vértices. El máximo es &lt;strong&gt;z* = 40/3&lt;/strong&gt; y se alcanza en &lt;strong&gt;(8/3, 8/3)&lt;/strong&gt;.&lt;/p&gt;\n  &lt;p&gt;En el óptimo son activas las restricciones &lt;span class=\"math inline\"&gt;\\(2x_1+x_2=8\\)&lt;/span&gt; y &lt;span class=\"math inline\"&gt;\\(x_1+2x_2=8\\)&lt;/span&gt;. La restricción &lt;span class=\"math inline\"&gt;\\(x_1+x_2\\leq6\\)&lt;/span&gt; es redundante, pues las dos anteriores implican &lt;span class=\"math inline\"&gt;\\(x_1+x_2\\leq16/3&lt;6\\)&lt;/span&gt;.&lt;/p&gt;\n&lt;/div&gt;\n\n\nPara reflexionar. ¿Por qué la última recta de nivel toca la región factible en el vértice \\(C\\)? ¿Qué sucede cuando \\(k&gt;40/3\\)? Justificá las respuestas a partir de las restricciones y de la función objetivo, no solamente de la gráfica.",
+    "crumbs": [
+      "Libro",
+      "I. Modelar y visualizar",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Ejemplo interactivo: resolución mediante el método gráfico</span>"
+    ]
+  },
+  {
     "objectID": "capitulos/03-bases.html",
     "href": "capitulos/03-bases.html",
     "title": "Bases y soluciones básicas factibles",
@@ -67,7 +79,7 @@
     "crumbs": [
       "Libro",
       "II. De la geometría al algoritmo",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Bases y soluciones básicas factibles</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Bases y soluciones básicas factibles</span>"
     ]
   },
   {
@@ -79,7 +91,7 @@
     "crumbs": [
       "Libro",
       "II. De la geometría al algoritmo",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Bases y soluciones básicas factibles</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Bases y soluciones básicas factibles</span>"
     ]
   },
   {
@@ -91,7 +103,7 @@
     "crumbs": [
       "Libro",
       "III. Algoritmos de resolución",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Método Simplex</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Método Simplex</span>"
     ]
   },
   {
@@ -103,7 +115,7 @@
     "crumbs": [
       "Libro",
       "III. Algoritmos de resolución",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Método Simplex</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Método Simplex</span>"
     ]
   },
   {
@@ -115,7 +127,7 @@
     "crumbs": [
       "Libro",
       "IV. Dualidad y análisis postóptimo",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Dualidad e interpretación económica</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Dualidad e interpretación económica</span>"
     ]
   },
   {
@@ -127,7 +139,7 @@
     "crumbs": [
       "Libro",
       "IV. Dualidad y análisis postóptimo",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Dualidad e interpretación económica</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Dualidad e interpretación económica</span>"
     ]
   },
   {
@@ -139,7 +151,7 @@
     "crumbs": [
       "Libro",
       "IV. Dualidad y análisis postóptimo",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Análisis de sensibilidad</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Análisis de sensibilidad</span>"
     ]
   },
   {
@@ -151,7 +163,7 @@
     "crumbs": [
       "Libro",
       "IV. Dualidad y análisis postóptimo",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Análisis de sensibilidad</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Análisis de sensibilidad</span>"
     ]
   },
   {
@@ -163,7 +175,7 @@
     "crumbs": [
       "Libro",
       "V. Modelos y aplicaciones",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Modelos especiales</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Modelos especiales</span>"
     ]
   },
   {
@@ -175,7 +187,7 @@
     "crumbs": [
       "Libro",
       "V. Modelos y aplicaciones",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Modelos especiales</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Modelos especiales</span>"
     ]
   },
   {
@@ -187,7 +199,7 @@
     "crumbs": [
       "Libro",
       "V. Modelos y aplicaciones",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Programación lineal entera</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Programación lineal entera</span>"
     ]
   },
   {
@@ -199,7 +211,7 @@
     "crumbs": [
       "Libro",
       "V. Modelos y aplicaciones",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Programación lineal entera</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Programación lineal entera</span>"
     ]
   },
   {
@@ -211,7 +223,7 @@
     "crumbs": [
       "Libro",
       "V. Modelos y aplicaciones",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Aplicaciones de la programación lineal</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Aplicaciones de la programación lineal</span>"
     ]
   },
   {
@@ -223,7 +235,7 @@
     "crumbs": [
       "Libro",
       "V. Modelos y aplicaciones",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Aplicaciones de la programación lineal</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Aplicaciones de la programación lineal</span>"
     ]
   },
   {
@@ -235,7 +247,7 @@
     "crumbs": [
       "Libro",
       "Material complementario",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Exploraciones interactivas</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Exploraciones interactivas</span>"
     ]
   },
   {
@@ -247,7 +259,7 @@
     "crumbs": [
       "Libro",
       "Material complementario",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Recursos académicos</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Recursos académicos</span>"
     ]
   },
   {
@@ -259,7 +271,7 @@
     "crumbs": [
       "Libro",
       "Material complementario",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Acerca del libro</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Acerca del libro</span>"
     ]
   },
   {
@@ -271,7 +283,7 @@
     "crumbs": [
       "Libro",
       "Material complementario",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Acerca del libro</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Acerca del libro</span>"
     ]
   },
   {
@@ -282,7 +294,7 @@
     "text": "Esta sección se generará a partir de las fuentes efectivamente consultadas y verificadas. Por ahora no se han incluido fichas bibliográficas, para evitar registrar datos no comprobados.",
     "crumbs": [
       "Libro",
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Referencias bibliográficas</span>"
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Referencias bibliográficas</span>"
     ]
   }
 ]
