@@ -1,0 +1,208 @@
+---
+title: "Vértices y puntos extremos"
+---
+
+## La idea geométrica de un punto extremo
+
+En una región factible poligonal podemos distinguir puntos interiores, puntos situados sobre los lados y puntos donde se encuentran dos lados. Estos últimos sugieren una noción más general: la de **punto extremo**, que también se define en espacios de dimensión mayor que dos.
+
+Sean $R\subseteq\mathbb R^n$ un conjunto convexo y $\widehat x\in R$. Decimos que **$\widehat x$ es un punto extremo de $R$** si, siempre que
+
+$$
+\widehat x=\lambda u+(1-\lambda)v,
+\qquad u,v\in R,\quad 0<\lambda<1,
+$$
+
+se cumple necesariamente que $u=v=\widehat x$.
+
+En otras palabras, un punto extremo no puede encontrarse **estrictamente entre dos puntos factibles distintos**. En una región poligonal, a estos puntos extremos también los llamamos *vértices*.
+
+::: {.callout-note}
+La condición $0<\lambda<1$ es esencial: si se admitiera $\lambda=0$ o $\lambda=1$, cualquier punto podría expresarse trivialmente como una combinación convexa que tiene un extremo igual al propio punto.
+:::
+
+## Exploración: identificar los vértices
+
+Consideremos
+
+$$
+R=\{(x_1,x_2)\in\mathbb R^2:x_1+x_2\leq6,\ x_1,x_2\geq0\}.
+$$
+
+Seleccioná un punto. Antes de comprobar la respuesta, decidí si es extremo y explicá por qué. La región sombreada contiene todos los puntos factibles.
+
+```{=html}
+<div class="ve-widget" id="ve-ejemplo">
+ <svg viewBox="0 0 400 362" role="img" aria-label="Región triangular con cinco puntos identificados A, B, C, D y E" style="width:100%;max-width:540px;display:block;margin:auto">
+  <g stroke="currentColor" opacity=".09" stroke-width="1">
+   <path d="M46 22V322 M92 22V322 M138 22V322 M184 22V322 M230 22V322 M276 22V322 M322 22V322"/>
+   <path d="M46 322H348 M46 276H348 M46 230H348 M46 184H348 M46 138H348 M46 92H348 M46 46H348"/>
+  </g>
+  <path d="M46 322H356 M46 322V16" stroke="currentColor" fill="none" stroke-width="1.8"/>
+  <polygon points="46,322 322,322 46,46" fill="#167b7a" fill-opacity=".17" stroke="#167b7a" stroke-width="3"/>
+  <g fill="currentColor" font-size="12" text-anchor="middle">
+   <text x="46" y="340">0</text><text x="92" y="340">1</text><text x="138" y="340">2</text><text x="184" y="340">3</text><text x="230" y="340">4</text><text x="276" y="340">5</text><text x="322" y="340">6</text>
+  </g>
+  <text x="359" y="341" fill="currentColor" font-size="14">x₁</text>
+  <text x="16" y="19" fill="currentColor" font-size="14">x₂</text>
+  <g id="ve-puntos"></g>
+  <text x="116" y="248" fill="#167b7a" font-size="20" font-style="italic">R</text>
+ </svg>
+ <div class="ve-choices" id="ve-choices" aria-label="Seleccionar punto"></div>
+ <p><strong>Punto seleccionado:</strong> <span id="ve-coord">A=(0,0)</span></p>
+ <fieldset><legend>¿Es un punto extremo?</legend>
+  <label><input type="radio" name="ve-respuesta" value="si"> Sí</label>
+  <label><input type="radio" name="ve-respuesta" value="no"> No</label>
+ </fieldset>
+ <button type="button" id="ve-comprobar" class="ve-primary">Comprobar</button>
+ <p role="status" aria-live="polite" id="ve-resultado"></p>
+</div>
+```
+
+### Justificación matemática
+
+Los vértices de $R$ son $(0,0)$, $(6,0)$ y $(0,6)$. Por ejemplo, el punto $(3,0)$ **no es extremo**, porque
+
+$$
+(3,0)=\frac12(0,0)+\frac12(6,0),
+$$
+
+y los dos puntos utilizados son factibles y distintos. Tampoco es extremo $(2,2)$, pues
+
+$$
+(2,2)=\frac12(1,2)+\frac12(3,2).
+$$
+
+Los extremos del triángulo sí son vértices. Por ejemplo, si $(0,0)=\lambda u+(1-\lambda)v$ con $u,v\in R$ y $0<\lambda<1$, la no negatividad de todas las coordenadas obliga a que $u=v=(0,0)$.
+
+Para justificar que $(6,0)$ es extremo, observamos que sus coordenadas satisfacen simultáneamente $x_2=0$ y $x_1+x_2=6$. Una combinación convexa estricta de puntos factibles solo puede satisfacer ambas igualdades si cada punto de la combinación las satisface; esto determina de manera única $(6,0)$. El argumento para $(0,6)$ es análogo.
+
+## Demostración: un punto extremo mediante restricciones activas
+
+Estudiemos la región
+
+$$
+R=\left\{(x_1,x_2)\in\mathbb R^2:\;
+2x_1+x_2\leq6,\quad x_1+2x_2\leq6,\quad x_1,x_2\geq0\right\}.
+$$
+
+Las dos rectas frontera se intersectan en $\widehat x=(2,2)$. ¿Es suficiente observar su intersección para demostrar que $\widehat x$ es extremo? La definición nos permite justificarlo sin depender de la figura.
+
+::: {.callout-tip collapse="true"}
+## Pista 1
+
+Suponé que $\widehat x=\lambda u+(1-\lambda)v$, con $u,v\in R$ y $0<\lambda<1$. Utilizá que las dos desigualdades son igualdades en $\widehat x$.
+:::
+
+::: {.callout-tip collapse="true"}
+## Pista 2
+
+Si $a\leq6$ y $b\leq6$, entonces $\lambda a+(1-\lambda)b=6$ con $0<\lambda<1$ solo puede ocurrir cuando $a=b=6$.
+:::
+
+::: {.callout-note collapse="true"}
+## Demostración completa
+
+Primero, $\widehat x=(2,2)$ es factible y satisface ambas restricciones como igualdades.
+
+Supongamos que $\widehat x=\lambda u+(1-\lambda)v$, con $u,v\in R$ y $0<\lambda<1$. Dado que $2u_1+u_2\leq6$ y $2v_1+v_2\leq6$, se tiene
+
+$$
+6=2\widehat x_1+\widehat x_2
+=\lambda(2u_1+u_2)+(1-\lambda)(2v_1+v_2)\leq6.
+$$
+
+La igualdad, junto con $0<\lambda<1$, obliga a que $2u_1+u_2=6$ y $2v_1+v_2=6$.
+
+De la misma manera, utilizando la segunda restricción, obtenemos $u_1+2u_2=6$ y $v_1+2v_2=6$.
+
+Por tanto, tanto $u$ como $v$ resuelven el sistema
+
+$$
+\begin{cases}
+2x_1+x_2=6,\\
+x_1+2x_2=6.
+\end{cases}
+$$
+
+Este sistema tiene una única solución: $(2,2)$. En consecuencia, $u=v=\widehat x$, lo que demuestra que $\widehat x$ es extremo.
+:::
+
+## ¿Qué aportan las restricciones activas?
+
+Una restricción está **activa en un punto factible** si se cumple como igualdad en ese punto. En el ejemplo anterior, las rectas correspondientes a las dos restricciones activas tienen vectores normales $(2,1)$ y $(1,2)$, que son linealmente independientes.
+
+En $\mathbb R^2$, dos restricciones activas con normales linealmente independientes permiten identificar un vértice **siempre que el punto sea factible**. En espacios de dimensión mayor, la idea se expresa mediante el rango de los vectores normales de las restricciones activas. Este criterio se desarrollará con más profundidad al estudiar las soluciones básicas factibles.
+
+::: {.callout-warning}
+El simple cruce de dos rectas no asegura que su punto de intersección pertenezca a la región factible. Hay que comprobar todas las restricciones antes de declararlo vértice del conjunto.
+:::
+
+## Comprobá tu comprensión
+
+**Ejercicio 1.** Explicá por qué el punto medio de dos puntos factibles distintos no puede ser extremo.
+
+::: {.callout-tip collapse="true"}
+## Pista
+
+Utilizá $\lambda=1/2$ en la definición de combinación convexa.
+:::
+
+::: {.callout-note collapse="true"}
+## Solución
+
+Si $u,v\in R$, $u\ne v$, y $p=(u+v)/2$, entonces $p=\frac12u+\frac12v$ es una combinación convexa estricta de dos puntos factibles distintos. Por definición, $p$ no es extremo.
+:::
+
+**Ejercicio 2.** Determiná los vértices de $R=\{(x_1,x_2):x_1+x_2\leq5,\ x_1,x_2\geq0\}$ y justificá por qué $(2,3)$ no es un punto extremo.
+
+::: {.callout-note collapse="true"}
+## Solución
+
+Los vértices son $(0,0)$, $(5,0)$ y $(0,5)$. Además,
+
+$$
+(2,3)=\frac25(5,0)+\frac35(0,5),
+$$
+
+con coeficientes estrictamente positivos; por tanto, $(2,3)$ no es extremo.
+:::
+
+```{=html}
+<style>
+.ve-widget{border:1px solid #cad5db;border-radius:12px;padding:1rem 1.1rem;margin:1rem 0;background:color-mix(in srgb,Canvas 95%,#168282 5%)}
+.ve-choices{display:flex;flex-wrap:wrap;gap:.5rem;margin:.7rem 0}
+.ve-choices button,.ve-primary{border-radius:7px;padding:.5rem .85rem;cursor:pointer}
+.ve-choices button{background:transparent;border:1px solid #94a3b8;color:inherit}
+.ve-choices button[aria-pressed=true]{background:#167b7a;color:#fff;border-color:#167b7a}
+.ve-primary{background:#167b7a;color:#fff;border:1px solid #167b7a;margin-top:.8rem}
+.ve-widget fieldset{border:0;margin:0;padding:0}
+.ve-widget fieldset label{margin-right:1rem;cursor:pointer}
+.ve-widget input{accent-color:#167b7a}
+#ve-resultado{font-weight:550;min-height:1.3em}
+</style>
+<script>
+(function(){
+ const root=document.getElementById('ve-ejemplo');if(!root)return;
+ const pts=[{n:'A',x:0,y:0,ext:true,why:'El origen es un vértice del triángulo factible.'},
+ {n:'B',x:3,y:0,ext:false,why:'B=(A+C)/2, donde A=(0,0) y C=(6,0).'},
+ {n:'C',x:6,y:0,ext:true,why:'Es la intersección factible de x₂=0 y x₁+x₂=6.'},
+ {n:'D',x:2,y:2,ext:false,why:'D es el punto medio de (1,2) y (3,2), ambos factibles.'},
+ {n:'E',x:0,y:6,ext:true,why:'Es la intersección factible de x₁=0 y x₁+x₂=6.'}];
+ let selected=0;
+ const coord=document.getElementById('ve-coord');const ans=document.getElementById('ve-resultado');
+ const choices=document.getElementById('ve-choices');const markers=document.getElementById('ve-puntos');
+ function render(){
+  choices.replaceChildren();markers.replaceChildren();
+  pts.forEach((p,i)=>{
+   const btn=document.createElement('button');btn.type='button';btn.textContent=p.n+'=('+p.x+','+p.y+')';btn.setAttribute('aria-pressed',String(i===selected));btn.addEventListener('click',()=>{selected=i;ans.textContent='';root.querySelectorAll('input[name=ve-respuesta]').forEach(x=>x.checked=false);render()});choices.appendChild(btn);
+   const ns='http://www.w3.org/2000/svg';
+   const dot=document.createElementNS(ns,'circle');dot.setAttribute('cx',String(46+46*p.x));dot.setAttribute('cy',String(322-46*p.y));dot.setAttribute('r',String(i===selected?8:5.5));dot.setAttribute('fill',i===selected?'#d8a447':'#183b45');dot.setAttribute('stroke','white');dot.setAttribute('stroke-width','1.5');markers.appendChild(dot);
+   const lab=document.createElementNS(ns,'text');lab.setAttribute('x',String(46+46*p.x+(p.n==='E'?-17:11)));lab.setAttribute('y',String(322-46*p.y-10));lab.setAttribute('font-size','14');lab.setAttribute('font-weight','600');lab.setAttribute('fill','currentColor');lab.textContent=p.n;markers.appendChild(lab);
+  });coord.textContent=pts[selected].n+'=('+pts[selected].x+','+pts[selected].y+')';
+ }
+ document.getElementById('ve-comprobar').addEventListener('click',()=>{const a=root.querySelector('input[name=ve-respuesta]:checked');if(!a){ans.textContent='Elegí Sí o No antes de comprobar.';return;}const p=pts[selected];ans.textContent=((a.value==='si')===p.ext?'¡Correcto! ':'Revisá tu respuesta. ')+p.why});
+ render();
+})();
+</script>
+```
