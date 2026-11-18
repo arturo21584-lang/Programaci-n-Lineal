@@ -1,0 +1,149 @@
+---
+title: "Barrido de planos de nivel sobre un poliedro"
+subtitle: "Exploración tridimensional con rotación libre"
+---
+
+## De rectas de nivel a planos de nivel
+
+Si un programa lineal tiene tres variables de decisión, su región factible puede representarse como un **poliedro** en $\mathbb R^3$. Una función objetivo afín $w=c_1x_1+c_2x_2+c_3x_3$ asigna un número real a cada punto del poliedro. Para cada valor de $k$, la ecuación $c_1x_1+c_2x_2+c_3x_3=k$ representa ahora un **plano de nivel**.
+
+En tres dimensiones no representamos simultáneamente la gráfica $w=f(x_1,x_2,x_3)$, porque esta vive en cuatro dimensiones. En cambio, observamos directamente cómo un **plano de nivel móvil** corta el sólido factible.
+
+Consideremos el programa
+
+$$
+\begin{aligned}
+\text{Maximizar}\quad w&=3x_1+2x_2+x_3,\\
+x_1+x_2+x_3&\leq 6,\\
+x_1&\leq4,\\
+x_2&\leq4,\\
+x_3&\leq4,\\
+x_1,x_2,x_3&\geq0.
+\end{aligned}
+$$
+
+## Exploración espacial: recorrer el sólido hasta el óptimo
+
+Arrastrá la escena **horizontalmente para girar alrededor del sólido** y **verticalmente para mirarlo desde arriba o desde abajo**. La rueda permite acercar o alejar. El deslizador desplaza el plano $3x_1+2x_2+x_3=k$. La región factible permanece fija: solamente cambia el plano de nivel.
+
+```{=html}
+<div id="pl3c" class="pl3c-widget">
+ <div class="pl3c-top"><div><strong>Poliedro factible y plano de nivel</strong><p>Rotación espacial libre · Perspectiva superior e inferior · Zoom</p></div><span class="pl3c-pill" id="pl3c-state">En exploración</span></div>
+ <div class="pl3c-layout">
+  <section class="pl3c-graphic"><svg id="pl3c-svg" viewBox="0 0 760 540" role="img" aria-label="Poliedro tridimensional interactivo con un plano de nivel que se mueve hasta la solución óptima"></svg><div class="pl3c-hint">Arrastrar ↔ ↕ · Rueda = zoom · Doble clic = reiniciar cámara</div></section>
+  <aside class="pl3c-side"><strong>Valor del plano</strong><output id="pl3c-kout">k = 8,0</output><label for="pl3c-slider">Recorrido del nivel k</label><input id="pl3c-slider" type="range" min="0" max="19" step="0.1" value="8"><div class="pl3c-buttons"><button type="button" id="pl3c-opt">Ir al óptimo</button><button type="button" id="pl3c-play">▶ Animar</button><button type="button" id="pl3c-reset">Reiniciar</button></div><strong>Ángulos de observación</strong><div class="pl3c-buttons"><button type="button" id="pl3c-topview">Desde arriba</button><button type="button" id="pl3c-sideview">Lateral</button><button type="button" id="pl3c-bottomview">Desde abajo</button></div><div class="pl3c-options"><label><input type="checkbox" id="pl3c-fullplane" checked> Mostrar plano de nivel completo</label><label><input type="checkbox" id="pl3c-faces" checked> Caras del poliedro</label><label><input type="checkbox" id="pl3c-slice" checked> Resaltar sección del corte</label><label><input type="checkbox" id="pl3c-edges" checked> Aristas y vértices</label></div><div id="pl3c-message" class="pl3c-message" role="status" aria-live="polite"></div></aside>
+ </div>
+ <div class="pl3c-legend"><span><i style="background:#16887b"></i>Poliedro factible</span><span><i style="background:#56bdd3"></i>Plano de nivel</span><span><i style="background:#ce8730"></i>Intersección con el sólido</span><span><i style="background:#a44e22"></i>Óptimo</span></div>
+</div>
+<style>
+.pl3c-widget{color:#233b45;background:#fbfdfd;border:1px solid #cbd5df;border-radius:14px;padding:16px;margin:1rem 0}.pl3c-widget *{box-sizing:border-box}.pl3c-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.pl3c-top p{font-size:.82rem;color:#677a85;margin:3px 0 12px}.pl3c-pill{font-size:.8rem;background:#e3f1f1;border-radius:30px;padding:6px 10px}.pl3c-layout{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(220px,1fr);gap:12px}.pl3c-graphic{background:white;border:1px solid #d5e2e7;border-radius:11px;overflow:hidden;min-width:0}.pl3c-graphic svg{width:100%;display:block;touch-action:none;cursor:grab}.pl3c-graphic svg:active{cursor:grabbing}.pl3c-hint{text-align:center;font-size:.79rem;color:#71838b;margin:-4px 8px 8px}.pl3c-side{background:white;border:1px solid #d5e2e7;border-radius:11px;padding:15px;min-width:0}.pl3c-side strong{display:block;font-size:.93rem}.pl3c-side output{font-size:1.6rem;font-weight:700;color:#146f6a;display:block;margin:7px 0 12px}.pl3c-side>label{display:block;font-size:.85rem}.pl3c-side input[type=range]{width:100%;accent-color:#16887b;margin:10px 0 14px}.pl3c-buttons{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 15px}.pl3c-buttons button{font:inherit;font-size:.8rem;font-weight:600;padding:8px 10px;border:1px solid #b9cbd1;border-radius:8px;color:#26454e;background:#f6fafa;cursor:pointer}.pl3c-buttons button:first-child{background:#167c78;color:white;border-color:#167c78}.pl3c-options{display:flex;flex-direction:column;gap:9px;font-size:.82rem;padding:6px 0}.pl3c-options label{display:flex;gap:7px;align-items:flex-start}.pl3c-options input{accent-color:#16887b}.pl3c-message{margin:12px 0 0;padding:10px;border-left:3px solid #16887b;background:#edf6f4;font-size:.85rem;border-radius:4px;min-height:70px}.pl3c-legend{display:flex;flex-wrap:wrap;gap:12px 20px;font-size:.8rem;margin:12px 4px 0;color:#586c75}.pl3c-legend span{display:flex;align-items:center;gap:5px}.pl3c-legend i{width:12px;height:12px;border-radius:3px;display:inline-block}@media(max-width:850px){.pl3c-layout{grid-template-columns:1fr}.pl3c-graphic svg{max-height:560px}}
+</style>
+<script>
+(()=>{
+'use strict';
+const root=document.getElementById('pl3c');if(!root||root.dataset.ready)return;root.dataset.ready='1';
+const svg=document.getElementById('pl3c-svg'),NS='http://www.w3.org/2000/svg';
+const slider=document.getElementById('pl3c-slider');
+const by=id=>document.getElementById('pl3c-'+id);
+const ck=id=>by(id).checked;
+const planes=[{a:[-1,0,0],b:0,name:'x₁=0'},{a:[0,-1,0],b:0,name:'x₂=0'},{a:[0,0,-1],b:0,name:'x₃=0'},{a:[1,0,0],b:4,name:'x₁=4'},{a:[0,1,0],b:4,name:'x₂=4'},{a:[0,0,1],b:4,name:'x₃=4'},{a:[1,1,1],b:6,name:'x₁+x₂+x₃=6'}];
+const dot=(a,b)=>a[0]*b[0]+a[1]*b[1]+a[2]*b[2],cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
+const sub=(a,b)=>a.map((v,i)=>v-b[i]),add=(a,b)=>a.map((v,i)=>v+b[i]),mul=(a,s)=>a.map(v=>v*s);
+const norm=a=>Math.sqrt(dot(a,a));
+const obj=p=>3*p[0]+2*p[1]+p[2];
+function solve3(p,q,r){const D=dot(p.a,cross(q.a,r.a));if(Math.abs(D)<1e-9)return null;return mul(add(add(mul(cross(q.a,r.a),p.b),mul(cross(r.a,p.a),q.b)),mul(cross(p.a,q.a),r.b)),1/D);}
+let verts=[];
+for(let i=0;i<planes.length;i++)for(let j=i+1;j<planes.length;j++)for(let k=j+1;k<planes.length;k++){
+ const p=solve3(planes[i],planes[j],planes[k]);if(!p||!planes.every(h=>dot(h.a,p)<=h.b+1e-6))continue;
+ if(!verts.some(q=>norm(sub(q,p))<1e-5))verts.push(p.map(x=>Math.abs(x)<1e-8?0:x));
+}
+function faceOn(h){const pts=verts.filter(v=>Math.abs(dot(h.a,v)-h.b)<1e-6);if(pts.length<3)return null;
+ const center=mul(pts.reduce((a,b)=>add(a,b),[0,0,0]),1/pts.length);const n=mul(h.a,1/norm(h.a));let basis=cross(n,[0,0,1]);if(norm(basis)<.01)basis=cross(n,[0,1,0]);basis=mul(basis,1/norm(basis));const other=cross(n,basis);
+ pts.sort((p,q)=>Math.atan2(dot(sub(p,center),other),dot(sub(p,center),basis))-Math.atan2(dot(sub(q,center),other),dot(sub(q,center),basis)));return pts;}
+const faces=planes.map(faceOn).filter(Boolean);
+let edges=[];for(let i=0;i<verts.length;i++)for(let j=i+1;j<verts.length;j++){
+ const active=planes.filter(h=>Math.abs(dot(h.a,verts[i])-h.b)<1e-6&&Math.abs(dot(h.a,verts[j])-h.b)<1e-6);
+ if(active.length>=2)edges.push([verts[i],verts[j]]);
+}
+const kStar=16;let yaw=.65,pitch=.65,zoom=1,drag=null,playing=false,frame=0,last=0;
+function planeSlice(k){const result=[];for(const [a,b] of edges){const va=obj(a),vb=obj(b);if(Math.abs(va-vb)<1e-9){if(Math.abs(va-k)<1e-6){result.push(a,b);}continue;}let t=(k-va)/(vb-va);if(t>=-1e-8&&t<=1+1e-8)result.push(add(a,mul(sub(b,a),t)));}
+ const pts=result.filter((p,i)=>result.findIndex(q=>norm(sub(p,q))<1e-5)===i);if(pts.length<3)return pts;
+ const center=mul(pts.reduce((a,b)=>add(a,b),[0,0,0]),1/pts.length),n=[3,2,1],base=mul(cross(n,[0,0,1]),1/norm(cross(n,[0,0,1]))),other=cross(mul(n,1/norm(n)),base);
+ return pts.sort((p,q)=>Math.atan2(dot(sub(p,center),other),dot(sub(p,center),base))-Math.atan2(dot(sub(q,center),other),dot(sub(q,center),base)));
+}
+function camera(p){let a=Math.cos(yaw)*p[0]-Math.sin(yaw)*p[1],b=Math.sin(yaw)*p[0]+Math.cos(yaw)*p[1];const cx=a-0.0,cy=Math.sin(pitch)*b-Math.cos(pitch)*p[2];return [380+zoom*46*cx,310+zoom*46*cy];}
+function depth(p){let b=Math.sin(yaw)*p[0]+Math.cos(yaw)*p[1];return Math.cos(pitch)*b+Math.sin(pitch)*p[2];}
+function put(tag,attrs={},label){const el=document.createElementNS(NS,tag);for(const [k,v]of Object.entries(attrs))el.setAttribute(k,v);if(label!==undefined)el.textContent=label;svg.append(el);return el;}
+function poly(pts,attrs){return put('polygon',{points:pts.map(p=>camera(p).join(',')).join(' '),...attrs});}
+function line(a,b,attrs){const p=camera(a),q=camera(b);return put('line',{x1:p[0],y1:p[1],x2:q[0],y2:q[1],...attrs});}
+function circle(p,attrs){const c=camera(p);return put('circle',{cx:c[0],cy:c[1],...attrs});}
+function txt(p,s,attrs={}){const q=camera(p);put('text',{x:q[0]+5,y:q[1]-9,'font-family':'Arial, sans-serif','font-size':17,fill:'#405b65',...attrs},s);}
+function buildPlane(k){const center=[1.65,1.65,k-3*1.65-2*1.65];const n=[3,2,1];let e=mul(cross(n,[0,0,1]),1/norm(cross(n,[0,0,1])));const f=cross(mul(n,1/norm(n)),e);const scale=3.3;
+ return [add(center,add(mul(e,scale),mul(f,scale))),add(center,add(mul(e,-scale),mul(f,scale))),add(center,add(mul(e,-scale),mul(f,-scale))),add(center,add(mul(e,scale),mul(f,-scale)))];}
+function render(){const k=Number(slider.value),pts=planeSlice(k),hit=Math.abs(k-kStar)<.0001;
+ by('kout').textContent='k = '+k.toLocaleString('es-CR',{maximumFractionDigits:1});
+ by('state').textContent=k>kStar?'Sin intersección':hit?'Máximo alcanzado':'En exploración';
+ by('message').textContent=k>kStar?'El plano supera el máximo: no corta el poliedro.':hit?'Último contacto: (4, 2, 0), con w*=16. El plano toca al sólido en un único vértice.': 'El plano 3x₁+2x₂+x₃='+k.toFixed(1)+' recorre el sólido; la sección resaltada contiene puntos factibles con ese valor objetivo.';
+ svg.replaceChildren();
+ // Cuadrícula base sutil para profundidad.
+ for(let t=0;t<=6;t+=2){line([0,t,0],[6,t,0],{stroke:'#e1e9eb','stroke-width':1});line([t,0,0],[t,6,0],{stroke:'#e1e9eb','stroke-width':1});}
+ const surfaces=[];
+ if(ck('faces'))faces.forEach(f=>surfaces.push({p:f,fill:'#16887b',alpha:.13,edge:'#16887b',weight:1.5}));
+ if(ck('fullplane'))surfaces.push({p:buildPlane(k),fill:'#58bfd2',alpha:.12,edge:'#6fbecb',weight:1.6});
+ if(ck('slice')&&pts.length>=3)surfaces.push({p:pts,fill:'#e3a044',alpha:.57,edge:'#bf7117',weight:3.5});
+ surfaces.sort((a,b)=>b.p.reduce((s,p)=>s+depth(p),0)/b.p.length-a.p.reduce((s,p)=>s+depth(p),0)/a.p.length);
+ for(const s of surfaces)poly(s.p,{fill:s.fill,'fill-opacity':s.alpha,stroke:s.edge,'stroke-width':s.weight,'stroke-opacity':'.75','stroke-linejoin':'round'});
+ if(ck('edges')){for(const [a,b]of edges)line(a,b,{stroke:'#0f766b','stroke-width':2.15,'stroke-opacity':'.76'});for(const p of verts)circle(p,{r:3.2,fill:'#11685f',stroke:'white','stroke-width':.7});}
+ if(ck('slice')){if(pts.length===2)line(pts[0],pts[1],{stroke:'#bc7014','stroke-width':6,'stroke-linecap':'round'});if(pts.length===1)circle(pts[0],{r:7,fill:'#ce8730',stroke:'white','stroke-width':2});}
+ for(const [pt,name] of [[[6.4,0,0],'x₁'],[[0,6.4,0],'x₂'],[[0,0,6.4],'x₃']]){line([0,0,0],pt,{stroke:'#617880','stroke-width':1.8});txt(pt,name,{'font-size':19,'font-weight':'bold'});}
+ if(hit){circle([4,2,0],{r:10,fill:'#a44e22',stroke:'white','stroke-width':2});txt([4,2,0],'Óptimo',{'font-weight':'bold',fill:'#a44e22'});}
+}
+function stop(){playing=false;if(frame)cancelAnimationFrame(frame);frame=0;by('play').textContent='▶ Animar';}
+function tick(t){if(!playing)return;const dt=last?Math.min(65,t-last):0;last=t;let next=Number(slider.value)+dt*.004;if(next>=18){next=18;stop();}slider.value=next.toFixed(1);render();if(playing)frame=requestAnimationFrame(tick);}
+slider.addEventListener('input',()=>{stop();render();});
+for(const id of ['fullplane','faces','slice','edges'])by(id).addEventListener('change',render);
+by('opt').addEventListener('click',()=>{stop();slider.value=16;render();});
+function reset(){yaw=.65;pitch=.65;zoom=1;render();}
+by('reset').addEventListener('click',()=>{stop();slider.value=8;reset();});
+by('topview').addEventListener('click',()=>{pitch=1.55;render();});
+by('sideview').addEventListener('click',()=>{pitch=0;render();});
+by('bottomview').addEventListener('click',()=>{pitch=-1.55;render();});
+by('play').addEventListener('click',()=>{if(playing){stop();return;}if(Number(slider.value)>=18)slider.value=0;playing=true;last=0;by('play').textContent='■ Detener';frame=requestAnimationFrame(tick);});
+svg.addEventListener('pointerdown',e=>{drag={x:e.clientX,y:e.clientY,yaw,pitch};svg.setPointerCapture(e.pointerId);});
+svg.addEventListener('pointermove',e=>{if(!drag)return;yaw=drag.yaw+(e.clientX-drag.x)*.009;pitch=Math.max(-1.55,Math.min(1.55,drag.pitch-(e.clientY-drag.y)*.009));render();});
+svg.addEventListener('pointerup',()=>drag=null);svg.addEventListener('pointercancel',()=>drag=null);
+svg.addEventListener('dblclick',e=>{e.preventDefault();reset();});
+svg.addEventListener('wheel',e=>{e.preventDefault();zoom=Math.max(.60,Math.min(1.55,zoom*(e.deltaY>0?.91:1.09)));render();},{passive:false});
+render();
+})();
+</script>
+```
+
+## Determinación del óptimo
+
+Para todo punto factible se tiene
+
+$$
+\begin{aligned}
+w&=3x_1+2x_2+x_3\\
+ &= (x_1+x_2+x_3)+x_1+(x_1+x_2)\\
+ &\leq 6+4+6=16.
+\end{aligned}
+$$
+
+Además, $(4,2,0)$ satisface todas las restricciones y produce $w=16$. En consecuencia, el valor máximo es
+
+$$
+\boxed{w^*=16,\qquad x^*=(4,2,0).}
+$$
+
+Para que se alcance la igualdad deben cumplirse $x_1+x_2+x_3=6$, $x_1=4$ y $x_1+x_2=6$, de donde necesariamente $x_2=2$ y $x_3=0$. Por tanto, el óptimo es único.
+
+::: {.callout-note collapse="true"}
+## Preguntas de reflexión
+
+1. ¿Qué representa geométricamente la intersección del plano de nivel con el poliedro?
+2. ¿Por qué, a diferencia de la situación bidimensional, no dibujamos la gráfica completa de la función objetivo?
+3. ¿Qué sucede al mover $k$ por encima de $16$?
+4. ¿La solución óptima cambia cuando giramos el poliedro o cuando observamos su cara inferior? Justificá.
+:::
