@@ -1,0 +1,130 @@
+---
+title: "Exploración espacial con rotación libre"
+subtitle: "Un segundo ejemplo del barrido de rectas de nivel"
+---
+
+En un programa lineal de dos variables, la función objetivo $z=f(x_1,x_2)$ puede interpretarse como una superficie plana en el espacio. Para cada valor $k$, el plano horizontal $z=k$ corta la gráfica de la función objetivo. Al proyectar verticalmente ese corte sobre el plano $x_1x_2$, obtenemos la **recta de nivel** $f(x_1,x_2)=k$.
+
+Estudiaremos un segundo ejemplo:
+
+$$
+\begin{aligned}
+\text{Maximizar}\quad z&=2x_1+x_2,\\
+ x_1+x_2&\leq4,\\
+ x_1&\leq3,\\
+ x_2&\leq3,\\
+ x_1,x_2&\geq0.
+\end{aligned}
+$$
+
+La exploración siguiente permite **girar la vista espacial arrastrando sobre el gráfico**, acercarla con la rueda del mouse y mover simultáneamente el plano horizontal y la recta de nivel en el plano.
+
+```{=html}
+<div id="pl3b" class="pl3b-widget">
+  <div class="pl3b-head">
+    <div><strong>Barrido sincronizado en dos y tres dimensiones</strong><div class="pl3b-muted">Arrastrá el gráfico 3D para girarlo; usá la rueda del mouse para acercar o alejar.</div></div>
+    <span class="pl3b-status" id="pl3b-state">Exploración</span>
+  </div>
+  <div class="pl3b-views">
+    <section class="pl3b-panel"><h3>Vista en el plano x₁x₂</h3><svg id="pl3b-2d" viewBox="0 0 430 410" role="img" aria-label="Región factible y recta de nivel en dos dimensiones"></svg></section>
+    <section class="pl3b-panel"><h3>Vista espacial giratoria</h3><svg id="pl3b-3d" viewBox="0 0 540 440" role="img" aria-label="Vista tridimensional rotatoria del plano objetivo y el plano horizontal"></svg><div class="pl3b-drag-label">⟳ Girar · Rueda: zoom</div></section>
+  </div>
+  <div class="pl3b-controls">
+    <label class="pl3b-slider-label" for="pl3b-k">Altura del plano horizontal: <b id="pl3b-k-value">k = 3,00</b></label>
+    <input id="pl3b-k" type="range" min="0" max="9" step="0.05" value="3" />
+    <div class="pl3b-buttons">
+      <button id="pl3b-opt" type="button">Ir al óptimo</button>
+      <button id="pl3b-play" type="button">▶ Animar barrido</button>
+      <button id="pl3b-reset" type="button">Restablecer vista</button>
+    </div>
+    <div class="pl3b-checks">
+      <label><input id="pl3b-surface" type="checkbox" checked> Superficie objetivo restringida</label>
+      <label><input id="pl3b-horizontal" type="checkbox" checked> Plano horizontal z = k</label>
+      <label><input id="pl3b-proj" type="checkbox" checked> Proyección vertical</label>
+      <label><input id="pl3b-vertices" type="checkbox" checked> Etiquetas de vértices</label>
+    </div>
+  </div>
+  <p class="pl3b-feedback" id="pl3b-feedback" aria-live="polite"></p>
+  <div class="pl3b-key"><span><i style="background:#16887b"></i> Región factible</span><span><i style="background:#b47b3c"></i> Superficie objetivo</span><span><i style="background:#58c5dc"></i> Plano horizontal</span><span><i style="background:#272b34"></i> Corte y recta de nivel</span></div>
+</div>
+<style>
+.pl3b-widget{--pl3b-ink:#20343e;--pl3b-green:#16887b;--pl3b-amber:#b47b3c;border:1px solid #cbd5df;border-radius:14px;padding:16px;margin:1.2rem 0;color:var(--pl3b-ink);background:#fbfdfd;}
+.pl3b-widget *{box-sizing:border-box}.pl3b-head{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:12px}.pl3b-muted{font-size:.85rem;color:#687984;margin-top:4px}.pl3b-status{border-radius:20px;background:#e7eff1;padding:5px 12px;font-size:.8rem;white-space:nowrap}.pl3b-views{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.14fr);gap:12px}.pl3b-panel{min-width:0;border:1px solid #dbe3e8;border-radius:11px;background:white;padding:8px;position:relative}.pl3b-panel h3{font-size:.92rem;font-weight:650;margin:6px 8px 0}.pl3b-panel svg{width:100%;height:auto;display:block;touch-action:none}.pl3b-panel #pl3b-3d{cursor:grab}.pl3b-panel #pl3b-3d:active{cursor:grabbing}.pl3b-drag-label{text-align:center;color:#6a7880;font-size:.76rem;margin:-5px 0 2px}.pl3b-controls{padding:16px 3px 5px}.pl3b-slider-label{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:.93rem}.pl3b-controls input[type=range]{width:100%;accent-color:#16887b;margin:13px 0}.pl3b-buttons{display:flex;flex-wrap:wrap;gap:8px}.pl3b-buttons button{background:#fff;border:1px solid #aabfc6;color:#26424b;border-radius:8px;padding:8px 12px;font-weight:600;cursor:pointer}.pl3b-buttons button:first-child{background:#146f6a;color:#fff;border-color:#146f6a}.pl3b-buttons button:hover{filter:brightness(.95)}.pl3b-checks{display:flex;flex-wrap:wrap;gap:10px 20px;margin-top:16px;font-size:.82rem}.pl3b-checks label{display:flex;gap:6px;align-items:center}.pl3b-checks input{accent-color:#16887b}.pl3b-feedback{font-size:.91rem;min-height:42px;background:#eaf4f2;border-left:3px solid #16887b;padding:9px 12px;border-radius:5px;margin:10px 0}.pl3b-key{display:flex;gap:8px 17px;flex-wrap:wrap;font-size:.77rem;color:#50636c}.pl3b-key span{display:flex;align-items:center;gap:5px}.pl3b-key i{display:inline-block;width:11px;height:11px;border-radius:3px}@media(max-width:820px){.pl3b-views{grid-template-columns:1fr}.pl3b-panel svg{max-height:440px}}
+</style>
+<script>
+(function(){
+'use strict';
+const root=document.getElementById('pl3b');if(!root||root.dataset.ready)return;root.dataset.ready='1';
+const SVG='http://www.w3.org/2000/svg', svg2=document.getElementById('pl3b-2d'),svg3=document.getElementById('pl3b-3d');
+const polygon=[{n:'A',x:0,y:0},{n:'B',x:3,y:0},{n:'C',x:3,y:1},{n:'D',x:1,y:3},{n:'E',x:0,y:3}];
+const Z=(p)=>2*p.x+p.y, KMAX=7;
+const slider=document.getElementById('pl3b-k');let az=-0.72,el=0.58,zoom=1,k=3,playing=false,frame=0,lastTime=0,down=null;
+const byId=id=>document.getElementById(id),option=id=>byId('pl3b-'+id).checked;
+const fmt=n=>n.toLocaleString('es-CR',{minimumFractionDigits:2,maximumFractionDigits:2});
+function elSVG(tag,attrs={},textContent){const node=document.createElementNS(SVG,tag);for(const [a,v]of Object.entries(attrs))node.setAttribute(a,String(v));if(textContent!==undefined)node.textContent=textContent;return node;}
+function insert(parent,tag,attrs={},text){const node=elSVG(tag,attrs,text);parent.appendChild(node);return node;}
+const P2=p=>[47+74*p.x,353-74*p.y];
+function line(parent,a,b,style={}){insert(parent,'line',{x1:a[0],y1:a[1],x2:b[0],y2:b[1],...style});}
+function pathpoly(parent,pts,attrs){return insert(parent,'polygon',{points:pts.map(p=>p.join(',')).join(' '),...attrs});}
+function label(parent,x,y,s,attrs={}){insert(parent,'text',{x,y,'font-family':'Arial, sans-serif','font-size':13,fill:'#41545e',...attrs},s);}
+function slice(k){const out=[];for(let i=0;i<polygon.length;i++){const a=polygon[i],b=polygon[(i+1)%polygon.length],za=Z(a),zb=Z(b);if(Math.abs(zb-za)<1e-9){if(Math.abs(za-k)<1e-8){out.push({...a}, {...b});}continue;}let t=(k-za)/(zb-za);if(t>=-1e-8&&t<=1+1e-8)out.push({x:a.x+(b.x-a.x)*t,y:a.y+(b.y-a.y)*t});}const unique=out.filter((p,i)=>out.findIndex(q=>Math.hypot(p.x-q.x,p.y-q.y)<1e-7)===i);if(unique.length>2)unique.sort((a,b)=>a.x-b.x||a.y-b.y);return unique;}
+function clipLevelInSquare(k){const max=4.45,res=[],border=[[0,0,max,0],[max,0,max,max],[max,max,0,max],[0,max,0,0]];for(const [x0,y0,x1,y1]of border){const den=2*(x1-x0)+(y1-y0);if(Math.abs(den)<1e-9)continue;const t=(k-2*x0-y0)/den;if(t>=-1e-8&&t<=1+1e-8)res.push({x:x0+t*(x1-x0),y:y0+t*(y1-y0)});}return res.filter((p,i)=>res.findIndex(q=>Math.hypot(p.x-q.x,p.y-q.y)<1e-7)===i).slice(0,2);}
+function draw2(){svg2.replaceChildren();const g=insert(svg2,'g');for(let i=0;i<=4;i++){line(g,P2({x:i,y:0}),P2({x:i,y:4.45}),{stroke:'#dce6e9','stroke-width':1});line(g,P2({x:0,y:i}),P2({x:4.45,y:i}),{stroke:'#dce6e9','stroke-width':1});label(g,P2({x:i,y:0})[0],374,''+i,{'font-size':12,'text-anchor':'middle'});if(i)label(g,33,P2({x:0,y:i})[1]+4,''+i,{'font-size':12,'text-anchor':'end'});}line(g,P2({x:0,y:0}),P2({x:4.55,y:0}),{stroke:'#697f89','stroke-width':1.7});line(g,P2({x:0,y:0}),P2({x:0,y:4.55}),{stroke:'#697f89','stroke-width':1.7});label(g,388,379,'x₁');label(g,23,21,'x₂');pathpoly(g,polygon.map(P2),{fill:'#16887b','fill-opacity':'.21',stroke:'#16887b','stroke-width':3,'stroke-linejoin':'round'});
+const all=clipLevelInSquare(k);if(all.length===2)line(g,P2(all[0]),P2(all[1]),{stroke:'#272b34','stroke-width':3.5});const pts=slice(k);if(pts.length===2)line(g,P2(pts[0]),P2(pts[1]),{stroke:'#b47b3c','stroke-width':6,'stroke-linecap':'round'});if(pts.length===1)insert(g,'circle',{cx:P2(pts[0])[0],cy:P2(pts[0])[1],r:6,fill:'#b47b3c'});
+for(let i=0;i<polygon.length;i++){const p=polygon[i],xy=P2(p);insert(g,'circle',{cx:xy[0],cy:xy[1],r:i===2&&Math.abs(k-7)<.03?8:5,fill:i===2&&Math.abs(k-7)<.03?'#d4892b':'#123c3b',stroke:'white','stroke-width':1.5});if(option('vertices'))label(g,xy[0]+(i===4?-19:9),xy[1]+(i===0?-9:-11),p.n,{'font-size':14,'font-weight':'bold'});}label(g,120,258,'R',{'font-size':21,fill:'#16887b','font-style':'italic'});}
+// Perspectiva axonométrica rotatoria: coordenadas verticales invertidas en la pantalla.
+function project(p){const zz=p.z/2;const dx=p.x-1.5,dy=p.y-1.6,dz=zz-1.6;const h=Math.cos(az)*dx-Math.sin(az)*dy;const depth=Math.sin(az)*dx+Math.cos(az)*dy;const v=Math.sin(el)*depth-Math.cos(el)*dz;return [270+zoom*56*h,233+zoom*56*v];}
+function projectedDepth(p){const dx=p.x-1.5,dy=p.y-1.6,dz=p.z/2-1.6;return Math.cos(el)*(Math.sin(az)*dx+Math.cos(az)*dy)+Math.sin(el)*dz;}
+function draw3(){svg3.replaceChildren();const g=insert(svg3,'g');const base=polygon.map(p=>({...p,z:0})),top=polygon.map(p=>({...p,z:Z(p)}));
+// Geometría del poliedro base y la gráfica de la función objetivo recortada.
+const faces=[{pts:base,fill:'#16887b',opacity:.16,edge:'#16887b',sw:2.3,order:0}];if(option('surface'))faces.push({pts:top,fill:'#b47b3c',opacity:.26,edge:'#8b5727',sw:2,order:1});
+const z=k,quad=[{x:-.25,y:-.25,z},{x:4.35,y:-.25,z},{x:4.35,y:4.35,z},{x:-.25,y:4.35,z}];if(option('horizontal'))faces.push({pts:quad,fill:'#58c5dc',opacity:.16,edge:'#47bbd0',sw:1.6,order:2});
+// Dibujar superficies de atrás hacia adelante según cámara.
+faces.sort((a,b)=>{let da=a.pts.reduce((s,p)=>s+projectedDepth(p),0)/a.pts.length;let db=b.pts.reduce((s,p)=>s+projectedDepth(p),0)/b.pts.length;return db-da;});
+for(const f of faces)pathpoly(g,f.pts.map(project),{fill:f.fill,'fill-opacity':f.opacity,stroke:f.edge,'stroke-width':f.sw,'stroke-opacity':'.7','stroke-linejoin':'round'});
+// contorno siempre presente para que la región se reconozca desde cualquier orientación
+for(let i=0;i<base.length;i++)line(g,project(base[i]),project(base[(i+1)%base.length]),{stroke:'#138176','stroke-width':3});
+// columnas de elevación desde cada vértice sobre el polígono
+if(option('surface'))for(let i=0;i<base.length;i++)line(g,project(base[i]),project(top[i]),{stroke:'#a17650','stroke-width':1.4,'stroke-dasharray':'4 5','stroke-opacity':'.56'});
+// eje + etiquetas, dibujados sobre el conjunto
+const origin={x:0,y:0,z:0};for(const [p,s]of [[{x:4.65,y:0,z:0},'x₁'],[{x:0,y:4.65,z:0},'x₂'],[{x:0,y:0,z:9},'z']]){line(g,project(origin),project(p),{stroke:'#647984','stroke-width':2});const xy=project(p);label(g,xy[0]+5,xy[1]-6,s,{'font-size':15,'font-weight':'bold'});}
+const pts=slice(k);if(option('proj')&&pts.length){for(const p of pts){line(g,project({x:p.x,y:p.y,z:0}),project({x:p.x,y:p.y,z:k}),{stroke:'#697f89','stroke-width':1.8,'stroke-dasharray':'5 4'});}if(pts.length===2)line(g,project({x:pts[0].x,y:pts[0].y,z:0}),project({x:pts[1].x,y:pts[1].y,z:0}),{stroke:'#647984','stroke-width':3,'stroke-dasharray':'7 5'});}
+if(pts.length===2)line(g,project({...pts[0],z:k}),project({...pts[1],z:k}),{stroke:'#252831','stroke-width':5,'stroke-linecap':'round'});else if(pts.length===1){const xy=project({...pts[0],z:k});insert(g,'circle',{cx:xy[0],cy:xy[1],r:7,fill:'#252831',stroke:'#fff','stroke-width':1.5});}
+for(let i=0;i<base.length;i++){const p=base[i],xy=project(p);insert(g,'circle',{cx:xy[0],cy:xy[1],r:i===2&&Math.abs(k-7)<.03?7:4,fill:'#16887b',stroke:'#fff','stroke-width':1.5});if(option('vertices'))label(g,xy[0]+7,xy[1]+15,p.n,{'font-size':13,'font-weight':'bold'});}if(Math.abs(k-7)<.03){const xy=project({x:3,y:1,z:7});insert(g,'circle',{cx:xy[0],cy:xy[1],r:10,fill:'#d4892b',stroke:'#fff','stroke-width':2});label(g,xy[0]+13,xy[1]-10,'Óptimo (3,1,7)',{'font-size':13,'font-weight':'bold',fill:'#915e26'});}
+}
+function render(){k=Number(slider.value);byId('pl3b-k-value').textContent='k = '+fmt(k);let txt='',state='';if(k>KMAX+.005){txt='El plano horizontal ha superado el valor óptimo: no intersecta la superficie objetivo sobre R. La recta de nivel ya no corta la región factible.';state='Sin contacto';}else if(Math.abs(k-KMAX)<.005){txt='Último contacto en C = (3,1). La altura máxima es z* = 7. El plano toca la superficie objetivo sobre R en un único punto.';state='Óptimo: z* = 7';}else{txt='La intersección espacial proyecta sobre la región la recta 2x₁ + x₂ = '+fmt(k)+'. Aumentá k para observar el barrido hacia el óptimo.';state='En barrido';}byId('pl3b-feedback').textContent=txt;byId('pl3b-state').textContent=state;draw2();draw3();}
+slider.addEventListener('input',()=>{if(playing)stop();render();});for(const id of ['surface','horizontal','proj','vertices'])byId('pl3b-'+id).addEventListener('change',render);
+byId('pl3b-opt').addEventListener('click',()=>{stop();slider.value='7';render();});
+byId('pl3b-reset').addEventListener('click',()=>{stop();az=-.72;el=.58;zoom=1;slider.value='3';render();});
+function stop(){playing=false;if(frame)cancelAnimationFrame(frame);frame=0;byId('pl3b-play').textContent='▶ Animar barrido';}
+function tick(t){if(!playing)return;const dt=Math.min(70,t-(lastTime||t));lastTime=t;let next=Number(slider.value)+dt*.0015;if(next>=8.2){next=8.2;stop();}slider.value=String(next);render();if(playing)frame=requestAnimationFrame(tick);}
+byId('pl3b-play').addEventListener('click',()=>{if(playing){stop();return;}if(Number(slider.value)>=8.2)slider.value='0';playing=true;lastTime=0;byId('pl3b-play').textContent='■ Detener';frame=requestAnimationFrame(tick);});
+svg3.addEventListener('pointerdown',e=>{down={x:e.clientX,y:e.clientY,az,el};svg3.setPointerCapture(e.pointerId);});
+svg3.addEventListener('pointermove',e=>{if(!down)return;az=down.az+(e.clientX-down.x)*.009;el=Math.max(.08,Math.min(1.50,down.el-(e.clientY-down.y)*.008));draw3();});
+svg3.addEventListener('pointerup',()=>{down=null;});svg3.addEventListener('pointercancel',()=>{down=null;});
+svg3.addEventListener('wheel',e=>{e.preventDefault();zoom=Math.max(.60,Math.min(1.65,zoom*(e.deltaY>0?.91:1.09)));draw3();},{passive:false});
+render();
+})();
+</script>
+```
+
+### Justificación del resultado
+
+La región factible tiene vértices $A=(0,0)$, $B=(3,0)$, $C=(3,1)$, $D=(1,3)$ y $E=(0,3)$. Al evaluar la función objetivo, obtenemos respectivamente $0$, $6$, $7$, $5$ y $3$.
+
+Así, el máximo se alcanza únicamente en $C=(3,1)$, con valor $z^*=7$. Además, puede verificarse directamente que
+
+$$
+2x_1+x_2=x_1+(x_1+x_2)\leq3+4=7,
+$$
+
+con igualdad en el punto $C$. La vista espacial permite comprobar por qué el último plano horizontal que toca la gráfica de la función objetivo **sobre la región factible** es $z=7$.
+
+::: {.callout-note collapse="true"}
+## Preguntas para reflexionar
+
+1. ¿Qué relación existe entre la recta de nivel en 2D y el corte del plano objetivo con el plano horizontal en 3D?
+2. ¿Qué sucede si el plano horizontal supera el valor $z=7$?
+3. ¿Por qué es importante visualizar solo la porción del plano objetivo situada sobre la región factible?
+4. Al girar la vista 3D, ¿cambia la solución óptima? Justificá tu respuesta.
+:::
