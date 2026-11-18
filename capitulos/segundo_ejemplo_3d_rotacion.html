@@ -357,7 +357,7 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Hilo de Ariadna"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/fundamentos_iniciales_capitulo1.html">I. Modelar y visualizar</a></li><li class="breadcrumb-item"><a href="../capitulos/segundo_ejemplo_3d_rotacion.html"><span class="chapter-title">Exploración espacial con rotación libre</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-title">Exploración espacial con rotación libre</span></h1>
-<p class="subtitle lead">Un segundo ejemplo del barrido de rectas de nivel</p>
+<p class="subtitle lead">Barrido sincronizado con rotación espacial completa</p>
 </div>
 
 
@@ -388,12 +388,12 @@ x_1,x_2&amp;\geq0.
 <p>La exploración siguiente permite <strong>girar la vista espacial arrastrando sobre el gráfico</strong>, acercarla con la rueda del mouse y mover simultáneamente el plano horizontal y la recta de nivel en el plano.</p>
 <div id="pl3b" class="pl3b-widget">
   <div class="pl3b-head">
-    <div><strong>Barrido sincronizado en dos y tres dimensiones</strong><div class="pl3b-muted">Arrastrá el gráfico 3D para girarlo; usá la rueda del mouse para acercar o alejar.</div></div>
+    <div><strong>Barrido sincronizado en dos y tres dimensiones</strong><div class="pl3b-muted">Arrastrá en horizontal y vertical para girar 360° y mirar desde arriba o desde abajo; usá la rueda para acercar.</div></div>
     <span class="pl3b-status" id="pl3b-state">Exploración</span>
   </div>
   <div class="pl3b-views">
     <section class="pl3b-panel"><h3 class="anchored">Vista en el plano x₁x₂</h3><svg id="pl3b-2d" viewbox="0 0 430 410" role="img" aria-label="Región factible y recta de nivel en dos dimensiones"></svg></section>
-    <section class="pl3b-panel"><h3 class="anchored">Vista espacial giratoria</h3><svg id="pl3b-3d" viewbox="0 0 540 440" role="img" aria-label="Vista tridimensional rotatoria del plano objetivo y el plano horizontal"></svg><div class="pl3b-drag-label">⟳ Girar · Rueda: zoom</div></section>
+    <section class="pl3b-panel"><h3 class="anchored">Vista espacial giratoria</h3><svg id="pl3b-3d" viewbox="0 0 540 440" role="img" aria-label="Vista tridimensional rotatoria del plano objetivo y el plano horizontal"></svg><div class="pl3b-drag-label">↔ Girar · ↕ Vista superior/inferior · Rueda: zoom</div></section>
   </div>
   <div class="pl3b-controls">
     <label class="pl3b-slider-label" for="pl3b-k">Altura del plano horizontal: <b id="pl3b-k-value">k = 3,00</b></label>
@@ -402,6 +402,9 @@ x_1,x_2&amp;\geq0.
       <button id="pl3b-opt" type="button">Ir al óptimo</button>
       <button id="pl3b-play" type="button">▶ Animar barrido</button>
       <button id="pl3b-reset" type="button">Restablecer vista</button>
+      <button id="pl3b-above" type="button">Vista superior</button>
+      <button id="pl3b-side" type="button">Vista lateral</button>
+      <button id="pl3b-below" type="button">Vista inferior</button>
     </div>
     <div class="pl3b-checks">
       <label><input id="pl3b-surface" type="checkbox" checked=""> Superficie objetivo restringida</label>
@@ -462,11 +465,14 @@ function render(){k=Number(slider.value);byId('pl3b-k-value').textContent='k = '
 slider.addEventListener('input',()=>{if(playing)stop();render();});for(const id of ['surface','horizontal','proj','vertices'])byId('pl3b-'+id).addEventListener('change',render);
 byId('pl3b-opt').addEventListener('click',()=>{stop();slider.value='7';render();});
 byId('pl3b-reset').addEventListener('click',()=>{stop();az=-.72;el=.58;zoom=1;slider.value='3';render();});
+byId('pl3b-above').addEventListener('click',()=>{el=1.55;render();});
+byId('pl3b-side').addEventListener('click',()=>{el=0;render();});
+byId('pl3b-below').addEventListener('click',()=>{el=-1.55;render();});
 function stop(){playing=false;if(frame)cancelAnimationFrame(frame);frame=0;byId('pl3b-play').textContent='▶ Animar barrido';}
 function tick(t){if(!playing)return;const dt=Math.min(70,t-(lastTime||t));lastTime=t;let next=Number(slider.value)+dt*.0015;if(next>=8.2){next=8.2;stop();}slider.value=String(next);render();if(playing)frame=requestAnimationFrame(tick);}
 byId('pl3b-play').addEventListener('click',()=>{if(playing){stop();return;}if(Number(slider.value)>=8.2)slider.value='0';playing=true;lastTime=0;byId('pl3b-play').textContent='■ Detener';frame=requestAnimationFrame(tick);});
 svg3.addEventListener('pointerdown',e=>{down={x:e.clientX,y:e.clientY,az,el};svg3.setPointerCapture(e.pointerId);});
-svg3.addEventListener('pointermove',e=>{if(!down)return;az=down.az+(e.clientX-down.x)*.009;el=Math.max(.08,Math.min(1.50,down.el-(e.clientY-down.y)*.008));draw3();});
+svg3.addEventListener('pointermove',e=>{if(!down)return;az=down.az+(e.clientX-down.x)*.009;el=Math.max(-1.55,Math.min(1.55,down.el-(e.clientY-down.y)*.009));draw3();});
 svg3.addEventListener('pointerup',()=>{down=null;});svg3.addEventListener('pointercancel',()=>{down=null;});
 svg3.addEventListener('wheel',e=>{e.preventDefault();zoom=Math.max(.60,Math.min(1.65,zoom*(e.deltaY>0?.91:1.09)));draw3();},{passive:false});
 render();
