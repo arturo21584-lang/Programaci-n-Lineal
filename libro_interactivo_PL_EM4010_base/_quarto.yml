@@ -38,6 +38,7 @@ book:
         - capitulos/vertices_y_puntos_extremos.qmd
         - capitulos/vertices_y_soluciones_optimas.qmd
         - capitulos/planos_y_rectas_de_nivel.qmd
+        - capitulos/segundo_ejemplo_3d_rotacion.qmd
         - capitulos/01-introduccion.qmd
         - capitulos/02-geometria.qmd
         - capitulos/ejemplo_metodo_grafico.qmd
