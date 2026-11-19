@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introducción y formulación – Programación Lineal</title>
+<title>Parte IV. Dualidad y análisis postóptimo – Programación Lineal</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -29,26 +29,26 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../capitulos/02-geometria.html" rel="next">
-<link href="../capitulos/tercer_ejemplo_poliedro_3d.html" rel="prev">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-522b101d4a4b4cffe1095163c0f04340.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./capitulos/05-dualidad.html" rel="next">
+<link href="./capitulos/04-simplex.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-39ba6e9b7144d98aab36a8e53c345115.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -78,17 +78,17 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="../estilos/editorial.css">
+<link rel="stylesheet" href="estilos/editorial.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Saltar al contenido principal</a>
+<body class="nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Saltar al contenido principal</a>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Sitio web">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Programación Lineal</span>
     </a>
   </div>
@@ -98,19 +98,15 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../index.html" aria-current="page"> 
-<span class="menu-text">Libro</span></a>
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Índice general</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../exploraciones.html"> 
-<span class="menu-text">Exploraciones</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../recursos/index.html"> 
+    <a class="nav-link" href="./recursos/index.html"> 
 <span class="menu-text">Recursos académicos</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../acerca.html"> 
+    <a class="nav-link" href="./acerca.html"> 
 <span class="menu-text">Acerca del libro</span></a>
   </li>  
 </ul>
@@ -125,219 +121,23 @@ ul.task-list li input[type="checkbox"] {
             <div id="quarto-search" class="" title="Buscar"></div>
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav" aria-label="Barra de herramientas">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="Hilo de Ariadna"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/fundamentos_iniciales_capitulo1.html">I. Modelar y visualizar</a></li><li class="breadcrumb-item"><a href="../capitulos/01-introduccion.html"><span class="chapter-title">Introducción y formulación</span></a></li></ol></nav>
-        <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
-    </div>
-  </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto" aria-label="Sección">
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Buscar"></div>
-        </div>
-        </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Programación Lineal</span></a>
-  </div>
-</li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-controls="quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text" id="quarto-sidebar-section-1-label">I. Modelar y visualizar</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-1" aria-labelledby="quarto-sidebar-section-1-label" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../capitulos/fundamentos_iniciales_capitulo1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Fundamentos de la Programación Lineal</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../capitulos/soluciones_y_region_factible.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Soluciones y región de factibilidad</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../capitulos/combinaciones_convexas_y_convexidad.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Combinaciones convexas y convexidad</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../capitulos/vertices_y_puntos_extremos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Vértices y puntos extremos</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../capitulos/vertices_y_soluciones_optimas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Vértices y soluciones óptimas</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../capitulos/planos_y_rectas_de_nivel.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">De los planos a las rectas de nivel</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../capitulos/segundo_ejemplo_3d_rotacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Exploración espacial con rotación libre</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../capitulos/tercer_ejemplo_poliedro_3d.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Barrido de planos de nivel sobre un poliedro</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../capitulos/01-introduccion.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Introducción y formulación</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../capitulos/02-geometria.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Interpretación geométrica de la programación lineal</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../capitulos/ejemplo_metodo_grafico.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Ejemplo interactivo: resolución mediante el método gráfico</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-controls="quarto-sidebar-section-2" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-2-label">II. De la geometría al algoritmo</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-2" aria-labelledby="quarto-sidebar-section-2-label" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../capitulos/03-bases.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Bases y soluciones básicas factibles</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-controls="quarto-sidebar-section-3" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-3-label">III. Algoritmos de resolución</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-3" aria-labelledby="quarto-sidebar-section-3-label" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../capitulos/04-simplex.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Método Simplex</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-controls="quarto-sidebar-section-4" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-4-label">IV. Dualidad y análisis postóptimo</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-4" aria-labelledby="quarto-sidebar-section-4-label" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../capitulos/05-dualidad.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Dualidad e interpretación económica</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../capitulos/06-sensibilidad.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Análisis de sensibilidad</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-controls="quarto-sidebar-section-5" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-5-label">V. Modelos y aplicaciones</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-5" aria-labelledby="quarto-sidebar-section-5-label" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../capitulos/07-modelos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Modelos especiales</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../capitulos/08-entera.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Programación lineal entera</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../capitulos/09-aplicaciones.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Aplicaciones de la programación lineal</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-controls="quarto-sidebar-section-6" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-6-label">Material complementario</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-      </div>
-      <ul id="quarto-sidebar-section-6" aria-labelledby="quarto-sidebar-section-6-label" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../exploraciones.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Exploraciones interactivas</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../recursos/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Recursos académicos</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../acerca.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Acerca del libro</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../referencias.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Referencias bibliográficas</span></a>
-  </div>
-</li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
-    <h2 id="toc-title">Tabla de contenidos</h2>
-   
-  <ul>
-  <li><a href="#organización-del-capítulo" id="toc-organización-del-capítulo" class="nav-link active" data-scroll-target="#organización-del-capítulo">Organización del capítulo</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
-<main class="content" id="quarto-document-content" tabindex="-1">
+<main class="content column-page" id="quarto-document-content" tabindex="-1">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Hilo de Ariadna"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/fundamentos_iniciales_capitulo1.html">I. Modelar y visualizar</a></li><li class="breadcrumb-item"><a href="../capitulos/01-introduccion.html"><span class="chapter-title">Introducción y formulación</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">Introducción y formulación</span></h1>
+<h1 class="title">Parte IV. Dualidad y análisis postóptimo</h1>
 </div>
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page">
 
     
   
@@ -349,19 +149,61 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="editorial-note">
-<p><strong>En preparación.</strong> El contenido se redactará a partir de los materiales revisados del curso EM-4010 y de fuentes bibliográficas verificadas. No se incorporan demostraciones, datos ni referencias provisionales como si fueran definitivos.</p>
-</div>
-<section id="organización-del-capítulo" class="level2">
-<h2 class="anchored" data-anchor-id="organización-del-capítulo">Organización del capítulo</h2>
-<p>La estructura académica, las demostraciones, los ejemplos y las exploraciones se establecerán durante la revisión editorial de este capítulo.</p>
-<div class="explora">
-<p><strong>Exploración interactiva</strong></p>
-<p>Espacio reservado para una construcción GeoGebra validada matemáticamente y acompañada de una pregunta guía.</p>
+<style>
+
+/* Portada autónoma: estilos limitados a #pl-part1. No altera capítulos ni índices interiores. */
+body:has(#pl-part1) #title-block-header { display:none !important; }
+body:has(#pl-part1) #quarto-sidebar { display:none !important; }
+body:has(#pl-part1) #quarto-margin-sidebar { display:none !important; }
+body:has(#pl-part1) #quarto-content { grid-template-columns: minmax(0,1fr) !important; }
+body:has(#pl-part1) #quarto-document-content,body:has(#pl-part1) main.content { max-width:none !important; width:100%; }
+#pl-part1 { --pl-ink:#183B45; --pl-teal:#237F80; --pl-gold:#D8A447; --pl-muted:#62747a; max-width:1160px; margin:0 auto 3rem; color:var(--pl-ink); font-family:'Source Sans 3',system-ui,sans-serif; }
+#pl-part1 * { box-sizing:border-box; }
+#pl-part1 .pl-cover { position:relative; overflow:hidden; isolation:isolate; background:linear-gradient(125deg,#122d37 0%,#194451 56%,#27646a 100%); border-radius:22px; color:#fff; padding:clamp(1.6rem,4vw,3.5rem); min-height:350px; display:grid; grid-template-columns:minmax(0,1.14fr) minmax(260px,.86fr); align-items:center; gap:1rem; }
+#pl-part1 .pl-cover:before{content:'';position:absolute;inset:auto -100px -200px auto;width:420px;height:420px;border-radius:50%;border:1px solid #ffffff17;box-shadow:0 0 0 48px #ffffff06,0 0 0 105px #ffffff05;z-index:-1}
+#pl-part1 .pl-eyebrow{font-size:.76rem;font-weight:700;letter-spacing:.17em;text-transform:uppercase;color:#a8e3d6;margin-bottom:.75rem;}
+#pl-part1 .pl-cover h1{color:#fff;font-family:'Source Serif 4',Georgia,serif;font-size:clamp(2.65rem,5vw,4.7rem);line-height:1.06;letter-spacing:-.035em;margin:0 0 .65rem;font-weight:600;}
+#pl-part1 .pl-cover .pl-tagline{font-family:'Source Serif 4',Georgia,serif;color:#d1ebe7;font-size:clamp(1.12rem,2vw,1.48rem);margin:0 0 1.2rem;}
+#pl-part1 .pl-cover .pl-intro{max-width:530px;color:#dce9e8;line-height:1.6;font-size:1.04rem;margin:0 0 1.6rem;}
+#pl-part1 .pl-cover-actions{display:flex;gap:.65rem;flex-wrap:wrap}
+#pl-part1 .pl-cover-actions a{display:inline-flex;align-items:center;min-height:44px;padding:.68rem 1rem;border-radius:9px;text-decoration:none;font-weight:700;font-size:.94rem;transition:transform .18s,background .18s}
+#pl-part1 .pl-cover-actions a:hover{transform:translateY(-2px)}
+#pl-part1 .pl-cover-actions .pl-main-action{background:#e9f6ee;color:#183B45}
+#pl-part1 .pl-cover-actions .pl-alt-action{border:1px solid #82b7b0;color:#fff}
+#pl-part1 .pl-cover-art{width:100%;display:block;overflow:visible;filter:drop-shadow(0 12px 22px #061b2450)}
+#pl-part1 .pl-ribbon{display:flex;gap:1rem;flex-wrap:wrap;margin:1.1rem 0 2.7rem;color:#486168;font-size:.9rem}
+#pl-part1 .pl-ribbon span{border:1px solid #dae7e4;border-radius:100px;padding:.32rem .8rem;background:#f8fbfa}
+#pl-part1 .pl-section-head{display:flex;justify-content:space-between;align-items:baseline;gap:1.5rem;border-bottom:1px solid #d7e3e1;padding-bottom:.8rem;margin-bottom:1.15rem}
+#pl-part1 .pl-section-head h2{font-family:'Source Serif 4',Georgia,serif;color:#183B45;margin:0;font-size:clamp(1.55rem,2.5vw,2.1rem);font-weight:600}
+#pl-part1 .pl-section-head p{color:#63767b;margin:0;font-size:.95rem}
+#pl-part1 .pl-chapters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-bottom:2.7rem}
+#pl-part1 .pl-chapter{position:relative;display:flex;flex-direction:column;min-height:187px;border:1px solid #d8e5e2;background:#fff;color:#183B45;border-radius:14px;padding:1.3rem 1.4rem;text-decoration:none !important;box-shadow:0 3px 10px #0f293208;transition:transform .17s,border-color .17s,box-shadow .17s}
+#pl-part1 .pl-chapter:hover,#pl-part1 .pl-chapter:focus-visible{transform:translateY(-4px);border-color:#71b8ae;box-shadow:0 12px 25px #0f293218;color:#183B45}
+#pl-part1 .pl-chapter .pl-number{font-size:.8rem;letter-spacing:.12em;font-weight:700;color:#168179;margin-bottom:1.1rem}
+#pl-part1 .pl-chapter h3{font-family:'Source Serif 4',Georgia,serif;font-size:1.27rem;line-height:1.25;margin:0 0 .55rem;color:#183B45;font-weight:600}
+#pl-part1 .pl-chapter p{font-size:.91rem;line-height:1.5;color:#536870;margin:0 0 1.35rem}
+#pl-part1 .pl-chapter .pl-open{margin-top:auto;color:#137b78;font-weight:700;font-size:.9rem}
+#pl-part1 .pl-chapter .pl-open:after{content:'  →'}
+#pl-part1 .pl-chapter.pl-primary{background:#f1f8f6;border-color:#b8d8d0}
+#pl-part1 .pl-secondary{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2.4rem}
+#pl-part1 .pl-secondary a{display:flex;align-items:center;justify-content:space-between;gap:1rem;color:#183B45!important;text-decoration:none!important;border:1px solid #d9e5e3;border-radius:12px;padding:1.15rem 1.35rem;font-weight:700;background:#fcfdfc}
+#pl-part1 .pl-secondary a:hover{border-color:#7db9b1;background:#f3faf7}
+#pl-part1 .pl-secondary small{display:block;color:#65777b;font-weight:400;font-size:.87rem;margin-top:.25rem}
+#pl-part1 .pl-note{padding:1.1rem 1.3rem;border-left:3px solid #d8a447;background:#faf8f2;border-radius:4px;color:#53656b;font-size:.93rem;line-height:1.6}
+@media(max-width:950px){#pl-part1 .pl-cover{grid-template-columns:1fr}#pl-part1 .pl-cover-art{max-width:420px;margin:0 auto}#pl-part1 .pl-chapters{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){#pl-part1 .pl-cover{padding:1.7rem 1.3rem;min-height:0;border-radius:13px}#pl-part1 .pl-cover-art{max-width:320px}#pl-part1 .pl-chapters,#pl-part1 .pl-secondary{grid-template-columns:1fr}#pl-part1 .pl-section-head{display:block}#pl-part1 .pl-section-head p{margin:.25rem 0 0}#pl-part1 .pl-chapter{min-height:165px}}
+
+#pl-part1 .pl-cover{min-height:280px;}#pl-part1 .pl-cover h1{font-size:clamp(2.3rem,4.5vw,3.7rem)}
+
+</style>
+<div id="pl-part1">
+<section class="pl-cover" aria-label="Portada de la parte IV"><div><div class="pl-eyebrow">Parte IV</div><h1>Dualidad y análisis postóptimo</h1><p class="pl-tagline">Relaciones primal-dual, interpretación económica y sensibilidad.</p><div class="pl-cover-actions"><a class="pl-main-action" href="#pl-contenidos">Ver temas ↓</a><a class="pl-alt-action" href="index.html">Índice general ↗</a></div></div><svg viewbox="0 0 230 95" aria-hidden="true"><rect x="18" y="11" width="82" height="70" rx="7" fill="#e8f4f0" stroke="#6ea49e"></rect><rect x="130" y="11" width="82" height="70" rx="7" fill="#eaf1f8" stroke="#79a1ba"></rect><g stroke="#D8A447" stroke-width="2"><path d="M53 45H172M166 40L172 45L166 50"></path></g><path d="M35 59L65 33L80 50" stroke="#237F80" stroke-width="2" fill="none"></path><path d="M146 59L168 36L191 53" stroke="#477BA8" stroke-width="2" fill="none"></path></svg></section>
+<section id="pl-contenidos" aria-label="Contenidos de la Parte IV"><header class="pl-section-head"><h2 class="anchored">Contenidos</h2></header><div class="pl-chapters"><a class="pl-chapter" href="capitulos/05-dualidad.html"><span class="pl-number">TEMA 01</span><h3 class="anchored">Dualidad</h3><p>Relaciones entre problemas primal y dual.</p><span class="pl-open">Abrir tema</span></a>
+<a class="pl-chapter" href="capitulos/06-sensibilidad.html"><span class="pl-number">TEMA 02</span><h3 class="anchored">Análisis de sensibilidad</h3><p>Cambios de disponibilidades y coeficientes objetivo.</p><span class="pl-open">Abrir tema</span></a></div></section>
+<p class="pl-note">Los materiales de esta parte se integrarán progresivamente. Los ejemplos y applets aparecerán dentro de los apartados matemáticos que les dan sentido.</p>
 </div>
 
 
-</section>
 
 </main> <!-- /main -->
 <div class="pl-footer-note" style="text-align:center;font-size:.82rem;color:#64748b;padding:1rem 0">Libro en desarrollo · Versión editorial preliminar</div>
@@ -865,15 +707,15 @@ ul.task-list li input[type="checkbox"] {
   <script type="application/javascript">
   window.quartoScrollableRegionsLabels = {"code":"Código desplazable","output":"Salida desplazable"};
   </script>
-<nav class="page-navigation" aria-label="Página">
+<nav class="page-navigation column-page" aria-label="Página">
   <div class="nav-page nav-page-previous">
-      <a href="../capitulos/tercer_ejemplo_poliedro_3d.html" class="pagination-link" aria-label="Barrido de planos de nivel sobre un poliedro">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Barrido de planos de nivel sobre un poliedro</span></span>
+      <a href="./capitulos/04-simplex.html" class="pagination-link" aria-label="Método Simplex">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Método Simplex</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../capitulos/02-geometria.html" class="pagination-link" aria-label="Interpretación geométrica de la programación lineal">
-        <span class="nav-page-text"><span class="chapter-title">Interpretación geométrica de la programación lineal</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./capitulos/05-dualidad.html" class="pagination-link" aria-label="Dualidad e interpretación económica">
+        <span class="nav-page-text"><span class="chapter-title">Dualidad e interpretación económica</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

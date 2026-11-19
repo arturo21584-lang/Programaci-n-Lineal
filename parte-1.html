@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Parte I. Fundamentos y geometría – Programación Lineal</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./capitulos/fundamentos_iniciales_capitulo1.html" rel="next">
+<link href="./index.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-39ba6e9b7144d98aab36a8e53c345115.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="estilos/editorial.css">
+</head>
+
+<body class="nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Saltar al contenido principal</a>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Sitio web">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Programación Lineal</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Índice general</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./recursos/index.html"> 
+<span class="menu-text">Recursos académicos</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./acerca.html"> 
+<span class="menu-text">Acerca del libro</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Alternar modo lector">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content column-page" id="quarto-document-content" tabindex="-1">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Parte I. Fundamentos y geometría</h1>
+</div>
+
+
+
+<div class="quarto-title-meta column-page">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<style>
+
+/* Portada autónoma: estilos limitados a #pl-part1. No altera capítulos ni índices interiores. */
+body:has(#pl-part1) #title-block-header { display:none !important; }
+body:has(#pl-part1) #quarto-sidebar { display:none !important; }
+body:has(#pl-part1) #quarto-margin-sidebar { display:none !important; }
+body:has(#pl-part1) #quarto-content { grid-template-columns: minmax(0,1fr) !important; }
+body:has(#pl-part1) #quarto-document-content,body:has(#pl-part1) main.content { max-width:none !important; width:100%; }
+#pl-part1 { --pl-ink:#183B45; --pl-teal:#237F80; --pl-gold:#D8A447; --pl-muted:#62747a; max-width:1160px; margin:0 auto 3rem; color:var(--pl-ink); font-family:'Source Sans 3',system-ui,sans-serif; }
+#pl-part1 * { box-sizing:border-box; }
+#pl-part1 .pl-cover { position:relative; overflow:hidden; isolation:isolate; background:linear-gradient(125deg,#122d37 0%,#194451 56%,#27646a 100%); border-radius:22px; color:#fff; padding:clamp(1.6rem,4vw,3.5rem); min-height:350px; display:grid; grid-template-columns:minmax(0,1.14fr) minmax(260px,.86fr); align-items:center; gap:1rem; }
+#pl-part1 .pl-cover:before{content:'';position:absolute;inset:auto -100px -200px auto;width:420px;height:420px;border-radius:50%;border:1px solid #ffffff17;box-shadow:0 0 0 48px #ffffff06,0 0 0 105px #ffffff05;z-index:-1}
+#pl-part1 .pl-eyebrow{font-size:.76rem;font-weight:700;letter-spacing:.17em;text-transform:uppercase;color:#a8e3d6;margin-bottom:.75rem;}
+#pl-part1 .pl-cover h1{color:#fff;font-family:'Source Serif 4',Georgia,serif;font-size:clamp(2.65rem,5vw,4.7rem);line-height:1.06;letter-spacing:-.035em;margin:0 0 .65rem;font-weight:600;}
+#pl-part1 .pl-cover .pl-tagline{font-family:'Source Serif 4',Georgia,serif;color:#d1ebe7;font-size:clamp(1.12rem,2vw,1.48rem);margin:0 0 1.2rem;}
+#pl-part1 .pl-cover .pl-intro{max-width:530px;color:#dce9e8;line-height:1.6;font-size:1.04rem;margin:0 0 1.6rem;}
+#pl-part1 .pl-cover-actions{display:flex;gap:.65rem;flex-wrap:wrap}
+#pl-part1 .pl-cover-actions a{display:inline-flex;align-items:center;min-height:44px;padding:.68rem 1rem;border-radius:9px;text-decoration:none;font-weight:700;font-size:.94rem;transition:transform .18s,background .18s}
+#pl-part1 .pl-cover-actions a:hover{transform:translateY(-2px)}
+#pl-part1 .pl-cover-actions .pl-main-action{background:#e9f6ee;color:#183B45}
+#pl-part1 .pl-cover-actions .pl-alt-action{border:1px solid #82b7b0;color:#fff}
+#pl-part1 .pl-cover-art{width:100%;display:block;overflow:visible;filter:drop-shadow(0 12px 22px #061b2450)}
+#pl-part1 .pl-ribbon{display:flex;gap:1rem;flex-wrap:wrap;margin:1.1rem 0 2.7rem;color:#486168;font-size:.9rem}
+#pl-part1 .pl-ribbon span{border:1px solid #dae7e4;border-radius:100px;padding:.32rem .8rem;background:#f8fbfa}
+#pl-part1 .pl-section-head{display:flex;justify-content:space-between;align-items:baseline;gap:1.5rem;border-bottom:1px solid #d7e3e1;padding-bottom:.8rem;margin-bottom:1.15rem}
+#pl-part1 .pl-section-head h2{font-family:'Source Serif 4',Georgia,serif;color:#183B45;margin:0;font-size:clamp(1.55rem,2.5vw,2.1rem);font-weight:600}
+#pl-part1 .pl-section-head p{color:#63767b;margin:0;font-size:.95rem}
+#pl-part1 .pl-chapters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-bottom:2.7rem}
+#pl-part1 .pl-chapter{position:relative;display:flex;flex-direction:column;min-height:187px;border:1px solid #d8e5e2;background:#fff;color:#183B45;border-radius:14px;padding:1.3rem 1.4rem;text-decoration:none !important;box-shadow:0 3px 10px #0f293208;transition:transform .17s,border-color .17s,box-shadow .17s}
+#pl-part1 .pl-chapter:hover,#pl-part1 .pl-chapter:focus-visible{transform:translateY(-4px);border-color:#71b8ae;box-shadow:0 12px 25px #0f293218;color:#183B45}
+#pl-part1 .pl-chapter .pl-number{font-size:.8rem;letter-spacing:.12em;font-weight:700;color:#168179;margin-bottom:1.1rem}
+#pl-part1 .pl-chapter h3{font-family:'Source Serif 4',Georgia,serif;font-size:1.27rem;line-height:1.25;margin:0 0 .55rem;color:#183B45;font-weight:600}
+#pl-part1 .pl-chapter p{font-size:.91rem;line-height:1.5;color:#536870;margin:0 0 1.35rem}
+#pl-part1 .pl-chapter .pl-open{margin-top:auto;color:#137b78;font-weight:700;font-size:.9rem}
+#pl-part1 .pl-chapter .pl-open:after{content:'  →'}
+#pl-part1 .pl-chapter.pl-primary{background:#f1f8f6;border-color:#b8d8d0}
+#pl-part1 .pl-secondary{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2.4rem}
+#pl-part1 .pl-secondary a{display:flex;align-items:center;justify-content:space-between;gap:1rem;color:#183B45!important;text-decoration:none!important;border:1px solid #d9e5e3;border-radius:12px;padding:1.15rem 1.35rem;font-weight:700;background:#fcfdfc}
+#pl-part1 .pl-secondary a:hover{border-color:#7db9b1;background:#f3faf7}
+#pl-part1 .pl-secondary small{display:block;color:#65777b;font-weight:400;font-size:.87rem;margin-top:.25rem}
+#pl-part1 .pl-note{padding:1.1rem 1.3rem;border-left:3px solid #d8a447;background:#faf8f2;border-radius:4px;color:#53656b;font-size:.93rem;line-height:1.6}
+@media(max-width:950px){#pl-part1 .pl-cover{grid-template-columns:1fr}#pl-part1 .pl-cover-art{max-width:420px;margin:0 auto}#pl-part1 .pl-chapters{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){#pl-part1 .pl-cover{padding:1.7rem 1.3rem;min-height:0;border-radius:13px}#pl-part1 .pl-cover-art{max-width:320px}#pl-part1 .pl-chapters,#pl-part1 .pl-secondary{grid-template-columns:1fr}#pl-part1 .pl-section-head{display:block}#pl-part1 .pl-section-head p{margin:.25rem 0 0}#pl-part1 .pl-chapter{min-height:165px}}
+
+#pl-part1 .pl-cover{min-height:280px;}#pl-part1 .pl-cover h1{font-size:clamp(2.3rem,4.5vw,3.7rem)}
+
+</style>
+<div id="pl-part1">
+  <section class="pl-cover" aria-label="Presentación del libro">
+    <div>
+      <div class="pl-eyebrow">Parte I · Fundamentos y geometría</div>
+      <h1>Modelar y<br>visualizar</h1>
+      <p class="pl-tagline">Fundamentos, convexidad y optimalidad</p>
+      <p class="pl-intro">De la formulación de modelos a la geometría de sus soluciones: regiones factibles, combinaciones convexas, vértices, resultados de optimalidad y método gráfico.</p>
+      <div class="pl-cover-actions">
+        <a class="pl-main-action" href="capitulos/fundamentos_iniciales_capitulo1.html">Comenzar esta parte&nbsp; →</a>
+        <a class="pl-alt-action" href="#pl-contenidos">Explorar contenidos ↓</a>
+      </div>
+    </div>
+    <svg class="pl-cover-art" viewbox="0 0 420 320" role="img" aria-label="Ilustración geométrica de una región factible poligonal y rectas de nivel">
+      <defs><pattern id="plgrid-home" width="29" height="29" patternunits="userSpaceOnUse"><path d="M29 0H0V29" fill="none" stroke="#cee7e0" stroke-opacity=".12" stroke-width="1"></path></pattern><lineargradient id="plpoly-home" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8be0c3" stop-opacity=".52"></stop><stop offset="1" stop-color="#b5e8d6" stop-opacity=".12"></stop></lineargradient></defs>
+      <rect x="18" y="16" width="386" height="284" fill="url(#plgrid-home)" rx="10"></rect>
+      <g stroke="#a3cbc5" stroke-width="2" stroke-linecap="round"><path d="M48 275H389"></path><path d="M48 275V24"></path><path d="M383 270l6 5-6 5M43 30l5-6 5 6"></path></g>
+      <g font-family="Georgia,serif" font-style="italic" fill="#d6eae5" font-size="17"><text x="382" y="299">x₁</text><text x="26" y="25">x₂</text></g>
+      <!-- Polígono factible escalado con vértices (0,0),(4,0),(8/3,8/3),(0,4). -->
+      <polygon points="48,275 288,275 208,115 48,35" fill="url(#plpoly-home)" stroke="#8dd1b5" stroke-width="2.5" stroke-linejoin="round"></polygon>
+      <g stroke="#ebc078" stroke-width="2" stroke-dasharray="7 6" opacity=".48"><path d="M48 185L108 275"></path><path d="M110 -2L295 275"></path><path d="M165 -2L350 275"></path></g>
+      <path d="M208 115L288 275" stroke="#a6ebd0" stroke-width="2" opacity=".28"></path>
+      <path d="M130 -2L315 275" stroke="#f7d188" stroke-width="3.5" stroke-linecap="round"></path>
+      <g fill="#f5d18b"><circle cx="208" cy="115" r="7"></circle><circle cx="288" cy="275" r="4"></circle></g>
+      <g font-family="'Source Sans 3',sans-serif" font-size="13" fill="#f3e4c3"><text x="218" y="105">Óptimo</text><text x="240" y="248">Recta de nivel</text></g>
+    </svg>
+  </section>
+
+
+  <div class="pl-ribbon"><span>Teoría y demostraciones</span><span>Ejemplos interactivos integrados</span><span>Ejercicios de comprensión</span></div>
+  <section id="pl-contenidos" aria-label="Índice de la Parte I">
+    <header class="pl-section-head"><h2 class="anchored">Contenidos de la Parte I</h2><p>Una secuencia matemática continua</p></header>
+    <div class="pl-chapters">
+<a class="pl-chapter pl-primary" href="capitulos/fundamentos_iniciales_capitulo1.html"><span class="pl-number">01 · FORMULACIÓN</span><h3 class="anchored">Fundamentos matemáticos</h3><p>Variables, objetivo, restricciones y representación matricial.</p><span class="pl-open">Abrir tema</span></a>
+<a class="pl-chapter " href="capitulos/soluciones_y_region_factible.html"><span class="pl-number">02 · FACTIBILIDAD</span><h3 class="anchored">Soluciones y región factible</h3><p>Semiplanos, restricciones activas y caracterización del conjunto factible.</p><span class="pl-open">Abrir tema</span></a>
+<a class="pl-chapter " href="capitulos/combinaciones_convexas_y_convexidad.html"><span class="pl-number">03 · CONVEXIDAD</span><h3 class="anchored">Combinaciones convexas</h3><p>Segmentos, combinaciones de varios vectores y demostraciones.</p><span class="pl-open">Abrir tema</span></a>
+<a class="pl-chapter " href="capitulos/vertices_y_puntos_extremos.html"><span class="pl-number">04 · GEOMETRÍA</span><h3 class="anchored">Vértices y puntos extremos</h3><p>Definición, propiedades y demostración de puntos extremos.</p><span class="pl-open">Abrir tema</span></a>
+<a class="pl-chapter " href="capitulos/vertices_y_soluciones_optimas.html"><span class="pl-number">05 · OPTIMALIDAD</span><h3 class="anchored">Vértices y soluciones óptimas</h3><p>Existencia de vértices óptimos y convexidad del conjunto de óptimos.</p><span class="pl-open">Abrir tema</span></a>
+<a class="pl-chapter " href="capitulos/interpretacion_geometrica_niveles.html"><span class="pl-number">06 · NIVELES</span><h3 class="anchored">Interpretación geométrica</h3><p>Rectas de nivel, cortes espaciales y proyecciones sincronizadas.</p><span class="pl-open">Abrir tema</span></a>
+<a class="pl-chapter " href="capitulos/ejemplo_metodo_grafico.html"><span class="pl-number">07 · MÉTODO GRÁFICO</span><h3 class="anchored">Resolver e interpretar</h3><p>Barrido, comparación de vértices y un ejemplo completamente resuelto.</p><span class="pl-open">Abrir tema</span></a>
+<a class="pl-chapter " href="capitulos/extension_geometrica_3d.html"><span class="pl-number">08 · EXTENSIÓN 3D</span><h3 class="anchored">Planos de nivel en un poliedro</h3><p>Generalización geométrica a tres variables y recorrido hasta el óptimo.</p><span class="pl-open">Abrir tema</span></a>
+    </div>
+  </section>
+  <p class="pl-note">Las exploraciones 2D y 3D están incorporadas en las explicaciones correspondientes. Cada recurso ayuda a investigar un concepto antes de formalizarlo o aplicarlo.</p>
+  <div class="pl-cover-actions"><a class="pl-main-action" style="color:#183B45" href="index.html">Volver al índice general</a></div>
+</div>
+
+
+
+</main> <!-- /main -->
+<div class="pl-footer-note" style="text-align:center;font-size:.82rem;color:#64748b;padding:1rem 0">Libro en desarrollo · Versión editorial preliminar</div>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      const newWindowLabel = "(opens in a new tab)";
+      const newWindowNoteId = "quarto-ext-newwindow-label";
+      // Links reference one hidden label through aria-describedby, so the
+      // announcement never changes their accessible name.
+      var describeNewWindow = (link) => {
+        if (!window.document.getElementById(newWindowNoteId)) {
+          var newWindowNote = window.document.createElement("span");
+          newWindowNote.id = newWindowNoteId;
+          newWindowNote.hidden = true;
+          newWindowNote.textContent = newWindowLabel;
+          window.document.body.appendChild(newWindowNote);
+        }
+        var describedBy = (link.getAttribute("aria-describedby") || "").split(/\s+/).filter(Boolean);
+        if (!describedBy.includes(newWindowNoteId)) {
+          describedBy.push(newWindowNoteId);
+          link.setAttribute("aria-describedby", describedBy.join(" "));
+        }
+      }
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            describeNewWindow(link);
+          if (!link.classList.contains('no-external-icon')) {
+          }
+        }
+      }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
+          if (lineIds.length > 0) {
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            placeBand(gutterDiv, el, lastEl);
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Código desplazable","output":"Salida desplazable"};
+  </script>
+<nav class="page-navigation column-page" aria-label="Página">
+  <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link" aria-label="Programación Lineal">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Programación Lineal</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./capitulos/fundamentos_iniciales_capitulo1.html" class="pagination-link" aria-label="Fundamentos de la Programación Lineal">
+        <span class="nav-page-text"><span class="chapter-title">Fundamentos de la Programación Lineal</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>De los planos a las rectas de nivel – Programación Lineal</title>
+<title>Extensión geométrica: planos de nivel en tres variables – Programación Lineal</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -36,8 +36,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../capitulos/segundo_ejemplo_3d_rotacion.html" rel="next">
-<link href="../capitulos/vertices_y_soluciones_optimas.html" rel="prev">
+<link href="../parte-2.html" rel="next">
+<link href="../capitulos/ejemplo_metodo_grafico.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
@@ -48,7 +48,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-522b101d4a4b4cffe1095163c0f04340.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-39ba6e9b7144d98aab36a8e53c345115.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -128,11 +128,7 @@ window.Quarto = {
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link active" href="../index.html" aria-current="page"> 
-<span class="menu-text">Libro</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../exploraciones.html"> 
-<span class="menu-text">Exploraciones</span></a>
+<span class="menu-text">Índice general</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../recursos/index.html"> 
@@ -159,7 +155,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="Hilo de Ariadna"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/fundamentos_iniciales_capitulo1.html">I. Modelar y visualizar</a></li><li class="breadcrumb-item"><a href="../capitulos/planos_y_rectas_de_nivel.html"><span class="chapter-title">De los planos a las rectas de nivel</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="Hilo de Ariadna"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parte-1.html">Parte I. Fundamentos y geometría</a></li><li class="breadcrumb-item"><a href="../capitulos/extension_geometrica_3d.html"><span class="chapter-title">Extensión geométrica: planos de nivel en tres variables</span></a></li></ol></nav>
         <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -186,8 +182,11 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-controls="quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text" id="quarto-sidebar-section-1-label">I. Modelar y visualizar</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+            <a href="../parte-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-1-label">Parte I. Fundamentos y geometría</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-controls="quarto-sidebar-section-1" aria-expanded="true" aria-label="Alternar sección: Parte I. Fundamentos y geometría">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
       </div>
       <ul id="quarto-sidebar-section-1" aria-labelledby="quarto-sidebar-section-1-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
@@ -217,27 +216,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../capitulos/planos_y_rectas_de_nivel.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">De los planos a las rectas de nivel</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../capitulos/segundo_ejemplo_3d_rotacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Exploración espacial con rotación libre</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../capitulos/tercer_ejemplo_poliedro_3d.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Barrido de planos de nivel sobre un poliedro</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../capitulos/01-introduccion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introducción y formulación</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../capitulos/02-geometria.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Interpretación geométrica de la programación lineal</span></a>
+  <a href="../capitulos/interpretacion_geometrica_niveles.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Interpretación geométrica de las rectas de nivel</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -245,12 +224,20 @@ window.Quarto = {
   <a href="../capitulos/ejemplo_metodo_grafico.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Ejemplo interactivo: resolución mediante el método gráfico</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/extension_geometrica_3d.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Extensión geométrica: planos de nivel en tres variables</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-controls="quarto-sidebar-section-2" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-2-label">II. De la geometría al algoritmo</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+            <a href="../parte-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-2-label">Parte II. De la geometría al algoritmo</span></a>
+            <button type="button" class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-controls="quarto-sidebar-section-2" aria-expanded="false" aria-label="Alternar sección: Parte II. De la geometría al algoritmo">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
       </div>
       <ul id="quarto-sidebar-section-2" aria-labelledby="quarto-sidebar-section-2-label" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
@@ -262,8 +249,11 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-controls="quarto-sidebar-section-3" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-3-label">III. Algoritmos de resolución</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+            <a href="../parte-3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-3-label">Parte III. Algoritmos de resolución</span></a>
+            <button type="button" class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-controls="quarto-sidebar-section-3" aria-expanded="false" aria-label="Alternar sección: Parte III. Algoritmos de resolución">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
       </div>
       <ul id="quarto-sidebar-section-3" aria-labelledby="quarto-sidebar-section-3-label" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
@@ -275,8 +265,11 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-controls="quarto-sidebar-section-4" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-4-label">IV. Dualidad y análisis postóptimo</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+            <a href="../parte-4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-4-label">Parte IV. Dualidad y análisis postóptimo</span></a>
+            <button type="button" class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-controls="quarto-sidebar-section-4" aria-expanded="false" aria-label="Alternar sección: Parte IV. Dualidad y análisis postóptimo">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
       </div>
       <ul id="quarto-sidebar-section-4" aria-labelledby="quarto-sidebar-section-4-label" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
@@ -293,8 +286,11 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-controls="quarto-sidebar-section-5" aria-expanded="false">
- <span class="menu-text" id="quarto-sidebar-section-5-label">V. Modelos y aplicaciones</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+            <a href="../parte-5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-5-label">Parte V. Modelos y aplicaciones</span></a>
+            <button type="button" class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-controls="quarto-sidebar-section-5" aria-expanded="false" aria-label="Alternar sección: Parte V. Modelos y aplicaciones">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
       </div>
       <ul id="quarto-sidebar-section-5" aria-labelledby="quarto-sidebar-section-5-label" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
@@ -352,19 +348,18 @@ window.Quarto = {
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#dos-perspectivas-de-una-misma-construcción" id="toc-dos-perspectivas-de-una-misma-construcción" class="nav-link active" data-scroll-target="#dos-perspectivas-de-una-misma-construcción">Dos perspectivas de una misma construcción</a>
-  <ul class="collapse">
-  <li><a href="#para-explorar" id="toc-para-explorar" class="nav-link" data-scroll-target="#para-explorar">Para explorar</a></li>
-  </ul></li>
+  <li><a href="#de-rectas-de-nivel-a-planos-de-nivel" id="toc-de-rectas-de-nivel-a-planos-de-nivel" class="nav-link active" data-scroll-target="#de-rectas-de-nivel-a-planos-de-nivel">De rectas de nivel a planos de nivel</a></li>
+  <li><a href="#exploración-espacial-recorrer-el-sólido-hasta-el-óptimo" id="toc-exploración-espacial-recorrer-el-sólido-hasta-el-óptimo" class="nav-link" data-scroll-target="#exploración-espacial-recorrer-el-sólido-hasta-el-óptimo">Exploración espacial: recorrer el sólido hasta el óptimo</a></li>
+  <li><a href="#determinación-del-óptimo" id="toc-determinación-del-óptimo" class="nav-link" data-scroll-target="#determinación-del-óptimo">Determinación del óptimo</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content" tabindex="-1">
+<main class="content page-columns page-full" id="quarto-document-content" tabindex="-1">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Hilo de Ariadna"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/fundamentos_iniciales_capitulo1.html">I. Modelar y visualizar</a></li><li class="breadcrumb-item"><a href="../capitulos/planos_y_rectas_de_nivel.html"><span class="chapter-title">De los planos a las rectas de nivel</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Hilo de Ariadna"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parte-1.html">Parte I. Fundamentos y geometría</a></li><li class="breadcrumb-item"><a href="../capitulos/extension_geometrica_3d.html"><span class="chapter-title">Extensión geométrica: planos de nivel en tres variables</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">De los planos a las rectas de nivel</span></h1>
+<h1 class="title"><span class="chapter-title">Extensión geométrica: planos de nivel en tres variables</span></h1>
 </div>
 
 
@@ -381,251 +376,155 @@ window.Quarto = {
 </header>
 
 
-<section id="dos-perspectivas-de-una-misma-construcción" class="level2">
-<h2 class="anchored" data-anchor-id="dos-perspectivas-de-una-misma-construcción">Dos perspectivas de una misma construcción</h2>
-<p>Una función objetivo con dos variables, <span class="math inline">\(z=3x_1+2x_2\)</span>, determina un <strong>plano inclinado</strong> en el espacio. Si lo cortamos con el plano horizontal <span class="math inline">\(z=k\)</span>, la intersección satisface simultáneamente</p>
-<p><span class="math display">\[
-\begin{cases}
-z=3x_1+2x_2,\\
-z=k.
-\end{cases}
-\]</span></p>
-<p>La proyección vertical de esta intersección sobre el plano <span class="math inline">\(x_1x_2\)</span> es la <strong>recta de nivel</strong> <span class="math inline">\(3x_1+2x_2=k\)</span>. Mientras el plano horizontal asciende, la recta de nivel se desplaza paralelamente en el plano de las decisiones.</p>
-<p>Estudiaremos esta construcción para el programa lineal</p>
+<p>La interpretación geométrica de la función objetivo se extiende de dos a tres variables. En el plano se estudian rectas de nivel; en el espacio de las decisiones se estudian <strong>planos de nivel</strong>. Esta sección es una exploración conceptual y no una propuesta de aplicar mecánicamente el método gráfico de dos variables a modelos tridimensionales.</p>
+<section id="de-rectas-de-nivel-a-planos-de-nivel" class="level2">
+<h2 class="anchored" data-anchor-id="de-rectas-de-nivel-a-planos-de-nivel">De rectas de nivel a planos de nivel</h2>
+<p>Si un programa lineal tiene tres variables de decisión, su región factible puede representarse como un <strong>poliedro</strong> en <span class="math inline">\(\mathbb R^3\)</span>. Una función objetivo afín <span class="math inline">\(w=c_1x_1+c_2x_2+c_3x_3\)</span> asigna un número real a cada punto del poliedro. Para cada valor de <span class="math inline">\(k\)</span>, la ecuación <span class="math inline">\(c_1x_1+c_2x_2+c_3x_3=k\)</span> representa ahora un <strong>plano de nivel</strong>.</p>
+<p>En tres dimensiones no representamos simultáneamente la gráfica <span class="math inline">\(w=f(x_1,x_2,x_3)\)</span>, porque esta vive en cuatro dimensiones. En cambio, observamos directamente cómo un <strong>plano de nivel móvil</strong> corta el sólido factible.</p>
+<p>Consideremos el programa</p>
 <p><span class="math display">\[
 \begin{aligned}
-\max\quad z&amp;=3x_1+2x_2,\\
-x_1+x_2&amp;\leq 6,\\
-2x_1+x_2&amp;\leq 8,\\
-x_1+2x_2&amp;\leq 8,\\
-x_1,x_2&amp;\geq0.
+\text{Maximizar}\quad w&amp;=3x_1+2x_2+x_3,\\
+x_1+x_2+x_3&amp;\leq 6,\\
+x_1&amp;\leq4,\\
+x_2&amp;\leq4,\\
+x_3&amp;\leq4,\\
+x_1,x_2,x_3&amp;\geq0.
 \end{aligned}
 \]</span></p>
-<p>En la figura espacial, <strong>la superficie inclinada se restringe a los puntos de la región factible</strong>: de ese modo, lo que importa no queda oculto por un plano infinito. El plano horizontal corta esa superficie en un segmento (o, en el óptimo, en un punto). Su proyección aparece simultáneamente en la base 3D y en la gráfica 2D. En esta última también se dibuja la recta de nivel completa dentro de la ventana de visualización.</p>
-<div class="plnivel" id="plnivel-corte">
-  <div class="plnivel-layout">
-    <section class="plnivel-card">
-      <div class="plnivel-head"><h3 class="anchored">Vista espacial</h3><span>Plano y proyección</span></div>
-      <svg id="plnivel-3d" viewbox="0 0 640 490" role="img" aria-label="Porción del plano objetivo sobre la región factible, plano de corte horizontal, segmento de intersección y proyección vertical a la región de base"></svg>
-      <div class="plnivel-caption">La superficie ocre es <strong>únicamente</strong> la gráfica de la función objetivo sobre la región factible.</div>
-    </section>
-    <section class="plnivel-card">
-      <div class="plnivel-head"><h3 class="anchored">Vista en el plano</h3><span>Recta de nivel</span></div>
-      <svg id="plnivel-2d" viewbox="0 0 490 490" role="img" aria-label="Región factible completa, recta de nivel y punto de máximo"></svg>
-      <div class="plnivel-caption">La recta negra indica la ecuación <strong>3x₁ + 2x₂ = k</strong>. El segmento grueso muestra su parte factible.</div>
-    </section>
-  </div>
-  <div class="plnivel-panel">
-    <div class="plnivel-value"><label for="plnivel-k">Altura del plano horizontal <strong>k</strong></label><output id="plnivel-kout">8,00</output></div>
-    <input id="plnivel-k" type="range" min="0" max="17" step="any" value="8" aria-label="Altura k de la recta de nivel">
-    <div class="plnivel-actions">
-      <button type="button" id="plnivel-start">Reiniciar</button>
-      <button type="button" id="plnivel-opt">Ir al óptimo (40/3)</button>
-      <label><input id="plnivel-proj" type="checkbox" checked=""> Proyección vertical</label>
-      <label><input id="plnivel-surface" type="checkbox" checked=""> Superficie objetivo</label>
-    </div>
-    <div class="plnivel-state" role="status" aria-live="polite" id="plnivel-status"></div>
-    <div class="plnivel-legend">
-      <span><i style="background:#d7a05a"></i> Superficie objetivo restringida</span>
-      <span><i style="background:#7bbfd0"></i> Plano horizontal</span>
-      <span><i style="background:#14775d"></i> Región factible</span>
-      <span><i style="background:#18242c"></i> Traza y recta de nivel</span>
-    </div>
-  </div>
-  <details class="plnivel-proof"><summary>Mostrar la solución matemática</summary>
-    <p>Los vértices factibles son $(0,0)$, $(4,0)$, $(8/3,8/3)$ y $(0,4)$. La función objetivo toma allí los valores $0$, $12$, $40/3$ y $8$, respectivamente. El máximo es $z^*=40/3$, alcanzado en $(8/3,8/3)$.</p>
-    <p>Al llegar a $k=40/3$, la recta de nivel toca la región factible en un solo punto. Para $k&gt;40/3$, la recta de nivel sigue existiendo, pero no contiene ninguna solución factible.</p>
-  </details>
+</section>
+<section id="exploración-espacial-recorrer-el-sólido-hasta-el-óptimo" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="exploración-espacial-recorrer-el-sólido-hasta-el-óptimo">Exploración espacial: recorrer el sólido hasta el óptimo</h2>
+<p>Arrastrá la escena <strong>horizontalmente para girar alrededor del sólido</strong> y <strong>verticalmente para mirarlo desde arriba o desde abajo</strong>. La rueda permite acercar o alejar. El deslizador desplaza el plano <span class="math inline">\(3x_1+2x_2+x_3=k\)</span>. La región factible permanece fija: solamente cambia el plano de nivel.</p>
+<div id="pl3c" class="pl3c-widget page-columns page-full">
+ <div class="pl3c-top"><div><strong>Poliedro factible y plano de nivel</strong><p>Rotación espacial libre · Perspectiva superior e inferior · Zoom</p></div><span class="pl3c-pill" id="pl3c-state">En exploración</span></div>
+ <div class="pl3c-layout page-columns page-full">
+  <section class="pl3c-graphic"><svg id="pl3c-svg" viewbox="0 0 760 540" role="img" aria-label="Poliedro tridimensional interactivo con un plano de nivel que se mueve hasta la solución óptima"></svg><div class="pl3c-hint">Arrastrar ↔ ↕ · Rueda = zoom · Doble clic = reiniciar cámara</div></section>
+  <aside class="pl3c-side"><strong>Valor del plano</strong><output id="pl3c-kout">k = 8,0</output><label for="pl3c-slider">Recorrido del nivel k</label><input id="pl3c-slider" type="range" min="0" max="19" step="0.1" value="8"><div class="pl3c-buttons"><button type="button" id="pl3c-opt">Ir al óptimo</button><button type="button" id="pl3c-play">▶ Animar</button><button type="button" id="pl3c-reset">Reiniciar</button></div><strong>Ángulos de observación</strong><div class="pl3c-buttons"><button type="button" id="pl3c-topview">Desde arriba</button><button type="button" id="pl3c-sideview">Lateral</button><button type="button" id="pl3c-bottomview">Desde abajo</button></div><div class="pl3c-options"><label><input type="checkbox" id="pl3c-fullplane" checked=""> Mostrar plano de nivel completo</label><label><input type="checkbox" id="pl3c-faces" checked=""> Caras del poliedro</label><label><input type="checkbox" id="pl3c-slice" checked=""> Resaltar sección del corte</label><label><input type="checkbox" id="pl3c-edges" checked=""> Aristas y vértices</label></div><div id="pl3c-message" class="pl3c-message" role="status" aria-live="polite"></div></aside>
+ </div>
+ <div class="pl3c-legend"><span><i style="background:#16887b"></i>Poliedro factible</span><span><i style="background:#56bdd3"></i>Plano de nivel</span><span><i style="background:#ce8730"></i>Intersección con el sólido</span><span><i style="background:#a44e22"></i>Óptimo</span></div>
 </div>
 <style>
-.plnivel{margin:1.3rem 0;padding:1rem;border:1px solid #ccd5dd;border-radius:16px;color:var(--bs-body-color,inherit)}
-.plnivel-layout{display:grid;grid-template-columns:minmax(0,1.16fr) minmax(0,1fr);gap:1rem}
-.plnivel-card{min-width:0;padding:.55rem;border:1px solid #d4dee4;border-radius:12px;background:var(--bs-body-bg,#fff)}
-.plnivel-head{display:flex;align-items:baseline;justify-content:space-between;gap:.4rem;padding:.2rem .4rem .1rem}
-.plnivel-head h3{font-size:1.04rem;margin:0;font-weight:700}
-.plnivel-head span{font-size:.78rem;color:var(--bs-secondary-color,#657781)}
-.plnivel svg{display:block;width:100%;height:auto;overflow:visible}
-.plnivel-caption{font-size:.82rem;color:var(--bs-secondary-color,#56636d);padding:.2rem .4rem .55rem;min-height:3.2em}
-.plnivel-panel{margin-top:1rem;background:color-mix(in srgb,Canvas 94%,#14775d 6%);border-radius:10px;padding:1rem}
-.plnivel-value{display:flex;align-items:center;justify-content:space-between;gap:.7rem}
-.plnivel-value output{font-variant-numeric:tabular-nums;font-weight:750;font-size:1.25rem}
-.plnivel input[type=range]{display:block;width:100%;accent-color:#13776a;margin:.65rem 0}
-.plnivel-actions{display:flex;flex-wrap:wrap;gap:.6rem 1rem;align-items:center}
-.plnivel-actions button{border:1px solid #106d65;background:#106d65;color:#fff;padding:.5rem .8rem;border-radius:7px;font-size:.92rem;cursor:pointer}
-.plnivel-actions button:hover{background:#0b5751}
-.plnivel-actions label{font-size:.87rem;cursor:pointer;display:flex;gap:.3rem;align-items:center}
-.plnivel-actions input[type=checkbox]{accent-color:#106d65}
-.plnivel-state{font-weight:640;margin:.85rem 0 .4rem;min-height:2em}
-.plnivel-legend{display:flex;flex-wrap:wrap;gap:.5rem 1.1rem;font-size:.81rem}
-.plnivel-legend span{display:inline-flex;align-items:center;gap:.35rem}
-.plnivel-legend i{width:.9rem;height:.67rem;border:1px solid #55636b50;border-radius:2px;display:inline-block}
-.plnivel-proof{margin-top:.9rem}.plnivel-proof summary{cursor:pointer;font-weight:650}
-.plnivel button:focus-visible,.plnivel input:focus-visible{outline:3px solid #d7a05a;outline-offset:3px}
-@media(max-width:900px){.plnivel-layout{grid-template-columns:1fr}}
+.pl3c-widget{color:#233b45;background:#fbfdfd;border:1px solid #cbd5df;border-radius:14px;padding:16px;margin:1rem 0}.pl3c-widget *{box-sizing:border-box}.pl3c-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.pl3c-top p{font-size:.82rem;color:#677a85;margin:3px 0 12px}.pl3c-pill{font-size:.8rem;background:#e3f1f1;border-radius:30px;padding:6px 10px}.pl3c-layout{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(220px,1fr);gap:12px}.pl3c-graphic{background:white;border:1px solid #d5e2e7;border-radius:11px;overflow:hidden;min-width:0}.pl3c-graphic svg{width:100%;display:block;touch-action:none;cursor:grab}.pl3c-graphic svg:active{cursor:grabbing}.pl3c-hint{text-align:center;font-size:.79rem;color:#71838b;margin:-4px 8px 8px}.pl3c-side{background:white;border:1px solid #d5e2e7;border-radius:11px;padding:15px;min-width:0}.pl3c-side strong{display:block;font-size:.93rem}.pl3c-side output{font-size:1.6rem;font-weight:700;color:#146f6a;display:block;margin:7px 0 12px}.pl3c-side>label{display:block;font-size:.85rem}.pl3c-side input[type=range]{width:100%;accent-color:#16887b;margin:10px 0 14px}.pl3c-buttons{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 15px}.pl3c-buttons button{font:inherit;font-size:.8rem;font-weight:600;padding:8px 10px;border:1px solid #b9cbd1;border-radius:8px;color:#26454e;background:#f6fafa;cursor:pointer}.pl3c-buttons button:first-child{background:#167c78;color:white;border-color:#167c78}.pl3c-options{display:flex;flex-direction:column;gap:9px;font-size:.82rem;padding:6px 0}.pl3c-options label{display:flex;gap:7px;align-items:flex-start}.pl3c-options input{accent-color:#16887b}.pl3c-message{margin:12px 0 0;padding:10px;border-left:3px solid #16887b;background:#edf6f4;font-size:.85rem;border-radius:4px;min-height:70px}.pl3c-legend{display:flex;flex-wrap:wrap;gap:12px 20px;font-size:.8rem;margin:12px 4px 0;color:#586c75}.pl3c-legend span{display:flex;align-items:center;gap:5px}.pl3c-legend i{width:12px;height:12px;border-radius:3px;display:inline-block}@media(max-width:850px){.pl3c-layout{grid-template-columns:1fr}.pl3c-graphic svg{max-height:560px}}
 </style>
 <script>
-(function(){
+(()=>{
 'use strict';
-const root=document.getElementById('plnivel-corte');
-if(!root||root.dataset.ready)return;
-root.dataset.ready='1';
-const svg3=root.querySelector('#plnivel-3d');
-const svg2=root.querySelector('#plnivel-2d');
-const slider=root.querySelector('#plnivel-k');
-const display=root.querySelector('#plnivel-kout');
-const state=root.querySelector('#plnivel-status');
-const project=root.querySelector('#plnivel-proj');
-const surface=root.querySelector('#plnivel-surface');
-const R=[[0,0],[4,0],[8/3,8/3],[0,4]];
-const window2=[[0,0],[5,0],[5,5],[0,5]];
-const vmax=40/3, EPS=1e-6;
-const f=p=>3*p[0]+2*p[1];
-const point3=(p,z=0)=>[268+59*p[0]-40*p[1],285+8*p[0]+21*p[1]-12*z];
-const point2=p=>[55+77*p[0],425-77*p[1]];
-const fmt=x=>x.toLocaleString('es-CR',{minimumFractionDigits:2,maximumFractionDigits:2});
-function attr(p){return p.map(v=>Number(v).toFixed(3)).join(',')}
-function poly(points,fill,stroke,width=1,opacity=1,extra=''){
- return `<polygon points="${points.map(attr).join(' ')}" fill="${fill}" stroke="${stroke}" stroke-width="${width}" opacity="${opacity}" stroke-linejoin="round" ${extra}/>`;
+const root=document.getElementById('pl3c');if(!root||root.dataset.ready)return;root.dataset.ready='1';
+const svg=document.getElementById('pl3c-svg'),NS='http://www.w3.org/2000/svg';
+const slider=document.getElementById('pl3c-slider');
+const by=id=>document.getElementById('pl3c-'+id);
+const ck=id=>by(id).checked;
+const planes=[{a:[-1,0,0],b:0,name:'x₁=0'},{a:[0,-1,0],b:0,name:'x₂=0'},{a:[0,0,-1],b:0,name:'x₃=0'},{a:[1,0,0],b:4,name:'x₁=4'},{a:[0,1,0],b:4,name:'x₂=4'},{a:[0,0,1],b:4,name:'x₃=4'},{a:[1,1,1],b:6,name:'x₁+x₂+x₃=6'}];
+const dot=(a,b)=>a[0]*b[0]+a[1]*b[1]+a[2]*b[2],cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
+const sub=(a,b)=>a.map((v,i)=>v-b[i]),add=(a,b)=>a.map((v,i)=>v+b[i]),mul=(a,s)=>a.map(v=>v*s);
+const norm=a=>Math.sqrt(dot(a,a));
+const obj=p=>3*p[0]+2*p[1]+p[2];
+function solve3(p,q,r){const D=dot(p.a,cross(q.a,r.a));if(Math.abs(D)<1e-9)return null;return mul(add(add(mul(cross(q.a,r.a),p.b),mul(cross(r.a,p.a),q.b)),mul(cross(p.a,q.a),r.b)),1/D);}
+let verts=[];
+for(let i=0;i<planes.length;i++)for(let j=i+1;j<planes.length;j++)for(let k=j+1;k<planes.length;k++){
+ const p=solve3(planes[i],planes[j],planes[k]);if(!p||!planes.every(h=>dot(h.a,p)<=h.b+1e-6))continue;
+ if(!verts.some(q=>norm(sub(q,p))<1e-5))verts.push(p.map(x=>Math.abs(x)<1e-8?0:x));
 }
-function line(a,b,color,width=2,dash='',extra=''){
- return `<line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" stroke="${color}" stroke-width="${width}" stroke-linecap="round" ${dash?`stroke-dasharray="${dash}"`:''} ${extra}/>`;
+function faceOn(h){const pts=verts.filter(v=>Math.abs(dot(h.a,v)-h.b)<1e-6);if(pts.length<3)return null;
+ const center=mul(pts.reduce((a,b)=>add(a,b),[0,0,0]),1/pts.length);const n=mul(h.a,1/norm(h.a));let basis=cross(n,[0,0,1]);if(norm(basis)<.01)basis=cross(n,[0,1,0]);basis=mul(basis,1/norm(basis));const other=cross(n,basis);
+ pts.sort((p,q)=>Math.atan2(dot(sub(p,center),other),dot(sub(p,center),basis))-Math.atan2(dot(sub(q,center),other),dot(sub(q,center),basis)));return pts;}
+const faces=planes.map(faceOn).filter(Boolean);
+let edges=[];for(let i=0;i<verts.length;i++)for(let j=i+1;j<verts.length;j++){
+ const active=planes.filter(h=>Math.abs(dot(h.a,verts[i])-h.b)<1e-6&&Math.abs(dot(h.a,verts[j])-h.b)<1e-6);
+ if(active.length>=2)edges.push([verts[i],verts[j]]);
 }
-function dot(p,fill,r=5,stroke='#fff'){
- return `<circle cx="${p[0]}" cy="${p[1]}" r="${r}" fill="${fill}" stroke="${stroke}" stroke-width="1.7"/>`;
+const kStar=16;let yaw=.65,pitch=.65,zoom=1,drag=null,playing=false,frame=0,last=0;
+function planeSlice(k){const result=[];for(const [a,b] of edges){const va=obj(a),vb=obj(b);if(Math.abs(va-vb)<1e-9){if(Math.abs(va-k)<1e-6){result.push(a,b);}continue;}let t=(k-va)/(vb-va);if(t>=-1e-8&&t<=1+1e-8)result.push(add(a,mul(sub(b,a),t)));}
+ const pts=result.filter((p,i)=>result.findIndex(q=>norm(sub(p,q))<1e-5)===i);if(pts.length<3)return pts;
+ const center=mul(pts.reduce((a,b)=>add(a,b),[0,0,0]),1/pts.length),n=[3,2,1],base=mul(cross(n,[0,0,1]),1/norm(cross(n,[0,0,1]))),other=cross(mul(n,1/norm(n)),base);
+ return pts.sort((p,q)=>Math.atan2(dot(sub(p,center),other),dot(sub(p,center),base))-Math.atan2(dot(sub(q,center),other),dot(sub(q,center),base)));
 }
-function label(p,s,size=14,color='currentColor',extra=''){
- return `<text x="${p[0]}" y="${p[1]}" fill="${color}" font-size="${size}" font-family="system-ui, sans-serif" ${extra}>${s}</text>`;
+function camera(p){let a=Math.cos(yaw)*p[0]-Math.sin(yaw)*p[1],b=Math.sin(yaw)*p[0]+Math.cos(yaw)*p[1];const cx=a-0.0,cy=Math.sin(pitch)*b-Math.cos(pitch)*p[2];return [380+zoom*46*cx,310+zoom*46*cy];}
+function depth(p){let b=Math.sin(yaw)*p[0]+Math.cos(yaw)*p[1];return Math.cos(pitch)*b+Math.sin(pitch)*p[2];}
+function put(tag,attrs={},label){const el=document.createElementNS(NS,tag);for(const [k,v]of Object.entries(attrs))el.setAttribute(k,v);if(label!==undefined)el.textContent=label;svg.append(el);return el;}
+function poly(pts,attrs){return put('polygon',{points:pts.map(p=>camera(p).join(',')).join(' '),...attrs});}
+function line(a,b,attrs){const p=camera(a),q=camera(b);return put('line',{x1:p[0],y1:p[1],x2:q[0],y2:q[1],...attrs});}
+function circle(p,attrs){const c=camera(p);return put('circle',{cx:c[0],cy:c[1],...attrs});}
+function txt(p,s,attrs={}){const q=camera(p);put('text',{x:q[0]+5,y:q[1]-9,'font-family':'Arial, sans-serif','font-size':17,fill:'#405b65',...attrs},s);}
+function buildPlane(k){const center=[1.65,1.65,k-3*1.65-2*1.65];const n=[3,2,1];let e=mul(cross(n,[0,0,1]),1/norm(cross(n,[0,0,1])));const f=cross(mul(n,1/norm(n)),e);const scale=3.3;
+ return [add(center,add(mul(e,scale),mul(f,scale))),add(center,add(mul(e,-scale),mul(f,scale))),add(center,add(mul(e,-scale),mul(f,-scale))),add(center,add(mul(e,scale),mul(f,-scale)))];}
+function render(){const k=Number(slider.value),pts=planeSlice(k),hit=Math.abs(k-kStar)<.0001;
+ by('kout').textContent='k = '+k.toLocaleString('es-CR',{maximumFractionDigits:1});
+ by('state').textContent=k>kStar?'Sin intersección':hit?'Máximo alcanzado':'En exploración';
+ by('message').textContent=k>kStar?'El plano supera el máximo: no corta el poliedro.':hit?'Último contacto: (4, 2, 0), con w*=16. El plano toca al sólido en un único vértice.': 'El plano 3x₁+2x₂+x₃='+k.toFixed(1)+' recorre el sólido; la sección resaltada contiene puntos factibles con ese valor objetivo.';
+ svg.replaceChildren();
+ // Cuadrícula base sutil para profundidad.
+ for(let t=0;t<=6;t+=2){line([0,t,0],[6,t,0],{stroke:'#e1e9eb','stroke-width':1});line([t,0,0],[t,6,0],{stroke:'#e1e9eb','stroke-width':1});}
+ const surfaces=[];
+ if(ck('faces'))faces.forEach(f=>surfaces.push({p:f,fill:'#16887b',alpha:.13,edge:'#16887b',weight:1.5}));
+ if(ck('fullplane'))surfaces.push({p:buildPlane(k),fill:'#58bfd2',alpha:.12,edge:'#6fbecb',weight:1.6});
+ if(ck('slice')&&pts.length>=3)surfaces.push({p:pts,fill:'#e3a044',alpha:.57,edge:'#bf7117',weight:3.5});
+ surfaces.sort((a,b)=>b.p.reduce((s,p)=>s+depth(p),0)/b.p.length-a.p.reduce((s,p)=>s+depth(p),0)/a.p.length);
+ for(const s of surfaces)poly(s.p,{fill:s.fill,'fill-opacity':s.alpha,stroke:s.edge,'stroke-width':s.weight,'stroke-opacity':'.75','stroke-linejoin':'round'});
+ if(ck('edges')){for(const [a,b]of edges)line(a,b,{stroke:'#0f766b','stroke-width':2.15,'stroke-opacity':'.76'});for(const p of verts)circle(p,{r:3.2,fill:'#11685f',stroke:'white','stroke-width':.7});}
+ if(ck('slice')){if(pts.length===2)line(pts[0],pts[1],{stroke:'#bc7014','stroke-width':6,'stroke-linecap':'round'});if(pts.length===1)circle(pts[0],{r:7,fill:'#ce8730',stroke:'white','stroke-width':2});}
+ for(const [pt,name] of [[[6.4,0,0],'x₁'],[[0,6.4,0],'x₂'],[[0,0,6.4],'x₃']]){line([0,0,0],pt,{stroke:'#617880','stroke-width':1.8});txt(pt,name,{'font-size':19,'font-weight':'bold'});}
+ if(hit){circle([4,2,0],{r:10,fill:'#a44e22',stroke:'white','stroke-width':2});txt([4,2,0],'Óptimo',{'font-weight':'bold',fill:'#a44e22'});}
 }
-// Intersection of the (infinite) level line with a closed convex polygon.
-// Handles tangency at a vertex and full edges lying on the level line.
-function cross(poly,k){
- const hits=[];
- for(let i=0;i<poly.length;i++){
-   const a=poly[i],b=poly[(i+1)%poly.length];
-   const fa=f(a)-k,fb=f(b)-k;
-   if(Math.abs(fa)<EPS)hits.push(a);
-   if(fa*fb<0){const t=fa/(fa-fb);hits.push([a[0]+t*(b[0]-a[0]),a[1]+t*(b[1]-a[1])]);}
-   if(Math.abs(fa)<EPS&&Math.abs(fb)<EPS)hits.push(b);
- }
- const unique=hits.filter((a,i)=>hits.findIndex(b=>Math.hypot(a[0]-b[0],a[1]-b[1])<EPS)===i);
- if(unique.length<=2)return unique;
- // If a contour coincides with a polygon edge, return the farthest pair.
- let best=[unique[0],unique[1]],dist=-1;
- for(let i=0;i<unique.length;i++)for(let j=i+1;j<unique.length;j++){
-   const d=Math.hypot(unique[i][0]-unique[j][0],unique[i][1]-unique[j][1]);
-   if(d>dist){best=[unique[i],unique[j]];dist=d;}
- }
- return best;
-}
-function render(){
- const k=Number(slider.value);
- display.textContent=Math.abs(k-vmax)<EPS?'40/3 ≈ 13,33':fmt(k);
- const cut=cross(R,k),whole=cross(window2,k);
- const green='#14775d',black='#18242c',ochre='#d7a05a',aqua='#7bbfd0',muted='#82909b';
- let g3='',g2='';
- // Spatial base. The polygon is always completely visible in the chosen projection.
- for(let i=0;i<=5;i++){
-   g3+=line(point3([i,0]),point3([i,5]),'#c7d2d8',.8);
-   g3+=line(point3([0,i]),point3([5,i]),'#c7d2d8',.8);
- }
- g3+=poly(window2.map(p=>point3(p,0)),'#d4e4e0','#9dafb5',1.1,.10);
- g3+=poly(R.map(p=>point3(p,0)),green,green,2.7,.22);
- // Thin vertical reference lines at all lifted vertices.
- if(surface.checked){
-   R.forEach(p=>{if(f(p)>EPS)g3+=line(point3(p,0),point3(p,f(p)),'#8e7d69',1.3,'4 5');});
-   // The objective surface only covers the feasible region, not a huge rectangle.
-   g3+=poly(R.map(p=>point3(p,f(p))),ochre,'#ad7b3d',1.9,.40);
-   R.forEach(p=>g3+=dot(point3(p,f(p)),'#a46c34',3.2));
- }
- // Horizontal plane: displayed as a bounded, light patch rather than a wall.
- const horizontal=[[0,0],[4.45,0],[4.45,4.45],[0,4.45]];
- g3+=poly(horizontal.map(p=>point3(p,k)),aqua,'#3e9cab',1.5,.25);
- // Draw the intersection exactly over feasible points. Its shadow lies in the base.
- if(cut.length){
-   if(cut.length===2){
-     if(project.checked){
-       g3+=line(point3(cut[0],0),point3(cut[1],0),black,3.7,'7 4');
-       cut.forEach(p=>g3+=line(point3(p,0),point3(p,k),'#7a8690',1.9,'5 5'));
-     }
-     g3+=line(point3(cut[0],k),point3(cut[1],k),black,5);
-     cut.forEach(p=>g3+=dot(point3(p,k),black,4));
-   } else {
-     if(project.checked)g3+=line(point3(cut[0],0),point3(cut[0],k),'#7a8690',2,'5 5');
-     if(project.checked)g3+=dot(point3(cut[0],0),black,6);
-     g3+=dot(point3(cut[0],k),'#c23b32',8);
-   }
- }
- // Axes and labels (last, so remain legible).
- const origin=point3([0,0]);
- g3+=line(origin,point3([5.45,0]),'#b84a49',2.2);
- g3+=line(origin,point3([0,5.42]),'#288d60',2.2);
- g3+=line(origin,point3([0,0],18),'#326bb1',2.2);
- g3+=label(point3([5.55,0]),'x₁',16,'#b84a49');
- g3+=label([18,413],'x₂',16,'#288d60');
- g3+=label([280,61],'z',16,'#326bb1');
- g3+=label([14,24],'Superficie objetivo sobre R',16,'#a46c34');
- g3+=label([14,46],'z = 3x₁ + 2x₂',14,'#a46c34');
- g3+=label([409,91],'Plano z = k',14,'#288e9d');
- if(Math.abs(k-vmax)<EPS)g3+=label([353,171],'ÓPTIMO',15,'#b33630','font-weight="700"');
- svg3.innerHTML=g3;
- // Complete, uncropped 2D polygon; full level line within the viewport.
- for(let i=0;i<=5;i++){
-   g2+=line(point2([i,0]),point2([i,5]),'#d5dee5',.8);
-   g2+=line(point2([0,i]),point2([5,i]),'#d5dee5',.8);
-   g2+=label([point2([i,0])[0]-4,447],String(i),12);
-   if(i>0)g2+=label([30,point2([0,i])[1]+4],String(i),12);
- }
- g2+=line(point2([0,0]),point2([5.23,0]),'currentColor',1.8);
- g2+=line(point2([0,0]),point2([0,5.24]),'currentColor',1.8);
- g2+=poly(R.map(point2),green,green,2.9,.18);
- if(whole.length===2)g2+=line(point2(whole[0]),point2(whole[1]),black,3.5);
- if(cut.length===2)g2+=line(point2(cut[0]),point2(cut[1]),'#bc7333',7);
- if(cut.length===1)g2+=dot(point2(cut[0]),'#c23b32',8);
- R.forEach((p,i)=>{
-   g2+=dot(point2(p),i===2&&Math.abs(k-vmax)<EPS?'#c23b32':green,5);
-   const offsets=[[7,-12],[8,18],[9,-9],[-20,-10]];
-   g2+=label([point2(p)[0]+offsets[i][0],point2(p)[1]+offsets[i][1]],['A','B','C','D'][i],14);
- });
- g2+=label([443,448],'x₁',15);
- g2+=label([15,24],'x₂',15);
- g2+=label([135,37],'3x₁ + 2x₂ = k',17,black);
- svg2.innerHTML=g2;
- if(Math.abs(k-vmax)<EPS)state.textContent='Óptimo: el plano horizontal toca la superficie factible en C = (8/3, 8/3), con z* = 40/3.';
- else if(k>vmax)state.textContent='El plano horizontal está por encima de toda la superficie factible. La recta de nivel existe, pero no contiene puntos factibles.';
- else state.textContent='El plano corta la superficie factible. Aumentá k para buscar el último contacto.';
-}
-function setK(k){slider.value=String(k);render()}
-slider.addEventListener('input',render);
-project.addEventListener('change',render);
-surface.addEventListener('change',render);
-root.querySelector('#plnivel-start').addEventListener('click',()=>setK(8));
-root.querySelector('#plnivel-opt').addEventListener('click',()=>setK(vmax));
+function stop(){playing=false;if(frame)cancelAnimationFrame(frame);frame=0;by('play').textContent='▶ Animar';}
+function tick(t){if(!playing)return;const dt=last?Math.min(65,t-last):0;last=t;let next=Number(slider.value)+dt*.004;if(next>=18){next=18;stop();}slider.value=next.toFixed(1);render();if(playing)frame=requestAnimationFrame(tick);}
+slider.addEventListener('input',()=>{stop();render();});
+for(const id of ['fullplane','faces','slice','edges'])by(id).addEventListener('change',render);
+by('opt').addEventListener('click',()=>{stop();slider.value=16;render();});
+function reset(){yaw=.65;pitch=.65;zoom=1;render();}
+by('reset').addEventListener('click',()=>{stop();slider.value=8;reset();});
+by('topview').addEventListener('click',()=>{pitch=1.55;render();});
+by('sideview').addEventListener('click',()=>{pitch=0;render();});
+by('bottomview').addEventListener('click',()=>{pitch=-1.55;render();});
+by('play').addEventListener('click',()=>{if(playing){stop();return;}if(Number(slider.value)>=18)slider.value=0;playing=true;last=0;by('play').textContent='■ Detener';frame=requestAnimationFrame(tick);});
+svg.addEventListener('pointerdown',e=>{drag={x:e.clientX,y:e.clientY,yaw,pitch};svg.setPointerCapture(e.pointerId);});
+svg.addEventListener('pointermove',e=>{if(!drag)return;yaw=drag.yaw+(e.clientX-drag.x)*.009;pitch=Math.max(-1.55,Math.min(1.55,drag.pitch-(e.clientY-drag.y)*.009));render();});
+svg.addEventListener('pointerup',()=>drag=null);svg.addEventListener('pointercancel',()=>drag=null);
+svg.addEventListener('dblclick',e=>{e.preventDefault();reset();});
+svg.addEventListener('wheel',e=>{e.preventDefault();zoom=Math.max(.60,Math.min(1.55,zoom*(e.deltaY>0?.91:1.09)));render();},{passive:false});
 render();
 })();
 </script>
-<section id="para-explorar" class="level3">
-<h3 class="anchored" data-anchor-id="para-explorar">Para explorar</h3>
-<ol type="1">
-<li>¿Qué relación existe entre el segmento negro situado sobre el plano horizontal y la recta negra de la vista 2D?</li>
-<li>¿Qué sucede con el segmento de intersección cuando <span class="math inline">\(k=40/3\)</span>?</li>
-<li>¿Por qué, cuando <span class="math inline">\(k&gt;40/3\)</span>, la recta de nivel sigue existiendo aunque ya no haya soluciones factibles sobre ella?</li>
-</ol>
+</section>
+<section id="determinación-del-óptimo" class="level2">
+<h2 class="anchored" data-anchor-id="determinación-del-óptimo">Determinación del óptimo</h2>
+<p>Para todo punto factible se tiene</p>
+<p><span class="math display">\[
+\begin{aligned}
+w&amp;=3x_1+2x_2+x_3\\
+&amp;= (x_1+x_2+x_3)+x_1+(x_1+x_2)\\
+&amp;\leq 6+4+6=16.
+\end{aligned}
+\]</span></p>
+<p>Además, <span class="math inline">\((4,2,0)\)</span> satisface todas las restricciones y produce <span class="math inline">\(w=16\)</span>. En consecuencia, el valor máximo es</p>
+<p><span class="math display">\[
+\boxed{w^*=16,\qquad x^*=(4,2,0).}
+\]</span></p>
+<p>Para que se alcance la igualdad deben cumplirse <span class="math inline">\(x_1+x_2+x_3=6\)</span>, <span class="math inline">\(x_1=4\)</span> y <span class="math inline">\(x_1+x_2=6\)</span>, de donde necesariamente <span class="math inline">\(x_2=2\)</span> y <span class="math inline">\(x_3=0\)</span>. Por tanto, el óptimo es único.</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Nota
+<span class="screen-reader-only">Nota</span>Preguntas de reflexión
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Precisión geométrica.</strong> La vista espacial utiliza una proyección axonométrica: no se muestran planos infinitos, sino recortes de las superficies relevantes. La porción inclinada corresponde <strong>exactamente</strong> a los puntos <span class="math inline">\((x_1,x_2,3x_1+2x_2)\)</span> con <span class="math inline">\((x_1,x_2)\in R\)</span>.</p>
+<ol type="1">
+<li>¿Qué representa geométricamente la intersección del plano de nivel con el poliedro?</li>
+<li>¿Por qué, a diferencia de la situación bidimensional, no dibujamos la gráfica completa de la función objetivo?</li>
+<li>¿Qué sucede al mover <span class="math inline">\(k\)</span> por encima de <span class="math inline">\(16\)</span>?</li>
+<li>¿La solución óptima cambia cuando giramos el poliedro o cuando observamos su cara inferior? Justificá.</li>
+</ol>
+</div>
 </div>
 </div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -1132,13 +1031,13 @@ Nota
   </script>
 <nav class="page-navigation" aria-label="Página">
   <div class="nav-page nav-page-previous">
-      <a href="../capitulos/vertices_y_soluciones_optimas.html" class="pagination-link" aria-label="Vértices y soluciones óptimas">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Vértices y soluciones óptimas</span></span>
+      <a href="../capitulos/ejemplo_metodo_grafico.html" class="pagination-link" aria-label="Ejemplo interactivo: resolución mediante el método gráfico">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Ejemplo interactivo: resolución mediante el método gráfico</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../capitulos/segundo_ejemplo_3d_rotacion.html" class="pagination-link" aria-label="Exploración espacial con rotación libre">
-        <span class="nav-page-text"><span class="chapter-title">Exploración espacial con rotación libre</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../parte-2.html" class="pagination-link" aria-label="Parte II. De la geometría al algoritmo">
+        <span class="nav-page-text">Parte II. De la geometría al algoritmo</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

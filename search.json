@@ -4,10 +4,21 @@
     "href": "index.html",
     "title": "Programación Lineal",
     "section": "",
-    "text": "Libro universitario interactivo\n      ProgramaciónLineal\n      Geometría, algoritmos y decisiones\n      De la formulación matemática a los algoritmos de optimización: teoría rigurosa, demostraciones, ejemplos resueltos y exploraciones visuales que permiten experimentar con cada concepto.\n      \n        Comenzar a leer  →\n        Explorar contenidos ↓\n      \n    \n    \n      \n      \n      \n      x₁x₂\n      \n      \n      \n      \n      \n      \n      ÓptimoRecta de nivel\n    \n  \n\n  Teoría y demostracionesGeometría interactivaEjercicios con soluciones\n\n  \n    Recorrido de aprendizajeElegí por dónde comenzar\n    \n      01 · FUNDAMENTOSFormulación matemáticaVariables de decisión, funciones objetivo, restricciones y notación matricial.Abrir tema\n      02 · GEOMETRÍARegión de factibilidadSoluciones factibles, restricciones activas y representación de la región.Abrir tema\n      03 · TEORÍAConvexidadCombinaciones convexas, propiedades geométricas y demostraciones.Abrir tema\n      04 · GEOMETRÍAVértices y puntos extremosIdentificación de vértices y fundamentos matemáticos de la optimalidad.Abrir tema\n      05 · VISUALIZACIÓNRectas y planos de nivelBarridos sincronizados, proyecciones y exploración espacial interactiva.Abrir tema\n      06 · RESOLUCIÓNMétodo gráficoVértices, rectas de nivel y resolución de programas lineales en dos variables.Abrir tema\n    \n  \n\n  \n    Continuar explorandoOtras partes del libro\n    \n      De la geometría al algoritmoBases y soluciones básicas↗\n      Algoritmos de resoluciónMétodo Simplex↗\n      Dualidad y análisis postóptimoDualidad y sensibilidad↗\n      Modelos y aplicacionesProblemas de decisión y optimización↗\n      Exploraciones interactivasRecursos geométricos y actividades↗\n      Recursos académicosPrácticas y materiales complementarios↗\n    \n  \n  Este libro se encuentra en desarrollo editorial. Los capítulos y recursos se incorporan y revisan progresivamente para garantizar coherencia matemática, claridad expositiva y funcionamiento de las actividades interactivas.",
+    "text": "Libro universitario interactivo\n ProgramaciónLineal\n Geometría, algoritmos y decisiones\n Un recorrido desde la modelación matemática y la geometría de la factibilidad hasta los algoritmos de optimización, la dualidad y las aplicaciones. La teoría y las demostraciones se acompañan de exploraciones interactivas integradas.\n Comenzar a leer →Explorar las partes ↓\n\n\n\n\n\n\n\n\n\nx₁x₂z\n\n\nTeoría rigurosaVisualizaciones integradasPrácticas y aplicaciones\n\nÍndice generalExplorá las cinco partes\n\nPARTE IFundamentos y geometríaModelación, regiones factibles, convexidad, vértices, rectas y planos de nivel.Explorar parte\nPARTE IIDe la geometría al algoritmoBases, soluciones básicas y la estructura algebraica de los vértices.Explorar parte\nPARTE IIIAlgoritmos de resoluciónMétodo Simplex y el recorrido algebraico por soluciones básicas.Explorar parte\nPARTE IVDualidad y análisis postóptimoRelaciones primal-dual, interpretación económica y sensibilidad.Explorar parte\nPARTE VModelos y aplicacionesTransporte, asignación, modelos enteros y problemas de decisión.Explorar parte\n\n\nMaterial complementario\nRecursos académicosPrácticas y materiales de estudio↗\nAcerca del libroPropósito y orientación editorial↗\nLibro en construcción. El material se incorpora y revisa progresivamente. Las exploraciones forman parte de los ejemplos y de la exposición matemática, no de un catálogo aislado.",
     "crumbs": [
-      "Libro",
+      "Índice general",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Programación Lineal</span>"
+    ]
+  },
+  {
+    "objectID": "parte-1.html",
+    "href": "parte-1.html",
+    "title": "Parte I. Fundamentos y geometría",
+    "section": "",
+    "text": "Parte I · Fundamentos y geometría\n      Modelar yvisualizar\n      Fundamentos, convexidad y optimalidad\n      De la formulación de modelos a la geometría de sus soluciones: regiones factibles, combinaciones convexas, vértices, resultados de optimalidad y método gráfico.\n      \n        Comenzar esta parte  →\n        Explorar contenidos ↓\n      \n    \n    \n      \n      \n      \n      x₁x₂\n      \n      \n      \n      \n      \n      \n      ÓptimoRecta de nivel\n    \n  \n\n\n  Teoría y demostracionesEjemplos interactivos integradosEjercicios de comprensión\n  \n    Contenidos de la Parte IUna secuencia matemática continua\n    \n01 · FORMULACIÓNFundamentos matemáticosVariables, objetivo, restricciones y representación matricial.Abrir tema\n02 · FACTIBILIDADSoluciones y región factibleSemiplanos, restricciones activas y caracterización del conjunto factible.Abrir tema\n03 · CONVEXIDADCombinaciones convexasSegmentos, combinaciones de varios vectores y demostraciones.Abrir tema\n04 · GEOMETRÍAVértices y puntos extremosDefinición, propiedades y demostración de puntos extremos.Abrir tema\n05 · OPTIMALIDADVértices y soluciones óptimasExistencia de vértices óptimos y convexidad del conjunto de óptimos.Abrir tema\n06 · NIVELESInterpretación geométricaRectas de nivel, cortes espaciales y proyecciones sincronizadas.Abrir tema\n07 · MÉTODO GRÁFICOResolver e interpretarBarrido, comparación de vértices y un ejemplo completamente resuelto.Abrir tema\n08 · EXTENSIÓN 3DPlanos de nivel en un poliedroGeneralización geométrica a tres variables y recorrido hasta el óptimo.Abrir tema\n    \n  \n  Las exploraciones 2D y 3D están incorporadas en las explicaciones correspondientes. Cada recurso ayuda a investigar un concepto antes de formalizarlo o aplicarlo.\n  Volver al índice general",
+    "crumbs": [
+      "Índice general",
+      "Parte I. Fundamentos y geometría"
     ]
   },
   {
@@ -17,8 +28,8 @@
     "section": "",
     "text": "¿Qué caracteriza a un programa lineal?\nImaginemos que debemos distribuir recursos limitados entre distintas actividades. Antes de buscar una solución, necesitamos identificar las decisiones posibles, cuantificar lo que deseamos optimizar y representar las limitaciones.\nUn programa lineal es un problema de optimización cuya función objetivo es afín en las variables de decisión y cuyas restricciones son ecuaciones o desigualdades lineales. En la terminología habitual de Programación Lineal, las funciones afines también se admiten bajo la denominación de funciones objetivo lineales.\nEn particular, las variables aparecen en primer grado y multiplicadas por coeficientes constantes. Un término independiente como \\(+7\\) está permitido.\nPor ejemplo, \\(3x_1+5x_2\\), \\(2x_1-4x_2+7\\) y \\(x_1+3x_2-2x_3\\) son expresiones admisibles. En cambio, \\(x_1^2\\), \\(x_1x_2\\), \\(\\sqrt{x_1}\\) y \\(x_1/x_2\\) no son afines.",
     "crumbs": [
-      "Libro",
-      "I. Modelar y visualizar",
+      "Índice general",
+      "Parte I. Fundamentos y geometría",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fundamentos de la Programación Lineal</span>"
     ]
   },
@@ -29,8 +40,8 @@
     "section": "",
     "text": "Nota\n\n\n\nUna función objetivo afín puede escribirse como \\(z(x)=cx^T+z_0\\). La presencia de una constante \\(z_0\\) no modifica cuáles son las soluciones óptimas: solamente desplaza el valor objetivo.\n\n\n\nExploración: reconocer expresiones admisibles\nSeleccioná todas las expresiones que podrían representar una función objetivo de un programa lineal.\n\n \n  ¿Cuáles expresiones son afines?\n   \\(3x_1-2x_2+7\\)\n   \\(x_1x_2+4\\)\n   \\(\\sqrt{x_1}+x_2\\)\n   \\(5x_1-3x_2\\)\n \n Comprobar",
     "crumbs": [
-      "Libro",
-      "I. Modelar y visualizar",
+      "Índice general",
+      "Parte I. Fundamentos y geometría",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fundamentos de la Programación Lineal</span>"
     ]
   },
@@ -41,8 +52,8 @@
     "section": "Elementos de un programa lineal",
     "text": "Elementos de un programa lineal\nUn modelo de Programación Lineal reúne tres elementos.\nVariables de decisión. Representan las cantidades que podemos elegir. Por ejemplo, \\(x_1\\) y \\(x_2\\) pueden indicar unidades de dos productos.\nFunción objetivo. Mide la cantidad que queremos maximizar o minimizar: utilidad, producción, costo, tiempo u otra magnitud pertinente.\nRestricciones. Describen los límites impuestos a las decisiones: recursos, demandas, capacidades, condiciones técnicas o no negatividad.\nEn la expresión \\(2x_1+x_2\\leq8\\), los números \\(2\\) y \\(1\\) son coeficientes de consumo y el número \\(8\\) es el término independiente que representa la disponibilidad.\n\nExploración: cambiar coeficientes y disponibilidades\nConsiderá el modelo ilustrativo\n\\[\n\\begin{aligned}\n\\max\\quad z&=c_1x_1+3x_2,\\\\\n2x_1+x_2&\\leq b_1,\\\\\nx_1,x_2&\\geq0.\n\\end{aligned}\n\\]\nModificá \\(c_1\\) y \\(b_1\\). Observá que cambiar un coeficiente objetivo modifica la valoración de las decisiones, mientras que cambiar una disponibilidad modifica el conjunto de decisiones permitidas.\n\n \n  Coeficiente objetivo \\(c_1\\): 4\n   \n  \n  Disponibilidad \\(b_1\\): 8\n   \n  \n \n Para el punto de prueba \\(P=(2,2)\\):",
     "crumbs": [
-      "Libro",
-      "I. Modelar y visualizar",
+      "Índice general",
+      "Parte I. Fundamentos y geometría",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fundamentos de la Programación Lineal</span>"
     ]
   },
@@ -53,8 +64,8 @@
     "section": "Formulación matemática y matricial",
     "text": "Formulación matemática y matricial\nUna representación general de un programa lineal con restricciones del tipo \\(\\leq\\) es\n\\[\n\\begin{aligned}\n\\text{Optimizar}\\quad z(x)&=cx^T+z_0,\\\\\n\\text{sujeto a}\\quad Ax^T&\\leq b^T,\\\\\nx&\\geq0.\n\\end{aligned}\n\\]\nAquí \\(x=(x_1,\\ldots,x_n)\\) es el vector fila de variables de decisión, \\(c=(c_1,\\ldots,c_n)\\) es el vector fila de coeficientes objetivo, \\(A=(a_{ij})\\in\\mathbb R^{m\\times n}\\) y \\(b=(b_1,\\ldots,b_m)\\) es el vector fila de términos independientes.\nLa desigualdad \\(Ax^T\\leq b^T\\) se entiende componente a componente. En este libro se utiliza la convención de vectores fila: \\(x\\), \\(b\\) y \\(c\\) se escriben como filas, y sus transpuestas permiten expresar las relaciones matriciales de forma consistente.\nLas restricciones de igualdad o de tipo \\(\\geq\\) también son admisibles. Una desigualdad puede invertirse al multiplicar ambos miembros por \\(-1\\); una igualdad puede expresarse como dos desigualdades opuestas.\n\n\n\n\n\n\nTip\n\n\n\nVerificá las dimensiones: \\(A\\) tiene \\(m\\) filas y \\(n\\) columnas, mientras que \\(x^T\\) tiene \\(n\\) filas. Así, \\(Ax^T\\) es un vector columna de \\(m\\) componentes, igual que \\(b^T\\).",
     "crumbs": [
-      "Libro",
-      "I. Modelar y visualizar",
+      "Índice general",
+      "Parte I. Fundamentos y geometría",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fundamentos de la Programación Lineal</span>"
     ]
   },
@@ -65,8 +76,8 @@
     "section": "Un modelo completo",
     "text": "Un modelo completo\nConsideremos el programa lineal\n\\[\n\\begin{aligned}\n\\max\\quad z&=4x_1+3x_2+5,\\\\\n2x_1+x_2&\\leq8,\\\\\nx_1+2x_2&\\leq10,\\\\\n3x_1+x_2&\\leq12,\\\\\nx_1,x_2&\\geq0.\n\\end{aligned}\n\\]\nSu representación matricial es\n\\[\nA=\\begin{pmatrix}2&1\\\\1&2\\\\3&1\\end{pmatrix},\\qquad\nb=(8,10,12),\\qquad c=(4,3),\\qquad z_0=5.\n\\]\nAsí,\n\\[\n\\max\\quad z=cx^T+z_0,\\qquad Ax^T\\leq b^T,\\qquad x\\geq0.\n\\]\nPor ejemplo, \\(P=(2,3)\\) es factible: \\(2(2)+3=7\\leq8\\), \\(2+2(3)=8\\leq10\\) y \\(3(2)+3=9\\leq12\\). Su valor objetivo es \\(z(P)=4(2)+3(3)+5=22\\).\nEste punto es factible, pero todavía no hemos demostrado que sea óptimo. La diferencia entre factibilidad y optimalidad será el tema de los siguientes apartados.\n\nComprobación breve\n\n\n\n\n\n\nNotaSolución de comprobación\n\n\n\n\n\nLa matriz de restricciones tiene dimensión \\(3\\times2\\), el vector de variables es \\(x=(x_1,x_2)\\) y la constante objetivo es \\(z_0=5\\). Para \\(P=(2,3)\\) se satisfacen todas las restricciones y \\(z(P)=22\\).",
     "crumbs": [
-      "Libro",
-      "I. Modelar y visualizar",
+      "Índice general",
+      "Parte I. Fundamentos y geometría",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fundamentos de la Programación Lineal</span>"
     ]
   },
@@ -77,8 +88,8 @@
     "section": "",
     "text": "Soluciones factibles\nUna solución factible de un programa lineal es un vector de decisión que satisface simultáneamente todas las restricciones, incluidas las condiciones de signo. La factibilidad no depende de la función objetivo.\nRetomemos el modelo\n\\[\n\\begin{aligned}\n\\max\\quad z&=4x_1+3x_2+5,\\\\\n2x_1+x_2&\\leq8,\\\\\nx_1+2x_2&\\leq10,\\\\\n3x_1+x_2&\\leq12,\\\\\nx_1,x_2&\\geq0.\n\\end{aligned}\n\\]\nEl punto \\(P=(2,3)\\) es factible porque las tres expresiones de los lados izquierdos valen, respectivamente, \\(7\\), \\(8\\) y \\(9\\), todas menores que sus disponibilidades. En cambio, el punto \\((3,3)\\) no es factible: incumple, entre otras, la primera restricción, pues \\(2(3)+3=9&gt;8\\).",
     "crumbs": [
-      "Libro",
-      "I. Modelar y visualizar",
+      "Índice general",
+      "Parte I. Fundamentos y geometría",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Soluciones y región de factibilidad</span>"
     ]
   },
@@ -89,8 +100,8 @@
     "section": "",
     "text": "Exploración: comprobar puntos\nSeleccioná un punto del plano o introducí sus coordenadas. La actividad comprueba todas las condiciones, no solamente una.\n\n \n  \n   \n    \n    \n    \n    \n    \n    P\n    x₁x₂\n   \n   Hacé clic sobre la gráfica para seleccionar un punto. Las coordenadas se redondean al múltiplo de 0,5 más cercano.\n  \n  \n   Coordenada x₁ Coordenada x₂ \n   (0, 0)(2, 3)(3, 3)(−1, 2)",
     "crumbs": [
-      "Libro",
-      "I. Modelar y visualizar",
+      "Índice general",
+      "Parte I. Fundamentos y geometría",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Soluciones y región de factibilidad</span>"
     ]
   },
@@ -101,8 +112,8 @@
     "section": "Conjunto y región de factibilidad",
     "text": "Conjunto y región de factibilidad\nEl conjunto factible \\(R\\) reúne todos los vectores que satisfacen las restricciones. En dos variables puede representarse geométricamente como la intersección de semiplanos; llamaremos también región factible a su representación en el plano.\nPara el modelo anterior,\n\\[\nR=\\left\\{(x_1,x_2)\\in\\mathbb R^2:\\ 2x_1+x_2\\leq8,\\ x_1+2x_2\\leq10,\\ 3x_1+x_2\\leq12,\\ x_1,x_2\\geq0\\right\\}.\n\\]\nLa región es un polígono cerrado y acotado, cuyos vértices son\n\\[\n(0,0),\\qquad (4,0),\\qquad (2,4),\\qquad (0,5).\n\\]\nLa restricción \\(3x_1+x_2\\leq12\\) es redundante en este modelo: no modifica la región obtenida a partir de las otras dos desigualdades y la no negatividad. En efecto, de \\(2x_1+x_2\\leq8\\) y \\(x_1\\geq0\\) se deduce \\(3x_1+x_2=(2x_1+x_2)+x_1\\leq8+x_1\\leq12\\), ya que \\(x_1\\leq4\\).\n\nExploración: construir la región\nActivá las fronteras, examiná los vértices y observá que una desigualdad puede ser válida sin determinar un lado nuevo del polígono.\n\n \n   2x₁ + x₂ = 8\n   x₁ + 2x₂ = 10\n   3x₁ + x₂ = 12\n   Mostrar vértices\n \n \n  \n  \n  \n  x₁x₂\n \n El sombreado siempre representa la región de todas las restricciones. Las casillas permiten mostrar u ocultar sus rectas frontera, no eliminar restricciones del modelo.\n\n\n\n\n\n\n\nNota\n\n\n\nLa geometría de una región factible en tres variables puede estudiarse mediante un poliedro. Más adelante, una exploración tridimensional permitirá examinar sus caras, aristas, vértices y planos de nivel.",
     "crumbs": [
-      "Libro",
-      "I. Modelar y visualizar",
+      "Índice general",
+      "Parte I. Fundamentos y geometría",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Soluciones y región de factibilidad</span>"
     ]
   },
@@ -113,8 +124,8 @@
     "section": "Soluciones óptimas",
     "text": "Soluciones óptimas\nUna solución óptima es una solución factible que alcanza el mejor valor de la función objetivo entre todas las soluciones factibles. Para maximizar \\(z\\), un punto \\(x^*\\in R\\) es óptimo cuando \\(z(x)\\leq z(x^*)\\) para todo \\(x\\in R\\).\nConviene distinguir entre la decisión óptima \\(x^*\\) y el valor óptimo \\(z^*=z(x^*)\\).\nEn nuestro modelo, los valores de \\(z=4x_1+3x_2+5\\) en los vértices son:\n\n\n\nVértice\nValor objetivo\n\n\n\n\n\\((0,0)\\)\n\\(5\\)\n\n\n\\((4,0)\\)\n\\(21\\)\n\n\n\\((2,4)\\)\n\\(25\\)\n\n\n\\((0,5)\\)\n\\(20\\)\n\n\n\nEl mayor valor es \\(25\\) y se obtiene en \\((2,4)\\). Como la región es un polígono no vacío y acotado, y la función objetivo es afín, su máximo se alcanza en algún vértice; el fundamento de este resultado se desarrollará más adelante.\nPor tanto,\n\\[\n\\boxed{x^*=(2,4),\\qquad z^*=25.}\n\\]\nNo todas las soluciones factibles son óptimas. Por ejemplo, \\((2,3)\\) pertenece a \\(R\\), pero produce \\(z(2,3)=22&lt;25\\).\n\nComprobación de comprensión\n\n ¿Qué afirmación es correcta?\n  Todo punto factible es óptimo.\n  La solución óptima debe ser factible y alcanzar el mejor valor objetivo.\n  El valor óptimo es el vector de variables.\n Comprobar",
     "crumbs": [
-      "Libro",
-      "I. Modelar y visualizar",
+      "Índice general",
+      "Parte I. Fundamentos y geometría",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Soluciones y región de factibilidad</span>"
     ]
   },
@@ -125,8 +136,8 @@
     "section": "",
     "text": "Combinaciones convexas de dos vectores\nLa geometría de la Programación Lineal se apoya en una propiedad fundamental: si dos decisiones son factibles, todo el segmento que las une también es factible. Para comprender y demostrar esta afirmación, comenzaremos por estudiar las combinaciones convexas.\nSean \\(u,v\\in\\mathbb R^n\\). Se llama combinación convexa de \\(u\\) y \\(v\\) a cualquier vector de la forma\n\\[\nx(\\lambda)=\\lambda u+(1-\\lambda)v,\\qquad 0\\leq\\lambda\\leq1.\n\\]\nLos coeficientes son no negativos y suman uno. Si \\(\\lambda=0\\), obtenemos \\(v\\); si \\(\\lambda=1\\), obtenemos \\(u\\); y, para \\(0&lt;\\lambda&lt;1\\), obtenemos un punto del segmento que une ambos vectores (si son distintos).",
     "crumbs": [
-      "Libro",
-      "I. Modelar y visualizar",
+      "Índice general",
+      "Parte I. Fundamentos y geometría",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Combinaciones convexas y convexidad</span>"
     ]
   },
@@ -137,8 +148,8 @@
     "section": "",
     "text": "Exploración geométrica\nConsideremos \\(u=(1,2)\\) y \\(v=(5,4)\\). Mové el control para observar el punto \\(P=x(\\lambda)\\).\n\n  \n    \n    \n    \n    x₁\n    x₂\n    \n    \n    \n    u\n    v\n    \n    P\n  \n  Parámetro λ = 0,50\n  \n  λ = 0λ = 0,5λ = 1\n  \n\nEn este caso,\n\\[\n\\lambda(1,2)+(1-\\lambda)(5,4)=(5-4\\lambda,\\,4-2\\lambda).\n\\]\nLa fórmula algebraica y el movimiento geométrico describen exactamente el mismo conjunto: el segmento cerrado de extremos \\(u\\) y \\(v\\).",
     "crumbs": [
-      "Libro",
-      "I. Modelar y visualizar",
+      "Índice general",
+      "Parte I. Fundamentos y geometría",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Combinaciones convexas y convexidad</span>"
     ]
   },
@@ -149,8 +160,8 @@
     "section": "Combinaciones convexas de varios vectores",
     "text": "Combinaciones convexas de varios vectores\nDados \\(u^{(1)},\\ldots,u^{(k)}\\in\\mathbb R^n\\), un vector \\(x\\) es una combinación convexa de estos vectores si existen números \\(\\lambda_1,\\ldots,\\lambda_k\\) tales que\n\\[\nx=\\sum_{i=1}^{k}\\lambda_i u^{(i)},\\qquad\n\\lambda_i\\geq0,\\qquad \\sum_{i=1}^{k}\\lambda_i=1.\n\\]\nCon tres puntos no alineados del plano, las combinaciones convexas llenan el triángulo que determinan, incluyendo su frontera.\n\nExploración de tres vectores\nTomemos \\(u=(0,0)\\), \\(v=(4,0)\\) y \\(w=(2,3)\\). Utilizaremos dos deslizadores \\(\\alpha,\\beta\\in[0,1]\\) para construir automáticamente tres coeficientes convexos:\n\\[\n\\lambda_1=\\alpha,\\quad\n\\lambda_2=(1-\\alpha)\\beta,\\quad\n\\lambda_3=(1-\\alpha)(1-\\beta).\n\\]\nAsí siempre se cumple \\(\\lambda_i\\geq0\\) y \\(\\lambda_1+\\lambda_2+\\lambda_3=1\\).\n\n  \n    \n    \n    \n    x₁\n    x₂\n    \n    \n    \n    \n    u\n    v\n    w\n    \n    P\n  \n  \n   α = 0,00\n   β = 0,50\n  \n  \n  \n  Aproximar el centroide (pesos casi iguales)\n\nLa imagen ilustra que una combinación convexa de tres vértices puede estar en el interior del triángulo, en uno de sus lados o en un vértice. El ejercicio de práctica permitirá calcular los pesos algebraicamente.",
     "crumbs": [
-      "Libro",
-      "I. Modelar y visualizar",
+      "Índice general",
+      "Parte I. Fundamentos y geometría",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Combinaciones convexas y convexidad</span>"
     ]
   },
@@ -161,8 +172,8 @@
     "section": "Convexidad de un conjunto",
     "text": "Convexidad de un conjunto\nUn conjunto \\(C\\subseteq\\mathbb R^n\\) se dice convexo si, para cualesquiera \\(u,v\\in C\\) y cualquier \\(\\lambda\\in[0,1]\\), se cumple\n\\[\n\\lambda u+(1-\\lambda)v\\in C.\n\\]\nGeométricamente, esto significa que el segmento que une dos puntos cualesquiera de \\(C\\) está contenido completamente en \\(C\\). Por convención matemática, el conjunto vacío también es convexo.\n\n\n\n\n\n\nTipPara pensar\n\n\n\nUn conjunto puede ser convexo sin estar acotado. Por ejemplo, todo semiplano es convexo y no acotado. La convexidad y la acotación son propiedades distintas.",
     "crumbs": [
-      "Libro",
-      "I. Modelar y visualizar",
+      "Índice general",
+      "Parte I. Fundamentos y geometría",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Combinaciones convexas y convexidad</span>"
     ]
   },
@@ -173,8 +184,8 @@
     "section": "Convexidad de las regiones factibles",
     "text": "Convexidad de las regiones factibles\nTeorema. Sea\n\\[\nR=\\{x\\in\\mathbb R^n:Ax^T\\leq b^T,\\ x\\geq0\\}.\n\\]\nEntonces \\(R\\) es convexo.\nIdea de la demostración. Si \\(u,v\\) satisfacen las restricciones, cualquier promedio ponderado de ellos, con pesos no negativos que sumen uno, también las satisface. Esto ocurre porque multiplicar una desigualdad por un número no negativo conserva su sentido.\n\n\n\n\n\n\nNotaDemostración completa\n\n\n\n\n\nSi \\(R=\\varnothing\\), es convexo por definición. Supongamos \\(R\\neq\\varnothing\\) y sean \\(u,v\\in R\\), \\(\\lambda\\in[0,1]\\). Definimos \\(x=\\lambda u+(1-\\lambda)v\\).\nComo \\(u\\geq0\\), \\(v\\geq0\\), \\(\\lambda\\geq0\\) y \\(1-\\lambda\\geq0\\), tenemos \\(x\\geq0\\). Además, por factibilidad de \\(u\\) y \\(v\\),\n\\[\n\\begin{aligned}\nAx^T\n&=A\\bigl(\\lambda u^T+(1-\\lambda)v^T\\bigr)\\\\\n&=\\lambda Au^T+(1-\\lambda)Av^T\\\\\n&\\leq\\lambda b^T+(1-\\lambda)b^T=b^T.\n\\end{aligned}\n\\]\nPor tanto, \\(x\\in R\\), y \\(R\\) es convexo. \\(\\square\\)\n\n\n\nLa misma conclusión vale para sistemas de restricciones lineales con igualdades y desigualdades de ambos sentidos, así como para variables libres: las igualdades y los semiespacios definidos por restricciones afines son conjuntos convexos, y las intersecciones de conjuntos convexos son convexas.\n\n\n\n\n\n\nNotaCorolario y justificación\n\n\n\n\n\nCorolario. Toda combinación convexa de un número finito de soluciones factibles es factible.\nDemostración. Sean \\(u^{(1)},\\ldots,u^{(k)}\\in R\\) y \\(\\lambda_i\\geq0\\) con \\(\\sum_i\\lambda_i=1\\). Entonces\n\\[\nA\\left(\\sum_{i=1}^{k}\\lambda_i u^{(i)}\\right)^T\n=\\sum_{i=1}^{k}\\lambda_i Au^{(i)T}\n\\leq\\sum_{i=1}^{k}\\lambda_i b^T=b^T.\n\\]\nAdemás, \\(\\sum_i\\lambda_i u^{(i)}\\geq0\\), componente a componente. En consecuencia, la combinación es factible. \\(\\square\\)",
     "crumbs": [
-      "Libro",
-      "I. Modelar y visualizar",
+      "Índice general",
+      "Parte I. Fundamentos y geometría",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Combinaciones convexas y convexidad</span>"
     ]
   },
@@ -185,8 +196,8 @@
     "section": "Ejercicios de comprensión",
     "text": "Ejercicios de comprensión\n\nEjercicio A. Encontrar los coeficientes\nExpresá \\(P=(2,1)\\) como combinación convexa de los vectores \\(u=(0,0)\\), \\(v=(4,0)\\) y \\(w=(2,3)\\). Determiná los tres coeficientes y justificá que cumplen las condiciones de convexidad.\n\n\n\n\n\n\nTipPista\n\n\n\n\n\nCompará coordenadas en \\(P=\\lambda_1u+\\lambda_2v+\\lambda_3w\\). La segunda coordenada permite encontrar directamente \\(\\lambda_3\\).\n\n\n\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nDe la segunda coordenada, \\(3\\lambda_3=1\\), por lo que \\(\\lambda_3=1/3\\). De la primera, \\(4\\lambda_2+2\\lambda_3=2\\), así que \\(\\lambda_2=1/3\\). Por último, \\(\\lambda_1=1-\\lambda_2-\\lambda_3=1/3\\). Los tres coeficientes son no negativos y suman uno. Por tanto,\n\\[\n(2,1)=\\frac13(0,0)+\\frac13(4,0)+\\frac13(2,3).\n\\]\n\n\n\n\n\nEjercicio B. Argumentar, no solamente observar\n¿Puede el punto \\(Q=(5,1)\\) expresarse como combinación convexa de \\(u\\), \\(v\\) y \\(w\\)? Justificá la respuesta sin utilizar solamente la figura.\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nNo. Toda combinación convexa de los tres puntos tiene primera coordenada\n\\[\nx_1=0\\lambda_1+4\\lambda_2+2\\lambda_3\\leq4(\\lambda_1+\\lambda_2+\\lambda_3)=4.\n\\]\nComo \\(Q_1=5&gt;4\\), el punto \\(Q\\) no puede ser una combinación convexa de \\(u\\), \\(v\\) y \\(w\\).\n\n\n\n\n\nEjercicio C. Demostración\nDemostrá que la intersección de dos conjuntos convexos es convexa. Luego explicá cómo este resultado ayuda a comprender la geometría de una región factible definida mediante varias restricciones lineales.\n\n\n\n\n\n\nTipPista\n\n\n\n\n\nElegí dos puntos cualesquiera de \\(C_1\\cap C_2\\). La convexidad de cada conjunto garantiza que su combinación convexa pertenece tanto a \\(C_1\\) como a \\(C_2\\).\n\n\n\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nSean \\(C_1,C_2\\subseteq\\mathbb R^n\\) convexos. Si su intersección es vacía, es convexa. En caso contrario, tomemos \\(u,v\\in C_1\\cap C_2\\) y \\(\\lambda\\in[0,1]\\). Como \\(u,v\\in C_1\\) y \\(C_1\\) es convexo, \\(\\lambda u+(1-\\lambda)v\\in C_1\\). De manera idéntica, \\(\\lambda u+(1-\\lambda)v\\in C_2\\). Por tanto, la combinación pertenece a \\(C_1\\cap C_2\\), que es convexo.\nCada restricción lineal determina un semiespacio o un hiperplano convexo. Su intersección, que constituye la región factible, conserva la convexidad. \\(\\square\\)",
     "crumbs": [
-      "Libro",
-      "I. Modelar y visualizar",
+      "Índice general",
+      "Parte I. Fundamentos y geometría",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Combinaciones convexas y convexidad</span>"
     ]
   },
@@ -197,8 +208,8 @@
     "section": "",
     "text": "La idea geométrica de un punto extremo\nEn una región factible poligonal podemos distinguir puntos interiores, puntos situados sobre los lados y puntos donde se encuentran dos lados. Estos últimos sugieren una noción más general: la de punto extremo, que también se define en espacios de dimensión mayor que dos.\nSean \\(R\\subseteq\\mathbb R^n\\) un conjunto convexo y \\(\\widehat x\\in R\\). Decimos que \\(\\widehat x\\) es un punto extremo de \\(R\\) si, siempre que\n\\[\n\\widehat x=\\lambda u+(1-\\lambda)v,\n\\qquad u,v\\in R,\\quad 0&lt;\\lambda&lt;1,\n\\]\nse cumple necesariamente que \\(u=v=\\widehat x\\).\nEn otras palabras, un punto extremo no puede encontrarse estrictamente entre dos puntos factibles distintos. En una región poligonal, a estos puntos extremos también los llamamos vértices.",
     "crumbs": [
-      "Libro",
-      "I. Modelar y visualizar",
+      "Índice general",
+      "Parte I. Fundamentos y geometría",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Vértices y puntos extremos</span>"
     ]
   },
@@ -209,8 +220,8 @@
     "section": "",
     "text": "Nota\n\n\n\nLa condición \\(0&lt;\\lambda&lt;1\\) es esencial: si se admitiera \\(\\lambda=0\\) o \\(\\lambda=1\\), cualquier punto podría expresarse trivialmente como una combinación convexa que tiene un extremo igual al propio punto.",
     "crumbs": [
-      "Libro",
-      "I. Modelar y visualizar",
+      "Índice general",
+      "Parte I. Fundamentos y geometría",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Vértices y puntos extremos</span>"
     ]
   },
@@ -221,8 +232,8 @@
     "section": "Exploración: identificar los vértices",
     "text": "Exploración: identificar los vértices\nConsideremos\n\\[\nR=\\{(x_1,x_2)\\in\\mathbb R^2:x_1+x_2\\leq6,\\ x_1,x_2\\geq0\\}.\n\\]\nSeleccioná un punto. Antes de comprobar la respuesta, decidí si es extremo y explicá por qué. La región sombreada contiene todos los puntos factibles.\n\n \n  \n   \n   \n  \n  \n  \n  \n   0123456\n  \n  x₁\n  x₂\n  \n  R\n \n \n Punto seleccionado: A=(0,0)\n ¿Es un punto extremo?\n   Sí\n   No\n \n Comprobar\n \n\n\nJustificación matemática\nLos vértices de \\(R\\) son \\((0,0)\\), \\((6,0)\\) y \\((0,6)\\). Por ejemplo, el punto \\((3,0)\\) no es extremo, porque\n\\[\n(3,0)=\\frac12(0,0)+\\frac12(6,0),\n\\]\ny los dos puntos utilizados son factibles y distintos. Tampoco es extremo \\((2,2)\\), pues\n\\[\n(2,2)=\\frac12(1,2)+\\frac12(3,2).\n\\]\nLos extremos del triángulo sí son vértices. Por ejemplo, si \\((0,0)=\\lambda u+(1-\\lambda)v\\) con \\(u,v\\in R\\) y \\(0&lt;\\lambda&lt;1\\), la no negatividad de todas las coordenadas obliga a que \\(u=v=(0,0)\\).\nPara justificar que \\((6,0)\\) es extremo, observamos que sus coordenadas satisfacen simultáneamente \\(x_2=0\\) y \\(x_1+x_2=6\\). Una combinación convexa estricta de puntos factibles solo puede satisfacer ambas igualdades si cada punto de la combinación las satisface; esto determina de manera única \\((6,0)\\). El argumento para \\((0,6)\\) es análogo.",
     "crumbs": [
-      "Libro",
-      "I. Modelar y visualizar",
+      "Índice general",
+      "Parte I. Fundamentos y geometría",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Vértices y puntos extremos</span>"
     ]
   },
@@ -233,8 +244,8 @@
     "section": "Demostración: un punto extremo mediante restricciones activas",
     "text": "Demostración: un punto extremo mediante restricciones activas\nEstudiemos la región\n\\[\nR=\\left\\{(x_1,x_2)\\in\\mathbb R^2:\\;\n2x_1+x_2\\leq6,\\quad x_1+2x_2\\leq6,\\quad x_1,x_2\\geq0\\right\\}.\n\\]\nLas dos rectas frontera se intersectan en \\(\\widehat x=(2,2)\\). ¿Es suficiente observar su intersección para demostrar que \\(\\widehat x\\) es extremo? La definición nos permite justificarlo sin depender de la figura.\n\n\n\n\n\n\nTipPista 1\n\n\n\n\n\nSuponé que \\(\\widehat x=\\lambda u+(1-\\lambda)v\\), con \\(u,v\\in R\\) y \\(0&lt;\\lambda&lt;1\\). Utilizá que las dos desigualdades son igualdades en \\(\\widehat x\\).\n\n\n\n\n\n\n\n\n\nTipPista 2\n\n\n\n\n\nSi \\(a\\leq6\\) y \\(b\\leq6\\), entonces \\(\\lambda a+(1-\\lambda)b=6\\) con \\(0&lt;\\lambda&lt;1\\) solo puede ocurrir cuando \\(a=b=6\\).\n\n\n\n\n\n\n\n\n\nNotaDemostración completa\n\n\n\n\n\nPrimero, \\(\\widehat x=(2,2)\\) es factible y satisface ambas restricciones como igualdades.\nSupongamos que \\(\\widehat x=\\lambda u+(1-\\lambda)v\\), con \\(u,v\\in R\\) y \\(0&lt;\\lambda&lt;1\\). Dado que \\(2u_1+u_2\\leq6\\) y \\(2v_1+v_2\\leq6\\), se tiene\n\\[\n6=2\\widehat x_1+\\widehat x_2\n=\\lambda(2u_1+u_2)+(1-\\lambda)(2v_1+v_2)\\leq6.\n\\]\nLa igualdad, junto con \\(0&lt;\\lambda&lt;1\\), obliga a que \\(2u_1+u_2=6\\) y \\(2v_1+v_2=6\\).\nDe la misma manera, utilizando la segunda restricción, obtenemos \\(u_1+2u_2=6\\) y \\(v_1+2v_2=6\\).\nPor tanto, tanto \\(u\\) como \\(v\\) resuelven el sistema\n\\[\n\\begin{cases}\n2x_1+x_2=6,\\\\\nx_1+2x_2=6.\n\\end{cases}\n\\]\nEste sistema tiene una única solución: \\((2,2)\\). En consecuencia, \\(u=v=\\widehat x\\), lo que demuestra que \\(\\widehat x\\) es extremo.",
     "crumbs": [
-      "Libro",
-      "I. Modelar y visualizar",
+      "Índice general",
+      "Parte I. Fundamentos y geometría",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Vértices y puntos extremos</span>"
     ]
   },
@@ -245,8 +256,8 @@
     "section": "¿Qué aportan las restricciones activas?",
     "text": "¿Qué aportan las restricciones activas?\nUna restricción está activa en un punto factible si se cumple como igualdad en ese punto. En el ejemplo anterior, las rectas correspondientes a las dos restricciones activas tienen vectores normales \\((2,1)\\) y \\((1,2)\\), que son linealmente independientes.\nEn \\(\\mathbb R^2\\), dos restricciones activas con normales linealmente independientes permiten identificar un vértice siempre que el punto sea factible. En espacios de dimensión mayor, la idea se expresa mediante el rango de los vectores normales de las restricciones activas. Este criterio se desarrollará con más profundidad al estudiar las soluciones básicas factibles.\n\n\n\n\n\n\nAdvertencia\n\n\n\nEl simple cruce de dos rectas no asegura que su punto de intersección pertenezca a la región factible. Hay que comprobar todas las restricciones antes de declararlo vértice del conjunto.",
     "crumbs": [
-      "Libro",
-      "I. Modelar y visualizar",
+      "Índice general",
+      "Parte I. Fundamentos y geometría",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Vértices y puntos extremos</span>"
     ]
   },
@@ -257,8 +268,8 @@
     "section": "Comprobá tu comprensión",
     "text": "Comprobá tu comprensión\nEjercicio 1. Explicá por qué el punto medio de dos puntos factibles distintos no puede ser extremo.\n\n\n\n\n\n\nTipPista\n\n\n\n\n\nUtilizá \\(\\lambda=1/2\\) en la definición de combinación convexa.\n\n\n\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nSi \\(u,v\\in R\\), \\(u\\ne v\\), y \\(p=(u+v)/2\\), entonces \\(p=\\frac12u+\\frac12v\\) es una combinación convexa estricta de dos puntos factibles distintos. Por definición, \\(p\\) no es extremo.\n\n\n\nEjercicio 2. Determiná los vértices de \\(R=\\{(x_1,x_2):x_1+x_2\\leq5,\\ x_1,x_2\\geq0\\}\\) y justificá por qué \\((2,3)\\) no es un punto extremo.\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nLos vértices son \\((0,0)\\), \\((5,0)\\) y \\((0,5)\\). Además,\n\\[\n(2,3)=\\frac25(5,0)+\\frac35(0,5),\n\\]\ncon coeficientes estrictamente positivos; por tanto, \\((2,3)\\) no es extremo.",
     "crumbs": [
-      "Libro",
-      "I. Modelar y visualizar",
+      "Índice general",
+      "Parte I. Fundamentos y geometría",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Vértices y puntos extremos</span>"
     ]
   },
@@ -269,8 +280,8 @@
     "section": "",
     "text": "Del conjunto factible a la solución óptima\nEn los apartados anteriores estudiamos las regiones factibles convexas y los puntos extremos de un conjunto. Ahora abordaremos la relación entre estos conceptos y la optimización de una función afín.\nDado un programa lineal con región factible \\(R\\) y función objetivo \\(z(x)=cx^T+z_0\\), distinguimos:\nEn particular, un vértice es una propiedad geométrica de la región factible, mientras que la optimalidad depende también de la función objetivo. No todos los vértices son óptimos, ni toda solución óptima tiene que ser un vértice.",
     "crumbs": [
-      "Libro",
-      "I. Modelar y visualizar",
+      "Índice general",
+      "Parte I. Fundamentos y geometría",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Vértices y soluciones óptimas</span>"
     ]
   },
@@ -281,8 +292,8 @@
     "section": "",
     "text": "Solución factible: un vector \\(x\\in R\\).\nSolución óptima: una solución factible \\(x^*\\) tal que, en maximización, \\(z(x)\\leq z(x^*)\\) para todo \\(x\\in R\\) (se invierte la desigualdad en minimización).\nValor óptimo: el número \\(z^*=z(x^*)\\), cuando existe una solución óptima.",
     "crumbs": [
-      "Libro",
-      "I. Modelar y visualizar",
+      "Índice general",
+      "Parte I. Fundamentos y geometría",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Vértices y soluciones óptimas</span>"
     ]
   },
@@ -293,8 +304,8 @@
     "section": "Existencia de un vértice óptimo",
     "text": "Existencia de un vértice óptimo\n\n\n\n\n\n\nImportanteTeorema\n\n\n\nSea \\(R\\subseteq\\mathbb R^n\\) la región factible no vacía y acotada de un programa lineal definido mediante un número finito de restricciones lineales no estrictas. Entonces, toda función objetivo afín alcanza un valor máximo y un valor mínimo en \\(R\\); además, existe al menos un vértice de \\(R\\) donde se alcanza cada uno de esos valores.\n\n\nLa acotación, junto con las desigualdades no estrictas, garantiza que \\(R\\) sea compacto. El teorema no afirma que todos los puntos óptimos sean vértices; afirma que al menos uno lo es.\n\n¿Por qué es razonable geométricamente?\nEn el plano, una recta de nivel de la función objetivo se desplaza paralelamente hasta su último contacto con una región poligonal acotada. Ese contacto puede ser un solo vértice o un segmento de una arista. En ambos casos, al menos un vértice es óptimo.\nEsta intuición también es válida en dimensiones superiores, donde las rectas de nivel son reemplazadas por hiperplanos de nivel.\n\n\n\n\n\n\nNotaDemostración\n\n\n\n\n\nEscribamos las restricciones en la forma \\(R=\\{x\\in\\mathbb R^n: Mx^T\\leq d^T\\}\\), incorporando en \\(M\\) las condiciones de signo cuando corresponda. Como \\(R\\) es no vacío, cerrado y acotado, es compacto; por el teorema de Weierstrass, la función continua \\(z\\) alcanza su máximo en algún punto \\(\\widehat x\\in R\\).\nDenotemos por \\(I(x)\\) los índices de las restricciones activas en un punto factible \\(x\\), es decir, las filas \\(m_i\\) de \\(M\\) para las que \\(m_ix^T=d_i\\). Entre todos los maximizadores, seleccionemos \\(x^*\\) tal que el rango del conjunto de sus filas activas sea lo mayor posible. Es posible hacerlo, pues ese rango es un entero comprendido entre \\(0\\) y \\(n\\).\nSupongamos que el rango de las filas activas en \\(x^*\\) es menor que \\(n\\). Entonces existe un vector fila no nulo \\(h\\in\\mathbb R^n\\) que satisface \\(m_ih^T=0\\) para toda restricción activa \\(i\\in I(x^*)\\). Las restricciones no activas tienen holgura estrictamente positiva y son finitas; en consecuencia, para algún \\(\\varepsilon&gt;0\\), ambos puntos \\(x^*+\\varepsilon h\\) y \\(x^*-\\varepsilon h\\) pertenecen a \\(R\\).\nComo \\(x^*\\) maximiza la función afín, debemos tener \\(ch^T=0\\): si fuese positivo, aumentaría el valor al movernos en la dirección \\(h\\); si fuese negativo, aumentaría al movernos en la dirección \\(-h\\).\nConsideremos los puntos \\(x^*+th\\) con \\(t\\geq0\\). Como \\(R\\) es acotado, existe un mayor valor \\(t_+&gt;0\\) para el cual \\(x^*+t_+h\\in R\\). Sea \\(y=x^*+t_+h\\). Entonces \\(z(y)=z(x^*)\\), por lo que \\(y\\) también es óptimo.\nEn \\(y\\) se conserva la igualdad de todas las restricciones activas en \\(x^*\\). Además, debe activarse al menos una restricción que no estaba activa: de otro modo podríamos continuar desplazándonos un poco en la misma dirección, contradiciendo la definición de \\(t_+\\). La fila correspondiente a esa nueva restricción no puede pertenecer al espacio generado por las filas activas de \\(x^*\\), porque todas esas filas satisfacen \\(m_ih^T=0\\), mientras que la nueva fila debe satisfacer \\(m_jh^T&gt;0\\) para detener el avance. Por tanto, el rango de las filas activas en \\(y\\) es mayor que en \\(x^*\\), contradicción.\nConcluimos que las filas activas en \\(x^*\\) tienen rango \\(n\\).\nFinalmente, comprobemos que \\(x^*\\) es extremo. Si \\(x^*=\\lambda u+(1-\\lambda)v\\), con \\(u,v\\in R\\) y \\(0&lt;\\lambda&lt;1\\), la igualdad de cada restricción activa en \\(x^*\\) obliga a que esa misma restricción sea igualdad tanto en \\(u\\) como en \\(v\\). Como sus filas tienen rango \\(n\\), el sistema de igualdades tiene solución única; por tanto, \\(u=v=x^*\\). Así, \\(x^*\\) es un vértice óptimo.\nEl argumento para la minimización se obtiene aplicando lo anterior a la función \\(-z\\). \\(\\square\\)\n\n\n\n\n\n\n\n\n\nTip¿Y si la región es no acotada?\n\n\n\nLa acotación es una condición suficiente, no necesaria, para que un programa lineal tenga un óptimo finito. Una región factible no acotada puede admitir un óptimo, como veremos en el método gráfico. Tampoco basta con que una función objetivo esté acotada: es preciso analizar si se alcanza su extremo y qué geometría tiene la región.",
     "crumbs": [
-      "Libro",
-      "I. Modelar y visualizar",
+      "Índice general",
+      "Parte I. Fundamentos y geometría",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Vértices y soluciones óptimas</span>"
     ]
   },
@@ -305,8 +316,8 @@
     "section": "Combinaciones convexas de soluciones óptimas",
     "text": "Combinaciones convexas de soluciones óptimas\n\n\n\n\n\n\nImportanteTeorema\n\n\n\nSean \\(u,v\\in R\\) dos soluciones óptimas del mismo programa lineal, con función objetivo afín \\(z(x)=cx^T+z_0\\). Entonces, para todo \\(\\lambda\\in[0,1]\\), el punto\n\\[\nx(\\lambda)=\\lambda u+(1-\\lambda)v\n\\]\nes también una solución óptima.\n\n\n\n\n\n\n\n\nNotaDemostración\n\n\n\n\n\nComo la región factible de un programa lineal es convexa, \\(x(\\lambda)\\in R\\). Si \\(z^*\\) es el valor óptimo, entonces \\(z(u)=z(v)=z^*\\). Por la afinidad de \\(z\\),\n\\[\n\\begin{aligned}\nz(x(\\lambda))&=c\\bigl(\\lambda u+(1-\\lambda)v\\bigr)^T+z_0\\\\\n&=\\lambda z(u)+(1-\\lambda)z(v)\\\\\n&=\\lambda z^*+(1-\\lambda)z^*=z^*.\n\\end{aligned}\n\\]\nPor tanto, \\(x(\\lambda)\\) es factible y óptimo. \\(\\square\\)\n\n\n\nEn consecuencia, el conjunto de soluciones óptimas es convexo (cuando no es vacío). Si dos vértices son óptimos, todo el segmento entre ellos también lo es.",
     "crumbs": [
-      "Libro",
-      "I. Modelar y visualizar",
+      "Índice general",
+      "Parte I. Fundamentos y geometría",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Vértices y soluciones óptimas</span>"
     ]
   },
@@ -317,8 +328,8 @@
     "section": "Exploración geométrica: cambiar la función objetivo",
     "text": "Exploración geométrica: cambiar la función objetivo\nConsideremos la región factible\n\\[\nR=\\left\\{(x_1,x_2):\\begin{array}{rcl}\nx_1+x_2&\\leq&6,\\\\\n2x_1+x_2&\\leq&8,\\\\\nx_1+2x_2&\\leq&8,\\\\\nx_1,x_2&\\geq&0\n\\end{array}\\right\\}\n\\]\ny la familia de problemas \\(\\max z=ax_1+2x_2\\), con \\(0\\leq a\\leq5\\). Modificá \\(a\\) y observá cómo cambia el conjunto de soluciones óptimas, sin alterar la región factible.\n\n  \n    \n      \n        \n        \n        \n        \n        \n        \n        \n        \n        x₁\n        x₂\n        R\n      \n    \n    \n      Coeficiente a: 3\n      \n      \n        a = 0,5\n        a = 1\n        a = 3\n        a = 4\n        a = 5\n      \n      Función objetivo: \n      \n      Valor óptimo: \n      \n        Ver valores en los cuatro vértices\n        \n\n\n\nVértice\nz\n\n\n\n\n\n\n      \n    \n  \n\n\n\n\nAnálisis matemático de la exploración\nLos cuatro vértices de \\(R\\) son \\(A=(0,0)\\), \\(B=(4,0)\\), \\(C=(8/3,8/3)\\) y \\(D=(0,4)\\). Sus valores objetivo son \\(0\\), \\(4a\\), \\((8a+16)/3\\) y \\(8\\), respectivamente. En consecuencia,\n\\[\nz^*(a)=\\begin{cases}\n8,&0\\leq a\\leq1,\\\\[2pt]\n\\dfrac{8a+16}{3},&1\\leq a\\leq4,\\\\[2pt]\n4a,&4\\leq a\\leq5.\n\\end{cases}\n\\]\nPara \\(a=1\\) son óptimos todos los puntos del segmento \\(\\overline{DC}\\); para \\(a=4\\), todos los puntos del segmento \\(\\overline{CB}\\). Para los demás valores del intervalo estudiado, la solución óptima es única. La coincidencia de los valores objetivo en dos vértices adyacentes no es accidental: la recta de nivel óptima tiene la misma dirección que la arista que los une.",
     "crumbs": [
-      "Libro",
-      "I. Modelar y visualizar",
+      "Índice general",
+      "Parte I. Fundamentos y geometría",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Vértices y soluciones óptimas</span>"
     ]
   },
@@ -329,129 +340,57 @@
     "section": "Ejercicios de comprensión",
     "text": "Ejercicios de comprensión\nEjercicio 1. Demuestre que el conjunto de soluciones óptimas de un programa lineal es convexo cuando es no vacío.\n\n\n\n\n\n\nNotaOrientación y solución\n\n\n\n\n\nSea \\(u,v\\) cualquier pareja de soluciones óptimas. La región factible es convexa, de modo que \\(\\lambda u+(1-\\lambda)v\\) es factible para \\(0\\leq\\lambda\\leq1\\). Como \\(z\\) es afín, \\(z(\\lambda u+(1-\\lambda)v)=\\lambda z^*+(1-\\lambda)z^*=z^*\\). Por consiguiente, la combinación también es óptima.\n\n\n\nEjercicio 2. En la exploración anterior, determine algebraicamente los valores de \\(a\\) para los cuales aparecen múltiples soluciones óptimas. Justifique mediante la evaluación de vértices.\n\n\n\n\n\n\nTipPista\n\n\n\n\n\nBusque valores de \\(a\\) para los que dos vértices adyacentes tengan el mismo valor objetivo y ese valor sea máximo.\n\n\n\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nEn los vértices \\(D\\) y \\(C\\), la igualdad \\(8=(8a+16)/3\\) da \\(a=1\\); en los vértices \\(C\\) y \\(B\\), la igualdad \\((8a+16)/3=4a\\) da \\(a=4\\). Al comparar con los demás vértices, se confirma que en ambos casos se trata del valor máximo.\n\n\n\nEjercicio 3. Explique por qué el teorema de existencia de un vértice óptimo no garantiza que la solución óptima sea única.\n\n\n\n\n\n\nNotaSolución\n\n\n\n\n\nEl teorema solamente asegura la existencia de al menos un vértice que alcanza el óptimo. Si dos vértices distintos son óptimos, toda combinación convexa de ellos también lo es, por lo que existen infinitas soluciones óptimas.",
     "crumbs": [
-      "Libro",
-      "I. Modelar y visualizar",
+      "Índice general",
+      "Parte I. Fundamentos y geometría",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Vértices y soluciones óptimas</span>"
     ]
   },
   {
-    "objectID": "capitulos/planos_y_rectas_de_nivel.html",
-    "href": "capitulos/planos_y_rectas_de_nivel.html",
-    "title": "De los planos a las rectas de nivel",
+    "objectID": "capitulos/interpretacion_geometrica_niveles.html",
+    "href": "capitulos/interpretacion_geometrica_niveles.html",
+    "title": "Interpretación geométrica de las rectas de nivel",
     "section": "",
-    "text": "Dos perspectivas de una misma construcción\nUna función objetivo con dos variables, \\(z=3x_1+2x_2\\), determina un plano inclinado en el espacio. Si lo cortamos con el plano horizontal \\(z=k\\), la intersección satisface simultáneamente\n\\[\n\\begin{cases}\nz=3x_1+2x_2,\\\\\nz=k.\n\\end{cases}\n\\]\nLa proyección vertical de esta intersección sobre el plano \\(x_1x_2\\) es la recta de nivel \\(3x_1+2x_2=k\\). Mientras el plano horizontal asciende, la recta de nivel se desplaza paralelamente en el plano de las decisiones.\nEstudiaremos esta construcción para el programa lineal\n\\[\n\\begin{aligned}\n\\max\\quad z&=3x_1+2x_2,\\\\\nx_1+x_2&\\leq 6,\\\\\n2x_1+x_2&\\leq 8,\\\\\nx_1+2x_2&\\leq 8,\\\\\nx_1,x_2&\\geq0.\n\\end{aligned}\n\\]\nEn la figura espacial, la superficie inclinada se restringe a los puntos de la región factible: de ese modo, lo que importa no queda oculto por un plano infinito. El plano horizontal corta esa superficie en un segmento (o, en el óptimo, en un punto). Su proyección aparece simultáneamente en la base 3D y en la gráfica 2D. En esta última también se dibuja la recta de nivel completa dentro de la ventana de visualización.",
+    "text": "Primer ejemplo: el corte y su proyección\nEn un problema lineal con dos variables, la función objetivo es una función afín cuyo gráfico en tres dimensiones es un plano. Para cada altura \\(k\\), la intersección de su gráfico con el plano horizontal \\(z=k\\) se proyecta como una recta de nivel en el plano de las decisiones.\nLa siguiente secuencia permite primero comprender la relación entre intersección y proyección, y luego aplicarla a un segundo programa lineal explorando libremente la orientación espacial.",
     "crumbs": [
-      "Libro",
-      "I. Modelar y visualizar",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>De los planos a las rectas de nivel</span>"
+      "Índice general",
+      "Parte I. Fundamentos y geometría",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Interpretación geométrica de las rectas de nivel</span>"
     ]
   },
   {
-    "objectID": "capitulos/planos_y_rectas_de_nivel.html#dos-perspectivas-de-una-misma-construcción",
-    "href": "capitulos/planos_y_rectas_de_nivel.html#dos-perspectivas-de-una-misma-construcción",
-    "title": "De los planos a las rectas de nivel",
-    "section": "",
-    "text": "Vista espacialPlano y proyección\n      \n      La superficie ocre es únicamente la gráfica de la función objetivo sobre la región factible.\n    \n    \n      Vista en el planoRecta de nivel\n      \n      La recta negra indica la ecuación 3x₁ + 2x₂ = k. El segmento grueso muestra su parte factible.\n    \n  \n  \n    Altura del plano horizontal k8,00\n    \n    \n      Reiniciar\n      Ir al óptimo (40/3)\n       Proyección vertical\n       Superficie objetivo\n    \n    \n    \n       Superficie objetivo restringida\n       Plano horizontal\n       Región factible\n       Traza y recta de nivel\n    \n  \n  Mostrar la solución matemática\n    Los vértices factibles son $(0,0)$, $(4,0)$, $(8/3,8/3)$ y $(0,4)$. La función objetivo toma allí los valores $0$, $12$, $40/3$ y $8$, respectivamente. El máximo es $z^*=40/3$, alcanzado en $(8/3,8/3)$.\n    Al llegar a $k=40/3$, la recta de nivel toca la región factible en un solo punto. Para $k&gt;40/3$, la recta de nivel sigue existiendo, pero no contiene ninguna solución factible.\n  \n\n\n\n\nPara explorar\n\n¿Qué relación existe entre el segmento negro situado sobre el plano horizontal y la recta negra de la vista 2D?\n¿Qué sucede con el segmento de intersección cuando \\(k=40/3\\)?\n¿Por qué, cuando \\(k&gt;40/3\\), la recta de nivel sigue existiendo aunque ya no haya soluciones factibles sobre ella?\n\n\n\n\n\n\n\nNota\n\n\n\nPrecisión geométrica. La vista espacial utiliza una proyección axonométrica: no se muestran planos infinitos, sino recortes de las superficies relevantes. La porción inclinada corresponde exactamente a los puntos \\((x_1,x_2,3x_1+2x_2)\\) con \\((x_1,x_2)\\in R\\).",
+    "objectID": "capitulos/interpretacion_geometrica_niveles.html#de-una-función-objetivo-a-una-recta-de-nivel",
+    "href": "capitulos/interpretacion_geometrica_niveles.html#de-una-función-objetivo-a-una-recta-de-nivel",
+    "title": "Interpretación geométrica de las rectas de nivel",
+    "section": "De una función objetivo a una recta de nivel",
+    "text": "De una función objetivo a una recta de nivel\nEn un programa lineal con dos variables, una función objetivo afín puede escribirse como \\(z=c_1x_1+c_2x_2+z_0\\). Su gráfica en el espacio es un plano. Para un valor fijo \\(k\\), el plano horizontal \\(z=k\\) corta la gráfica de la función objetivo en una recta, cuya proyección vertical sobre el plano \\(x_1x_2\\) se describe mediante\n\\[\nc_1x_1+c_2x_2+z_0=k.\n\\]\nEsta es la recta de nivel correspondiente a \\(k\\). Al aumentar \\(k\\), los planos horizontales se desplazan hacia arriba y sus rectas de nivel se desplazan paralelamente sobre el plano de las variables. En un problema de maximización, buscamos el mayor valor de \\(k\\) para el cual la recta de nivel todavía encuentra puntos factibles.\n\nExploración simultánea en dos y tres dimensiones\nConsideremos el problema\n\\[\n\\begin{aligned}\n\\max\\quad z&=3x_1+2x_2,\\\\\nx_1+x_2&\\leq6,\\\\\n2x_1+x_2&\\leq8,\\\\\nx_1+2x_2&\\leq8,\\\\\nx_1,x_2&\\geq0.\n\\end{aligned}\n\\]\nDesplazá el control \\(k\\). En la vista 3D, el segmento dorado representa la intersección de los dos planos; la línea discontinua proyectada en el plano de las variables es su sombra geométrica. En la vista 2D, esa proyección es la recta \\(3x_1+2x_2=k\\). El segmento verde oscuro, cuando existe, indica la parte de la recta que atraviesa la región factible.\n\n  \n    \n      Vista tridimensional\n      \n      Plano objetivoPlano z = kRegión factible\n    \n    \n      Vista bidimensional\n      \n      Región factibleRecta de nivel\n    \n  \n  \n    Altura del plano horizontal k: 6\n    \n    \n      Reiniciar\n      Ir al óptimo\n       Mostrar proyección\n       Mostrar región factible\n    \n    \n    La vista 3D utiliza una proyección axonométrica esquemática; todos los objetos se calculan a partir de las mismas ecuaciones y del mismo parámetro k. La gráfica muestra una ventana finita del plano objetivo.\n  \n  \n    Mostrar justificación matemática del óptimo\n    Los vértices de la región factible son (0,0), (4,0), (8/3,8/3) y (0,4). Sus valores objetivo son 0, 12, 40/3 y 8, respectivamente. Por tanto, el valor máximo es z* = 40/3 y se alcanza en el vértice (8/3,8/3). En dicho punto son activas las restricciones 2x₁+x₂=8 y x₁+2x₂=8.\n  \n\n\n\n\n\nPara pensar\n\n¿Qué ocurre en la vista tridimensional cuando el plano horizontal supera la altura óptima?\n¿Por qué la recta de nivel sigue existiendo aunque ya no intersecte la región factible?\n¿Qué restricciones son activas en el vértice óptimo?\n\nLa visualización tridimensional aporta intuición sobre el barrido, pero no sustituye la justificación de optimalidad. En las siguientes páginas utilizaremos el método gráfico para calcular exactamente los vértices y comparar sus valores objetivo.",
     "crumbs": [
-      "Libro",
-      "I. Modelar y visualizar",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>De los planos a las rectas de nivel</span>"
+      "Índice general",
+      "Parte I. Fundamentos y geometría",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Interpretación geométrica de las rectas de nivel</span>"
     ]
   },
   {
-    "objectID": "capitulos/segundo_ejemplo_3d_rotacion.html",
-    "href": "capitulos/segundo_ejemplo_3d_rotacion.html",
-    "title": "Exploración espacial con rotación libre",
-    "section": "",
-    "text": "En un programa lineal de dos variables, la función objetivo \\(z=f(x_1,x_2)\\) puede interpretarse como una superficie plana en el espacio. Para cada valor \\(k\\), el plano horizontal \\(z=k\\) corta la gráfica de la función objetivo. Al proyectar verticalmente ese corte sobre el plano \\(x_1x_2\\), obtenemos la recta de nivel \\(f(x_1,x_2)=k\\).\nEstudiaremos un segundo ejemplo:\n\\[\n\\begin{aligned}\n\\text{Maximizar}\\quad z&=2x_1+x_2,\\\\\nx_1+x_2&\\leq4,\\\\\nx_1&\\leq3,\\\\\nx_2&\\leq3,\\\\\nx_1,x_2&\\geq0.\n\\end{aligned}\n\\]\nLa exploración siguiente permite girar la vista espacial arrastrando sobre el gráfico, acercarla con la rueda del mouse y mover simultáneamente el plano horizontal y la recta de nivel en el plano.\n\n  \n    Barrido sincronizado en dos y tres dimensionesArrastrá en horizontal y vertical para girar 360° y mirar desde arriba o desde abajo; usá la rueda para acercar.\n    Exploración\n  \n  \n    Vista en el plano x₁x₂\n    Vista espacial giratoria↔ Girar · ↕ Vista superior/inferior · Rueda: zoom\n  \n  \n    Altura del plano horizontal: k = 3,00\n    \n    \n      Ir al óptimo\n      ▶ Animar barrido\n      Restablecer vista\n      Vista superior\n      Vista lateral\n      Vista inferior\n    \n    \n       Superficie objetivo restringida\n       Plano horizontal z = k\n       Proyección vertical\n       Etiquetas de vértices\n    \n  \n  \n   Región factible Superficie objetivo Plano horizontal Corte y recta de nivel\n\n\n\n\nJustificación del resultado\nLa región factible tiene vértices \\(A=(0,0)\\), \\(B=(3,0)\\), \\(C=(3,1)\\), \\(D=(1,3)\\) y \\(E=(0,3)\\). Al evaluar la función objetivo, obtenemos respectivamente \\(0\\), \\(6\\), \\(7\\), \\(5\\) y \\(3\\).\nAsí, el máximo se alcanza únicamente en \\(C=(3,1)\\), con valor \\(z^*=7\\). Además, puede verificarse directamente que\n\\[\n2x_1+x_2=x_1+(x_1+x_2)\\leq3+4=7,\n\\]\ncon igualdad en el punto \\(C\\). La vista espacial permite comprobar por qué el último plano horizontal que toca la gráfica de la función objetivo sobre la región factible es \\(z=7\\).\n\n\n\n\n\n\nNotaPreguntas para reflexionar\n\n\n\n\n\n\n¿Qué relación existe entre la recta de nivel en 2D y el corte del plano objetivo con el plano horizontal en 3D?\n¿Qué sucede si el plano horizontal supera el valor \\(z=7\\)?\n¿Por qué es importante visualizar solo la porción del plano objetivo situada sobre la región factible?\nAl girar la vista 3D, ¿cambia la solución óptima? Justificá tu respuesta.",
+    "objectID": "capitulos/interpretacion_geometrica_niveles.html#segundo-ejemplo-cambiar-el-punto-de-vista",
+    "href": "capitulos/interpretacion_geometrica_niveles.html#segundo-ejemplo-cambiar-el-punto-de-vista",
+    "title": "Interpretación geométrica de las rectas de nivel",
+    "section": "Segundo ejemplo: cambiar el punto de vista",
+    "text": "Segundo ejemplo: cambiar el punto de vista\nEn el siguiente modelo, la rotación de la cámara permite observar la misma construcción desde arriba, desde abajo y lateralmente. La interpretación matemática de la recta de nivel permanece inalterada al cambiar la vista.\nEn un programa lineal de dos variables, la función objetivo \\(z=f(x_1,x_2)\\) puede interpretarse como una superficie plana en el espacio. Para cada valor \\(k\\), el plano horizontal \\(z=k\\) corta la gráfica de la función objetivo. Al proyectar verticalmente ese corte sobre el plano \\(x_1x_2\\), obtenemos la recta de nivel \\(f(x_1,x_2)=k\\).\nEstudiaremos un segundo ejemplo:\n\\[\n\\begin{aligned}\n\\text{Maximizar}\\quad z&=2x_1+x_2,\\\\\nx_1+x_2&\\leq4,\\\\\nx_1&\\leq3,\\\\\nx_2&\\leq3,\\\\\nx_1,x_2&\\geq0.\n\\end{aligned}\n\\]\nLa exploración siguiente permite girar la vista espacial arrastrando sobre el gráfico, acercarla con la rueda del mouse y mover simultáneamente el plano horizontal y la recta de nivel en el plano.\n\n  \n    Barrido sincronizado en dos y tres dimensionesArrastrá en horizontal y vertical para girar 360° y mirar desde arriba o desde abajo; usá la rueda para acercar.\n    Exploración\n  \n  \n    Vista en el plano x₁x₂\n    Vista espacial giratoria↔ Girar · ↕ Vista superior/inferior · Rueda: zoom\n  \n  \n    Altura del plano horizontal: k = 3,00\n    \n    \n      Ir al óptimo\n      ▶ Animar barrido\n      Restablecer vista\n      Vista superior\n      Vista lateral\n      Vista inferior\n    \n    \n       Superficie objetivo restringida\n       Plano horizontal z = k\n       Proyección vertical\n       Etiquetas de vértices\n    \n  \n  \n   Región factible Superficie objetivo Plano horizontal Corte y recta de nivel\n\n\n\n\nJustificación del resultado\nLa región factible tiene vértices \\(A=(0,0)\\), \\(B=(3,0)\\), \\(C=(3,1)\\), \\(D=(1,3)\\) y \\(E=(0,3)\\). Al evaluar la función objetivo, obtenemos respectivamente \\(0\\), \\(6\\), \\(7\\), \\(5\\) y \\(3\\).\nAsí, el máximo se alcanza únicamente en \\(C=(3,1)\\), con valor \\(z^*=7\\). Además, puede verificarse directamente que\n\\[\n2x_1+x_2=x_1+(x_1+x_2)\\leq3+4=7,\n\\]\ncon igualdad en el punto \\(C\\). La vista espacial permite comprobar por qué el último plano horizontal que toca la gráfica de la función objetivo sobre la región factible es \\(z=7\\).\n\n\n\n\n\n\nNotaPreguntas para reflexionar\n\n\n\n\n\n\n¿Qué relación existe entre la recta de nivel en 2D y el corte del plano objetivo con el plano horizontal en 3D?\n¿Qué sucede si el plano horizontal supera el valor \\(z=7\\)?\n¿Por qué es importante visualizar solo la porción del plano objetivo situada sobre la región factible?\nAl girar la vista 3D, ¿cambia la solución óptima? Justificá tu respuesta.",
     "crumbs": [
-      "Libro",
-      "I. Modelar y visualizar",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Exploración espacial con rotación libre</span>"
+      "Índice general",
+      "Parte I. Fundamentos y geometría",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Interpretación geométrica de las rectas de nivel</span>"
     ]
   },
   {
-    "objectID": "capitulos/tercer_ejemplo_poliedro_3d.html",
-    "href": "capitulos/tercer_ejemplo_poliedro_3d.html",
-    "title": "Barrido de planos de nivel sobre un poliedro",
-    "section": "",
-    "text": "De rectas de nivel a planos de nivel\nSi un programa lineal tiene tres variables de decisión, su región factible puede representarse como un poliedro en \\(\\mathbb R^3\\). Una función objetivo afín \\(w=c_1x_1+c_2x_2+c_3x_3\\) asigna un número real a cada punto del poliedro. Para cada valor de \\(k\\), la ecuación \\(c_1x_1+c_2x_2+c_3x_3=k\\) representa ahora un plano de nivel.\nEn tres dimensiones no representamos simultáneamente la gráfica \\(w=f(x_1,x_2,x_3)\\), porque esta vive en cuatro dimensiones. En cambio, observamos directamente cómo un plano de nivel móvil corta el sólido factible.\nConsideremos el programa\n\\[\n\\begin{aligned}\n\\text{Maximizar}\\quad w&=3x_1+2x_2+x_3,\\\\\nx_1+x_2+x_3&\\leq 6,\\\\\nx_1&\\leq4,\\\\\nx_2&\\leq4,\\\\\nx_3&\\leq4,\\\\\nx_1,x_2,x_3&\\geq0.\n\\end{aligned}\n\\]",
+    "objectID": "capitulos/interpretacion_geometrica_niveles.html#reflexión",
+    "href": "capitulos/interpretacion_geometrica_niveles.html#reflexión",
+    "title": "Interpretación geométrica de las rectas de nivel",
+    "section": "Reflexión",
+    "text": "Reflexión\nEl barrido no consiste en cambiar las restricciones: se mantiene la región factible y se modifica únicamente el nivel \\(k\\). El máximo se alcanza en la última recta de nivel que aún corta el conjunto factible.\nPara resolver el programa mediante el método gráfico, continuá con el ejemplo resuelto.",
     "crumbs": [
-      "Libro",
-      "I. Modelar y visualizar",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Barrido de planos de nivel sobre un poliedro</span>"
-    ]
-  },
-  {
-    "objectID": "capitulos/tercer_ejemplo_poliedro_3d.html#exploración-espacial-recorrer-el-sólido-hasta-el-óptimo",
-    "href": "capitulos/tercer_ejemplo_poliedro_3d.html#exploración-espacial-recorrer-el-sólido-hasta-el-óptimo",
-    "title": "Barrido de planos de nivel sobre un poliedro",
-    "section": "Exploración espacial: recorrer el sólido hasta el óptimo",
-    "text": "Exploración espacial: recorrer el sólido hasta el óptimo\nArrastrá la escena horizontalmente para girar alrededor del sólido y verticalmente para mirarlo desde arriba o desde abajo. La rueda permite acercar o alejar. El deslizador desplaza el plano \\(3x_1+2x_2+x_3=k\\). La región factible permanece fija: solamente cambia el plano de nivel.\n\n Poliedro factible y plano de nivelRotación espacial libre · Perspectiva superior e inferior · ZoomEn exploración\n \n  Arrastrar ↔ ↕ · Rueda = zoom · Doble clic = reiniciar cámara\n  Valor del planok = 8,0Recorrido del nivel kIr al óptimo▶ AnimarReiniciarÁngulos de observaciónDesde arribaLateralDesde abajo Mostrar plano de nivel completo Caras del poliedro Resaltar sección del corte Aristas y vértices\n \n Poliedro factiblePlano de nivelIntersección con el sólidoÓptimo",
-    "crumbs": [
-      "Libro",
-      "I. Modelar y visualizar",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Barrido de planos de nivel sobre un poliedro</span>"
-    ]
-  },
-  {
-    "objectID": "capitulos/tercer_ejemplo_poliedro_3d.html#determinación-del-óptimo",
-    "href": "capitulos/tercer_ejemplo_poliedro_3d.html#determinación-del-óptimo",
-    "title": "Barrido de planos de nivel sobre un poliedro",
-    "section": "Determinación del óptimo",
-    "text": "Determinación del óptimo\nPara todo punto factible se tiene\n\\[\n\\begin{aligned}\nw&=3x_1+2x_2+x_3\\\\\n&= (x_1+x_2+x_3)+x_1+(x_1+x_2)\\\\\n&\\leq 6+4+6=16.\n\\end{aligned}\n\\]\nAdemás, \\((4,2,0)\\) satisface todas las restricciones y produce \\(w=16\\). En consecuencia, el valor máximo es\n\\[\n\\boxed{w^*=16,\\qquad x^*=(4,2,0).}\n\\]\nPara que se alcance la igualdad deben cumplirse \\(x_1+x_2+x_3=6\\), \\(x_1=4\\) y \\(x_1+x_2=6\\), de donde necesariamente \\(x_2=2\\) y \\(x_3=0\\). Por tanto, el óptimo es único.\n\n\n\n\n\n\nNotaPreguntas de reflexión\n\n\n\n\n\n\n¿Qué representa geométricamente la intersección del plano de nivel con el poliedro?\n¿Por qué, a diferencia de la situación bidimensional, no dibujamos la gráfica completa de la función objetivo?\n¿Qué sucede al mover \\(k\\) por encima de \\(16\\)?\n¿La solución óptima cambia cuando giramos el poliedro o cuando observamos su cara inferior? Justificá.",
-    "crumbs": [
-      "Libro",
-      "I. Modelar y visualizar",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Barrido de planos de nivel sobre un poliedro</span>"
-    ]
-  },
-  {
-    "objectID": "capitulos/01-introduccion.html",
-    "href": "capitulos/01-introduccion.html",
-    "title": "Introducción y formulación",
-    "section": "",
-    "text": "Organización del capítulo\nLa estructura académica, las demostraciones, los ejemplos y las exploraciones se establecerán durante la revisión editorial de este capítulo.",
-    "crumbs": [
-      "Libro",
-      "I. Modelar y visualizar",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Introducción y formulación</span>"
-    ]
-  },
-  {
-    "objectID": "capitulos/01-introduccion.html#organización-del-capítulo",
-    "href": "capitulos/01-introduccion.html#organización-del-capítulo",
-    "title": "Introducción y formulación",
-    "section": "",
-    "text": "Exploración interactiva\nEspacio reservado para una construcción GeoGebra validada matemáticamente y acompañada de una pregunta guía.",
-    "crumbs": [
-      "Libro",
-      "I. Modelar y visualizar",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Introducción y formulación</span>"
-    ]
-  },
-  {
-    "objectID": "capitulos/02-geometria.html",
-    "href": "capitulos/02-geometria.html",
-    "title": "Interpretación geométrica de la programación lineal",
-    "section": "",
-    "text": "Organización del capítulo\nLa estructura académica, las demostraciones, los ejemplos y las exploraciones se establecerán durante la revisión editorial de este capítulo.",
-    "crumbs": [
-      "Libro",
-      "I. Modelar y visualizar",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Interpretación geométrica de la programación lineal</span>"
-    ]
-  },
-  {
-    "objectID": "capitulos/02-geometria.html#organización-del-capítulo",
-    "href": "capitulos/02-geometria.html#organización-del-capítulo",
-    "title": "Interpretación geométrica de la programación lineal",
-    "section": "",
-    "text": "Exploración interactiva\nEspacio reservado para una construcción GeoGebra validada matemáticamente y acompañada de una pregunta guía.",
-    "crumbs": [
-      "Libro",
-      "I. Modelar y visualizar",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Interpretación geométrica de la programación lineal</span>"
+      "Índice general",
+      "Parte I. Fundamentos y geometría",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Interpretación geométrica de las rectas de nivel</span>"
     ]
   },
   {
@@ -461,9 +400,56 @@
     "section": "",
     "text": "Consideremos el programa lineal\n\\[\n\\begin{aligned}\n\\text{Maximizar}\\quad z&=3x_1+2x_2,\\\\\n\\text{sujeto a}\\quad x_1+x_2&\\leq6,\\\\\n2x_1+x_2&\\leq8,\\\\\nx_1+2x_2&\\leq8,\\\\\nx_1,x_2&\\geq0.\n\\end{aligned}\n\\]\nLa región factible es la intersección de los semiplanos correspondientes a las restricciones. Cada valor de \\(k\\) determina una recta de nivel \\(3x_1+2x_2=k\\). En un problema de maximización, aumentamos \\(k\\) hasta localizar el último contacto con la región factible.\n\n  \n    Exploración del método gráfico\n    Modo:\n      Exploración libreResolución guiada\n    \n  \n  Desplazá la recta de nivel y compará los valores de la función objetivo en los vértices.\n  \n    \n      \n      \n      \n      \n      \n      x₁\n      x₂\n      R\n    \n  \n  \n    Recta de nivel: k = 8\n    \n    \n      k = 4\n      k = 10\n      k = 40/3\n      k = 15\n    \n    \n    \n      Evaluar un vértice:\n      \n        A\n        B\n        C\n        D\n      \n      \n    \n    Mostrar solución razonada\n    \n      Los vértices de la región factible son\n        \\(A=(0,0)\\),\n        \\(B=(4,0)\\),\n        \\(C=(8/3,8/3)\\) y\n        \\(D=(0,4)\\).\n      \n      \n\n\n\nVértice\nValor de z\n\n\n\n\nA\n0\n\n\nB\n12\n\n\nC\n40/3\n\n\nD\n8\n\n\n\n\n      La región es no vacía, cerrada y acotada. Por el teorema de optimalidad en vértices, basta comparar los valores de la función objetivo en sus vértices. El máximo es z* = 40/3 y se alcanza en (8/3, 8/3).\n      En el óptimo son activas las restricciones \\(2x_1+x_2=8\\) y \\(x_1+2x_2=8\\). La restricción \\(x_1+x_2\\leq6\\) es redundante, pues las dos anteriores implican \\(x_1+x_2\\leq16/3&lt;6\\).\n    \n  \n\n\n\n\n\n\nPara reflexionar. ¿Por qué la última recta de nivel toca la región factible en el vértice \\(C\\)? ¿Qué sucede cuando \\(k&gt;40/3\\)? Justificá las respuestas a partir de las restricciones y de la función objetivo, no solamente de la gráfica.",
     "crumbs": [
-      "Libro",
-      "I. Modelar y visualizar",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Ejemplo interactivo: resolución mediante el método gráfico</span>"
+      "Índice general",
+      "Parte I. Fundamentos y geometría",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Ejemplo interactivo: resolución mediante el método gráfico</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/extension_geometrica_3d.html",
+    "href": "capitulos/extension_geometrica_3d.html",
+    "title": "Extensión geométrica: planos de nivel en tres variables",
+    "section": "",
+    "text": "De rectas de nivel a planos de nivel\nLa interpretación geométrica de la función objetivo se extiende de dos a tres variables. En el plano se estudian rectas de nivel; en el espacio de las decisiones se estudian planos de nivel. Esta sección es una exploración conceptual y no una propuesta de aplicar mecánicamente el método gráfico de dos variables a modelos tridimensionales.\nSi un programa lineal tiene tres variables de decisión, su región factible puede representarse como un poliedro en \\(\\mathbb R^3\\). Una función objetivo afín \\(w=c_1x_1+c_2x_2+c_3x_3\\) asigna un número real a cada punto del poliedro. Para cada valor de \\(k\\), la ecuación \\(c_1x_1+c_2x_2+c_3x_3=k\\) representa ahora un plano de nivel.\nEn tres dimensiones no representamos simultáneamente la gráfica \\(w=f(x_1,x_2,x_3)\\), porque esta vive en cuatro dimensiones. En cambio, observamos directamente cómo un plano de nivel móvil corta el sólido factible.\nConsideremos el programa\n\\[\n\\begin{aligned}\n\\text{Maximizar}\\quad w&=3x_1+2x_2+x_3,\\\\\nx_1+x_2+x_3&\\leq 6,\\\\\nx_1&\\leq4,\\\\\nx_2&\\leq4,\\\\\nx_3&\\leq4,\\\\\nx_1,x_2,x_3&\\geq0.\n\\end{aligned}\n\\]",
+    "crumbs": [
+      "Índice general",
+      "Parte I. Fundamentos y geometría",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Extensión geométrica: planos de nivel en tres variables</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/extension_geometrica_3d.html#exploración-espacial-recorrer-el-sólido-hasta-el-óptimo",
+    "href": "capitulos/extension_geometrica_3d.html#exploración-espacial-recorrer-el-sólido-hasta-el-óptimo",
+    "title": "Extensión geométrica: planos de nivel en tres variables",
+    "section": "Exploración espacial: recorrer el sólido hasta el óptimo",
+    "text": "Exploración espacial: recorrer el sólido hasta el óptimo\nArrastrá la escena horizontalmente para girar alrededor del sólido y verticalmente para mirarlo desde arriba o desde abajo. La rueda permite acercar o alejar. El deslizador desplaza el plano \\(3x_1+2x_2+x_3=k\\). La región factible permanece fija: solamente cambia el plano de nivel.\n\n Poliedro factible y plano de nivelRotación espacial libre · Perspectiva superior e inferior · ZoomEn exploración\n \n  Arrastrar ↔ ↕ · Rueda = zoom · Doble clic = reiniciar cámara\n  Valor del planok = 8,0Recorrido del nivel kIr al óptimo▶ AnimarReiniciarÁngulos de observaciónDesde arribaLateralDesde abajo Mostrar plano de nivel completo Caras del poliedro Resaltar sección del corte Aristas y vértices\n \n Poliedro factiblePlano de nivelIntersección con el sólidoÓptimo",
+    "crumbs": [
+      "Índice general",
+      "Parte I. Fundamentos y geometría",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Extensión geométrica: planos de nivel en tres variables</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/extension_geometrica_3d.html#determinación-del-óptimo",
+    "href": "capitulos/extension_geometrica_3d.html#determinación-del-óptimo",
+    "title": "Extensión geométrica: planos de nivel en tres variables",
+    "section": "Determinación del óptimo",
+    "text": "Determinación del óptimo\nPara todo punto factible se tiene\n\\[\n\\begin{aligned}\nw&=3x_1+2x_2+x_3\\\\\n&= (x_1+x_2+x_3)+x_1+(x_1+x_2)\\\\\n&\\leq 6+4+6=16.\n\\end{aligned}\n\\]\nAdemás, \\((4,2,0)\\) satisface todas las restricciones y produce \\(w=16\\). En consecuencia, el valor máximo es\n\\[\n\\boxed{w^*=16,\\qquad x^*=(4,2,0).}\n\\]\nPara que se alcance la igualdad deben cumplirse \\(x_1+x_2+x_3=6\\), \\(x_1=4\\) y \\(x_1+x_2=6\\), de donde necesariamente \\(x_2=2\\) y \\(x_3=0\\). Por tanto, el óptimo es único.\n\n\n\n\n\n\nNotaPreguntas de reflexión\n\n\n\n\n\n\n¿Qué representa geométricamente la intersección del plano de nivel con el poliedro?\n¿Por qué, a diferencia de la situación bidimensional, no dibujamos la gráfica completa de la función objetivo?\n¿Qué sucede al mover \\(k\\) por encima de \\(16\\)?\n¿La solución óptima cambia cuando giramos el poliedro o cuando observamos su cara inferior? Justificá.",
+    "crumbs": [
+      "Índice general",
+      "Parte I. Fundamentos y geometría",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Extensión geométrica: planos de nivel en tres variables</span>"
+    ]
+  },
+  {
+    "objectID": "parte-2.html",
+    "href": "parte-2.html",
+    "title": "Parte II. De la geometría al algoritmo",
+    "section": "",
+    "text": "Parte IIDe la geometría al algoritmoBases, soluciones básicas y la estructura algebraica de los vértices.Ver temas ↓Índice general ↗\nContenidosTEMA 01Bases y soluciones básicasBases, soluciones básicas y relación con vértices.Abrir tema\nLos materiales de esta parte se integrarán progresivamente. Los ejemplos y applets aparecerán dentro de los apartados matemáticos que les dan sentido.",
+    "crumbs": [
+      "Índice general",
+      "Parte II. De la geometría al algoritmo"
     ]
   },
   {
@@ -473,9 +459,9 @@
     "section": "",
     "text": "Organización del capítulo\nLa estructura académica, las demostraciones, los ejemplos y las exploraciones se establecerán durante la revisión editorial de este capítulo.",
     "crumbs": [
-      "Libro",
-      "II. De la geometría al algoritmo",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Bases y soluciones básicas factibles</span>"
+      "Índice general",
+      "Parte II. De la geometría al algoritmo",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Bases y soluciones básicas factibles</span>"
     ]
   },
   {
@@ -485,9 +471,20 @@
     "section": "",
     "text": "Exploración interactiva\nEspacio reservado para una construcción GeoGebra validada matemáticamente y acompañada de una pregunta guía.",
     "crumbs": [
-      "Libro",
-      "II. De la geometría al algoritmo",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Bases y soluciones básicas factibles</span>"
+      "Índice general",
+      "Parte II. De la geometría al algoritmo",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Bases y soluciones básicas factibles</span>"
+    ]
+  },
+  {
+    "objectID": "parte-3.html",
+    "href": "parte-3.html",
+    "title": "Parte III. Algoritmos de resolución",
+    "section": "",
+    "text": "Parte IIIAlgoritmos de resoluciónMétodo Simplex y el recorrido algebraico por soluciones básicas.Ver temas ↓Índice general ↗\nContenidosTEMA 01Método SimplexConstrucción algorítmica de soluciones básicas factibles.Abrir tema\nLos materiales de esta parte se integrarán progresivamente. Los ejemplos y applets aparecerán dentro de los apartados matemáticos que les dan sentido.",
+    "crumbs": [
+      "Índice general",
+      "Parte III. Algoritmos de resolución"
     ]
   },
   {
@@ -497,9 +494,9 @@
     "section": "",
     "text": "Organización del capítulo\nLa estructura académica, las demostraciones, los ejemplos y las exploraciones se establecerán durante la revisión editorial de este capítulo.",
     "crumbs": [
-      "Libro",
-      "III. Algoritmos de resolución",
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Método Simplex</span>"
+      "Índice general",
+      "Parte III. Algoritmos de resolución",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Método Simplex</span>"
     ]
   },
   {
@@ -509,9 +506,20 @@
     "section": "",
     "text": "Exploración interactiva\nEspacio reservado para una construcción GeoGebra validada matemáticamente y acompañada de una pregunta guía.",
     "crumbs": [
-      "Libro",
-      "III. Algoritmos de resolución",
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Método Simplex</span>"
+      "Índice general",
+      "Parte III. Algoritmos de resolución",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Método Simplex</span>"
+    ]
+  },
+  {
+    "objectID": "parte-4.html",
+    "href": "parte-4.html",
+    "title": "Parte IV. Dualidad y análisis postóptimo",
+    "section": "",
+    "text": "Parte IVDualidad y análisis postóptimoRelaciones primal-dual, interpretación económica y sensibilidad.Ver temas ↓Índice general ↗\nContenidosTEMA 01DualidadRelaciones entre problemas primal y dual.Abrir tema\nTEMA 02Análisis de sensibilidadCambios de disponibilidades y coeficientes objetivo.Abrir tema\nLos materiales de esta parte se integrarán progresivamente. Los ejemplos y applets aparecerán dentro de los apartados matemáticos que les dan sentido.",
+    "crumbs": [
+      "Índice general",
+      "Parte IV. Dualidad y análisis postóptimo"
     ]
   },
   {
@@ -521,9 +529,9 @@
     "section": "",
     "text": "Organización del capítulo\nLa estructura académica, las demostraciones, los ejemplos y las exploraciones se establecerán durante la revisión editorial de este capítulo.",
     "crumbs": [
-      "Libro",
-      "IV. Dualidad y análisis postóptimo",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Dualidad e interpretación económica</span>"
+      "Índice general",
+      "Parte IV. Dualidad y análisis postóptimo",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Dualidad e interpretación económica</span>"
     ]
   },
   {
@@ -533,9 +541,9 @@
     "section": "",
     "text": "Exploración interactiva\nEspacio reservado para una construcción GeoGebra validada matemáticamente y acompañada de una pregunta guía.",
     "crumbs": [
-      "Libro",
-      "IV. Dualidad y análisis postóptimo",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Dualidad e interpretación económica</span>"
+      "Índice general",
+      "Parte IV. Dualidad y análisis postóptimo",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Dualidad e interpretación económica</span>"
     ]
   },
   {
@@ -545,9 +553,9 @@
     "section": "",
     "text": "Organización del capítulo\nLa estructura académica, las demostraciones, los ejemplos y las exploraciones se establecerán durante la revisión editorial de este capítulo.",
     "crumbs": [
-      "Libro",
-      "IV. Dualidad y análisis postóptimo",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Análisis de sensibilidad</span>"
+      "Índice general",
+      "Parte IV. Dualidad y análisis postóptimo",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Análisis de sensibilidad</span>"
     ]
   },
   {
@@ -557,9 +565,20 @@
     "section": "",
     "text": "Exploración interactiva\nEspacio reservado para una construcción GeoGebra validada matemáticamente y acompañada de una pregunta guía.",
     "crumbs": [
-      "Libro",
-      "IV. Dualidad y análisis postóptimo",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Análisis de sensibilidad</span>"
+      "Índice general",
+      "Parte IV. Dualidad y análisis postóptimo",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Análisis de sensibilidad</span>"
+    ]
+  },
+  {
+    "objectID": "parte-5.html",
+    "href": "parte-5.html",
+    "title": "Parte V. Modelos y aplicaciones",
+    "section": "",
+    "text": "Parte VModelos y aplicacionesTransporte, asignación, modelos enteros y problemas de decisión.Ver temas ↓Índice general ↗\nContenidosTEMA 01Modelos de optimizaciónFormulación de problemas de decisión.Abrir tema\nTEMA 02Programación lineal enteraRestricciones de integridad y ramificación.Abrir tema\nTEMA 03AplicacionesTransporte, asignación y otras aplicaciones.Abrir tema\nLos materiales de esta parte se integrarán progresivamente. Los ejemplos y applets aparecerán dentro de los apartados matemáticos que les dan sentido.",
+    "crumbs": [
+      "Índice general",
+      "Parte V. Modelos y aplicaciones"
     ]
   },
   {
@@ -569,9 +588,9 @@
     "section": "",
     "text": "Organización del capítulo\nLa estructura académica, las demostraciones, los ejemplos y las exploraciones se establecerán durante la revisión editorial de este capítulo.",
     "crumbs": [
-      "Libro",
-      "V. Modelos y aplicaciones",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Modelos especiales</span>"
+      "Índice general",
+      "Parte V. Modelos y aplicaciones",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Modelos especiales</span>"
     ]
   },
   {
@@ -581,9 +600,9 @@
     "section": "",
     "text": "Exploración interactiva\nEspacio reservado para una construcción GeoGebra validada matemáticamente y acompañada de una pregunta guía.",
     "crumbs": [
-      "Libro",
-      "V. Modelos y aplicaciones",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Modelos especiales</span>"
+      "Índice general",
+      "Parte V. Modelos y aplicaciones",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Modelos especiales</span>"
     ]
   },
   {
@@ -593,9 +612,9 @@
     "section": "",
     "text": "Organización del capítulo\nLa estructura académica, las demostraciones, los ejemplos y las exploraciones se establecerán durante la revisión editorial de este capítulo.",
     "crumbs": [
-      "Libro",
-      "V. Modelos y aplicaciones",
-      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Programación lineal entera</span>"
+      "Índice general",
+      "Parte V. Modelos y aplicaciones",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Programación lineal entera</span>"
     ]
   },
   {
@@ -605,9 +624,9 @@
     "section": "",
     "text": "Exploración interactiva\nEspacio reservado para una construcción GeoGebra validada matemáticamente y acompañada de una pregunta guía.",
     "crumbs": [
-      "Libro",
-      "V. Modelos y aplicaciones",
-      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Programación lineal entera</span>"
+      "Índice general",
+      "Parte V. Modelos y aplicaciones",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Programación lineal entera</span>"
     ]
   },
   {
@@ -617,9 +636,9 @@
     "section": "",
     "text": "Organización del capítulo\nLa estructura académica, las demostraciones, los ejemplos y las exploraciones se establecerán durante la revisión editorial de este capítulo.",
     "crumbs": [
-      "Libro",
-      "V. Modelos y aplicaciones",
-      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Aplicaciones de la programación lineal</span>"
+      "Índice general",
+      "Parte V. Modelos y aplicaciones",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Aplicaciones de la programación lineal</span>"
     ]
   },
   {
@@ -629,9 +648,9 @@
     "section": "",
     "text": "Exploración interactiva\nEspacio reservado para una construcción GeoGebra validada matemáticamente y acompañada de una pregunta guía.",
     "crumbs": [
-      "Libro",
-      "V. Modelos y aplicaciones",
-      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Aplicaciones de la programación lineal</span>"
+      "Índice general",
+      "Parte V. Modelos y aplicaciones",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Aplicaciones de la programación lineal</span>"
     ]
   },
   {
@@ -641,9 +660,9 @@
     "section": "",
     "text": "Las visualizaciones de este apartado estarán ligadas directamente a los capítulos. Cada una incluirá objetivos, controles descritos con claridad, preguntas guiadas y una comprobación matemática del comportamiento representado.\n\nPróxima exploración: región factible y función objetivo\nLa construcción GeoGebra se incorporará después de comprobar su modelo, restricciones, intervalos de parámetros y resultados.",
     "crumbs": [
-      "Libro",
+      "Índice general",
       "Material complementario",
-      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Exploraciones interactivas</span>"
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Exploraciones interactivas</span>"
     ]
   },
   {
@@ -653,9 +672,9 @@
     "section": "",
     "text": "Criterio para la biblioteca\nEsta biblioteca reunirá materiales propios o autorizados del curso EM-4010. Los enlaces se publicarán únicamente cuando se haya revisado cada archivo.\nCada documento tendrá título, tema, semestre, tipo de archivo, procedencia, derechos de uso y, cuando corresponda, solución separada.",
     "crumbs": [
-      "Libro",
+      "Índice general",
       "Material complementario",
-      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Recursos académicos</span>"
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Recursos académicos</span>"
     ]
   },
   {
@@ -665,9 +684,9 @@
     "section": "",
     "text": "Criterios de elaboración\nEste proyecto editorial surge del trabajo académico en el curso EM-4010 Programación Lineal del Instituto Tecnológico de Costa Rica.\nSu propósito es articular teoría matemática rigurosa, interpretación geométrica, procedimientos de resolución, modelos aplicados e interactividad orientada al aprendizaje.\nCréditos y datos editoriales: se completarán antes de una publicación formal.",
     "crumbs": [
-      "Libro",
+      "Índice general",
       "Material complementario",
-      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Acerca del libro</span>"
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Acerca del libro</span>"
     ]
   },
   {
@@ -677,9 +696,9 @@
     "section": "",
     "text": "Exposición y redacción originales.\nConfrontación de las adaptaciones con las fuentes efectivamente consultadas.\nDemostraciones verificadas y ejemplos resueltos de manera independiente.\nFiguras y exploraciones propias, con validación matemática.\nReferencias bibliográficas completas, reales y trazables.\nRespeto a derechos de autor y permisos de publicación.",
     "crumbs": [
-      "Libro",
+      "Índice general",
       "Material complementario",
-      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Acerca del libro</span>"
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Acerca del libro</span>"
     ]
   },
   {
@@ -689,8 +708,8 @@
     "section": "",
     "text": "Esta sección se generará a partir de las fuentes efectivamente consultadas y verificadas. Por ahora no se han incluido fichas bibliográficas, para evitar registrar datos no comprobados.",
     "crumbs": [
-      "Libro",
-      "<span class='chapter-number'>23</span>  <span class='chapter-title'>Referencias bibliográficas</span>"
+      "Índice general",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Referencias bibliográficas</span>"
     ]
   }
 ]
