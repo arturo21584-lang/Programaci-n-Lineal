@@ -16,10 +16,8 @@ book:
     background: "#183B45"
     foreground: "#FFFFFF"
     left:
-      - text: "Libro"
+      - text: "Índice general"
         href: index.qmd
-      - text: "Exploraciones"
-        href: exploraciones.qmd
       - text: "Recursos académicos"
         href: recursos/index.qmd
       - text: "Acerca del libro"
@@ -30,30 +28,27 @@ book:
     collapse-level: 1
   chapters:
     - index.qmd
-    - part: "I. Modelar y visualizar"
+    - part: parte-1.qmd
       chapters:
         - capitulos/fundamentos_iniciales_capitulo1.qmd
         - capitulos/soluciones_y_region_factible.qmd
         - capitulos/combinaciones_convexas_y_convexidad.qmd
         - capitulos/vertices_y_puntos_extremos.qmd
         - capitulos/vertices_y_soluciones_optimas.qmd
-        - capitulos/planos_y_rectas_de_nivel.qmd
-        - capitulos/segundo_ejemplo_3d_rotacion.qmd
-        - capitulos/tercer_ejemplo_poliedro_3d.qmd
-        - capitulos/01-introduccion.qmd
-        - capitulos/02-geometria.qmd
+        - capitulos/interpretacion_geometrica_niveles.qmd
         - capitulos/ejemplo_metodo_grafico.qmd
-    - part: "II. De la geometría al algoritmo"
+        - capitulos/extension_geometrica_3d.qmd
+    - part: parte-2.qmd
       chapters:
         - capitulos/03-bases.qmd
-    - part: "III. Algoritmos de resolución"
+    - part: parte-3.qmd
       chapters:
         - capitulos/04-simplex.qmd
-    - part: "IV. Dualidad y análisis postóptimo"
+    - part: parte-4.qmd
       chapters:
         - capitulos/05-dualidad.qmd
         - capitulos/06-sensibilidad.qmd
-    - part: "V. Modelos y aplicaciones"
+    - part: parte-5.qmd
       chapters:
         - capitulos/07-modelos.qmd
         - capitulos/08-entera.qmd
