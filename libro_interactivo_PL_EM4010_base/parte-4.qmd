@@ -1,0 +1,62 @@
+---
+title: "Parte IV. Dualidad y análisis postóptimo"
+page-layout: full
+sidebar: false
+toc: false
+---
+
+```{=html}
+<style>
+
+/* Portada autónoma: estilos limitados a #pl-part1. No altera capítulos ni índices interiores. */
+body:has(#pl-part1) #title-block-header { display:none !important; }
+body:has(#pl-part1) #quarto-sidebar { display:none !important; }
+body:has(#pl-part1) #quarto-margin-sidebar { display:none !important; }
+body:has(#pl-part1) #quarto-content { grid-template-columns: minmax(0,1fr) !important; }
+body:has(#pl-part1) #quarto-document-content,body:has(#pl-part1) main.content { max-width:none !important; width:100%; }
+#pl-part1 { --pl-ink:#183B45; --pl-teal:#237F80; --pl-gold:#D8A447; --pl-muted:#62747a; max-width:1160px; margin:0 auto 3rem; color:var(--pl-ink); font-family:'Source Sans 3',system-ui,sans-serif; }
+#pl-part1 * { box-sizing:border-box; }
+#pl-part1 .pl-cover { position:relative; overflow:hidden; isolation:isolate; background:linear-gradient(125deg,#122d37 0%,#194451 56%,#27646a 100%); border-radius:22px; color:#fff; padding:clamp(1.6rem,4vw,3.5rem); min-height:350px; display:grid; grid-template-columns:minmax(0,1.14fr) minmax(260px,.86fr); align-items:center; gap:1rem; }
+#pl-part1 .pl-cover:before{content:'';position:absolute;inset:auto -100px -200px auto;width:420px;height:420px;border-radius:50%;border:1px solid #ffffff17;box-shadow:0 0 0 48px #ffffff06,0 0 0 105px #ffffff05;z-index:-1}
+#pl-part1 .pl-eyebrow{font-size:.76rem;font-weight:700;letter-spacing:.17em;text-transform:uppercase;color:#a8e3d6;margin-bottom:.75rem;}
+#pl-part1 .pl-cover h1{color:#fff;font-family:'Source Serif 4',Georgia,serif;font-size:clamp(2.65rem,5vw,4.7rem);line-height:1.06;letter-spacing:-.035em;margin:0 0 .65rem;font-weight:600;}
+#pl-part1 .pl-cover .pl-tagline{font-family:'Source Serif 4',Georgia,serif;color:#d1ebe7;font-size:clamp(1.12rem,2vw,1.48rem);margin:0 0 1.2rem;}
+#pl-part1 .pl-cover .pl-intro{max-width:530px;color:#dce9e8;line-height:1.6;font-size:1.04rem;margin:0 0 1.6rem;}
+#pl-part1 .pl-cover-actions{display:flex;gap:.65rem;flex-wrap:wrap}
+#pl-part1 .pl-cover-actions a{display:inline-flex;align-items:center;min-height:44px;padding:.68rem 1rem;border-radius:9px;text-decoration:none;font-weight:700;font-size:.94rem;transition:transform .18s,background .18s}
+#pl-part1 .pl-cover-actions a:hover{transform:translateY(-2px)}
+#pl-part1 .pl-cover-actions .pl-main-action{background:#e9f6ee;color:#183B45}
+#pl-part1 .pl-cover-actions .pl-alt-action{border:1px solid #82b7b0;color:#fff}
+#pl-part1 .pl-cover-art{width:100%;display:block;overflow:visible;filter:drop-shadow(0 12px 22px #061b2450)}
+#pl-part1 .pl-ribbon{display:flex;gap:1rem;flex-wrap:wrap;margin:1.1rem 0 2.7rem;color:#486168;font-size:.9rem}
+#pl-part1 .pl-ribbon span{border:1px solid #dae7e4;border-radius:100px;padding:.32rem .8rem;background:#f8fbfa}
+#pl-part1 .pl-section-head{display:flex;justify-content:space-between;align-items:baseline;gap:1.5rem;border-bottom:1px solid #d7e3e1;padding-bottom:.8rem;margin-bottom:1.15rem}
+#pl-part1 .pl-section-head h2{font-family:'Source Serif 4',Georgia,serif;color:#183B45;margin:0;font-size:clamp(1.55rem,2.5vw,2.1rem);font-weight:600}
+#pl-part1 .pl-section-head p{color:#63767b;margin:0;font-size:.95rem}
+#pl-part1 .pl-chapters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-bottom:2.7rem}
+#pl-part1 .pl-chapter{position:relative;display:flex;flex-direction:column;min-height:187px;border:1px solid #d8e5e2;background:#fff;color:#183B45;border-radius:14px;padding:1.3rem 1.4rem;text-decoration:none !important;box-shadow:0 3px 10px #0f293208;transition:transform .17s,border-color .17s,box-shadow .17s}
+#pl-part1 .pl-chapter:hover,#pl-part1 .pl-chapter:focus-visible{transform:translateY(-4px);border-color:#71b8ae;box-shadow:0 12px 25px #0f293218;color:#183B45}
+#pl-part1 .pl-chapter .pl-number{font-size:.8rem;letter-spacing:.12em;font-weight:700;color:#168179;margin-bottom:1.1rem}
+#pl-part1 .pl-chapter h3{font-family:'Source Serif 4',Georgia,serif;font-size:1.27rem;line-height:1.25;margin:0 0 .55rem;color:#183B45;font-weight:600}
+#pl-part1 .pl-chapter p{font-size:.91rem;line-height:1.5;color:#536870;margin:0 0 1.35rem}
+#pl-part1 .pl-chapter .pl-open{margin-top:auto;color:#137b78;font-weight:700;font-size:.9rem}
+#pl-part1 .pl-chapter .pl-open:after{content:'  →'}
+#pl-part1 .pl-chapter.pl-primary{background:#f1f8f6;border-color:#b8d8d0}
+#pl-part1 .pl-secondary{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2.4rem}
+#pl-part1 .pl-secondary a{display:flex;align-items:center;justify-content:space-between;gap:1rem;color:#183B45!important;text-decoration:none!important;border:1px solid #d9e5e3;border-radius:12px;padding:1.15rem 1.35rem;font-weight:700;background:#fcfdfc}
+#pl-part1 .pl-secondary a:hover{border-color:#7db9b1;background:#f3faf7}
+#pl-part1 .pl-secondary small{display:block;color:#65777b;font-weight:400;font-size:.87rem;margin-top:.25rem}
+#pl-part1 .pl-note{padding:1.1rem 1.3rem;border-left:3px solid #d8a447;background:#faf8f2;border-radius:4px;color:#53656b;font-size:.93rem;line-height:1.6}
+@media(max-width:950px){#pl-part1 .pl-cover{grid-template-columns:1fr}#pl-part1 .pl-cover-art{max-width:420px;margin:0 auto}#pl-part1 .pl-chapters{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){#pl-part1 .pl-cover{padding:1.7rem 1.3rem;min-height:0;border-radius:13px}#pl-part1 .pl-cover-art{max-width:320px}#pl-part1 .pl-chapters,#pl-part1 .pl-secondary{grid-template-columns:1fr}#pl-part1 .pl-section-head{display:block}#pl-part1 .pl-section-head p{margin:.25rem 0 0}#pl-part1 .pl-chapter{min-height:165px}}
+
+#pl-part1 .pl-cover{min-height:280px;}#pl-part1 .pl-cover h1{font-size:clamp(2.3rem,4.5vw,3.7rem)}
+
+</style>
+<div id="pl-part1">
+<section class="pl-cover" aria-label="Portada de la parte IV"><div><div class="pl-eyebrow">Parte IV</div><h1>Dualidad y análisis postóptimo</h1><p class="pl-tagline">Relaciones primal-dual, interpretación económica y sensibilidad.</p><div class="pl-cover-actions"><a class="pl-main-action" href="#pl-contenidos">Ver temas ↓</a><a class="pl-alt-action" href="index.html">Índice general ↗</a></div></div><svg viewBox="0 0 230 95" aria-hidden="true"><rect x="18" y="11" width="82" height="70" rx="7" fill="#e8f4f0" stroke="#6ea49e"/><rect x="130" y="11" width="82" height="70" rx="7" fill="#eaf1f8" stroke="#79a1ba"/><g stroke="#D8A447" stroke-width="2"><path d="M53 45H172M166 40L172 45L166 50"/></g><path d="M35 59L65 33L80 50" stroke="#237F80" stroke-width="2" fill="none"/><path d="M146 59L168 36L191 53" stroke="#477BA8" stroke-width="2" fill="none"/></svg></section>
+<section id="pl-contenidos" aria-label="Contenidos de la Parte IV"><header class="pl-section-head"><h2>Contenidos</h2></header><div class="pl-chapters"><a class="pl-chapter" href="capitulos/05-dualidad.html"><span class="pl-number">TEMA 01</span><h3>Dualidad</h3><p>Relaciones entre problemas primal y dual.</p><span class="pl-open">Abrir tema</span></a>
+<a class="pl-chapter" href="capitulos/06-sensibilidad.html"><span class="pl-number">TEMA 02</span><h3>Análisis de sensibilidad</h3><p>Cambios de disponibilidades y coeficientes objetivo.</p><span class="pl-open">Abrir tema</span></a></div></section>
+<p class="pl-note">Los materiales de esta parte se integrarán progresivamente. Los ejemplos y applets aparecerán dentro de los apartados matemáticos que les dan sentido.</p>
+</div>
+```
