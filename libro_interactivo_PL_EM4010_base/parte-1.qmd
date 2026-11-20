@@ -91,7 +91,7 @@ body:has(#pl-part1) #quarto-document-content,body:has(#pl-part1) main.content { 
 <a class="pl-chapter " href="capitulos/vertices_y_puntos_extremos.html"><span class="pl-number">04 · GEOMETRÍA</span><h3>Vértices y puntos extremos</h3><p>Definición, propiedades y demostración de puntos extremos.</p><span class="pl-open">Abrir tema</span></a>
 <a class="pl-chapter " href="capitulos/vertices_y_soluciones_optimas.html"><span class="pl-number">05 · OPTIMALIDAD</span><h3>Vértices y soluciones óptimas</h3><p>Existencia de vértices óptimos y convexidad del conjunto de óptimos.</p><span class="pl-open">Abrir tema</span></a>
 <a class="pl-chapter " href="capitulos/interpretacion_geometrica_niveles.html"><span class="pl-number">06 · NIVELES</span><h3>Interpretación geométrica</h3><p>Rectas de nivel, cortes espaciales y proyecciones sincronizadas.</p><span class="pl-open">Abrir tema</span></a>
-<a class="pl-chapter " href="capitulos/ejemplo_metodo_grafico.html"><span class="pl-number">07 · MÉTODO GRÁFICO</span><h3>Resolver e interpretar</h3><p>Barrido, comparación de vértices y un ejemplo completamente resuelto.</p><span class="pl-open">Abrir tema</span></a>
+<a class="pl-chapter " href="capitulos/metodo_grafico_completo.html"><span class="pl-number">07 · MÉTODO GRÁFICO</span><h3>Resolver e interpretar</h3><p>Barrido, comparación de vértices y un ejemplo completamente resuelto.</p><span class="pl-open">Abrir tema</span></a>
 <a class="pl-chapter " href="capitulos/extension_geometrica_3d.html"><span class="pl-number">08 · EXTENSIÓN 3D</span><h3>Planos de nivel en un poliedro</h3><p>Generalización geométrica a tres variables y recorrido hasta el óptimo.</p><span class="pl-open">Abrir tema</span></a>
     </div>
   </section>
