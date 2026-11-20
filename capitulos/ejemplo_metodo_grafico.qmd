@@ -1,0 +1,139 @@
+## Ejemplo interactivo: resolución mediante el método gráfico {#sec-ejemplo-metodo-grafico}
+
+Consideremos el programa lineal
+
+$$
+\begin{aligned}
+\text{Maximizar}\quad z&=3x_1+2x_2,\\
+\text{sujeto a}\quad x_1+x_2&\leq6,\\
+2x_1+x_2&\leq8,\\
+x_1+2x_2&\leq8,\\
+x_1,x_2&\geq0.
+\end{aligned}
+$$
+
+La **región factible** es la intersección de los semiplanos correspondientes a las restricciones. Cada valor de $k$ determina una **recta de nivel** $3x_1+2x_2=k$. En un problema de maximización, aumentamos $k$ hasta localizar el último contacto con la región factible.
+
+```{=html}
+<div id="pl-118" class="pl118" aria-label="Exploración del método gráfico">
+  <div class="pl118-header">
+    <strong>Exploración del método gráfico</strong>
+    <label>Modo:
+      <select id="pl118-mode"><option value="libre">Exploración libre</option><option value="guiado">Resolución guiada</option></select>
+    </label>
+  </div>
+  <p id="pl118-guide" class="pl118-guide" aria-live="polite">Desplazá la recta de nivel y compará los valores de la función objetivo en los vértices.</p>
+  <div class="pl118-chart">
+    <svg id="pl118-svg" viewBox="0 0 530 430" role="img" aria-label="Región factible del programa lineal y recta de nivel ajustable">
+      <defs><clipPath id="pl118-clip"><rect x="68" y="28" width="378" height="350"/></clipPath></defs>
+      <g id="pl118-grid"></g>
+      <path id="pl118-poly" fill="#198d91" fill-opacity="0.15" stroke="#087d80" stroke-width="3" stroke-linejoin="round"></path>
+      <g id="pl118-levels" clip-path="url(#pl118-clip)"></g>
+      <g id="pl118-vertices"></g>
+      <text x="449" y="403" fill="currentColor" font-size="18">x₁</text>
+      <text x="30" y="23" fill="currentColor" font-size="18">x₂</text>
+      <text x="135" y="290" fill="#087d80" font-size="22" font-style="italic">R</text>
+    </svg>
+  </div>
+  <div class="pl118-controls">
+    <label for="pl118-k">Recta de nivel: <span id="pl118-ktext">k = 8</span></label>
+    <input id="pl118-k" type="range" min="0" max="16" step="0.0333333333" value="8" />
+    <div class="pl118-actions">
+      <button type="button" data-pl118-k="4">k = 4</button>
+      <button type="button" data-pl118-k="10">k = 10</button>
+      <button type="button" data-pl118-k="13.333333333333334">k = 40/3</button>
+      <button type="button" data-pl118-k="15">k = 15</button>
+    </div>
+    <p id="pl118-status" class="pl118-status" aria-live="polite"></p>
+    <div class="pl118-vertex-group">
+      <span>Evaluar un vértice:</span>
+      <div class="pl118-actions" id="pl118-buttons">
+        <button type="button" data-pl118-v="0">A</button>
+        <button type="button" data-pl118-v="1">B</button>
+        <button type="button" data-pl118-v="2">C</button>
+        <button type="button" data-pl118-v="3">D</button>
+      </div>
+      <p id="pl118-eval" aria-live="polite"></p>
+    </div>
+    <button id="pl118-reveal" type="button" aria-expanded="false">Mostrar solución razonada</button>
+    <div id="pl118-solution" hidden>
+      <p>Los vértices de la región factible son
+        <span class="math inline">\(A=(0,0)\)</span>,
+        <span class="math inline">\(B=(4,0)\)</span>,
+        <span class="math inline">\(C=(8/3,8/3)\)</span> y
+        <span class="math inline">\(D=(0,4)\)</span>.
+      </p>
+      <table><thead><tr><th>Vértice</th><th>Valor de z</th></tr></thead>
+        <tbody><tr><td>A</td><td>0</td></tr><tr><td>B</td><td>12</td></tr>
+        <tr><td>C</td><td>40/3</td></tr><tr><td>D</td><td>8</td></tr></tbody>
+      </table>
+      <p>La región es no vacía, cerrada y acotada. Por el teorema de optimalidad en vértices, basta comparar los valores de la función objetivo en sus vértices. El máximo es <strong>z* = 40/3</strong> y se alcanza en <strong>(8/3, 8/3)</strong>.</p>
+      <p>En el óptimo son activas las restricciones <span class="math inline">\(2x_1+x_2=8\)</span> y <span class="math inline">\(x_1+2x_2=8\)</span>. La restricción <span class="math inline">\(x_1+x_2\leq6\)</span> es redundante, pues las dos anteriores implican <span class="math inline">\(x_1+x_2\leq16/3<6\)</span>.</p>
+    </div>
+  </div>
+</div>
+
+
+
+<style>
+.pl118{--ink:#143b47;--accent:#087d80;--gold:#bb7c10;border:1px solid #cbd5dc;border-radius:14px;padding:clamp(14px,3vw,24px);max-width:800px;margin:1.5rem auto;font-family:inherit;color:inherit}
+.pl118 *{box-sizing:border-box}.pl118-header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.pl118-header select{border:1px solid #a7b5bf;border-radius:7px;padding:7px;background:transparent;color:inherit}
+.pl118-guide{background:rgba(8,125,128,.08);border-left:4px solid var(--accent);padding:12px;border-radius:4px}.pl118-chart svg{width:100%;height:auto;max-height:510px;display:block}.pl118-controls{display:grid;gap:12px}.pl118 input[type=range]{width:100%;accent-color:var(--accent)}
+.pl118-actions{display:flex;flex-wrap:wrap;gap:9px}.pl118 button{padding:8px 12px;border-radius:7px;border:1px solid #899da9;background:transparent;color:inherit;cursor:pointer}.pl118 button:focus-visible,.pl118 select:focus-visible,.pl118 input:focus-visible{outline:3px solid #d2a345;outline-offset:2px}.pl118 button:hover{border-color:var(--accent)}.pl118 button[aria-pressed=true]{background:var(--accent);color:white;border-color:var(--accent)}
+.pl118-status{min-height:2.4em;border-radius:8px;background:rgba(128,128,128,.07);padding:10px;margin:0}.pl118-vertex-group{border-top:1px solid #ccd4d8;padding-top:12px}.pl118 #pl118-solution{background:rgba(8,125,128,.06);border-radius:9px;padding:12px}.pl118 #pl118-solution[hidden]{display:none}.pl118 #pl118-solution table{width:100%;border-collapse:collapse}.pl118 #pl118-solution td,.pl118 #pl118-solution th{border-bottom:1px solid #bccbd0;padding:5px 10px;text-align:left}
+@media(max-width:540px){.pl118{padding:12px}.pl118 button{font-size:.85rem;padding:7px 9px}}
+</style>
+<script>
+(function(){
+  function setup(){
+    const root=document.getElementById('pl-118'); if(!root||root.dataset.ready)return;root.dataset.ready='true';
+    const ns='http://www.w3.org/2000/svg';
+    const V=[{n:'A',x:0,y:0,z:0},{n:'B',x:4,y:0,z:12},{n:'C',x:8/3,y:8/3,z:40/3},{n:'D',x:0,y:4,z:8}];
+    const $=id=>root.querySelector('#'+id),kinput=$('pl118-k'),ktext=$('pl118-ktext'),levels=$('pl118-levels'),dots=$('pl118-vertices'),grid=$('pl118-grid'),status=$('pl118-status'),mode=$('pl118-mode'),guide=$('pl118-guide');
+    let selected=2, stage=0;
+    const X=x=>68+x*57.5,Y=y=>378-y*57.5,fmt=n=>new Intl.NumberFormat('es-CR',{maximumFractionDigits:2}).format(n);
+    function el(tag,attrs,parent){const e=document.createElementNS(ns,tag);for(const [key,val] of Object.entries(attrs))e.setAttribute(key,val);(parent||grid).appendChild(e);return e;}
+    for(let i=0;i<=6;i++){
+      el('line',{x1:X(i),x2:X(i),y1:28,y2:378,stroke:'currentColor','stroke-opacity':'.12'},grid);
+      el('line',{x1:68,x2:446,y1:Y(i),y2:Y(i),stroke:'currentColor','stroke-opacity':'.12'},grid);
+      const a=el('text',{x:X(i),y:398,'text-anchor':'middle','font-size':'13',fill:'currentColor'},grid);a.textContent=i;
+      if(i){const b=el('text',{x:56,y:Y(i)+4,'text-anchor':'end','font-size':'13',fill:'currentColor'},grid);b.textContent=i;}
+    }
+    el('line',{x1:68,y1:378,x2:465,y2:378,stroke:'currentColor','stroke-width':'2'},grid);
+    el('line',{x1:68,y1:378,x2:68,y2:17,stroke:'currentColor','stroke-width':'2'},grid);
+    $('pl118-poly').setAttribute('d','M '+V.map(p=>`${X(p.x)} ${Y(p.y)}`).join(' L ')+' Z');
+    // Clip the level line to the plotted [0,6] x [0,6] domain, independently of the feasible polygon.
+    function segment(k){
+      const pts=[];const add=(x,y)=>{if(x>=-1e-8&&x<=6+1e-8&&y>=-1e-8&&y<=6+1e-8&&!pts.some(p=>Math.abs(p[0]-x)+Math.abs(p[1]-y)<1e-7))pts.push([Math.max(0,Math.min(6,x)),Math.max(0,Math.min(6,y))]);};
+      add(0,k/2);add(6,(k-18)/2);add(k/3,0);add((k-12)/3,6);return pts.slice(0,2);
+    }
+    function render(){
+      const k=Number(kinput.value);ktext.textContent='k = '+fmt(k);
+      levels.replaceChildren();dots.replaceChildren();
+      const s=segment(k);
+      if(s.length===2)el('line',{x1:X(s[0][0]),y1:Y(s[0][1]),x2:X(s[1][0]),y2:Y(s[1][1]),stroke:'#bd7c14','stroke-width':'4','stroke-dasharray':'10 6'},levels);
+      for(const v of V){
+        el('circle',{cx:X(v.x),cy:Y(v.y),r:v.n===V[selected].n?8:5.5,fill:v.n===V[selected].n?'#d6a33b':'#173e4d',stroke:'white','stroke-width':'1.5'},dots);
+        const label=el('text',{x:X(v.x)+(v.n==='D'?-20:11),y:Y(v.y)-12,fill:'currentColor','font-size':'17','font-weight':'600'},dots);label.textContent=v.n;
+      }
+      if(k>40/3+1e-5)status.textContent='La recta de nivel no intersecta la región factible: k supera el valor máximo.';
+      else if(Math.abs(k-40/3)<.017)status.textContent='Último contacto: el vértice C = (8/3, 8/3). El valor máximo es 40/3.';
+      else status.textContent='La recta de nivel todavía corresponde a un valor inferior al óptimo.';
+      $('pl118-eval').textContent=`${V[selected].n} = (${fmt(V[selected].x)}, ${fmt(V[selected].y)}): z = ${fmt(V[selected].z)}${V[selected].n==='C'?' = 40/3':''}`;
+      root.querySelectorAll('[data-pl118-v]').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.pl118V)===selected)));
+    }
+    kinput.addEventListener('input',render);
+    root.querySelectorAll('[data-pl118-k]').forEach(b=>b.addEventListener('click',()=>{kinput.value=b.dataset.pl118K;render();}));
+    root.querySelectorAll('[data-pl118-v]').forEach(b=>b.addEventListener('click',()=>{selected=Number(b.dataset.pl118V);render();}));
+    $('pl118-reveal').addEventListener('click',()=>{const panel=$('pl118-solution');panel.hidden=!panel.hidden;$('pl118-reveal').textContent=panel.hidden?'Mostrar solución razonada':'Ocultar solución razonada';$('pl118-reveal').setAttribute('aria-expanded',String(!panel.hidden));});
+    mode.addEventListener('change',()=>{if(mode.value==='guiado'){
+      guide.textContent='Paso 1: identificá los vértices de la región factible; después mové la recta para localizar el último contacto. Compará los valores en los vértices y consultá la solución cuando termines.';
+    }else guide.textContent='Desplazá la recta de nivel y compará los valores de la función objetivo en los vértices.';});
+    render();
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setup);else setup();
+})();
+</script>
+```
+
+**Para reflexionar.** ¿Por qué la última recta de nivel toca la región factible en el vértice $C$? ¿Qué sucede cuando $k>40/3$? Justificá las respuestas a partir de las restricciones y de la función objetivo, no solamente de la gráfica.

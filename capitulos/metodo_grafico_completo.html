@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Ejemplo interactivo: resolución mediante el método gráfico – Programación Lineal</title>
+<title>Método gráfico: resolución y situaciones especiales – Programación Lineal</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -48,7 +48,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-d89f20c9143eddbd44082a3369d7d3bd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-39ba6e9b7144d98aab36a8e53c345115.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -155,7 +155,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="Hilo de Ariadna"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parte-1.html">Parte I. Fundamentos y geometría</a></li><li class="breadcrumb-item"><a href="../capitulos/ejemplo_metodo_grafico.html"><span class="chapter-title">Ejemplo interactivo: resolución mediante el método gráfico</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="Hilo de Ariadna"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parte-1.html">Parte I. Fundamentos y geometría</a></li><li class="breadcrumb-item"><a href="../capitulos/metodo_grafico_completo.html"><span class="chapter-title">Método gráfico: resolución y situaciones especiales</span></a></li></ol></nav>
         <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -221,7 +221,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../capitulos/ejemplo_metodo_grafico.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Ejemplo interactivo: resolución mediante el método gráfico</span></a>
+  <a href="../capitulos/metodo_grafico_completo.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Método gráfico: resolución y situaciones especiales</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -343,15 +343,36 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#resolver-un-programa-lineal-en-el-plano" id="toc-resolver-un-programa-lineal-en-el-plano" class="nav-link active" data-scroll-target="#resolver-un-programa-lineal-en-el-plano">Resolver un programa lineal en el plano</a>
+  <ul class="collapse">
+  <li><a href="#procedimiento-de-resolución" id="toc-procedimiento-de-resolución" class="nav-link" data-scroll-target="#procedimiento-de-resolución">Procedimiento de resolución</a></li>
+  <li><a href="#sec-ejemplo-metodo-grafico" id="toc-sec-ejemplo-metodo-grafico" class="nav-link" data-scroll-target="#sec-ejemplo-metodo-grafico">Ejemplo resuelto: encontrar el máximo</a></li>
+  <li><a href="#cuando-cambian-las-soluciones-óptimas" id="toc-cuando-cambian-las-soluciones-óptimas" class="nav-link" data-scroll-target="#cuando-cambian-las-soluciones-óptimas">Cuando cambian las soluciones óptimas</a>
+  <ul class="collapse">
+  <li><a href="#exploración-rotar-las-rectas-de-nivel" id="toc-exploración-rotar-las-rectas-de-nivel" class="nav-link" data-scroll-target="#exploración-rotar-las-rectas-de-nivel">Exploración: rotar las rectas de nivel</a></li>
+  </ul></li>
+  <li><a href="#región-no-acotada-dos-resultados-diferentes" id="toc-región-no-acotada-dos-resultados-diferentes" class="nav-link" data-scroll-target="#región-no-acotada-dos-resultados-diferentes">Región no acotada: dos resultados diferentes</a></li>
+  <li><a href="#sistemas-incompatibles-ausencia-de-soluciones-factibles" id="toc-sistemas-incompatibles-ausencia-de-soluciones-factibles" class="nav-link" data-scroll-target="#sistemas-incompatibles-ausencia-de-soluciones-factibles">Sistemas incompatibles: ausencia de soluciones factibles</a>
+  <ul class="collapse">
+  <li><a href="#exploración-de-situaciones-especiales" id="toc-exploración-de-situaciones-especiales" class="nav-link" data-scroll-target="#exploración-de-situaciones-especiales">Exploración de situaciones especiales</a></li>
+  </ul></li>
+  <li><a href="#comprobá-tu-comprensión" id="toc-comprobá-tu-comprensión" class="nav-link" data-scroll-target="#comprobá-tu-comprensión">Comprobá tu comprensión</a></li>
+  <li><a href="#síntesis" id="toc-síntesis" class="nav-link" data-scroll-target="#síntesis">Síntesis</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content" tabindex="-1">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Hilo de Ariadna"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parte-1.html">Parte I. Fundamentos y geometría</a></li><li class="breadcrumb-item"><a href="../capitulos/ejemplo_metodo_grafico.html"><span class="chapter-title">Ejemplo interactivo: resolución mediante el método gráfico</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Hilo de Ariadna"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parte-1.html">Parte I. Fundamentos y geometría</a></li><li class="breadcrumb-item"><a href="../capitulos/metodo_grafico_completo.html"><span class="chapter-title">Método gráfico: resolución y situaciones especiales</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-ejemplo-metodo-grafico" class="quarto-section-identifier"><span class="chapter-title">Ejemplo interactivo: resolución mediante el método gráfico</span></span></h1>
+<h1 class="title"><span class="chapter-title">Método gráfico: resolución y situaciones especiales</span></h1>
 </div>
 
 
@@ -368,6 +389,23 @@ window.Quarto = {
 </header>
 
 
+<section id="resolver-un-programa-lineal-en-el-plano" class="level1">
+<h1>Resolver un programa lineal en el plano</h1>
+<p>Una vez caracterizada la región factible y estudiada la relación entre vértices y optimalidad, podemos desarrollar un procedimiento de resolución geométrica para los problemas con <strong>dos variables de decisión</strong>. Los conjuntos de nivel permiten identificar la dirección en la que mejora la función objetivo; el estudio de los vértices aporta una manera exacta de verificar el resultado.</p>
+<p>En una región factible <strong>no vacía y acotada</strong>, una función objetivo afín alcanza un máximo y un mínimo, y existe al menos un vértice que alcanza cada uno de esos valores. En cambio, para una región no acotada o vacía, es necesario examinar el problema con mayor cuidado.</p>
+<section id="procedimiento-de-resolución" class="level2">
+<h2 class="anchored" data-anchor-id="procedimiento-de-resolución">Procedimiento de resolución</h2>
+<ol type="1">
+<li><strong>Formular el modelo:</strong> identificar las variables, el objetivo y las restricciones.</li>
+<li><strong>Construir la región factible:</strong> dibujar las fronteras y seleccionar los semiplanos correspondientes.</li>
+<li><strong>Identificar los vértices factibles:</strong> resolver las intersecciones relevantes y verificar todas las restricciones.</li>
+<li><strong>Explorar las rectas de nivel:</strong> desplazar <span class="math inline">\(c_1x_1+c_2x_2=k\)</span> en la dirección de mejora (o disminución) de <span class="math inline">\(k\)</span>.</li>
+<li><strong>Justificar el resultado:</strong> evaluar los vértices cuando las hipótesis lo permitan y comunicar tanto la decisión óptima como el valor óptimo.</li>
+</ol>
+<p>La exploración de las rectas de nivel explica geométricamente el procedimiento; <strong>la comprobación algebraica no debe omitirse</strong>. Para la construcción espacial del plano objetivo y sus trazas, véase la explicación anterior sobre interpretación geométrica de los conjuntos de nivel.</p>
+</section>
+<section id="sec-ejemplo-metodo-grafico" class="level2">
+<h2 class="anchored" data-anchor-id="sec-ejemplo-metodo-grafico">Ejemplo resuelto: encontrar el máximo</h2>
 <p>Consideremos el programa lineal</p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -523,8 +561,203 @@ x_1,x_2&amp;\geq0.
 })();
 </script>
 <p><strong>Para reflexionar.</strong> ¿Por qué la última recta de nivel toca la región factible en el vértice <span class="math inline">\(C\)</span>? ¿Qué sucede cuando <span class="math inline">\(k&gt;40/3\)</span>? Justificá las respuestas a partir de las restricciones y de la función objetivo, no solamente de la gráfica.</p>
+</section>
+<section id="cuando-cambian-las-soluciones-óptimas" class="level2">
+<h2 class="anchored" data-anchor-id="cuando-cambian-las-soluciones-óptimas">Cuando cambian las soluciones óptimas</h2>
+<p>En un programa lineal, las rectas de nivel pueden tocar la región factible en <strong>un solo vértice</strong> o coincidir con <strong>una arista completa</strong>. Esta diferencia no depende solamente de las restricciones: también depende de los coeficientes de la función objetivo.</p>
+<p>Consideremos la región</p>
+<p><span class="math display">\[
+R=\{(x_1,x_2)\in\mathbb R^2:\ x_1+x_2\leq6,\ 2x_1+x_2\leq8,\ x_1+2x_2\leq8,\ x_1,x_2\geq0\}.
+\]</span></p>
+<p>Si maximizamos <span class="math inline">\(z=ax_1+2x_2\)</span> con <span class="math inline">\(a\geq0\)</span>, los valores en los vértices son <span class="math inline">\(0\)</span>, <span class="math inline">\(4a\)</span>, <span class="math inline">\((8a+16)/3\)</span> y <span class="math inline">\(8\)</span>. La comparación conduce a</p>
+<p><span class="math display">\[
+z^*(a)=
+\begin{cases}
+8,&amp;0\leq a\leq1,\\
+(8a+16)/3,&amp;1\leq a\leq4,\\
+4a,&amp;a\geq4.
+\end{cases}
+\]</span></p>
+<p>En <span class="math inline">\(a=1\)</span> y <span class="math inline">\(a=4\)</span> se alcanza el máximo en <strong>todos los puntos de una arista</strong>. En los demás valores de <span class="math inline">\(a\geq0\)</span>, el máximo se alcanza en un único vértice.</p>
+<section id="exploración-rotar-las-rectas-de-nivel" class="level3">
+<h3 class="anchored" data-anchor-id="exploración-rotar-las-rectas-de-nivel">Exploración: rotar las rectas de nivel</h3>
+<div class="plm-widget" id="plm-parametros">
+  <p class="plm-hint">Mové el coeficiente <strong>a</strong>. La región es la misma; cambia únicamente la orientación de las rectas de nivel.</p>
+  <svg viewbox="0 0 460 340" id="plm-param-svg" role="img" aria-label="Región poligonal, vértices y recta de nivel óptima que gira con a">
+    <defs><clippath id="plm-param-clip"><rect x="56" y="14" width="334" height="300"></rect></clippath></defs>
+    <g class="plm-param-grid"></g>
+    <path class="plm-param-region" fill="#087d80" fill-opacity=".16" stroke="#087d80" stroke-width="2.8"></path>
+    <g class="plm-param-level" clip-path="url(#plm-param-clip)"></g>
+    <g class="plm-param-points"></g>
+    <text x="399" y="320" font-size="15" fill="currentColor">x₁</text>
+    <text x="26" y="18" font-size="15" fill="currentColor">x₂</text>
+  </svg>
+  <div class="plm-control"><label for="plm-param-a">Coeficiente objetivo a: <strong id="plm-param-a-text">3</strong></label><input id="plm-param-a" type="range" min="0" max="5" step="0.05" value="3"></div>
+  <div class="plm-buttons"><button type="button" data-plm-a="1">a = 1</button><button type="button" data-plm-a="3">a = 3</button><button type="button" data-plm-a="4">a = 4</button></div>
+  <p id="plm-param-status" aria-live="polite" class="plm-status"></p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>¿Por qué se obtienen aristas óptimas?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Cuando <span class="math inline">\(a=1\)</span>, la recta objetivo <span class="math inline">\(x_1+2x_2=k\)</span> es paralela a la frontera <span class="math inline">\(x_1+2x_2=8\)</span>. Por tanto, todo el segmento entre <span class="math inline">\((0,4)\)</span> y <span class="math inline">\((8/3,8/3)\)</span> es óptimo. Cuando <span class="math inline">\(a=4\)</span>, <span class="math inline">\(4x_1+2x_2=k\)</span> es paralela a <span class="math inline">\(2x_1+x_2=8\)</span>, y todos los puntos del segmento entre <span class="math inline">\((4,0)\)</span> y <span class="math inline">\((8/3,8/3)\)</span> son óptimos. En ambos casos se cumple el teorema de convexidad del conjunto de soluciones óptimas.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="región-no-acotada-dos-resultados-diferentes" class="level2">
+<h2 class="anchored" data-anchor-id="región-no-acotada-dos-resultados-diferentes">Región no acotada: dos resultados diferentes</h2>
+<p>La región</p>
+<p><span class="math display">\[
+R=\{(x_1,x_2):0\leq x_1\leq2,\ x_2\geq0\}
+\]</span></p>
+<p>se extiende indefinidamente hacia arriba. Sin embargo, los resultados de estos dos programas son distintos:</p>
+<ul>
+<li>En <span class="math inline">\(\max x_1\)</span>, el máximo <strong>sí existe</strong> y vale <span class="math inline">\(2\)</span>; todos los puntos <span class="math inline">\((2,t)\)</span>, con <span class="math inline">\(t\geq0\)</span>, son óptimos.</li>
+<li>En <span class="math inline">\(\max x_2\)</span>, no existe máximo finito, puesto que los puntos <span class="math inline">\((2,t)\)</span> son factibles y sus valores objetivo <span class="math inline">\(t\)</span> crecen sin límite.</li>
+</ul>
+<p>Una región factible no acotada <strong>no obliga</strong> a que la función objetivo sea no acotada.</p>
+</section>
+<section id="sistemas-incompatibles-ausencia-de-soluciones-factibles" class="level2">
+<h2 class="anchored" data-anchor-id="sistemas-incompatibles-ausencia-de-soluciones-factibles">Sistemas incompatibles: ausencia de soluciones factibles</h2>
+<p>Consideremos las restricciones</p>
+<p><span class="math display">\[
+x_1+x_2\leq2,\qquad x_1+x_2\geq4,\qquad x_1,x_2\geq0.
+\]</span></p>
+<p>No existe ningún punto que cumpla simultáneamente las dos primeras desigualdades. La región factible es vacía y, por consiguiente, <strong>no existe una solución óptima</strong>. Este fenómeno es diferente de una función objetivo no acotada sobre una región factible no vacía.</p>
+<section id="exploración-de-situaciones-especiales" class="level3">
+<h3 class="anchored" data-anchor-id="exploración-de-situaciones-especiales">Exploración de situaciones especiales</h3>
+<p>Elegí un caso, observá la geometría y tratá de anticipar su clasificación antes de consultar la explicación.</p>
+<div class="plm-widget" id="plm-casos">
+  <div class="plm-control"><label for="plm-case-picker">Situación que queremos estudiar</label>
+    <select id="plm-case-picker">
+      <option value="multiple">Múltiples soluciones óptimas</option>
+      <option value="finite">Región no acotada con máximo finito</option>
+      <option value="unbounded">Función objetivo no acotada</option>
+      <option value="infeasible">Problema infactible</option>
+    </select>
+  </div>
+  <svg viewbox="0 0 460 340" id="plm-case-svg" role="img" aria-label="Comparación gráfica de casos especiales en programación lineal">
+    <defs><clippath id="plm-case-clip"><rect x="56" y="14" width="334" height="300"></rect></clippath></defs>
+    <g class="plm-case-grid"></g>
+    <g class="plm-case-shapes" clip-path="url(#plm-case-clip)"></g>
+    <text x="400" y="320" font-size="15" fill="currentColor">x₁</text><text x="26" y="18" font-size="15" fill="currentColor">x₂</text>
+  </svg>
+  <p id="plm-case-math" class="plm-status"></p>
+  <details><summary>Mostrar justificación matemática</summary><p id="plm-case-answer"></p></details>
+</div>
+</section>
+</section>
+<section id="comprobá-tu-comprensión" class="level2">
+<h2 class="anchored" data-anchor-id="comprobá-tu-comprensión">Comprobá tu comprensión</h2>
+<p><strong>Pregunta.</strong> Un programa lineal tiene una región factible no vacía y no acotada. ¿Qué se puede concluir sobre su máximo?</p>
+<div class="plm-widget" id="plm-quiz">
+  <fieldset><legend>Elegí la afirmación correcta.</legend>
+    <label><input type="radio" name="plm-quiz-answer" value="a"> La función objetivo siempre es no acotada.</label>
+    <label><input type="radio" name="plm-quiz-answer" value="b"> Puede existir un máximo finito o no existirlo.</label>
+    <label><input type="radio" name="plm-quiz-answer" value="c"> Todo punto factible es óptimo.</label>
+  </fieldset>
+  <button type="button" id="plm-quiz-check">Comprobar</button>
+  <p id="plm-quiz-feedback" aria-live="polite"></p>
+</div>
+</section>
+<section id="síntesis" class="level2">
+<h2 class="anchored" data-anchor-id="síntesis">Síntesis</h2>
+<p>Para un problema de dos variables, el método gráfico permite observar las restricciones, la región factible y el comportamiento de la función objetivo. El barrido ayuda a interpretar la solución; la comparación algebraica de vértices proporciona una justificación exacta <strong>cuando se cumplen las hipótesis correspondientes</strong>. La infactibilidad y la no acotación requieren argumentos propios, no simples extrapolaciones de la técnica de evaluación de vértices.</p>
+<style>
+.plm-widget{border:1px solid #c6d4db;border-radius:13px;padding:clamp(14px,3vw,23px);margin:1.2rem 0;background:color-mix(in srgb,Canvas 96%,#128381 4%)}
+.plm-widget svg{width:100%;height:auto;max-height:390px;display:block}
+.plm-widget .plm-hint{margin-top:0}
+.plm-widget .plm-control{display:grid;gap:.5rem;margin:.5rem 0}
+.plm-widget input[type=range]{width:100%;accent-color:#087d80}
+.plm-widget select{width:100%;max-width:450px;padding:.55rem;border:1px solid #94a8af;border-radius:7px;background:Canvas;color:CanvasText}
+.plm-widget .plm-buttons{display:flex;flex-wrap:wrap;gap:9px;margin:.8rem 0}
+.plm-widget button{padding:.5rem .9rem;border:1px solid #77929b;border-radius:7px;background:Canvas;color:CanvasText;cursor:pointer}
+.plm-widget button:hover{border-color:#087d80}
+.plm-widget button:focus-visible,.plm-widget input:focus-visible,.plm-widget select:focus-visible{outline:3px solid #d4ad52;outline-offset:2px}
+.plm-widget .plm-status{padding:.8rem;background:rgba(8,125,128,.08);border-radius:7px;margin:.8rem 0}
+.plm-widget details{margin-top:1rem}.plm-widget details summary{cursor:pointer;font-weight:650}
+.plm-widget fieldset{border:0;padding:0}.plm-widget fieldset label{display:block;margin:.6rem 0;cursor:pointer}
+</style>
+<script>
+(function(){
+  const NS='http://www.w3.org/2000/svg';
+  function add(parent,tag,attrs,text){const e=document.createElementNS(NS,tag);for(const [k,v]of Object.entries(attrs||{}))e.setAttribute(k,String(v));if(text!==undefined)e.textContent=text;parent.appendChild(e);return e;}
+  const PX=x=>56+51*x, PY=y=>314-51*y;
+  function grid(svg,container){
+    for(let i=0;i<=6;i++){
+      add(container,'line',{x1:PX(i),y1:14,x2:PX(i),y2:314,stroke:'currentColor','stroke-opacity':'.12'});
+      add(container,'line',{x1:56,y1:PY(i),x2:390,y2:PY(i),stroke:'currentColor','stroke-opacity':'.12'});
+      add(container,'text',{x:PX(i),y:331,'text-anchor':'middle','font-size':12,fill:'currentColor'},i);
+      if(i>0)add(container,'text',{x:45,y:PY(i)+4,'text-anchor':'end','font-size':12,fill:'currentColor'},i);
+    }
+    add(container,'line',{x1:56,y1:314,x2:408,y2:314,stroke:'currentColor','stroke-width':1.7});
+    add(container,'line',{x1:56,y1:314,x2:56,y2:8,stroke:'currentColor','stroke-width':1.7});
+  }
+  function segment(a,b,k){
+    const pts=[];function put(x,y){if(x>=-1e-8&&x<=6+1e-8&&y>=-1e-8&&y<=6+1e-8&&!pts.some(p=>Math.hypot(p[0]-x,p[1]-y)<1e-6))pts.push([Math.max(0,Math.min(6,x)),Math.max(0,Math.min(6,y))]);}
+    if(Math.abs(b)>1e-9){put(0,k/b);put(6,(k-6*a)/b)}
+    if(Math.abs(a)>1e-9){put(k/a,0);put((k-6*b)/a,6)}
+    return pts.slice(0,2);
+  }
+  function line(g,s,color='#bc7f25',width=3,dash='7 5'){
+    if(s.length===2)add(g,'line',{x1:PX(s[0][0]),y1:PY(s[0][1]),x2:PX(s[1][0]),y2:PY(s[1][1]),stroke:color,'stroke-width':width,'stroke-dasharray':dash});
+    else if(s.length===1)add(g,'circle',{cx:PX(s[0][0]),cy:PY(s[0][1]),r:5,fill:color});
+  }
+  const root=document.getElementById('plm-parametros');
+  if(root && !root.dataset.ready){root.dataset.ready='1';const svg=root.querySelector('svg'),gr=root.querySelector('.plm-param-grid'),pg=root.querySelector('.plm-param-points'),lg=root.querySelector('.plm-param-level'),input=root.querySelector('#plm-param-a');grid(svg,gr);
+    const vs=[[0,0,'A'],[4,0,'B'],[8/3,8/3,'C'],[0,4,'D']];root.querySelector('.plm-param-region').setAttribute('d','M '+vs.map(v=>PX(v[0])+' '+PY(v[1])).join(' L ')+' Z');
+    function draw(){const a=Number(input.value),vals=vs.map(v=>a*v[0]+2*v[1]),z=Math.max(...vals), winners=vs.filter((v,i)=>Math.abs(vals[i]-z)<1e-8);root.querySelector('#plm-param-a-text').textContent=new Intl.NumberFormat('es-CR',{maximumFractionDigits:2}).format(a);lg.replaceChildren();pg.replaceChildren();line(lg,segment(a,2,z),'#b9801f',3.5,'8 5');
+      if(winners.length===2)add(pg,'line',{x1:PX(winners[0][0]),y1:PY(winners[0][1]),x2:PX(winners[1][0]),y2:PY(winners[1][1]),stroke:'#d2a046','stroke-width':7,'stroke-opacity':'.7'});
+      for(const v of vs){const winning=winners.some(p=>p[2]===v[2]);add(pg,'circle',{cx:PX(v[0]),cy:PY(v[1]),r:winning?7:5,fill:winning?'#be8727':'#183b45',stroke:'white','stroke-width':1.4});add(pg,'text',{x:PX(v[0])+(v[2]==='D'?-17:10),y:PY(v[1])-10,fill:'currentColor','font-size':14,'font-weight':600},v[2]);}
+      root.querySelector('#plm-param-status').textContent=`Máximo: ${Number(z.toFixed(3)).toLocaleString('es-CR')}. ${winners.length===1?'Única solución óptima: vértice '+winners[0][2]+'.':'Infinitas soluciones óptimas: arista '+winners.map(w=>w[2]).join('–')+'.'}`;}
+    input.addEventListener('input',draw);root.querySelectorAll('[data-plm-a]').forEach(b=>b.addEventListener('click',()=>{input.value=b.dataset.plmA;draw()}));draw();
+  }
+  const cases=document.getElementById('plm-casos');
+  if(cases && !cases.dataset.ready){cases.dataset.ready='1';const picker=cases.querySelector('#plm-case-picker'),group=cases.querySelector('.plm-case-shapes'),gr=cases.querySelector('.plm-case-grid');grid(cases.querySelector('svg'),gr);
+    function draw(){const mode=picker.value;group.replaceChildren();const P=coords=>coords.map(p=>`${PX(p[0])},${PY(p[1])}`).join(' ');const rect=(pts,color)=>add(group,'polygon',{points:P(pts),fill:color,'fill-opacity':'.18',stroke:color,'stroke-width':2});
+      let model='',ans='';
+      if(mode==='multiple'){
+        rect([[0,0],[4,0],[0,4]],'#087d80');line(group,segment(1,1,4),'#b9801f',4,'none');
+        model='Maximizar z = x₁ + x₂; x₁ + x₂ ≤ 4; x₁, x₂ ≥ 0.';
+        ans='El valor máximo es 4. La recta de nivel óptima coincide con el segmento entre (4,0) y (0,4): todos sus puntos son óptimos.';
+      }else if(mode==='finite'){
+        rect([[0,0],[2,0],[2,6],[0,6]],'#087d80');line(group,[[2,0],[2,6]],'#b9801f',4,'none');
+        add(group,'text',{x:PX(1),y:PY(5.4),fill:'#087d80','font-size':12},'La región continúa ↑');
+        model='Maximizar z = x₁; 0 ≤ x₁ ≤ 2; x₂ ≥ 0.';
+        ans='Todas las soluciones cumplen z ≤ 2. Los puntos (2,t), t ≥ 0, son factibles y alcanzan z = 2: máximo finito con múltiples soluciones óptimas.';
+      }else if(mode==='unbounded'){
+        rect([[0,0],[2,0],[6,4],[6,6],[0,6]],'#087d80');line(group,segment(1,1,8),'#b9801f',4,'7 5');
+        add(group,'text',{x:PX(2.2),y:PY(5.4),fill:'#087d80','font-size':12},'La región continúa ↑');
+        model='Maximizar z = x₁ + x₂; x₁ − x₂ ≤ 2; x₁, x₂ ≥ 0.';
+        ans='Para todo t ≥ 0, (t,t) es factible y z(t,t) = 2t. Por tanto, el valor objetivo no está acotado superiormente.';
+      }else{
+        rect([[0,0],[2,0],[0,2]],'#457faa');rect([[0,4],[4,0],[6,0],[6,6],[0,6]],'#c68b2e');
+        line(group,segment(1,1,2),'#457faa',3,'none');line(group,segment(1,1,4),'#c68b2e',3,'none');
+        model='Maximizar z = 3x₁ + 2x₂; x₁ + x₂ ≤ 2; x₁ + x₂ ≥ 4; x₁, x₂ ≥ 0.';
+        ans='Las condiciones x₁+x₂ ≤ 2 y x₁+x₂ ≥ 4 son incompatibles. No existen soluciones factibles y, por tanto, no existe solución óptima.';
+      }
+      cases.querySelector('#plm-case-math').textContent=model;cases.querySelector('#plm-case-answer').textContent=ans;
+      cases.querySelector('details').open=false;
+    }
+    picker.addEventListener('change',draw);draw();
+  }
+  const quiz=document.getElementById('plm-quiz');if(quiz){quiz.querySelector('#plm-quiz-check').addEventListener('click',()=>{const v=quiz.querySelector('input[name=plm-quiz-answer]:checked');quiz.querySelector('#plm-quiz-feedback').textContent=!v?'Seleccioná una respuesta.':v.value==='b'?'Correcto. El comportamiento depende de la función objetivo y de las direcciones factibles.':'Revisá el ejemplo de la franja vertical: una región no acotada puede admitir un máximo finito.';});}
+})();
+</script>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <div class="pl-footer-note" style="text-align:center;font-size:.82rem;color:#64748b;padding:1rem 0">Libro en desarrollo · Versión editorial preliminar</div>
