@@ -36,7 +36,7 @@ book:
         - capitulos/vertices_y_puntos_extremos.qmd
         - capitulos/vertices_y_soluciones_optimas.qmd
         - capitulos/interpretacion_geometrica_niveles.qmd
-        - capitulos/ejemplo_metodo_grafico.qmd
+        - capitulos/metodo_grafico_completo.qmd
         - capitulos/extension_geometrica_3d.qmd
     - part: parte-2.qmd
       chapters:
