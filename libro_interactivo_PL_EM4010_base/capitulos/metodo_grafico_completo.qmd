@@ -1,0 +1,363 @@
+---
+title: "Método gráfico: resolución y situaciones especiales"
+---
+
+# Resolver un programa lineal en el plano
+
+Una vez caracterizada la región factible y estudiada la relación entre vértices y optimalidad, podemos desarrollar un procedimiento de resolución geométrica para los problemas con **dos variables de decisión**. Los conjuntos de nivel permiten identificar la dirección en la que mejora la función objetivo; el estudio de los vértices aporta una manera exacta de verificar el resultado.
+
+En una región factible **no vacía y acotada**, una función objetivo afín alcanza un máximo y un mínimo, y existe al menos un vértice que alcanza cada uno de esos valores. En cambio, para una región no acotada o vacía, es necesario examinar el problema con mayor cuidado.
+
+## Procedimiento de resolución
+
+1. **Formular el modelo:** identificar las variables, el objetivo y las restricciones.
+2. **Construir la región factible:** dibujar las fronteras y seleccionar los semiplanos correspondientes.
+3. **Identificar los vértices factibles:** resolver las intersecciones relevantes y verificar todas las restricciones.
+4. **Explorar las rectas de nivel:** desplazar $c_1x_1+c_2x_2=k$ en la dirección de mejora (o disminución) de $k$.
+5. **Justificar el resultado:** evaluar los vértices cuando las hipótesis lo permitan y comunicar tanto la decisión óptima como el valor óptimo.
+
+La exploración de las rectas de nivel explica geométricamente el procedimiento; **la comprobación algebraica no debe omitirse**. Para la construcción espacial del plano objetivo y sus trazas, véase la explicación anterior sobre interpretación geométrica de los conjuntos de nivel.
+
+## Ejemplo resuelto: encontrar el máximo {#sec-ejemplo-metodo-grafico}
+
+Consideremos el programa lineal
+
+$$
+\begin{aligned}
+\text{Maximizar}\quad z&=3x_1+2x_2,\\
+\text{sujeto a}\quad x_1+x_2&\leq6,\\
+2x_1+x_2&\leq8,\\
+x_1+2x_2&\leq8,\\
+x_1,x_2&\geq0.
+\end{aligned}
+$$
+
+La **región factible** es la intersección de los semiplanos correspondientes a las restricciones. Cada valor de $k$ determina una **recta de nivel** $3x_1+2x_2=k$. En un problema de maximización, aumentamos $k$ hasta localizar el último contacto con la región factible.
+
+```{=html}
+<div id="pl-118" class="pl118" aria-label="Exploración del método gráfico">
+  <div class="pl118-header">
+    <strong>Exploración del método gráfico</strong>
+    <label>Modo:
+      <select id="pl118-mode"><option value="libre">Exploración libre</option><option value="guiado">Resolución guiada</option></select>
+    </label>
+  </div>
+  <p id="pl118-guide" class="pl118-guide" aria-live="polite">Desplazá la recta de nivel y compará los valores de la función objetivo en los vértices.</p>
+  <div class="pl118-chart">
+    <svg id="pl118-svg" viewBox="0 0 530 430" role="img" aria-label="Región factible del programa lineal y recta de nivel ajustable">
+      <defs><clipPath id="pl118-clip"><rect x="68" y="28" width="378" height="350"/></clipPath></defs>
+      <g id="pl118-grid"></g>
+      <path id="pl118-poly" fill="#198d91" fill-opacity="0.15" stroke="#087d80" stroke-width="3" stroke-linejoin="round"></path>
+      <g id="pl118-levels" clip-path="url(#pl118-clip)"></g>
+      <g id="pl118-vertices"></g>
+      <text x="449" y="403" fill="currentColor" font-size="18">x₁</text>
+      <text x="30" y="23" fill="currentColor" font-size="18">x₂</text>
+      <text x="135" y="290" fill="#087d80" font-size="22" font-style="italic">R</text>
+    </svg>
+  </div>
+  <div class="pl118-controls">
+    <label for="pl118-k">Recta de nivel: <span id="pl118-ktext">k = 8</span></label>
+    <input id="pl118-k" type="range" min="0" max="16" step="0.0333333333" value="8" />
+    <div class="pl118-actions">
+      <button type="button" data-pl118-k="4">k = 4</button>
+      <button type="button" data-pl118-k="10">k = 10</button>
+      <button type="button" data-pl118-k="13.333333333333334">k = 40/3</button>
+      <button type="button" data-pl118-k="15">k = 15</button>
+    </div>
+    <p id="pl118-status" class="pl118-status" aria-live="polite"></p>
+    <div class="pl118-vertex-group">
+      <span>Evaluar un vértice:</span>
+      <div class="pl118-actions" id="pl118-buttons">
+        <button type="button" data-pl118-v="0">A</button>
+        <button type="button" data-pl118-v="1">B</button>
+        <button type="button" data-pl118-v="2">C</button>
+        <button type="button" data-pl118-v="3">D</button>
+      </div>
+      <p id="pl118-eval" aria-live="polite"></p>
+    </div>
+    <button id="pl118-reveal" type="button" aria-expanded="false">Mostrar solución razonada</button>
+    <div id="pl118-solution" hidden>
+      <p>Los vértices de la región factible son
+        <span class="math inline">\(A=(0,0)\)</span>,
+        <span class="math inline">\(B=(4,0)\)</span>,
+        <span class="math inline">\(C=(8/3,8/3)\)</span> y
+        <span class="math inline">\(D=(0,4)\)</span>.
+      </p>
+      <table><thead><tr><th>Vértice</th><th>Valor de z</th></tr></thead>
+        <tbody><tr><td>A</td><td>0</td></tr><tr><td>B</td><td>12</td></tr>
+        <tr><td>C</td><td>40/3</td></tr><tr><td>D</td><td>8</td></tr></tbody>
+      </table>
+      <p>La región es no vacía, cerrada y acotada. Por el teorema de optimalidad en vértices, basta comparar los valores de la función objetivo en sus vértices. El máximo es <strong>z* = 40/3</strong> y se alcanza en <strong>(8/3, 8/3)</strong>.</p>
+      <p>En el óptimo son activas las restricciones <span class="math inline">\(2x_1+x_2=8\)</span> y <span class="math inline">\(x_1+2x_2=8\)</span>. La restricción <span class="math inline">\(x_1+x_2\leq6\)</span> es redundante, pues las dos anteriores implican <span class="math inline">\(x_1+x_2\leq16/3<6\)</span>.</p>
+    </div>
+  </div>
+</div>
+
+
+
+<style>
+.pl118{--ink:#143b47;--accent:#087d80;--gold:#bb7c10;border:1px solid #cbd5dc;border-radius:14px;padding:clamp(14px,3vw,24px);max-width:800px;margin:1.5rem auto;font-family:inherit;color:inherit}
+.pl118 *{box-sizing:border-box}.pl118-header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.pl118-header select{border:1px solid #a7b5bf;border-radius:7px;padding:7px;background:transparent;color:inherit}
+.pl118-guide{background:rgba(8,125,128,.08);border-left:4px solid var(--accent);padding:12px;border-radius:4px}.pl118-chart svg{width:100%;height:auto;max-height:510px;display:block}.pl118-controls{display:grid;gap:12px}.pl118 input[type=range]{width:100%;accent-color:var(--accent)}
+.pl118-actions{display:flex;flex-wrap:wrap;gap:9px}.pl118 button{padding:8px 12px;border-radius:7px;border:1px solid #899da9;background:transparent;color:inherit;cursor:pointer}.pl118 button:focus-visible,.pl118 select:focus-visible,.pl118 input:focus-visible{outline:3px solid #d2a345;outline-offset:2px}.pl118 button:hover{border-color:var(--accent)}.pl118 button[aria-pressed=true]{background:var(--accent);color:white;border-color:var(--accent)}
+.pl118-status{min-height:2.4em;border-radius:8px;background:rgba(128,128,128,.07);padding:10px;margin:0}.pl118-vertex-group{border-top:1px solid #ccd4d8;padding-top:12px}.pl118 #pl118-solution{background:rgba(8,125,128,.06);border-radius:9px;padding:12px}.pl118 #pl118-solution[hidden]{display:none}.pl118 #pl118-solution table{width:100%;border-collapse:collapse}.pl118 #pl118-solution td,.pl118 #pl118-solution th{border-bottom:1px solid #bccbd0;padding:5px 10px;text-align:left}
+@media(max-width:540px){.pl118{padding:12px}.pl118 button{font-size:.85rem;padding:7px 9px}}
+</style>
+<script>
+(function(){
+  function setup(){
+    const root=document.getElementById('pl-118'); if(!root||root.dataset.ready)return;root.dataset.ready='true';
+    const ns='http://www.w3.org/2000/svg';
+    const V=[{n:'A',x:0,y:0,z:0},{n:'B',x:4,y:0,z:12},{n:'C',x:8/3,y:8/3,z:40/3},{n:'D',x:0,y:4,z:8}];
+    const $=id=>root.querySelector('#'+id),kinput=$('pl118-k'),ktext=$('pl118-ktext'),levels=$('pl118-levels'),dots=$('pl118-vertices'),grid=$('pl118-grid'),status=$('pl118-status'),mode=$('pl118-mode'),guide=$('pl118-guide');
+    let selected=2, stage=0;
+    const X=x=>68+x*57.5,Y=y=>378-y*57.5,fmt=n=>new Intl.NumberFormat('es-CR',{maximumFractionDigits:2}).format(n);
+    function el(tag,attrs,parent){const e=document.createElementNS(ns,tag);for(const [key,val] of Object.entries(attrs))e.setAttribute(key,val);(parent||grid).appendChild(e);return e;}
+    for(let i=0;i<=6;i++){
+      el('line',{x1:X(i),x2:X(i),y1:28,y2:378,stroke:'currentColor','stroke-opacity':'.12'},grid);
+      el('line',{x1:68,x2:446,y1:Y(i),y2:Y(i),stroke:'currentColor','stroke-opacity':'.12'},grid);
+      const a=el('text',{x:X(i),y:398,'text-anchor':'middle','font-size':'13',fill:'currentColor'},grid);a.textContent=i;
+      if(i){const b=el('text',{x:56,y:Y(i)+4,'text-anchor':'end','font-size':'13',fill:'currentColor'},grid);b.textContent=i;}
+    }
+    el('line',{x1:68,y1:378,x2:465,y2:378,stroke:'currentColor','stroke-width':'2'},grid);
+    el('line',{x1:68,y1:378,x2:68,y2:17,stroke:'currentColor','stroke-width':'2'},grid);
+    $('pl118-poly').setAttribute('d','M '+V.map(p=>`${X(p.x)} ${Y(p.y)}`).join(' L ')+' Z');
+    // Clip the level line to the plotted [0,6] x [0,6] domain, independently of the feasible polygon.
+    function segment(k){
+      const pts=[];const add=(x,y)=>{if(x>=-1e-8&&x<=6+1e-8&&y>=-1e-8&&y<=6+1e-8&&!pts.some(p=>Math.abs(p[0]-x)+Math.abs(p[1]-y)<1e-7))pts.push([Math.max(0,Math.min(6,x)),Math.max(0,Math.min(6,y))]);};
+      add(0,k/2);add(6,(k-18)/2);add(k/3,0);add((k-12)/3,6);return pts.slice(0,2);
+    }
+    function render(){
+      const k=Number(kinput.value);ktext.textContent='k = '+fmt(k);
+      levels.replaceChildren();dots.replaceChildren();
+      const s=segment(k);
+      if(s.length===2)el('line',{x1:X(s[0][0]),y1:Y(s[0][1]),x2:X(s[1][0]),y2:Y(s[1][1]),stroke:'#bd7c14','stroke-width':'4','stroke-dasharray':'10 6'},levels);
+      for(const v of V){
+        el('circle',{cx:X(v.x),cy:Y(v.y),r:v.n===V[selected].n?8:5.5,fill:v.n===V[selected].n?'#d6a33b':'#173e4d',stroke:'white','stroke-width':'1.5'},dots);
+        const label=el('text',{x:X(v.x)+(v.n==='D'?-20:11),y:Y(v.y)-12,fill:'currentColor','font-size':'17','font-weight':'600'},dots);label.textContent=v.n;
+      }
+      if(k>40/3+1e-5)status.textContent='La recta de nivel no intersecta la región factible: k supera el valor máximo.';
+      else if(Math.abs(k-40/3)<.017)status.textContent='Último contacto: el vértice C = (8/3, 8/3). El valor máximo es 40/3.';
+      else status.textContent='La recta de nivel todavía corresponde a un valor inferior al óptimo.';
+      $('pl118-eval').textContent=`${V[selected].n} = (${fmt(V[selected].x)}, ${fmt(V[selected].y)}): z = ${fmt(V[selected].z)}${V[selected].n==='C'?' = 40/3':''}`;
+      root.querySelectorAll('[data-pl118-v]').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.pl118V)===selected)));
+    }
+    kinput.addEventListener('input',render);
+    root.querySelectorAll('[data-pl118-k]').forEach(b=>b.addEventListener('click',()=>{kinput.value=b.dataset.pl118K;render();}));
+    root.querySelectorAll('[data-pl118-v]').forEach(b=>b.addEventListener('click',()=>{selected=Number(b.dataset.pl118V);render();}));
+    $('pl118-reveal').addEventListener('click',()=>{const panel=$('pl118-solution');panel.hidden=!panel.hidden;$('pl118-reveal').textContent=panel.hidden?'Mostrar solución razonada':'Ocultar solución razonada';$('pl118-reveal').setAttribute('aria-expanded',String(!panel.hidden));});
+    mode.addEventListener('change',()=>{if(mode.value==='guiado'){
+      guide.textContent='Paso 1: identificá los vértices de la región factible; después mové la recta para localizar el último contacto. Compará los valores en los vértices y consultá la solución cuando termines.';
+    }else guide.textContent='Desplazá la recta de nivel y compará los valores de la función objetivo en los vértices.';});
+    render();
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setup);else setup();
+})();
+</script>
+```
+
+**Para reflexionar.** ¿Por qué la última recta de nivel toca la región factible en el vértice $C$? ¿Qué sucede cuando $k>40/3$? Justificá las respuestas a partir de las restricciones y de la función objetivo, no solamente de la gráfica.
+
+
+## Cuando cambian las soluciones óptimas
+
+En un programa lineal, las rectas de nivel pueden tocar la región factible en **un solo vértice** o coincidir con **una arista completa**. Esta diferencia no depende solamente de las restricciones: también depende de los coeficientes de la función objetivo.
+
+Consideremos la región
+
+$$
+R=\{(x_1,x_2)\in\mathbb R^2:\ x_1+x_2\leq6,\ 2x_1+x_2\leq8,\ x_1+2x_2\leq8,\ x_1,x_2\geq0\}.
+$$
+
+Si maximizamos $z=ax_1+2x_2$ con $a\geq0$, los valores en los vértices son $0$, $4a$, $(8a+16)/3$ y $8$. La comparación conduce a
+
+$$
+z^*(a)=
+\begin{cases}
+8,&0\leq a\leq1,\\
+(8a+16)/3,&1\leq a\leq4,\\
+4a,&a\geq4.
+\end{cases}
+$$
+
+En $a=1$ y $a=4$ se alcanza el máximo en **todos los puntos de una arista**. En los demás valores de $a\geq0$, el máximo se alcanza en un único vértice.
+
+### Exploración: rotar las rectas de nivel
+
+```{=html}
+<div class="plm-widget" id="plm-parametros">
+  <p class="plm-hint">Mové el coeficiente <strong>a</strong>. La región es la misma; cambia únicamente la orientación de las rectas de nivel.</p>
+  <svg viewBox="0 0 460 340" id="plm-param-svg" role="img" aria-label="Región poligonal, vértices y recta de nivel óptima que gira con a">
+    <defs><clipPath id="plm-param-clip"><rect x="56" y="14" width="334" height="300"/></clipPath></defs>
+    <g class="plm-param-grid"></g>
+    <path class="plm-param-region" fill="#087d80" fill-opacity=".16" stroke="#087d80" stroke-width="2.8"/>
+    <g class="plm-param-level" clip-path="url(#plm-param-clip)"></g>
+    <g class="plm-param-points"></g>
+    <text x="399" y="320" font-size="15" fill="currentColor">x₁</text>
+    <text x="26" y="18" font-size="15" fill="currentColor">x₂</text>
+  </svg>
+  <div class="plm-control"><label for="plm-param-a">Coeficiente objetivo a: <strong id="plm-param-a-text">3</strong></label><input id="plm-param-a" type="range" min="0" max="5" step="0.05" value="3" /></div>
+  <div class="plm-buttons"><button type="button" data-plm-a="1">a = 1</button><button type="button" data-plm-a="3">a = 3</button><button type="button" data-plm-a="4">a = 4</button></div>
+  <p id="plm-param-status" aria-live="polite" class="plm-status"></p>
+</div>
+```
+
+::: {.callout-note collapse="true"}
+## ¿Por qué se obtienen aristas óptimas?
+
+Cuando $a=1$, la recta objetivo $x_1+2x_2=k$ es paralela a la frontera $x_1+2x_2=8$. Por tanto, todo el segmento entre $(0,4)$ y $(8/3,8/3)$ es óptimo. Cuando $a=4$, $4x_1+2x_2=k$ es paralela a $2x_1+x_2=8$, y todos los puntos del segmento entre $(4,0)$ y $(8/3,8/3)$ son óptimos. En ambos casos se cumple el teorema de convexidad del conjunto de soluciones óptimas.
+:::
+
+## Región no acotada: dos resultados diferentes
+
+La región
+
+$$
+R=\{(x_1,x_2):0\leq x_1\leq2,\ x_2\geq0\}
+$$
+
+se extiende indefinidamente hacia arriba. Sin embargo, los resultados de estos dos programas son distintos:
+
+- En $\max x_1$, el máximo **sí existe** y vale $2$; todos los puntos $(2,t)$, con $t\geq0$, son óptimos.
+- En $\max x_2$, no existe máximo finito, puesto que los puntos $(2,t)$ son factibles y sus valores objetivo $t$ crecen sin límite.
+
+Una región factible no acotada **no obliga** a que la función objetivo sea no acotada.
+
+## Sistemas incompatibles: ausencia de soluciones factibles
+
+Consideremos las restricciones
+
+$$
+x_1+x_2\leq2,\qquad x_1+x_2\geq4,\qquad x_1,x_2\geq0.
+$$
+
+No existe ningún punto que cumpla simultáneamente las dos primeras desigualdades. La región factible es vacía y, por consiguiente, **no existe una solución óptima**. Este fenómeno es diferente de una función objetivo no acotada sobre una región factible no vacía.
+
+### Exploración de situaciones especiales
+
+Elegí un caso, observá la geometría y tratá de anticipar su clasificación antes de consultar la explicación.
+
+```{=html}
+<div class="plm-widget" id="plm-casos">
+  <div class="plm-control"><label for="plm-case-picker">Situación que queremos estudiar</label>
+    <select id="plm-case-picker">
+      <option value="multiple">Múltiples soluciones óptimas</option>
+      <option value="finite">Región no acotada con máximo finito</option>
+      <option value="unbounded">Función objetivo no acotada</option>
+      <option value="infeasible">Problema infactible</option>
+    </select>
+  </div>
+  <svg viewBox="0 0 460 340" id="plm-case-svg" role="img" aria-label="Comparación gráfica de casos especiales en programación lineal">
+    <defs><clipPath id="plm-case-clip"><rect x="56" y="14" width="334" height="300"/></clipPath></defs>
+    <g class="plm-case-grid"></g>
+    <g class="plm-case-shapes" clip-path="url(#plm-case-clip)"></g>
+    <text x="400" y="320" font-size="15" fill="currentColor">x₁</text><text x="26" y="18" font-size="15" fill="currentColor">x₂</text>
+  </svg>
+  <p id="plm-case-math" class="plm-status"></p>
+  <details><summary>Mostrar justificación matemática</summary><p id="plm-case-answer"></p></details>
+</div>
+```
+
+## Comprobá tu comprensión
+
+**Pregunta.** Un programa lineal tiene una región factible no vacía y no acotada. ¿Qué se puede concluir sobre su máximo?
+
+```{=html}
+<div class="plm-widget" id="plm-quiz">
+  <fieldset><legend>Elegí la afirmación correcta.</legend>
+    <label><input type="radio" name="plm-quiz-answer" value="a"/> La función objetivo siempre es no acotada.</label>
+    <label><input type="radio" name="plm-quiz-answer" value="b"/> Puede existir un máximo finito o no existirlo.</label>
+    <label><input type="radio" name="plm-quiz-answer" value="c"/> Todo punto factible es óptimo.</label>
+  </fieldset>
+  <button type="button" id="plm-quiz-check">Comprobar</button>
+  <p id="plm-quiz-feedback" aria-live="polite"></p>
+</div>
+```
+
+## Síntesis
+
+Para un problema de dos variables, el método gráfico permite observar las restricciones, la región factible y el comportamiento de la función objetivo. El barrido ayuda a interpretar la solución; la comparación algebraica de vértices proporciona una justificación exacta **cuando se cumplen las hipótesis correspondientes**. La infactibilidad y la no acotación requieren argumentos propios, no simples extrapolaciones de la técnica de evaluación de vértices.
+
+```{=html}
+<style>
+.plm-widget{border:1px solid #c6d4db;border-radius:13px;padding:clamp(14px,3vw,23px);margin:1.2rem 0;background:color-mix(in srgb,Canvas 96%,#128381 4%)}
+.plm-widget svg{width:100%;height:auto;max-height:390px;display:block}
+.plm-widget .plm-hint{margin-top:0}
+.plm-widget .plm-control{display:grid;gap:.5rem;margin:.5rem 0}
+.plm-widget input[type=range]{width:100%;accent-color:#087d80}
+.plm-widget select{width:100%;max-width:450px;padding:.55rem;border:1px solid #94a8af;border-radius:7px;background:Canvas;color:CanvasText}
+.plm-widget .plm-buttons{display:flex;flex-wrap:wrap;gap:9px;margin:.8rem 0}
+.plm-widget button{padding:.5rem .9rem;border:1px solid #77929b;border-radius:7px;background:Canvas;color:CanvasText;cursor:pointer}
+.plm-widget button:hover{border-color:#087d80}
+.plm-widget button:focus-visible,.plm-widget input:focus-visible,.plm-widget select:focus-visible{outline:3px solid #d4ad52;outline-offset:2px}
+.plm-widget .plm-status{padding:.8rem;background:rgba(8,125,128,.08);border-radius:7px;margin:.8rem 0}
+.plm-widget details{margin-top:1rem}.plm-widget details summary{cursor:pointer;font-weight:650}
+.plm-widget fieldset{border:0;padding:0}.plm-widget fieldset label{display:block;margin:.6rem 0;cursor:pointer}
+</style>
+<script>
+(function(){
+  const NS='http://www.w3.org/2000/svg';
+  function add(parent,tag,attrs,text){const e=document.createElementNS(NS,tag);for(const [k,v]of Object.entries(attrs||{}))e.setAttribute(k,String(v));if(text!==undefined)e.textContent=text;parent.appendChild(e);return e;}
+  const PX=x=>56+51*x, PY=y=>314-51*y;
+  function grid(svg,container){
+    for(let i=0;i<=6;i++){
+      add(container,'line',{x1:PX(i),y1:14,x2:PX(i),y2:314,stroke:'currentColor','stroke-opacity':'.12'});
+      add(container,'line',{x1:56,y1:PY(i),x2:390,y2:PY(i),stroke:'currentColor','stroke-opacity':'.12'});
+      add(container,'text',{x:PX(i),y:331,'text-anchor':'middle','font-size':12,fill:'currentColor'},i);
+      if(i>0)add(container,'text',{x:45,y:PY(i)+4,'text-anchor':'end','font-size':12,fill:'currentColor'},i);
+    }
+    add(container,'line',{x1:56,y1:314,x2:408,y2:314,stroke:'currentColor','stroke-width':1.7});
+    add(container,'line',{x1:56,y1:314,x2:56,y2:8,stroke:'currentColor','stroke-width':1.7});
+  }
+  function segment(a,b,k){
+    const pts=[];function put(x,y){if(x>=-1e-8&&x<=6+1e-8&&y>=-1e-8&&y<=6+1e-8&&!pts.some(p=>Math.hypot(p[0]-x,p[1]-y)<1e-6))pts.push([Math.max(0,Math.min(6,x)),Math.max(0,Math.min(6,y))]);}
+    if(Math.abs(b)>1e-9){put(0,k/b);put(6,(k-6*a)/b)}
+    if(Math.abs(a)>1e-9){put(k/a,0);put((k-6*b)/a,6)}
+    return pts.slice(0,2);
+  }
+  function line(g,s,color='#bc7f25',width=3,dash='7 5'){
+    if(s.length===2)add(g,'line',{x1:PX(s[0][0]),y1:PY(s[0][1]),x2:PX(s[1][0]),y2:PY(s[1][1]),stroke:color,'stroke-width':width,'stroke-dasharray':dash});
+    else if(s.length===1)add(g,'circle',{cx:PX(s[0][0]),cy:PY(s[0][1]),r:5,fill:color});
+  }
+  const root=document.getElementById('plm-parametros');
+  if(root && !root.dataset.ready){root.dataset.ready='1';const svg=root.querySelector('svg'),gr=root.querySelector('.plm-param-grid'),pg=root.querySelector('.plm-param-points'),lg=root.querySelector('.plm-param-level'),input=root.querySelector('#plm-param-a');grid(svg,gr);
+    const vs=[[0,0,'A'],[4,0,'B'],[8/3,8/3,'C'],[0,4,'D']];root.querySelector('.plm-param-region').setAttribute('d','M '+vs.map(v=>PX(v[0])+' '+PY(v[1])).join(' L ')+' Z');
+    function draw(){const a=Number(input.value),vals=vs.map(v=>a*v[0]+2*v[1]),z=Math.max(...vals), winners=vs.filter((v,i)=>Math.abs(vals[i]-z)<1e-8);root.querySelector('#plm-param-a-text').textContent=new Intl.NumberFormat('es-CR',{maximumFractionDigits:2}).format(a);lg.replaceChildren();pg.replaceChildren();line(lg,segment(a,2,z),'#b9801f',3.5,'8 5');
+      if(winners.length===2)add(pg,'line',{x1:PX(winners[0][0]),y1:PY(winners[0][1]),x2:PX(winners[1][0]),y2:PY(winners[1][1]),stroke:'#d2a046','stroke-width':7,'stroke-opacity':'.7'});
+      for(const v of vs){const winning=winners.some(p=>p[2]===v[2]);add(pg,'circle',{cx:PX(v[0]),cy:PY(v[1]),r:winning?7:5,fill:winning?'#be8727':'#183b45',stroke:'white','stroke-width':1.4});add(pg,'text',{x:PX(v[0])+(v[2]==='D'?-17:10),y:PY(v[1])-10,fill:'currentColor','font-size':14,'font-weight':600},v[2]);}
+      root.querySelector('#plm-param-status').textContent=`Máximo: ${Number(z.toFixed(3)).toLocaleString('es-CR')}. ${winners.length===1?'Única solución óptima: vértice '+winners[0][2]+'.':'Infinitas soluciones óptimas: arista '+winners.map(w=>w[2]).join('–')+'.'}`;}
+    input.addEventListener('input',draw);root.querySelectorAll('[data-plm-a]').forEach(b=>b.addEventListener('click',()=>{input.value=b.dataset.plmA;draw()}));draw();
+  }
+  const cases=document.getElementById('plm-casos');
+  if(cases && !cases.dataset.ready){cases.dataset.ready='1';const picker=cases.querySelector('#plm-case-picker'),group=cases.querySelector('.plm-case-shapes'),gr=cases.querySelector('.plm-case-grid');grid(cases.querySelector('svg'),gr);
+    function draw(){const mode=picker.value;group.replaceChildren();const P=coords=>coords.map(p=>`${PX(p[0])},${PY(p[1])}`).join(' ');const rect=(pts,color)=>add(group,'polygon',{points:P(pts),fill:color,'fill-opacity':'.18',stroke:color,'stroke-width':2});
+      let model='',ans='';
+      if(mode==='multiple'){
+        rect([[0,0],[4,0],[0,4]],'#087d80');line(group,segment(1,1,4),'#b9801f',4,'none');
+        model='Maximizar z = x₁ + x₂; x₁ + x₂ ≤ 4; x₁, x₂ ≥ 0.';
+        ans='El valor máximo es 4. La recta de nivel óptima coincide con el segmento entre (4,0) y (0,4): todos sus puntos son óptimos.';
+      }else if(mode==='finite'){
+        rect([[0,0],[2,0],[2,6],[0,6]],'#087d80');line(group,[[2,0],[2,6]],'#b9801f',4,'none');
+        add(group,'text',{x:PX(1),y:PY(5.4),fill:'#087d80','font-size':12},'La región continúa ↑');
+        model='Maximizar z = x₁; 0 ≤ x₁ ≤ 2; x₂ ≥ 0.';
+        ans='Todas las soluciones cumplen z ≤ 2. Los puntos (2,t), t ≥ 0, son factibles y alcanzan z = 2: máximo finito con múltiples soluciones óptimas.';
+      }else if(mode==='unbounded'){
+        rect([[0,0],[2,0],[6,4],[6,6],[0,6]],'#087d80');line(group,segment(1,1,8),'#b9801f',4,'7 5');
+        add(group,'text',{x:PX(2.2),y:PY(5.4),fill:'#087d80','font-size':12},'La región continúa ↑');
+        model='Maximizar z = x₁ + x₂; x₁ − x₂ ≤ 2; x₁, x₂ ≥ 0.';
+        ans='Para todo t ≥ 0, (t,t) es factible y z(t,t) = 2t. Por tanto, el valor objetivo no está acotado superiormente.';
+      }else{
+        rect([[0,0],[2,0],[0,2]],'#457faa');rect([[0,4],[4,0],[6,0],[6,6],[0,6]],'#c68b2e');
+        line(group,segment(1,1,2),'#457faa',3,'none');line(group,segment(1,1,4),'#c68b2e',3,'none');
+        model='Maximizar z = 3x₁ + 2x₂; x₁ + x₂ ≤ 2; x₁ + x₂ ≥ 4; x₁, x₂ ≥ 0.';
+        ans='Las condiciones x₁+x₂ ≤ 2 y x₁+x₂ ≥ 4 son incompatibles. No existen soluciones factibles y, por tanto, no existe solución óptima.';
+      }
+      cases.querySelector('#plm-case-math').textContent=model;cases.querySelector('#plm-case-answer').textContent=ans;
+      cases.querySelector('details').open=false;
+    }
+    picker.addEventListener('change',draw);draw();
+  }
+  const quiz=document.getElementById('plm-quiz');if(quiz){quiz.querySelector('#plm-quiz-check').addEventListener('click',()=>{const v=quiz.querySelector('input[name=plm-quiz-answer]:checked');quiz.querySelector('#plm-quiz-feedback').textContent=!v?'Seleccioná una respuesta.':v.value==='b'?'Correcto. El comportamiento depende de la función objetivo y de las direcciones factibles.':'Revisá el ejemplo de la franja vertical: una región no acotada puede admitir un máximo finito.';});}
+})();
+</script>
+```
