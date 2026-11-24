@@ -29,6 +29,15 @@ book:
   chapters:
     - index.qmd
     - part: parte-1.qmd
+    - capitulos/capitulo_01_fundamentos.qmd
+    - capitulos/capitulo_02_simplex_matricial.qmd
+    - capitulos/capitulo_03_simplex_tabulado.qmd
+    - capitulos/capitulo_04_formas_canonicas.qmd
+    - capitulos/capitulo_05_dualidad.qmd
+    - capitulos/capitulo_06_interpretacion_dual.qmd
+    - capitulos/capitulo_07_sensibilidad.qmd
+    - capitulos/capitulo_08_entera.qmd
+    - capitulos/capitulo_09_aplicaciones.qmd
       chapters:
         - capitulos/fundamentos_iniciales_capitulo1.qmd
         - capitulos/soluciones_y_region_factible.qmd
