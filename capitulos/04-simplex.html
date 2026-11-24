@@ -173,6 +173,125 @@ ul.task-list li input[type="checkbox"] {
 
 </main> <!-- /main -->
 <div class="pl-footer-note" style="text-align:center;font-size:.82rem;color:#64748b;padding:1rem 0">Libro en desarrollo · Versión editorial preliminar</div>
+<!-- Mapa editorial automático para las páginas de capítulos de Programación Lineal.
+     Incluir con format.html.include-after-body (junto con footer.html).
+     No modifica los encabezados, las anclas, ni los applets. -->
+<style>
+.pl-chapter-map {
+  --pl-map-ink:#183b45;--pl-map-teal:#167d7c;--pl-map-gold:#cf9e41;
+  --pl-map-edge:#dbe7e4;--pl-map-muted:#65787e;
+  font-family:'Source Sans 3',system-ui,sans-serif;
+  border:1px solid var(--pl-map-edge);border-top:3px solid var(--pl-map-teal);
+  border-radius:13px;background:#fff;box-shadow:0 9px 26px rgba(24,59,69,.08);
+  margin:1.15rem 0 2.4rem;overflow:hidden;color:var(--pl-map-ink);
+}
+.pl-chapter-map * {box-sizing:border-box;}
+.pl-chapter-map__head {
+  padding:1.25rem 1.5rem 1.2rem;
+  background:linear-gradient(115deg,#f2f7f5 0%,#faf9f5 100%);
+  display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;
+  border-bottom:1px solid var(--pl-map-edge);
+}
+.pl-chapter-map__eyebrow {margin:0 0 .23rem;font-size:.65rem;font-weight:800;letter-spacing:.14em;color:var(--pl-map-teal);text-transform:uppercase;}
+.pl-chapter-map__head h2 {font-family:'Source Serif 4',Georgia,serif;font-size:1.65rem!important;line-height:1.12;color:var(--pl-map-ink);margin:0 0 .45rem!important;border:0!important;padding:0!important;}
+.pl-chapter-map__description {max-width:650px;margin:0!important;color:var(--pl-map-muted);font-size:.91rem;line-height:1.52;}
+.pl-chapter-map__toggle {appearance:none;border:1px solid #b9d3ce;border-radius:8px;background:#fff;color:var(--pl-map-ink);font:700 .76rem 'Source Sans 3',system-ui,sans-serif;white-space:nowrap;cursor:pointer;padding:.57rem .73rem;}
+.pl-chapter-map__toggle:hover {background:#edf7f4;}
+.pl-chapter-map__grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));}
+.pl-chapter-map__item {display:flex;gap:.78rem;padding:1.35rem 1.4rem;border-bottom:1px solid #edf0ef;min-width:0;}
+.pl-chapter-map__item:nth-child(odd){border-right:1px solid #edf0ef;}
+.pl-chapter-map__number {flex:none;display:grid;place-items:center;width:1.85rem;height:1.85rem;border:1px solid #b9dfd4;border-radius:50%;background:#ecf8f4;color:#167d7c;font-size:.73rem;font-weight:800;margin-top:.03rem;}
+.pl-chapter-map__item:nth-child(4n+2) .pl-chapter-map__number,
+.pl-chapter-map__item:nth-child(4n+3) .pl-chapter-map__number {border-color:#e4d5ad;background:#fdf8e9;color:#a57927;}
+.pl-chapter-map__body {min-width:0;flex:1;}
+.pl-chapter-map__section {display:flex;align-items:start;justify-content:space-between;gap:.45rem;color:var(--pl-map-ink)!important;text-decoration:none!important;font-size:.91rem;font-weight:700;line-height:1.38;}
+.pl-chapter-map__section:hover {color:var(--pl-map-teal)!important;}
+.pl-chapter-map__arrow {font-size:1.1rem;color:#758c8e;flex:none;}
+.pl-chapter-map__subtopics {margin:.7rem 0 0 .18rem;padding-left:.68rem;border-left:1px solid #c9deda;display:flex;flex-direction:column;gap:.38rem;}
+.pl-chapter-map__subtopics a {color:#60777b!important;text-decoration:none!important;font-size:.81rem;line-height:1.35;}
+.pl-chapter-map__subtopics a::before {content:'– ';color:#9bbcb4;}
+.pl-chapter-map__subtopics a:hover {color:var(--pl-map-teal)!important;text-decoration:underline!important;}
+.pl-chapter-map__end {padding:.85rem 1.45rem;background:#fbfdfc;color:#71858a;font-size:.76rem;display:flex;justify-content:space-between;gap:.7rem;flex-wrap:wrap;}
+.pl-chapter-map__end a {color:var(--pl-map-teal)!important;text-decoration:none!important;font-weight:700;}
+.pl-chapter-map.is-collapsed .pl-chapter-map__grid,.pl-chapter-map.is-collapsed .pl-chapter-map__end{display:none;}
+@media(max-width:730px){.pl-chapter-map__grid{grid-template-columns:1fr;}.pl-chapter-map__item:nth-child(odd){border-right:0;}.pl-chapter-map__head{padding:1rem;}.pl-chapter-map__item{padding:1rem;}.pl-chapter-map__head h2{font-size:1.4rem!important;}}
+@media(max-width:440px){.pl-chapter-map__head{flex-direction:column;}.pl-chapter-map__toggle{align-self:flex-start;}}
+</style>
+<script>
+(function(){
+  'use strict';
+  function init(){
+    // Solo capítulos, nunca la portada general ni los índices de las partes.
+    var path=decodeURIComponent(location.pathname);
+    if(!/(?:^|\/)capitulos\/[^/]+\.html$/i.test(path)) return;
+    var main=document.querySelector('main#quarto-document-content') || document.querySelector('main.content') || document.getElementById('quarto-document-content');
+    if(!main || main.querySelector('.pl-chapter-map'))return;
+    var headings=Array.from(main.querySelectorAll('h2,h3')).filter(function(h){
+      return !h.closest('.callout,details,.cell-output,.pl-chapter-map,nav,aside,.footnotes') && h.id;
+    });
+    var sections=[];
+    headings.forEach(function(h){
+      if(h.tagName==='H2')sections.push({h:h,subs:[]});
+      else if(sections.length) sections[sections.length-1].subs.push(h);
+    });
+    if(!sections.length)return;
+    var filename=path.split('/').pop().replace(/\.html$/i,'');
+    var intro={
+      'fundamentos_iniciales_capitulo1':'Qué caracteriza a un programa lineal, cómo se formulan sus componentes y cómo se expresa un modelo mediante notación matricial.',
+      'soluciones_y_region_factible':'De las restricciones lineales al conjunto factible: interpretación geométrica, representación y lectura de soluciones.',
+      'combinaciones_convexas_y_convexidad':'Combinaciones convexas, conjuntos convexos y propiedades que fundamentan la geometría de la optimización.',
+      'vertices_y_puntos_extremos':'Cómo reconocer los vértices y puntos extremos de una región factible y justificar sus propiedades.',
+      'vertices_y_soluciones_optimas':'La relación entre vértices, puntos extremos y soluciones óptimas de un programa lineal.',
+      'interpretacion_geometrica_niveles':'Interpretación y exploración de rectas y planos de nivel para comprender la función objetivo.',
+      'metodo_grafico_completo':'Procedimiento geométrico de optimización, casos especiales y actividades de interpretación.',
+      'extension_geometrica_3d':'Poliedros factibles y planos de nivel en tres dimensiones mediante ejemplos y exploración espacial.',
+      '03-bases':'Bases, variables básicas y soluciones básicas factibles.',
+      '04-simplex':'Fundamentos y funcionamiento del método Simplex.',
+      '05-dualidad':'Relación entre programas primales y duales y sus resultados principales.',
+      '06-sensibilidad':'Cómo cambian las soluciones al variar datos del modelo.',
+      '07-modelos':'Formulación e interpretación de modelos de optimización.',
+      '08-entera':'Programación lineal entera y técnicas para resolver problemas con restricciones de integridad.',
+      '09-aplicaciones':'Aplicaciones de la programación lineal a problemas de decisión.'
+    };
+    var chapterTitle=document.querySelector('h1.title')?.textContent?.trim() || document.title.split('–')[0].trim();
+    var description=intro[filename] || 'Un recorrido por los conceptos, resultados, ejemplos y actividades de este capítulo.';
+    var root=document.createElement('section');root.className='pl-chapter-map';root.setAttribute('aria-label','Mapa del capítulo');
+    var head=document.createElement('div');head.className='pl-chapter-map__head';
+    var headingWrap=document.createElement('div');
+    var eyebrow=document.createElement('p');eyebrow.className='pl-chapter-map__eyebrow';eyebrow.textContent='MAPA DEL CAPÍTULO';
+    var title=document.createElement('h2');title.textContent='Contenido';
+    var desc=document.createElement('p');desc.className='pl-chapter-map__description';desc.textContent=description;
+    headingWrap.append(eyebrow,title,desc);
+    var toggle=document.createElement('button');toggle.className='pl-chapter-map__toggle';toggle.type='button';toggle.setAttribute('aria-expanded','true');toggle.textContent='Ocultar contenido ▾';
+    head.append(headingWrap,toggle);root.append(head);
+    var grid=document.createElement('div');grid.className='pl-chapter-map__grid';
+    sections.forEach(function(section,i){
+      var item=document.createElement('div');item.className='pl-chapter-map__item';
+      var number=document.createElement('span');number.className='pl-chapter-map__number';number.textContent=String(i+1).padStart(2,'0');
+      var body=document.createElement('div');body.className='pl-chapter-map__body';
+      var link=document.createElement('a');link.className='pl-chapter-map__section';link.href='#'+encodeURIComponent(section.h.id);link.textContent=section.h.textContent.replace(/\s*Anchor\s*$/,'').trim();
+      var arrow=document.createElement('span');arrow.className='pl-chapter-map__arrow';arrow.setAttribute('aria-hidden','true');arrow.textContent='›';link.append(arrow);
+      body.append(link);
+      if(section.subs.length){
+        var sub=document.createElement('div');sub.className='pl-chapter-map__subtopics';
+        section.subs.forEach(function(h){var a=document.createElement('a');a.href='#'+encodeURIComponent(h.id);a.textContent=h.textContent.replace(/\s*Anchor\s*$/,'').trim();sub.append(a);});
+        body.append(sub);
+      }
+      item.append(number,body);grid.append(item);
+    });
+    root.append(grid);
+    var end=document.createElement('div');end.className='pl-chapter-map__end';
+    var label=document.createElement('span');label.textContent=sections.length+' secciones · elegí un tema para ir directamente a su explicación';
+    var first=document.createElement('a');first.href='#'+encodeURIComponent(sections[0].h.id);first.textContent='Comenzar a leer →';
+    end.append(label,first);root.append(end);
+    toggle.addEventListener('click',function(){
+      var closed=root.classList.toggle('is-collapsed');toggle.setAttribute('aria-expanded',String(!closed));toggle.textContent=closed?'Mostrar contenido ▾':'Ocultar contenido ▾';
+    });
+    main.insertBefore(root,main.firstChild);
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
