@@ -1,0 +1,221 @@
+---
+title: "Modelación de problemas reales"
+subtitle: "Capítulo 1 · Sección 1.9"
+sidebar: false
+toc: true
+toc-location: right
+toc-depth: 3
+---
+
+## De una situación real a un modelo matemático
+
+En los apartados anteriores estudiamos las regiones factibles, los vértices y los resultados de optimalidad. Ahora invertiremos la perspectiva: **partiremos de una situación concreta y construiremos el programa lineal que la representa**.
+
+Modelar no es solamente asignar letras a cantidades. Es decidir qué puede elegirse, qué se pretende optimizar y cuáles son las condiciones que toda decisión aceptable debe satisfacer.
+
+::: {.callout-tip title="Una pregunta antes de escribir ecuaciones"}
+¿Cuáles cantidades puede decidir la persona responsable del problema y cuáles son datos que ya vienen fijados por el contexto?
+:::
+
+En un modelo de programación lineal distinguimos las **variables de decisión**, la **función objetivo**, las **restricciones** y el **dominio de las variables**. También debemos comprobar que las unidades físicas sean consistentes y que las soluciones del modelo tengan significado en la situación original.
+
+## Producción agrícola: distribuir recursos limitados
+
+### El problema
+
+Un agricultor dispone de **80 hectáreas**, **200 unidades de agua de riego** y **300 kg de fertilizante**. Puede sembrar maíz y frijoles. Los consumos por hectárea y las ganancias son los siguientes:
+
+| Concepto (por hectárea) | Maíz | Frijoles |
+|:--|--:|--:|
+| Agua de riego (unidades) | 4 | 2 |
+| Fertilizante (kg) | 3 | 5 |
+| Ganancia (unidades monetarias) | 500 | 400 |
+
+**Pregunta:** ¿cuántas hectáreas debe dedicar a cada cultivo para maximizar la ganancia total sin superar sus disponibilidades?
+
+::: {.callout-note title="Antes de continuar"}
+¿Es correcto escribir $x_1+x_2=80$? No necesariamente: disponer de 80 hectáreas no significa estar obligado a cultivar toda la tierra.
+:::
+
+### Variables de decisión y función objetivo
+
+Definimos $x_1$ como la cantidad de hectáreas destinadas al maíz y $x_2$ como la cantidad de hectáreas destinadas a los frijoles. Como las ganancias por hectárea son 500 y 400 unidades monetarias, respectivamente, la ganancia total es
+
+$$z=500x_1+400x_2.$$
+
+Por tanto, se busca **maximizar** $z$.
+
+### Restricciones y sus unidades
+
+- **Tierra:** cada hectárea sembrada utiliza una hectárea del terreno disponible, por lo que $x_1+x_2\leq80$.
+- **Agua:** sembrar $x_1$ hectáreas de maíz requiere $4x_1$ unidades de agua y sembrar $x_2$ hectáreas de frijoles requiere $2x_2$, de modo que $4x_1+2x_2\leq200$.
+- **Fertilizante:** el consumo total es $3x_1+5x_2$ kg; por consiguiente, $3x_1+5x_2\leq300$.
+- **No negatividad:** $x_1,x_2\geq0$.
+
+Reunimos las condiciones en el programa lineal
+
+$$
+\begin{aligned}
+\text{Maximizar}\quad &z=500x_1+400x_2\\
+\text{sujeto a}\quad &x_1+x_2\leq80,\\
+&4x_1+2x_2\leq200,\\
+&3x_1+5x_2\leq300,\\
+&x_1,x_2\geq0.
+\end{aligned}
+$$
+
+### Interpretación geométrica y solución
+
+La región factible es la intersección de los semiplanos definidos por las tres disponibilidades y el primer cuadrante. Las restricciones de agua y fertilizante se intersectan en
+
+$$
+\begin{cases}
+4x_1+2x_2=200,\\
+3x_1+5x_2=300,
+\end{cases}
+\qquad\Longrightarrow\qquad
+(x_1,x_2)=\left(\frac{200}{7},\frac{300}{7}\right).
+$$
+
+En este punto se utilizan $\frac{500}{7}<80$ hectáreas, es decir, la restricción de tierra no es activa. La ganancia correspondiente es
+
+$$z^*=500\left(\frac{200}{7}\right)+400\left(\frac{300}{7}\right)
+=\frac{220000}{7}\approx31428{,}57.$$
+
+Para justificar que es el máximo, podemos comparar el valor de la función objetivo en los vértices de la región factible: $(0,0)$, $(50,0)$, $\left(\frac{200}{7},\frac{300}{7}\right)$ y $(0,60)$. Los valores respectivos son $0$, $25000$, $\frac{220000}{7}$ y $24000$.
+
+::: {.callout-important title="Interpretación, no solo resultado"}
+El modelo recomienda sembrar aproximadamente **28,57 hectáreas de maíz** y **42,86 hectáreas de frijoles**. Se agotan el agua y el fertilizante, pero queda terreno sin cultivar. Esto no es una contradicción: **el recurso limitante no tiene por qué ser la tierra**.
+:::
+
+Si se exigieran hectáreas enteras, ya no estaríamos ante este mismo programa lineal continuo: habría que incorporar restricciones de integridad, que estudiaremos posteriormente.
+
+## Transporte de arroz: un modelo de distribución
+
+### El problema
+
+Una empresa arrocera tiene dos plantas, $P_1$ y $P_2$, que deben enviar **toda su producción semanal** a tres supermercados, $S_1$, $S_2$ y $S_3$. Cada supermercado debe recibir **exactamente** su demanda.
+
+Los costos de transporte se indican en **miles de colones por saco**:
+
+| Origen | $S_1$ | $S_2$ | $S_3$ | Producción (sacos) |
+|:--|--:|--:|--:|--:|
+| $P_1$ | 12 | 15 | 14 | 400 |
+| $P_2$ | 10 | 18 | 16 | 600 |
+| **Demanda (sacos)** | **300** | **500** | **200** | **1000** |
+
+Observá que la oferta total es $400+600=1000$ sacos y la demanda total es $300+500+200=1000$ sacos. El problema está **balanceado**.
+
+### Variables de decisión
+
+Para $i\in\{1,2\}$ y $j\in\{1,2,3\}$, definimos $x_{ij}$ como la cantidad de sacos enviados desde la planta $P_i$ hasta el supermercado $S_j$.
+
+En particular, tenemos **seis variables**, una por cada ruta de transporte. Por ejemplo, $x_{12}$ representa los sacos enviados de $P_1$ a $S_2$.
+
+### Objetivo y restricciones
+
+El costo total, expresado en miles de colones, es
+
+$$C=12x_{11}+15x_{12}+14x_{13}+10x_{21}+18x_{22}+16x_{23}.$$
+
+La producción de cada planta debe enviarse completamente:
+
+$$x_{11}+x_{12}+x_{13}=400,\qquad x_{21}+x_{22}+x_{23}=600.$$
+
+Cada supermercado debe recibir exactamente lo requerido:
+
+$$
+\begin{aligned}
+x_{11}+x_{21}&=300,\\
+x_{12}+x_{22}&=500,\\
+x_{13}+x_{23}&=200.
+\end{aligned}
+$$
+
+Además, $x_{ij}\geq0$ para todas las rutas. Así, el objetivo consiste en **minimizar $C$** sujeto a estas cinco igualdades y a la no negatividad.
+
+::: {.callout-note title="¿Por qué igualdades y no desigualdades?"}
+En este contexto no se permite almacenar sacos en las plantas ni entregar más o menos de lo solicitado. Esa interpretación determina el signo $=$ de las restricciones.
+:::
+
+### Reducción del modelo e interpretación
+
+Aunque aparecen cinco ecuaciones, una es redundante porque la suma de las ofertas coincide con la suma de las demandas. Podemos elegir $u=x_{11}$ y $v=x_{12}$ y expresar las demás variables como
+
+$$
+\begin{aligned}
+x_{13}&=400-u-v, & x_{21}&=300-u,\\
+x_{22}&=500-v, & x_{23}&=u+v-200.
+\end{aligned}
+$$
+
+Al sustituir en la función objetivo, obtenemos el problema equivalente de dos variables
+
+$$\text{Minimizar}\quad C(u,v)=14400+4u-v,$$
+
+sujeto a $u\geq0$, $v\geq0$, $u+v\leq400$, $u\leq300$, $v\leq500$ y $u+v\geq200$.
+
+Como $4u\geq0$ y $v\leq400-u$, se tiene
+
+$$C(u,v)=14400+4u-v\geq14400+4u-(400-u)=14000+5u\geq14000.$$
+
+La cota se alcanza con $u=0$ y $v=400$, que satisfacen todas las restricciones. Por consiguiente, una distribución óptima es
+
+| Ruta | Sacos enviados |
+|:--|--:|
+| $P_1\to S_1$ | 0 |
+| $P_1\to S_2$ | 400 |
+| $P_1\to S_3$ | 0 |
+| $P_2\to S_1$ | 300 |
+| $P_2\to S_2$ | 100 |
+| $P_2\to S_3$ | 200 |
+
+El costo mínimo es **14000 miles de colones**, es decir, **14 millones de colones**. Este resultado utiliza únicamente sustituciones e inequaciones; no necesitamos aplicar el método Simplex.
+
+## Comparación de los dos modelos
+
+| Característica | Producción agrícola | Transporte de arroz |
+|:--|:--|:--|
+| Decisiones | Hectáreas por cultivo | Sacos por ruta |
+| Objetivo | Maximizar ganancias | Minimizar costos |
+| Restricciones principales | Disponibilidades máximas | Ofertas y demandas exactas |
+| Variables | 2 | 6 |
+| Geometría | Representación directa en el plano | Reducción a dos variables |
+
+La estructura matemática depende del significado de los datos. No existe una regla que obligue a que todas las restricciones sean del mismo tipo.
+
+## Actividades de comprensión
+
+### Actividad: validar un modelo
+
+En el problema agrícola, una persona propone reemplazar $x_1+x_2\leq80$ por $x_1+x_2=80$.
+
+1. Explicá qué supuesto adicional estaría incorporando.
+2. Determiná si el plan óptimo encontrado seguiría siendo factible.
+3. Describí una situación real en la que sí sería apropiada la igualdad.
+
+### Actividad: interpretar una ruta
+
+En el problema de transporte, suponé que el costo de la ruta $P_1\to S_2$ aumenta de 15 a 20 miles de colones por saco.
+
+1. Escribí la nueva función objetivo; no modifiqués las restricciones.
+2. Evaluá el costo de la distribución óptima anterior con el nuevo precio.
+3. Explicá por qué ese cálculo **no basta** para afirmar que la distribución anterior sigue siendo óptima.
+
+### Actividad: formular sin resolver
+
+Una cooperativa fabrica dos productos, $A$ y $B$. Cada unidad de $A$ requiere 2 horas de máquina y 3 kg de materia prima; cada unidad de $B$ requiere 4 horas y 1 kg. Se dispone de 40 horas de máquina y 36 kg de materia prima. La ganancia por unidad es de 70 y 50 unidades monetarias, respectivamente.
+
+Definí las variables y formulá el programa lineal que maximiza la ganancia. Indicá el significado de cada restricción y sus unidades. **No utilicés el método Simplex.**
+
+## Ideas para recordar
+
+- Una variable de decisión representa una cantidad que puede elegirse y debe tener unidades claras.
+- Una restricción expresa una condición del contexto; su sentido ($\leq$, $\geq$ o $=$) debe justificarse.
+- Las restricciones no negativas también forman parte del modelo.
+- La solución matemática debe interpretarse y verificarse en el problema original.
+- Modelos con muchas variables pueden admitir reducciones, pero no toda reducción conserva una interpretación sencilla.
+
+::: {.callout-tip title="Conexión con el resto del libro"}
+En el método gráfico aprovechamos la estructura geométrica de problemas de dos variables. Más adelante, el método Simplex permitirá resolver modelos con muchas variables sin depender de su representación gráfica.
+:::
