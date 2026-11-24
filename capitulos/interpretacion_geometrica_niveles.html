@@ -577,8 +577,14 @@ render();
     if(!/(?:^|\/)capitulos\/[^/]+\.html$/i.test(path)) return;
     var main=document.querySelector('main#quarto-document-content') || document.querySelector('main.content') || document.getElementById('quarto-document-content');
     if(!main || main.querySelector('.pl-chapter-map'))return;
+    // Quarto normalmente asigna el id al <section>, no al <h2>/<h3>.
+    function anchorId(h){
+      if(h.id) return h.id;
+      var wrapper=h.closest('section[id]');
+      return wrapper ? wrapper.id : '';
+    }
     var headings=Array.from(main.querySelectorAll('h2,h3')).filter(function(h){
-      return !h.closest('.callout,details,.cell-output,.pl-chapter-map,nav,aside,.footnotes') && h.id;
+      return !h.closest('.callout,details,.cell-output,.pl-chapter-map,nav,aside,.footnotes') && !!anchorId(h);
     });
     var sections=[];
     headings.forEach(function(h){
@@ -620,12 +626,12 @@ render();
       var item=document.createElement('div');item.className='pl-chapter-map__item';
       var number=document.createElement('span');number.className='pl-chapter-map__number';number.textContent=String(i+1).padStart(2,'0');
       var body=document.createElement('div');body.className='pl-chapter-map__body';
-      var link=document.createElement('a');link.className='pl-chapter-map__section';link.href='#'+encodeURIComponent(section.h.id);link.textContent=section.h.textContent.replace(/\s*Anchor\s*$/,'').trim();
+      var link=document.createElement('a');link.className='pl-chapter-map__section';link.href='#'+encodeURIComponent(anchorId(section.h));link.textContent=section.h.textContent.replace(/\s*Anchor\s*$/,'').trim();
       var arrow=document.createElement('span');arrow.className='pl-chapter-map__arrow';arrow.setAttribute('aria-hidden','true');arrow.textContent='›';link.append(arrow);
       body.append(link);
       if(section.subs.length){
         var sub=document.createElement('div');sub.className='pl-chapter-map__subtopics';
-        section.subs.forEach(function(h){var a=document.createElement('a');a.href='#'+encodeURIComponent(h.id);a.textContent=h.textContent.replace(/\s*Anchor\s*$/,'').trim();sub.append(a);});
+        section.subs.forEach(function(h){var a=document.createElement('a');a.href='#'+encodeURIComponent(anchorId(h));a.textContent=h.textContent.replace(/\s*Anchor\s*$/,'').trim();sub.append(a);});
         body.append(sub);
       }
       item.append(number,body);grid.append(item);
@@ -633,7 +639,7 @@ render();
     root.append(grid);
     var end=document.createElement('div');end.className='pl-chapter-map__end';
     var label=document.createElement('span');label.textContent=sections.length+' secciones · elegí un tema para ir directamente a su explicación';
-    var first=document.createElement('a');first.href='#'+encodeURIComponent(sections[0].h.id);first.textContent='Comenzar a leer →';
+    var first=document.createElement('a');first.href='#'+encodeURIComponent(anchorId(sections[0].h));first.textContent='Comenzar a leer →';
     end.append(label,first);root.append(end);
     toggle.addEventListener('click',function(){
       var closed=root.classList.toggle('is-collapsed');toggle.setAttribute('aria-expanded',String(!closed));toggle.textContent=closed?'Mostrar contenido ▾':'Ocultar contenido ▾';
