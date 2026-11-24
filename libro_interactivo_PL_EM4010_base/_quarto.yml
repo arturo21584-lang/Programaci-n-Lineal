@@ -40,7 +40,9 @@ book:
         - capitulos/vertices_y_soluciones_optimas.qmd
         - capitulos/interpretacion_geometrica_niveles.qmd
         - capitulos/metodo_grafico_completo.qmd
-        - capitulos/extension_geometrica_3d.qmd
+        - capitulos/extension_geometrica_3d.qmd        
+        - capitulos/modelacion_problemas_reales.qmd
+
 
     # Los demás capítulos del libro
     - capitulos/capitulo_02_simplex_matricial.qmd
