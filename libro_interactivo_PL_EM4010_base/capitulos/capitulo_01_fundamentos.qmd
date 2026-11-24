@@ -67,9 +67,13 @@ body:has(.pl-chapter-landing) #quarto-content {grid-template-columns:minmax(0,1f
         <span class="pl-chapter-map__number">08</span>
         <div class="pl-chapter-map__body"><a class="pl-chapter-map__section" href="extension_geometrica_3d.html">Extensión geométrica tridimensional<span class="pl-chapter-map__arrow" aria-hidden="true">›</span></a><div class="pl-chapter-map__subtopics" aria-label="Subsecciones de este tema"></div></div>
       </div>
+      <div class="pl-chapter-map__item" data-subtopics-url="modelacion_problemas_reales.html">
+        <span class="pl-chapter-map__number">09</span>
+        <div class="pl-chapter-map__body"><a class="pl-chapter-map__section" href="modelacion_problemas_reales.html">Modelación de problemas reales<span class="pl-chapter-map__arrow" aria-hidden="true">›</span></a><div class="pl-chapter-map__subtopics" aria-label="Subsecciones de este tema"></div></div>
+      </div>
     </div>
     <div class="pl-chapter-map__end">
-      <span>8 secciones · elegí una sección para comenzar</span>
+      <span>9 secciones · elegí una sección para comenzar</span>
       <a href="fundamentos_iniciales_capitulo1.html">Comenzar a leer →</a>
     </div>
   </section>
