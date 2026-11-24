@@ -1,0 +1,44 @@
+---
+title: "Capítulo 4. Transformaciones a formas canónicas"
+page-layout: full
+sidebar: false
+toc: false
+---
+
+```{=html}
+<style>
+body:has(.pl-chapter-landing) #title-block-header { display:none !important; }
+body:has(.pl-chapter-landing) #quarto-margin-sidebar { display:none !important; }
+body:has(.pl-chapter-landing) #quarto-content { grid-template-columns:minmax(0,1fr) !important; }
+.pl-chapter-landing {max-width:1050px; margin:0 auto 3rem; font-family:'Source Sans 3',system-ui,sans-serif; color:#183B45}
+.pl-chapter-landing .breadcrumb {font-size:.9rem; margin:1.5rem 0 1.4rem}
+.pl-chapter-landing .breadcrumb a {color:#237F80; text-decoration:none}
+.pl-chapter-landing .hero {background:linear-gradient(120deg,#122d37,#27646a); color:#fff; padding:clamp(1.8rem,4vw,3rem); border-radius:19px; margin-bottom:2rem}
+.pl-chapter-landing .eyebrow {font-size:.83rem;letter-spacing:.14em;color:#a8e3d6;text-transform:uppercase;font-weight:700}
+.pl-chapter-landing .hero h1 {color:#fff; font-family:'Source Serif 4',Georgia,serif; font-size:clamp(2rem,4vw,3.35rem); margin:.45rem 0 1rem}
+.pl-chapter-landing .hero p {color:#e2efec;line-height:1.7;font-size:1.1rem;max-width:830px;margin:0}
+.pl-chapter-landing .map {border:1px solid #d8e5e2; border-radius:15px;padding:clamp(1rem,3vw,2rem);background:#fff}
+.pl-chapter-landing .map h2 {font-family:'Source Serif 4',Georgia,serif;margin:0 0 .45rem;color:#183B45}
+.pl-chapter-landing .map .lead {color:#65777b;margin:0 0 1.25rem}
+.pl-chapter-landing .map ol {list-style:none; padding:0; margin:0; display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem}
+.pl-chapter-landing .map li {border:1px solid #d8e5e2;border-radius:10px;padding:1rem 1.1rem;line-height:1.45;background:#f9fcfb}
+.pl-chapter-landing .map li a {color:#183B45;text-decoration:none;display:block}
+.pl-chapter-landing .map li:has(a):hover {border-color:#70bcb1;background:#eff8f5}
+.pl-chapter-landing .map .n {font-weight:700;color:#168179;margin-right:.55rem}
+.pl-chapter-landing .map small {color:#82949a;display:block;margin-left:2.4rem;font-size:.78rem}
+@media(max-width:650px) {.pl-chapter-landing .map ol{grid-template-columns:1fr}}
+</style>
+<div class="pl-chapter-landing">
+  <div class="breadcrumb"><a href="../index.html">← Índice general</a></div>
+  <section class="hero"><div class="eyebrow">Capítulo 4</div><h1>Transformaciones a formas canónicas</h1><p>Holguras, variables superfluas, artificiales, penalización y variables libres. Este capítulo forma parte de la estructura prevista del libro y se desarrollará progresivamente.</p></section>
+  <section class="map" aria-label="Mapa de contenidos"><h2>Mapa del capítulo</h2><p class="lead">Este capítulo se encuentra en preparación. El mapa indica la organización prevista; todavía no hay páginas de teoría enlazadas.</p>
+    <ol>
+  <li><span class="n">4.1</span> De maximización a minimización <small>En preparación</small></li>
+  <li><span class="n">4.2</span> Restricciones de desigualdad <small>En preparación</small></li>
+  <li><span class="n">4.3</span> Variables artificiales y penalización <small>En preparación</small></li>
+  <li><span class="n">4.4</span> Método de dos etapas <small>En preparación</small></li>
+  <li><span class="n">4.5</span> Variables sin restricción de signo <small>En preparación</small></li>
+    </ol>
+  </section>
+</div>
+```
