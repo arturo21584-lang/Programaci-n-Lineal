@@ -26,18 +26,12 @@ book:
     style: docked
     search: true
     collapse-level: 1
+
   chapters:
     - index.qmd
-    - part: parte-1.qmd
-    - capitulos/capitulo_01_fundamentos.qmd
-    - capitulos/capitulo_02_simplex_matricial.qmd
-    - capitulos/capitulo_03_simplex_tabulado.qmd
-    - capitulos/capitulo_04_formas_canonicas.qmd
-    - capitulos/capitulo_05_dualidad.qmd
-    - capitulos/capitulo_06_interpretacion_dual.qmd
-    - capitulos/capitulo_07_sensibilidad.qmd
-    - capitulos/capitulo_08_entera.qmd
-    - capitulos/capitulo_09_aplicaciones.qmd
+
+    # Capítulo 1 y sus ocho temas existentes
+    - part: capitulos/capitulo_01_fundamentos.qmd
       chapters:
         - capitulos/fundamentos_iniciales_capitulo1.qmd
         - capitulos/soluciones_y_region_factible.qmd
@@ -47,27 +41,45 @@ book:
         - capitulos/interpretacion_geometrica_niveles.qmd
         - capitulos/metodo_grafico_completo.qmd
         - capitulos/extension_geometrica_3d.qmd
+
+    # Los demás capítulos del libro
+    - capitulos/capitulo_02_simplex_matricial.qmd
+    - capitulos/capitulo_03_simplex_tabulado.qmd
+    - capitulos/capitulo_04_formas_canonicas.qmd
+    - capitulos/capitulo_05_dualidad.qmd
+    - capitulos/capitulo_06_interpretacion_dual.qmd
+    - capitulos/capitulo_07_sensibilidad.qmd
+    - capitulos/capitulo_08_entera.qmd
+    - capitulos/capitulo_09_aplicaciones.qmd
+
+    # Material anterior, conservado temporalmente
     - part: parte-2.qmd
       chapters:
         - capitulos/03-bases.qmd
+
     - part: parte-3.qmd
       chapters:
         - capitulos/04-simplex.qmd
+
     - part: parte-4.qmd
       chapters:
         - capitulos/05-dualidad.qmd
         - capitulos/06-sensibilidad.qmd
+
     - part: parte-5.qmd
       chapters:
         - capitulos/07-modelos.qmd
         - capitulos/08-entera.qmd
         - capitulos/09-aplicaciones.qmd
+
     - part: "Material complementario"
       chapters:
         - exploraciones.qmd
         - recursos/index.qmd
         - acerca.qmd
+
     - referencias.qmd
+
 
 bibliography: bibliografia/referencias.bib
 format:
