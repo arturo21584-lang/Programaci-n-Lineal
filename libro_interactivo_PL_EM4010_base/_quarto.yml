@@ -70,7 +70,9 @@ format:
     toc-depth: 3
     number-sections: false
     link-external-newwindow: true
-    include-after-body: includes/footer.html
+    include-after-body:
+      - includes/footer.html
+      - includes/mapa-capitulos.html
     html-math-method: mathjax
 
 execute:
