@@ -1,5 +1,5 @@
 ---
-title: "Parte I. Fundamentos y geometría"
+title: "Programación Lineal"
 page-layout: full
 sidebar: false
 toc: false
@@ -8,64 +8,64 @@ toc: false
 ```{=html}
 <style>
 
-/* Portada autónoma: estilos limitados a #pl-part1. No altera capítulos ni índices interiores. */
-body:has(#pl-part1) #title-block-header { display:none !important; }
-body:has(#pl-part1) #quarto-sidebar { display:none !important; }
-body:has(#pl-part1) #quarto-margin-sidebar { display:none !important; }
-body:has(#pl-part1) #quarto-content { grid-template-columns: minmax(0,1fr) !important; }
-body:has(#pl-part1) #quarto-document-content,body:has(#pl-part1) main.content { max-width:none !important; width:100%; }
-#pl-part1 { --pl-ink:#183B45; --pl-teal:#237F80; --pl-gold:#D8A447; --pl-muted:#62747a; max-width:1160px; margin:0 auto 3rem; color:var(--pl-ink); font-family:'Source Sans 3',system-ui,sans-serif; }
-#pl-part1 * { box-sizing:border-box; }
-#pl-part1 .pl-cover { position:relative; overflow:hidden; isolation:isolate; background:linear-gradient(125deg,#122d37 0%,#194451 56%,#27646a 100%); border-radius:22px; color:#fff; padding:clamp(1.6rem,4vw,3.5rem); min-height:350px; display:grid; grid-template-columns:minmax(0,1.14fr) minmax(260px,.86fr); align-items:center; gap:1rem; }
-#pl-part1 .pl-cover:before{content:'';position:absolute;inset:auto -100px -200px auto;width:420px;height:420px;border-radius:50%;border:1px solid #ffffff17;box-shadow:0 0 0 48px #ffffff06,0 0 0 105px #ffffff05;z-index:-1}
-#pl-part1 .pl-eyebrow{font-size:.76rem;font-weight:700;letter-spacing:.17em;text-transform:uppercase;color:#a8e3d6;margin-bottom:.75rem;}
-#pl-part1 .pl-cover h1{color:#fff;font-family:'Source Serif 4',Georgia,serif;font-size:clamp(2.65rem,5vw,4.7rem);line-height:1.06;letter-spacing:-.035em;margin:0 0 .65rem;font-weight:600;}
-#pl-part1 .pl-cover .pl-tagline{font-family:'Source Serif 4',Georgia,serif;color:#d1ebe7;font-size:clamp(1.12rem,2vw,1.48rem);margin:0 0 1.2rem;}
-#pl-part1 .pl-cover .pl-intro{max-width:530px;color:#dce9e8;line-height:1.6;font-size:1.04rem;margin:0 0 1.6rem;}
-#pl-part1 .pl-cover-actions{display:flex;gap:.65rem;flex-wrap:wrap}
-#pl-part1 .pl-cover-actions a{display:inline-flex;align-items:center;min-height:44px;padding:.68rem 1rem;border-radius:9px;text-decoration:none;font-weight:700;font-size:.94rem;transition:transform .18s,background .18s}
-#pl-part1 .pl-cover-actions a:hover{transform:translateY(-2px)}
-#pl-part1 .pl-cover-actions .pl-main-action{background:#e9f6ee;color:#183B45}
-#pl-part1 .pl-cover-actions .pl-alt-action{border:1px solid #82b7b0;color:#fff}
-#pl-part1 .pl-cover-art{width:100%;display:block;overflow:visible;filter:drop-shadow(0 12px 22px #061b2450)}
-#pl-part1 .pl-ribbon{display:flex;gap:1rem;flex-wrap:wrap;margin:1.1rem 0 2.7rem;color:#486168;font-size:.9rem}
-#pl-part1 .pl-ribbon span{border:1px solid #dae7e4;border-radius:100px;padding:.32rem .8rem;background:#f8fbfa}
-#pl-part1 .pl-section-head{display:flex;justify-content:space-between;align-items:baseline;gap:1.5rem;border-bottom:1px solid #d7e3e1;padding-bottom:.8rem;margin-bottom:1.15rem}
-#pl-part1 .pl-section-head h2{font-family:'Source Serif 4',Georgia,serif;color:#183B45;margin:0;font-size:clamp(1.55rem,2.5vw,2.1rem);font-weight:600}
-#pl-part1 .pl-section-head p{color:#63767b;margin:0;font-size:.95rem}
-#pl-part1 .pl-chapters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-bottom:2.7rem}
-#pl-part1 .pl-chapter{position:relative;display:flex;flex-direction:column;min-height:187px;border:1px solid #d8e5e2;background:#fff;color:#183B45;border-radius:14px;padding:1.3rem 1.4rem;text-decoration:none !important;box-shadow:0 3px 10px #0f293208;transition:transform .17s,border-color .17s,box-shadow .17s}
-#pl-part1 .pl-chapter:hover,#pl-part1 .pl-chapter:focus-visible{transform:translateY(-4px);border-color:#71b8ae;box-shadow:0 12px 25px #0f293218;color:#183B45}
-#pl-part1 .pl-chapter .pl-number{font-size:.8rem;letter-spacing:.12em;font-weight:700;color:#168179;margin-bottom:1.1rem}
-#pl-part1 .pl-chapter h3{font-family:'Source Serif 4',Georgia,serif;font-size:1.27rem;line-height:1.25;margin:0 0 .55rem;color:#183B45;font-weight:600}
-#pl-part1 .pl-chapter p{font-size:.91rem;line-height:1.5;color:#536870;margin:0 0 1.35rem}
-#pl-part1 .pl-chapter .pl-open{margin-top:auto;color:#137b78;font-weight:700;font-size:.9rem}
-#pl-part1 .pl-chapter .pl-open:after{content:'  →'}
-#pl-part1 .pl-chapter.pl-primary{background:#f1f8f6;border-color:#b8d8d0}
-#pl-part1 .pl-secondary{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2.4rem}
-#pl-part1 .pl-secondary a{display:flex;align-items:center;justify-content:space-between;gap:1rem;color:#183B45!important;text-decoration:none!important;border:1px solid #d9e5e3;border-radius:12px;padding:1.15rem 1.35rem;font-weight:700;background:#fcfdfc}
-#pl-part1 .pl-secondary a:hover{border-color:#7db9b1;background:#f3faf7}
-#pl-part1 .pl-secondary small{display:block;color:#65777b;font-weight:400;font-size:.87rem;margin-top:.25rem}
-#pl-part1 .pl-note{padding:1.1rem 1.3rem;border-left:3px solid #d8a447;background:#faf8f2;border-radius:4px;color:#53656b;font-size:.93rem;line-height:1.6}
-@media(max-width:950px){#pl-part1 .pl-cover{grid-template-columns:1fr}#pl-part1 .pl-cover-art{max-width:420px;margin:0 auto}#pl-part1 .pl-chapters{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:620px){#pl-part1 .pl-cover{padding:1.7rem 1.3rem;min-height:0;border-radius:13px}#pl-part1 .pl-cover-art{max-width:320px}#pl-part1 .pl-chapters,#pl-part1 .pl-secondary{grid-template-columns:1fr}#pl-part1 .pl-section-head{display:block}#pl-part1 .pl-section-head p{margin:.25rem 0 0}#pl-part1 .pl-chapter{min-height:165px}}
+/* Portada autónoma: estilos limitados a #pl-home. No altera capítulos ni índices interiores. */
+body:has(#pl-home) #title-block-header { display:none !important; }
+body:has(#pl-home) #quarto-sidebar { display:none !important; }
+body:has(#pl-home) #quarto-margin-sidebar { display:none !important; }
+body:has(#pl-home) #quarto-content { grid-template-columns: minmax(0,1fr) !important; }
+body:has(#pl-home) #quarto-document-content,body:has(#pl-home) main.content { max-width:none !important; width:100%; }
+#pl-home { --pl-ink:#183B45; --pl-teal:#237F80; --pl-gold:#D8A447; --pl-muted:#62747a; max-width:1160px; margin:0 auto 3rem; color:var(--pl-ink); font-family:'Source Sans 3',system-ui,sans-serif; }
+#pl-home * { box-sizing:border-box; }
+#pl-home .pl-cover { position:relative; overflow:hidden; isolation:isolate; background:linear-gradient(125deg,#122d37 0%,#194451 56%,#27646a 100%); border-radius:22px; color:#fff; padding:clamp(1.6rem,4vw,3.5rem); min-height:350px; display:grid; grid-template-columns:minmax(0,1.14fr) minmax(260px,.86fr); align-items:center; gap:1rem; }
+#pl-home .pl-cover:before{content:'';position:absolute;inset:auto -100px -200px auto;width:420px;height:420px;border-radius:50%;border:1px solid #ffffff17;box-shadow:0 0 0 48px #ffffff06,0 0 0 105px #ffffff05;z-index:-1}
+#pl-home .pl-eyebrow{font-size:.76rem;font-weight:700;letter-spacing:.17em;text-transform:uppercase;color:#a8e3d6;margin-bottom:.75rem;}
+#pl-home .pl-cover h1{color:#fff;font-family:'Source Serif 4',Georgia,serif;font-size:clamp(2.65rem,5vw,4.7rem);line-height:1.06;letter-spacing:-.035em;margin:0 0 .65rem;font-weight:600;}
+#pl-home .pl-cover .pl-tagline{font-family:'Source Serif 4',Georgia,serif;color:#d1ebe7;font-size:clamp(1.12rem,2vw,1.48rem);margin:0 0 1.2rem;}
+#pl-home .pl-cover .pl-intro{max-width:530px;color:#dce9e8;line-height:1.6;font-size:1.04rem;margin:0 0 1.6rem;}
+#pl-home .pl-cover-actions{display:flex;gap:.65rem;flex-wrap:wrap}
+#pl-home .pl-cover-actions a{display:inline-flex;align-items:center;min-height:44px;padding:.68rem 1rem;border-radius:9px;text-decoration:none;font-weight:700;font-size:.94rem;transition:transform .18s,background .18s}
+#pl-home .pl-cover-actions a:hover{transform:translateY(-2px)}
+#pl-home .pl-cover-actions .pl-main-action{background:#e9f6ee;color:#183B45}
+#pl-home .pl-cover-actions .pl-alt-action{border:1px solid #82b7b0;color:#fff}
+#pl-home .pl-cover-art{width:100%;display:block;overflow:visible;filter:drop-shadow(0 12px 22px #061b2450)}
+#pl-home .pl-ribbon{display:flex;gap:1rem;flex-wrap:wrap;margin:1.1rem 0 2.7rem;color:#486168;font-size:.9rem}
+#pl-home .pl-ribbon span{border:1px solid #dae7e4;border-radius:100px;padding:.32rem .8rem;background:#f8fbfa}
+#pl-home .pl-section-head{display:flex;justify-content:space-between;align-items:baseline;gap:1.5rem;border-bottom:1px solid #d7e3e1;padding-bottom:.8rem;margin-bottom:1.15rem}
+#pl-home .pl-section-head h2{font-family:'Source Serif 4',Georgia,serif;color:#183B45;margin:0;font-size:clamp(1.55rem,2.5vw,2.1rem);font-weight:600}
+#pl-home .pl-section-head p{color:#63767b;margin:0;font-size:.95rem}
+#pl-home .pl-chapters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-bottom:2.7rem}
+#pl-home .pl-chapter{position:relative;display:flex;flex-direction:column;min-height:187px;border:1px solid #d8e5e2;background:#fff;color:#183B45;border-radius:14px;padding:1.3rem 1.4rem;text-decoration:none !important;box-shadow:0 3px 10px #0f293208;transition:transform .17s,border-color .17s,box-shadow .17s}
+#pl-home .pl-chapter:hover,#pl-home .pl-chapter:focus-visible{transform:translateY(-4px);border-color:#71b8ae;box-shadow:0 12px 25px #0f293218;color:#183B45}
+#pl-home .pl-chapter .pl-number{font-size:.8rem;letter-spacing:.12em;font-weight:700;color:#168179;margin-bottom:1.1rem}
+#pl-home .pl-chapter h3{font-family:'Source Serif 4',Georgia,serif;font-size:1.27rem;line-height:1.25;margin:0 0 .55rem;color:#183B45;font-weight:600}
+#pl-home .pl-chapter p{font-size:.91rem;line-height:1.5;color:#536870;margin:0 0 1.35rem}
+#pl-home .pl-chapter .pl-open{margin-top:auto;color:#137b78;font-weight:700;font-size:.9rem}
+#pl-home .pl-chapter .pl-open:after{content:'  →'}
+#pl-home .pl-chapter.pl-primary{background:#f1f8f6;border-color:#b8d8d0}
+#pl-home .pl-secondary{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2.4rem}
+#pl-home .pl-secondary a{display:flex;align-items:center;justify-content:space-between;gap:1rem;color:#183B45!important;text-decoration:none!important;border:1px solid #d9e5e3;border-radius:12px;padding:1.15rem 1.35rem;font-weight:700;background:#fcfdfc}
+#pl-home .pl-secondary a:hover{border-color:#7db9b1;background:#f3faf7}
+#pl-home .pl-secondary small{display:block;color:#65777b;font-weight:400;font-size:.87rem;margin-top:.25rem}
+#pl-home .pl-note{padding:1.1rem 1.3rem;border-left:3px solid #d8a447;background:#faf8f2;border-radius:4px;color:#53656b;font-size:.93rem;line-height:1.6}
+@media(max-width:950px){#pl-home .pl-cover{grid-template-columns:1fr}#pl-home .pl-cover-art{max-width:420px;margin:0 auto}#pl-home .pl-chapters{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){#pl-home .pl-cover{padding:1.7rem 1.3rem;min-height:0;border-radius:13px}#pl-home .pl-cover-art{max-width:320px}#pl-home .pl-chapters,#pl-home .pl-secondary{grid-template-columns:1fr}#pl-home .pl-section-head{display:block}#pl-home .pl-section-head p{margin:.25rem 0 0}#pl-home .pl-chapter{min-height:165px}}
 
-#pl-part1 .pl-cover{min-height:280px;}#pl-part1 .pl-cover h1{font-size:clamp(2.3rem,4.5vw,3.7rem)}
+#pl-home .pl-cover{min-height:280px;}#pl-home .pl-cover h1{font-size:clamp(2.3rem,4.5vw,3.7rem)}
 
 </style>
-<div id="pl-part1">
+<div id="pl-home">
   <section class="pl-cover" aria-label="Presentación del libro">
     <div>
-      <div class="pl-eyebrow">Parte I · Fundamentos y geometría</div>
-      <h1>Modelar y<br>visualizar</h1>
-      <p class="pl-tagline">Fundamentos, convexidad y optimalidad</p>
-      <p class="pl-intro">De la formulación de modelos a la geometría de sus soluciones: regiones factibles, combinaciones convexas, vértices, resultados de optimalidad y método gráfico.</p>
+      <div class="pl-eyebrow">Libro interactivo · EM-4010</div>
+      <h1>Programación<br>Lineal</h1>
+      <p class="pl-tagline">De la geometría a los modelos de decisión</p>
+      <p class="pl-intro">Una exposición rigurosa e interactiva de la Programación Lineal: fundamentos matemáticos, métodos de solución, dualidad, sensibilidad y aplicaciones.</p>
       <div class="pl-cover-actions">
-        <a class="pl-main-action" href="capitulos/fundamentos_iniciales_capitulo1.html">Comenzar esta parte&nbsp; →</a>
-        <a class="pl-alt-action" href="#pl-contenidos">Explorar contenidos ↓</a>
+        <a class="pl-main-action" href="capitulos/capitulo_01_fundamentos.html">Comenzar a leer&nbsp; →</a>
+        <a class="pl-alt-action" href="#pl-contenidos">Explorar capítulos ↓</a>
       </div>
     </div>
-    <svg class="pl-cover-art" viewBox="0 0 420 320" role="img" aria-label="Ilustración geométrica de una región factible poligonal y rectas de nivel">
+<svg class="pl-cover-art" viewBox="0 0 420 320" role="img" aria-label="Ilustración geométrica de una región factible poligonal y rectas de nivel">
       <defs><pattern id="plgrid-home" width="29" height="29" patternUnits="userSpaceOnUse"><path d="M29 0H0V29" fill="none" stroke="#cee7e0" stroke-opacity=".12" stroke-width="1"/></pattern><linearGradient id="plpoly-home" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8be0c3" stop-opacity=".52"/><stop offset="1" stop-color="#b5e8d6" stop-opacity=".12"/></linearGradient></defs>
       <rect x="18" y="16" width="386" height="284" fill="url(#plgrid-home)" rx="10"/>
       <g stroke="#a3cbc5" stroke-width="2" stroke-linecap="round"><path d="M48 275H389"/><path d="M48 275V24"/><path d="M383 270l6 5-6 5M43 30l5-6 5 6"/></g>
@@ -79,23 +79,22 @@ body:has(#pl-part1) #quarto-document-content,body:has(#pl-part1) main.content { 
       <g font-family="'Source Sans 3',sans-serif" font-size="13" fill="#f3e4c3"><text x="218" y="105">Óptimo</text><text x="240" y="248">Recta de nivel</text></g>
     </svg>
   </section>
-
-
-  <div class="pl-ribbon"><span>Teoría y demostraciones</span><span>Ejemplos interactivos integrados</span><span>Ejercicios de comprensión</span></div>
-  <section id="pl-contenidos" aria-label="Índice de la Parte I">
-    <header class="pl-section-head"><h2>Contenidos de la Parte I</h2><p>Una secuencia matemática continua</p></header>
+  <div class="pl-ribbon"><span>Teoría y demostraciones</span><span>Visualizaciones interactivas</span><span>Problemas y aplicaciones</span></div>
+  <section id="pl-contenidos" aria-label="Índice general de capítulos">
+    <header class="pl-section-head"><h2>Índice general</h2><p>Nueve capítulos, un recorrido continuo</p></header>
     <div class="pl-chapters">
-<a class="pl-chapter pl-primary" href="capitulos/fundamentos_iniciales_capitulo1.html"><span class="pl-number">01 · FORMULACIÓN</span><h3>Fundamentos matemáticos</h3><p>Variables, objetivo, restricciones y representación matricial.</p><span class="pl-open">Abrir tema</span></a>
-<a class="pl-chapter " href="capitulos/soluciones_y_region_factible.html"><span class="pl-number">02 · FACTIBILIDAD</span><h3>Soluciones y región factible</h3><p>Semiplanos, restricciones activas y caracterización del conjunto factible.</p><span class="pl-open">Abrir tema</span></a>
-<a class="pl-chapter " href="capitulos/combinaciones_convexas_y_convexidad.html"><span class="pl-number">03 · CONVEXIDAD</span><h3>Combinaciones convexas</h3><p>Segmentos, combinaciones de varios vectores y demostraciones.</p><span class="pl-open">Abrir tema</span></a>
-<a class="pl-chapter " href="capitulos/vertices_y_puntos_extremos.html"><span class="pl-number">04 · GEOMETRÍA</span><h3>Vértices y puntos extremos</h3><p>Definición, propiedades y demostración de puntos extremos.</p><span class="pl-open">Abrir tema</span></a>
-<a class="pl-chapter " href="capitulos/vertices_y_soluciones_optimas.html"><span class="pl-number">05 · OPTIMALIDAD</span><h3>Vértices y soluciones óptimas</h3><p>Existencia de vértices óptimos y convexidad del conjunto de óptimos.</p><span class="pl-open">Abrir tema</span></a>
-<a class="pl-chapter " href="capitulos/interpretacion_geometrica_niveles.html"><span class="pl-number">06 · NIVELES</span><h3>Interpretación geométrica</h3><p>Rectas de nivel, cortes espaciales y proyecciones sincronizadas.</p><span class="pl-open">Abrir tema</span></a>
-<a class="pl-chapter " href="capitulos/metodo_grafico_completo.html"><span class="pl-number">07 · MÉTODO GRÁFICO</span><h3>Resolver e interpretar</h3><p>Barrido, comparación de vértices y un ejemplo completamente resuelto.</p><span class="pl-open">Abrir tema</span></a>
-<a class="pl-chapter " href="capitulos/extension_geometrica_3d.html"><span class="pl-number">08 · EXTENSIÓN 3D</span><h3>Planos de nivel en un poliedro</h3><p>Generalización geométrica a tres variables y recorrido hasta el óptimo.</p><span class="pl-open">Abrir tema</span></a>
+      <a class="pl-chapter pl-primary" href="capitulos/capitulo_01_fundamentos.html"><span class="pl-number">CAPÍTULO 1</span><h3>Fundamentos de la Programación Lineal</h3><p>Formulación, región factible, convexidad, vértices y método gráfico.</p><span class="pl-open">Abrir capítulo</span></a>
+      <a class="pl-chapter " href="capitulos/capitulo_02_simplex_matricial.html"><span class="pl-number">CAPÍTULO 2</span><h3>Método Simplex matricial</h3><p>Bases, soluciones básicas factibles y algoritmo Simplex en forma matricial.</p><span class="pl-open">Abrir capítulo</span></a>
+      <a class="pl-chapter " href="capitulos/capitulo_03_simplex_tabulado.html"><span class="pl-number">CAPÍTULO 3</span><h3>Método Simplex tabulado</h3><p>Representación tabular, operaciones de pivoteo y resolución de programas lineales.</p><span class="pl-open">Abrir capítulo</span></a>
+      <a class="pl-chapter " href="capitulos/capitulo_04_formas_canonicas.html"><span class="pl-number">CAPÍTULO 4</span><h3>Transformaciones a formas canónicas</h3><p>Holguras, variables superfluas, artificiales, penalización y variables libres.</p><span class="pl-open">Abrir capítulo</span></a>
+      <a class="pl-chapter " href="capitulos/capitulo_05_dualidad.html"><span class="pl-number">CAPÍTULO 5</span><h3>Dualidad</h3><p>Construcción del dual, dualidad débil y fuerte, y dualidad asimétrica.</p><span class="pl-open">Abrir capítulo</span></a>
+      <a class="pl-chapter " href="capitulos/capitulo_06_interpretacion_dual.html"><span class="pl-number">CAPÍTULO 6</span><h3>Interpretación económica del dual</h3><p>Precios sombra, valoración de recursos y decisiones de producción.</p><span class="pl-open">Abrir capítulo</span></a>
+      <a class="pl-chapter " href="capitulos/capitulo_07_sensibilidad.html"><span class="pl-number">CAPÍTULO 7</span><h3>Análisis de sensibilidad (análisis postóptimo)</h3><p>Variaciones de disponibilidades y coeficientes de la función objetivo.</p><span class="pl-open">Abrir capítulo</span></a>
+      <a class="pl-chapter " href="capitulos/capitulo_08_entera.html"><span class="pl-number">CAPÍTULO 8</span><h3>Programación Lineal Entera</h3><p>Relajación continua, ramificación y acotamiento, y decisiones discretas.</p><span class="pl-open">Abrir capítulo</span></a>
+      <a class="pl-chapter " href="capitulos/capitulo_09_aplicaciones.html"><span class="pl-number">CAPÍTULO 9</span><h3>Aplicaciones de Programación Lineal</h3><p>Problemas de transporte, asignación, mochila y agente viajero.</p><span class="pl-open">Abrir capítulo</span></a>
     </div>
   </section>
-  <p class="pl-note">Las exploraciones 2D y 3D están incorporadas en las explicaciones correspondientes. Cada recurso ayuda a investigar un concepto antes de formalizarlo o aplicarlo.</p>
-  <div class="pl-cover-actions"><a class="pl-main-action" style="color:#183B45" href="index.html">Volver al índice general</a></div>
+  <p class="pl-note">Los capítulos que todavía no tienen su desarrollo completo muestran una página de presentación y un temario preliminar. El contenido existente del capítulo 1 se conserva íntegro.</p>
 </div>
 ```
+
