@@ -173,7 +173,12 @@ window.Quarto = {
   <li><a href="#el-problema-1" id="toc-el-problema-1" class="nav-link" data-scroll-target="#el-problema-1">El problema</a></li>
   <li><a href="#variables-de-decisión" id="toc-variables-de-decisión" class="nav-link" data-scroll-target="#variables-de-decisión">Variables de decisión</a></li>
   <li><a href="#objetivo-y-restricciones" id="toc-objetivo-y-restricciones" class="nav-link" data-scroll-target="#objetivo-y-restricciones">Objetivo y restricciones</a></li>
-  <li><a href="#reducción-del-modelo-e-interpretación" id="toc-reducción-del-modelo-e-interpretación" class="nav-link" data-scroll-target="#reducción-del-modelo-e-interpretación">Reducción del modelo e interpretación</a></li>
+  <li><a href="#reducción-por-eliminación-de-gaussjordan" id="toc-reducción-por-eliminación-de-gaussjordan" class="nav-link" data-scroll-target="#reducción-por-eliminación-de-gaussjordan">Reducción por eliminación de Gauss–Jordan</a></li>
+  <li><a href="#variables-libres-y-expresiones-de-las-variables-originales" id="toc-variables-libres-y-expresiones-de-las-variables-originales" class="nav-link" data-scroll-target="#variables-libres-y-expresiones-de-las-variables-originales">Variables libres y expresiones de las variables originales</a></li>
+  <li><a href="#restricciones-de-no-negatividad-y-modelo-reducido" id="toc-restricciones-de-no-negatividad-y-modelo-reducido" class="nav-link" data-scroll-target="#restricciones-de-no-negatividad-y-modelo-reducido">Restricciones de no negatividad y modelo reducido</a></li>
+  <li><a href="#región-factible-reducida-y-vértices" id="toc-región-factible-reducida-y-vértices" class="nav-link" data-scroll-target="#región-factible-reducida-y-vértices">Región factible reducida y vértices</a></li>
+  <li><a href="#sustitución-y-función-objetivo-reducida" id="toc-sustitución-y-función-objetivo-reducida" class="nav-link" data-scroll-target="#sustitución-y-función-objetivo-reducida">Sustitución y función objetivo reducida</a></li>
+  <li><a href="#recuperación-de-la-solución-original" id="toc-recuperación-de-la-solución-original" class="nav-link" data-scroll-target="#recuperación-de-la-solución-original">Recuperación de la solución original</a></li>
   </ul></li>
   <li><a href="#comparación-de-los-dos-modelos" id="toc-comparación-de-los-dos-modelos" class="nav-link" data-scroll-target="#comparación-de-los-dos-modelos">Comparación de los dos modelos</a></li>
   <li><a href="#actividades-de-comprensión" id="toc-actividades-de-comprensión" class="nav-link" data-scroll-target="#actividades-de-comprensión">Actividades de comprensión</a>
@@ -313,6 +318,17 @@ window.Quarto = {
 <p>En este punto se utilizan <span class="math inline">\(\frac{500}{7}&lt;80\)</span> hectáreas, es decir, la restricción de tierra no es activa. La ganancia correspondiente es</p>
 <p><span class="math display">\[z^*=500\left(\frac{200}{7}\right)+400\left(\frac{300}{7}\right)
 =\frac{220000}{7}\approx31428{,}57.\]</span></p>
+<p>La figura representa las tres rectas frontera y el polígono factible sombreado. Cada vértice resulta de la intersección de dos fronteras activas (incluidos los ejes).</p>
+<div id="fig-region-agricola" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-region-agricola-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figuras/region_factible_agricola.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:94.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-region-agricola-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;10.1: Región factible del modelo agrícola: tierra, agua y fertilizante. El óptimo está en la intersección de las restricciones de agua y fertilizante.
+</figcaption>
+</figure>
+</div>
 <p>Para justificar que es el máximo, podemos comparar el valor de la función objetivo en los vértices de la región factible: <span class="math inline">\((0,0)\)</span>, <span class="math inline">\((50,0)\)</span>, <span class="math inline">\(\left(\frac{200}{7},\frac{300}{7}\right)\)</span> y <span class="math inline">\((0,60)\)</span>. Los valores respectivos son <span class="math inline">\(0\)</span>, <span class="math inline">\(25000\)</span>, <span class="math inline">\(\frac{220000}{7}\)</span> y <span class="math inline">\(24000\)</span>.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -406,21 +422,186 @@ x_{13}+x_{23}&amp;=200.
 </div>
 </div>
 </section>
-<section id="reducción-del-modelo-e-interpretación" class="level3">
-<h3 class="anchored" data-anchor-id="reducción-del-modelo-e-interpretación">Reducción del modelo e interpretación</h3>
-<p>Aunque aparecen cinco ecuaciones, una es redundante porque la suma de las ofertas coincide con la suma de las demandas. Podemos elegir <span class="math inline">\(u=x_{11}\)</span> y <span class="math inline">\(v=x_{12}\)</span> y expresar las demás variables como</p>
+<section id="reducción-por-eliminación-de-gaussjordan" class="level3">
+<h3 class="anchored" data-anchor-id="reducción-por-eliminación-de-gaussjordan">Reducción por eliminación de Gauss–Jordan</h3>
+<p>El modelo tiene seis variables y cinco igualdades. Como la oferta total coincide con la demanda total, <strong>una de las ecuaciones es combinación de las otras cuatro</strong>; por ello quedan dos grados de libertad. Para ver esa relación explícitamente, escribimos el sistema en el orden</p>
+<p><span class="math display">\[
+(x_{11},x_{12},x_{13},x_{21},x_{22},x_{23}).
+\]</span></p>
+<p>La matriz aumentada inicial es</p>
+<p><span class="math display">\[
+\left(\begin{array}{rrrrrr|r}
+1&amp;1&amp;1&amp;0&amp;0&amp;0&amp;400\\
+0&amp;0&amp;0&amp;1&amp;1&amp;1&amp;600\\
+1&amp;0&amp;0&amp;1&amp;0&amp;0&amp;300\\
+0&amp;1&amp;0&amp;0&amp;1&amp;0&amp;500\\
+0&amp;0&amp;1&amp;0&amp;0&amp;1&amp;200
+\end{array}\right).
+\]</span></p>
+<p><strong>Primeros pivoteos.</strong> Aplicamos las operaciones elementales <span class="math inline">\(F_3\leftarrow F_3-F_1\)</span>, <span class="math inline">\(F_2\leftrightarrow F_3\)</span> y <span class="math inline">\(F_2\leftarrow -F_2\)</span>. La matriz queda</p>
+<p><span class="math display">\[
+\left(\begin{array}{rrrrrr|r}
+1&amp;1&amp;1&amp;0&amp;0&amp;0&amp;400\\
+0&amp;1&amp;1&amp;-1&amp;0&amp;0&amp;100\\
+0&amp;0&amp;0&amp;1&amp;1&amp;1&amp;600\\
+0&amp;1&amp;0&amp;0&amp;1&amp;0&amp;500\\
+0&amp;0&amp;1&amp;0&amp;0&amp;1&amp;200
+\end{array}\right).
+\]</span></p>
+<p><strong>Eliminación en la segunda columna.</strong> Realizamos <span class="math inline">\(F_1\leftarrow F_1-F_2\)</span>, <span class="math inline">\(F_4\leftarrow F_4-F_2\)</span>, <span class="math inline">\(F_3\leftrightarrow F_4\)</span> y <span class="math inline">\(F_3\leftarrow-F_3\)</span>, obteniendo</p>
+<p><span class="math display">\[
+\left(\begin{array}{rrrrrr|r}
+1&amp;0&amp;0&amp;1&amp;0&amp;0&amp;300\\
+0&amp;1&amp;1&amp;-1&amp;0&amp;0&amp;100\\
+0&amp;0&amp;1&amp;-1&amp;-1&amp;0&amp;-400\\
+0&amp;0&amp;0&amp;1&amp;1&amp;1&amp;600\\
+0&amp;0&amp;1&amp;0&amp;0&amp;1&amp;200
+\end{array}\right).
+\]</span></p>
+<p>Finalmente, mediante</p>
 <p><span class="math display">\[
 \begin{aligned}
-x_{13}&amp;=400-u-v, &amp; x_{21}&amp;=300-u,\\
-x_{22}&amp;=500-v, &amp; x_{23}&amp;=u+v-200.
+F_2&amp;\leftarrow F_2-F_3, &amp; F_5&amp;\leftarrow F_5-F_3,\\
+F_1&amp;\leftarrow F_1-F_4, &amp; F_3&amp;\leftarrow F_3+F_4,\\
+F_5&amp;\leftarrow F_5-F_4,
 \end{aligned}
 \]</span></p>
-<p>Al sustituir en la función objetivo, obtenemos el problema equivalente de dos variables</p>
-<p><span class="math display">\[\text{Minimizar}\quad C(u,v)=14400+4u-v,\]</span></p>
-<p>sujeto a <span class="math inline">\(u\geq0\)</span>, <span class="math inline">\(v\geq0\)</span>, <span class="math inline">\(u+v\leq400\)</span>, <span class="math inline">\(u\leq300\)</span>, <span class="math inline">\(v\leq500\)</span> y <span class="math inline">\(u+v\geq200\)</span>.</p>
-<p>Como <span class="math inline">\(4u\geq0\)</span> y <span class="math inline">\(v\leq400-u\)</span>, se tiene</p>
-<p><span class="math display">\[C(u,v)=14400+4u-v\geq14400+4u-(400-u)=14000+5u\geq14000.\]</span></p>
-<p>La cota se alcanza con <span class="math inline">\(u=0\)</span> y <span class="math inline">\(v=400\)</span>, que satisfacen todas las restricciones. Por consiguiente, una distribución óptima es</p>
+<p>se obtiene <strong>la matriz reducida</strong>:</p>
+<p><span class="math display">\[
+\boxed{\left(\begin{array}{rrrrrr|r}
+1&amp;0&amp;0&amp;0&amp;-1&amp;-1&amp;-300\\
+0&amp;1&amp;0&amp;0&amp;1&amp;0&amp;500\\
+0&amp;0&amp;1&amp;0&amp;0&amp;1&amp;200\\
+0&amp;0&amp;0&amp;1&amp;1&amp;1&amp;600\\
+0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0
+\end{array}\right)}.
+\]</span></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>¿Qué representa la fila nula?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La última fila es <span class="math inline">\(0=0\)</span>. Expresa la dependencia entre oferta y demanda; <strong>no significa que el modelo carezca de restricciones</strong>. Como hay cuatro pivotes en seis columnas, podemos tomar dos variables libres.</p>
+</div>
+</div>
+</section>
+<section id="variables-libres-y-expresiones-de-las-variables-originales" class="level3">
+<h3 class="anchored" data-anchor-id="variables-libres-y-expresiones-de-las-variables-originales">Variables libres y expresiones de las variables originales</h3>
+<p>Elegimos <span class="math inline">\(t_2=x_{22}\)</span> y <span class="math inline">\(t_3=x_{23}\)</span>. De la matriz reducida obtenemos</p>
+<p><span class="math display">\[
+\begin{aligned}
+x_{11}&amp;=-300+t_2+t_3, &amp; x_{12}&amp;=500-t_2,\\
+x_{13}&amp;=200-t_3, &amp; x_{21}&amp;=600-t_2-t_3,\\
+x_{22}&amp;=t_2, &amp; x_{23}&amp;=t_3.
+\end{aligned}
+\]</span></p>
+<p>Estas expresiones permiten recuperar <strong>las seis rutas de transporte</strong> una vez que conozcamos los valores óptimos de <span class="math inline">\(t_2\)</span> y <span class="math inline">\(t_3\)</span>.</p>
+</section>
+<section id="restricciones-de-no-negatividad-y-modelo-reducido" class="level3">
+<h3 class="anchored" data-anchor-id="restricciones-de-no-negatividad-y-modelo-reducido">Restricciones de no negatividad y modelo reducido</h3>
+<p>No basta con satisfacer las igualdades: todos los envíos deben ser no negativos. Sustituyendo cada expresión anterior,</p>
+<p><span class="math display">\[
+\begin{aligned}
+-300+t_2+t_3&amp;\geq0, &amp; 500-t_2&amp;\geq0,\\
+200-t_3&amp;\geq0, &amp; 600-t_2-t_3&amp;\geq0,\\
+t_2&amp;\geq0, &amp; t_3&amp;\geq0.
+\end{aligned}
+\]</span></p>
+<p>Por tanto, la región factible reducida queda dada por</p>
+<p><span class="math display">\[
+\mathcal R=\left\{(t_2,t_3)\in\mathbb R^2:
+\begin{array}{l}
+t_2+t_3\geq300,\\
+t_2+t_3\leq600,\\
+t_2\leq500,\quad t_3\leq200,\\
+t_2,t_3\geq0
+\end{array}\right\}.
+\]</span></p>
+</section>
+<section id="región-factible-reducida-y-vértices" class="level3">
+<h3 class="anchored" data-anchor-id="región-factible-reducida-y-vértices">Región factible reducida y vértices</h3>
+<p>En la <a href="#fig-region-transporte" class="quarto-xref">Figura&nbsp;<span>10.2</span></a> aparecen las rectas frontera, el polígono factible sombreado, los vértices y la recta de nivel correspondiente al costo mínimo. El problema de seis variables puede ahora <strong>analizarse geométricamente en dos variables</strong>.</p>
+<div id="fig-region-transporte" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-region-transporte-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figuras/region_factible_transporte.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:94.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-region-transporte-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;10.2: Región factible del transporte en las variables libres <span class="math inline">\(t_2\)</span> y <span class="math inline">\(t_3\)</span>, con el nivel de costo óptimo.
+</figcaption>
+</figure>
+</div>
+<p>Los vértices de <span class="math inline">\(\mathcal R\)</span> son</p>
+<p><span class="math display">\[
+(100,200),\quad (400,200),\quad(500,100),\quad(500,0),\quad(300,0).
+\]</span></p>
+</section>
+<section id="sustitución-y-función-objetivo-reducida" class="level3">
+<h3 class="anchored" data-anchor-id="sustitución-y-función-objetivo-reducida">Sustitución y función objetivo reducida</h3>
+<p>Al sustituir las seis expresiones en el costo total, obtenemos</p>
+<p><span class="math display">\[
+\begin{aligned}
+C={}&amp;12(-300+t_2+t_3)+15(500-t_2)+14(200-t_3)\\
+&amp;+10(600-t_2-t_3)+18t_2+16t_3\\
+={}&amp;12700+5t_2+4t_3.
+\end{aligned}
+\]</span></p>
+<p>La nueva formulación, equivalente a la original, es</p>
+<p><span class="math display">\[
+\boxed{\begin{aligned}
+\text{Minimizar}\quad &amp;C=12700+5t_2+4t_3\\
+\text{sujeto a}\quad &amp; (t_2,t_3)\in\mathcal R.
+\end{aligned}}
+\]</span></p>
+<p>Para decidir cuál vértice proporciona el costo mínimo evaluamos la función objetivo:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Vértice <span class="math inline">\((t_2,t_3)\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(C=12700+5t_2+4t_3\)</span> (miles de colones)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\((100,200)\)</span></td>
+<td style="text-align: right;"><strong>14000</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\((400,200)\)</span></td>
+<td style="text-align: right;">15500</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\((500,100)\)</span></td>
+<td style="text-align: right;">15600</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\((500,0)\)</span></td>
+<td style="text-align: right;">15200</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\((300,0)\)</span></td>
+<td style="text-align: right;">14200</td>
+</tr>
+</tbody>
+</table>
+<p>El mínimo se alcanza en <span class="math inline">\((t_2^*,t_3^*)=(100,200)\)</span>, marcado en la figura. <strong>No se ha utilizado el método Simplex.</strong></p>
+</section>
+<section id="recuperación-de-la-solución-original" class="level3">
+<h3 class="anchored" data-anchor-id="recuperación-de-la-solución-original">Recuperación de la solución original</h3>
+<p>Sustituimos <span class="math inline">\(t_2=100\)</span> y <span class="math inline">\(t_3=200\)</span> en las expresiones obtenidas por Gauss–Jordan:</p>
+<p><span class="math display">\[
+\begin{aligned}
+x_{11}^*&amp;=-300+100+200=0, &amp;x_{12}^*&amp;=500-100=400,\\
+x_{13}^*&amp;=200-200=0, &amp;x_{21}^*&amp;=600-100-200=300,\\
+x_{22}^*&amp;=100, &amp;x_{23}^*&amp;=200.
+\end{aligned}
+\]</span></p>
+<p>La distribución óptima es</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -455,7 +636,20 @@ x_{22}&amp;=500-v, &amp; x_{23}&amp;=u+v-200.
 </tr>
 </tbody>
 </table>
-<p>El costo mínimo es <strong>14000 miles de colones</strong>, es decir, <strong>14 millones de colones</strong>. Este resultado utiliza únicamente sustituciones e inequaciones; no necesitamos aplicar el método Simplex.</p>
+<p>El costo mínimo es <span class="math inline">\(C^*=14000\)</span> <strong>miles de colones</strong>, es decir, <strong>14 millones de colones</strong>. Podemos comprobar directamente que todas las ofertas y demandas se satisfacen.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>La idea matemática
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La reducción por Gauss–Jordan conserva el sistema de igualdades; las restricciones de no negatividad se trasladan a las variables libres. Solo después de obtener <strong>toda la región factible reducida</strong> es válido resolver el problema gráficamente y reconstruir las decisiones originales.</p>
+</div>
+</div>
 </section>
 </section>
 <section id="comparación-de-los-dos-modelos" class="level2">
