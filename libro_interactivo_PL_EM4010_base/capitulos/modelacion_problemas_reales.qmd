@@ -82,6 +82,10 @@ En este punto se utilizan $\frac{500}{7}<80$ hectáreas, es decir, la restricci�
 $$z^*=500\left(\frac{200}{7}\right)+400\left(\frac{300}{7}\right)
 =\frac{220000}{7}\approx31428{,}57.$$
 
+La figura representa las tres rectas frontera y el polígono factible sombreado. Cada vértice resulta de la intersección de dos fronteras activas (incluidos los ejes).
+
+![Región factible del modelo agrícola: tierra, agua y fertilizante. El óptimo está en la intersección de las restricciones de agua y fertilizante.](figuras/region_factible_agricola.svg){#fig-region-agricola width="94%" fig-align="center"}
+
 Para justificar que es el máximo, podemos comparar el valor de la función objetivo en los vértices de la región factible: $(0,0)$, $(50,0)$, $\left(\frac{200}{7},\frac{300}{7}\right)$ y $(0,60)$. Los valores respectivos son $0$, $25000$, $\frac{220000}{7}$ y $24000$.
 
 ::: {.callout-important title="Interpretación, no solo resultado"}
@@ -138,28 +142,172 @@ Además, $x_{ij}\geq0$ para todas las rutas. Así, el objetivo consiste en **min
 En este contexto no se permite almacenar sacos en las plantas ni entregar más o menos de lo solicitado. Esa interpretación determina el signo $=$ de las restricciones.
 :::
 
-### Reducción del modelo e interpretación
+### Reducción por eliminación de Gauss–Jordan
 
-Aunque aparecen cinco ecuaciones, una es redundante porque la suma de las ofertas coincide con la suma de las demandas. Podemos elegir $u=x_{11}$ y $v=x_{12}$ y expresar las demás variables como
+El modelo tiene seis variables y cinco igualdades. Como la oferta total coincide con la demanda total, **una de las ecuaciones es combinación de las otras cuatro**; por ello quedan dos grados de libertad. Para ver esa relación explícitamente, escribimos el sistema en el orden
+
+$$
+(x_{11},x_{12},x_{13},x_{21},x_{22},x_{23}).
+$$
+
+La matriz aumentada inicial es
+
+$$
+\left(\begin{array}{rrrrrr|r}
+1&1&1&0&0&0&400\\
+0&0&0&1&1&1&600\\
+1&0&0&1&0&0&300\\
+0&1&0&0&1&0&500\\
+0&0&1&0&0&1&200
+\end{array}\right).
+$$
+
+**Primeros pivoteos.** Aplicamos las operaciones elementales $F_3\leftarrow F_3-F_1$, $F_2\leftrightarrow F_3$ y $F_2\leftarrow -F_2$. La matriz queda
+
+$$
+\left(\begin{array}{rrrrrr|r}
+1&1&1&0&0&0&400\\
+0&1&1&-1&0&0&100\\
+0&0&0&1&1&1&600\\
+0&1&0&0&1&0&500\\
+0&0&1&0&0&1&200
+\end{array}\right).
+$$
+
+**Eliminación en la segunda columna.** Realizamos $F_1\leftarrow F_1-F_2$, $F_4\leftarrow F_4-F_2$, $F_3\leftrightarrow F_4$ y $F_3\leftarrow-F_3$, obteniendo
+
+$$
+\left(\begin{array}{rrrrrr|r}
+1&0&0&1&0&0&300\\
+0&1&1&-1&0&0&100\\
+0&0&1&-1&-1&0&-400\\
+0&0&0&1&1&1&600\\
+0&0&1&0&0&1&200
+\end{array}\right).
+$$
+
+Finalmente, mediante
 
 $$
 \begin{aligned}
-x_{13}&=400-u-v, & x_{21}&=300-u,\\
-x_{22}&=500-v, & x_{23}&=u+v-200.
+F_2&\leftarrow F_2-F_3, & F_5&\leftarrow F_5-F_3,\\
+F_1&\leftarrow F_1-F_4, & F_3&\leftarrow F_3+F_4,\\
+F_5&\leftarrow F_5-F_4,
 \end{aligned}
 $$
 
-Al sustituir en la función objetivo, obtenemos el problema equivalente de dos variables
+se obtiene **la matriz reducida**:
 
-$$\text{Minimizar}\quad C(u,v)=14400+4u-v,$$
+$$
+\boxed{\left(\begin{array}{rrrrrr|r}
+1&0&0&0&-1&-1&-300\\
+0&1&0&0&1&0&500\\
+0&0&1&0&0&1&200\\
+0&0&0&1&1&1&600\\
+0&0&0&0&0&0&0
+\end{array}\right)}.
+$$
 
-sujeto a $u\geq0$, $v\geq0$, $u+v\leq400$, $u\leq300$, $v\leq500$ y $u+v\geq200$.
+::: {.callout-tip title="¿Qué representa la fila nula?"}
+La última fila es $0=0$. Expresa la dependencia entre oferta y demanda; **no significa que el modelo carezca de restricciones**. Como hay cuatro pivotes en seis columnas, podemos tomar dos variables libres.
+:::
 
-Como $4u\geq0$ y $v\leq400-u$, se tiene
+### Variables libres y expresiones de las variables originales
 
-$$C(u,v)=14400+4u-v\geq14400+4u-(400-u)=14000+5u\geq14000.$$
+Elegimos $t_2=x_{22}$ y $t_3=x_{23}$. De la matriz reducida obtenemos
 
-La cota se alcanza con $u=0$ y $v=400$, que satisfacen todas las restricciones. Por consiguiente, una distribución óptima es
+$$
+\begin{aligned}
+x_{11}&=-300+t_2+t_3, & x_{12}&=500-t_2,\\
+x_{13}&=200-t_3, & x_{21}&=600-t_2-t_3,\\
+x_{22}&=t_2, & x_{23}&=t_3.
+\end{aligned}
+$$
+
+Estas expresiones permiten recuperar **las seis rutas de transporte** una vez que conozcamos los valores óptimos de $t_2$ y $t_3$.
+
+### Restricciones de no negatividad y modelo reducido
+
+No basta con satisfacer las igualdades: todos los envíos deben ser no negativos. Sustituyendo cada expresión anterior,
+
+$$
+\begin{aligned}
+-300+t_2+t_3&\geq0, & 500-t_2&\geq0,\\
+200-t_3&\geq0, & 600-t_2-t_3&\geq0,\\
+t_2&\geq0, & t_3&\geq0.
+\end{aligned}
+$$
+
+Por tanto, la región factible reducida queda dada por
+
+$$
+\mathcal R=\left\{(t_2,t_3)\in\mathbb R^2:
+\begin{array}{l}
+t_2+t_3\geq300,\\
+t_2+t_3\leq600,\\
+t_2\leq500,\quad t_3\leq200,\\
+t_2,t_3\geq0
+\end{array}\right\}.
+$$
+
+### Región factible reducida y vértices
+
+En la @fig-region-transporte aparecen las rectas frontera, el polígono factible sombreado, los vértices y la recta de nivel correspondiente al costo mínimo. El problema de seis variables puede ahora **analizarse geométricamente en dos variables**.
+
+![Región factible del transporte en las variables libres $t_2$ y $t_3$, con el nivel de costo óptimo.](figuras/region_factible_transporte.svg){#fig-region-transporte width="94%" fig-align="center"}
+
+Los vértices de $\mathcal R$ son
+
+$$
+(100,200),\quad (400,200),\quad(500,100),\quad(500,0),\quad(300,0).
+$$
+
+### Sustitución y función objetivo reducida
+
+Al sustituir las seis expresiones en el costo total, obtenemos
+
+$$
+\begin{aligned}
+C={}&12(-300+t_2+t_3)+15(500-t_2)+14(200-t_3)\\
+&+10(600-t_2-t_3)+18t_2+16t_3\\
+={}&12700+5t_2+4t_3.
+\end{aligned}
+$$
+
+La nueva formulación, equivalente a la original, es
+
+$$
+\boxed{\begin{aligned}
+\text{Minimizar}\quad &C=12700+5t_2+4t_3\\
+\text{sujeto a}\quad & (t_2,t_3)\in\mathcal R.
+\end{aligned}}
+$$
+
+Para decidir cuál vértice proporciona el costo mínimo evaluamos la función objetivo:
+
+| Vértice $(t_2,t_3)$ | $C=12700+5t_2+4t_3$ (miles de colones) |
+|:--:|--:|
+| $(100,200)$ | **14000** |
+| $(400,200)$ | 15500 |
+| $(500,100)$ | 15600 |
+| $(500,0)$ | 15200 |
+| $(300,0)$ | 14200 |
+
+El mínimo se alcanza en $(t_2^*,t_3^*)=(100,200)$, marcado en la figura. **No se ha utilizado el método Simplex.**
+
+### Recuperación de la solución original
+
+Sustituimos $t_2=100$ y $t_3=200$ en las expresiones obtenidas por Gauss–Jordan:
+
+$$
+\begin{aligned}
+x_{11}^*&=-300+100+200=0, &x_{12}^*&=500-100=400,\\
+x_{13}^*&=200-200=0, &x_{21}^*&=600-100-200=300,\\
+x_{22}^*&=100, &x_{23}^*&=200.
+\end{aligned}
+$$
+
+La distribución óptima es
 
 | Ruta | Sacos enviados |
 |:--|--:|
@@ -170,7 +318,11 @@ La cota se alcanza con $u=0$ y $v=400$, que satisfacen todas las restricciones. 
 | $P_2\to S_2$ | 100 |
 | $P_2\to S_3$ | 200 |
 
-El costo mínimo es **14000 miles de colones**, es decir, **14 millones de colones**. Este resultado utiliza únicamente sustituciones e inequaciones; no necesitamos aplicar el método Simplex.
+El costo mínimo es $C^*=14000$ **miles de colones**, es decir, **14 millones de colones**. Podemos comprobar directamente que todas las ofertas y demandas se satisfacen.
+
+::: {.callout-important title="La idea matemática"}
+La reducción por Gauss–Jordan conserva el sistema de igualdades; las restricciones de no negatividad se trasladan a las variables libres. Solo después de obtener **toda la región factible reducida** es válido resolver el problema gráficamente y reconstruir las decisiones originales.
+:::
 
 ## Comparación de los dos modelos
 
